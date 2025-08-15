@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts  # 或 conferences, books
 permalink: /publication/LLMEval-Med
 excerpt: 'Evaluating large language models (LLMs) in medicine is crucial because medical applications require high accuracy with little room for error. Current medical benchmarks have three main types: medical exam-based, comprehensive medical, and specialized assessments. However, these benchmarks have limitations in question design (mostly multiple-choice), data sources (often not derived from real clinical scenarios), and evaluation methods (poor assessment of complex reasoning). To address these issues, we present LLMEval-Med, a new benchmark covering five core medical areas, including 2,996 questions created from real-world electronic health records and expert-designed clinical scenarios. We also design an automated evaluation pipeline, incorporating expert-developed checklists into our LLM-as-Judge framework. Furthermore, our methodology validates machine scoring through human-machine agreement analysis, dynamically refining checklists and prompts based on expert feedback to ensure reliability. We evaluate 13 LLMs across three categories (specialized medical models, open-source models, and closed-source models) on LLMEval-Med, providing valuable insights for the safe and effective deployment of LLMs in medical domains. '
-date: 2024-03-15
+date: 2025-06-04
 venue: 'EMNLP'
 paperurl: 'https://arxiv.org/abs/2506.04078'  # 论文链接
 #slidesurl: 'https://your-slides-url.com'  # 幻灯片链接（可选）
