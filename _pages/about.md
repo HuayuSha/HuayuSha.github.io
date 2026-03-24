@@ -10,118 +10,102 @@ redirect_from:
 
 {% assign featured_pubs = site.publications | sort: "date" | reverse %}
 
-<section class="home-section home-hero" id="about">
-  <div class="hero-grid hero-grid--minimal">
-    <div class="hero-copy reveal">
-      <p class="section-eyebrow">Huayu Sha · Fudan University</p>
-      <h1>Trustworthy evaluation for language models.</h1>
-      <p class="hero-lede">
-        I am a Software Engineering student at Fudan University. My research focuses on
-        <strong>trustworthy LLM evaluation</strong>, <strong>medical and real-world benchmarks</strong>,
-        and <strong>scientific-intelligence systems</strong> for evaluating novelty and reasoning quality.
-      </p>
+<section class="home-section prism-shell" id="about">
+  <div class="prism-grid">
+    <aside class="prism-sidebar reveal">
+      <div class="prism-profile-card">
+        <div class="prism-avatar-wrap">
+          <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+        </div>
 
-      <div class="hero-actions">
-        <a class="button-pill button-pill--primary" href="mailto:23302010032@m.fudan.edu.cn">Email</a>
-        <a class="button-pill" href="https://github.com/HuayuSha" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="button-pill" href="/publications/">Publications</a>
-        <a class="button-pill" href="/cv/">CV</a>
+        <h1 class="prism-name">{{ site.author.name }}</h1>
+        <p class="prism-role">Software Engineering Student</p>
+        <p class="prism-affiliation">{{ site.author.employer }}</p>
+
+        <div class="prism-socials">
+          <a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="{{ '/publications/' | relative_url }}" aria-label="Publications"><i class="fa-solid fa-book-open"></i></a>
+          <a href="{{ '/cv/' | relative_url }}" aria-label="CV"><i class="fa-solid fa-file-lines"></i></a>
+        </div>
       </div>
-    </div>
 
-    <aside class="hero-panel reveal">
-      <p class="section-eyebrow">At a glance</p>
-      <ul class="clean-list">
-        <li><strong>{{ site.publications | size }}</strong> listed papers and preprints</li>
-        <li><strong>Fudan University</strong>, Software Engineering</li>
-        <li><strong>Based in Shanghai</strong></li>
-      </ul>
+      <div class="prism-side-card reveal" id="research">
+        <h3>Research Interests</h3>
+        <ul class="prism-interest-list">
+          <li>Trustworthy LLM evaluation</li>
+          <li>Medical benchmarks</li>
+          <li>Scientific intelligence</li>
+          <li>Benchmark design</li>
+        </ul>
+      </div>
 
-      <div class="tag-cloud tag-cloud--light">
-        <span>LLM evaluation</span>
-        <span>Medical NLP</span>
-        <span>Benchmark design</span>
-        <span>Scientific intelligence</span>
+      <div class="prism-side-card prism-side-card--soft reveal" id="contact">
+        <h3>Contact</h3>
+        <p>{{ site.author.email }}</p>
+        <p>Shanghai, China</p>
+        <p><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">github.com/{{ site.author.github }}</a></p>
       </div>
     </aside>
-  </div>
-</section>
 
-<section class="home-section" id="research">
-  <div class="home-section__head reveal">
-    <p class="section-eyebrow">Research</p>
-    <h2>Research themes</h2>
-    <p>
-      I am interested in evaluation methods that make model claims more reliable, interpretable, and useful in real settings.
-    </p>
-  </div>
-
-  <div class="feature-grid feature-grid--minimal">
-    <article class="feature-card reveal">
-      <h3>Trustworthy LLM evaluation</h3>
-      <p>
-        Dynamic and contamination-resistant evaluation pipelines for measuring real model capability beyond static leaderboards.
-      </p>
-    </article>
-
-    <article class="feature-card reveal">
-      <h3>Medical benchmarks</h3>
-      <p>
-        Real-world clinical scenarios and expert-validated benchmarks for safer and more meaningful medical LLM assessment.
-      </p>
-    </article>
-
-    <article class="feature-card reveal">
-      <h3>Scientific intelligence</h3>
-      <p>
-        Systems that help judge novelty, compare ideas, and support more rigorous scientific review workflows.
-      </p>
-    </article>
-  </div>
-</section>
-
-<section class="home-section" id="publications">
-  <div class="home-section__head reveal">
-    <p class="section-eyebrow">Publications</p>
-    <h2>Selected work</h2>
-    <p>
-      A concise selection is shown here. The full list is available on the
-      <a href="/publications/">publications page</a>.
-    </p>
-  </div>
-
-  <div class="publication-grid publication-grid--minimal">
-    {% for post in featured_pubs limit: 4 %}
-      <article class="paper-card reveal">
-        <div class="paper-card__meta">
-          <span>{{ post.date | date: "%Y" }}</span>
-          <span>{{ post.venue | default: "Preprint" }}</span>
+    <div class="prism-main">
+      <section class="prism-content-card reveal">
+        <div class="prism-section-head">
+          <h2>About</h2>
         </div>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.excerpt | strip_html | truncate: 220 }}</p>
-        <div class="paper-card__actions">
-          <a class="button-pill button-pill--soft" href="{{ post.url | relative_url }}">Details</a>
-          {% if post.paperurl %}
-            <a class="button-pill button-pill--soft" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
-          {% endif %}
+        <div class="prism-prose">
+          <p>
+            I am a Software Engineering student at Fudan University. My current research focuses on
+            <strong>trustworthy evaluation of large language models</strong>,
+            <strong>medical and real-world benchmarks</strong>, and
+            <strong>scientific-intelligence systems</strong> for evaluating novelty and reasoning quality.
+          </p>
+          <p>
+            I am especially interested in evaluation pipelines that are more robust to contamination,
+            closer to real use cases, and better aligned with the kinds of claims we actually make about modern models.
+          </p>
         </div>
-      </article>
-    {% endfor %}
-  </div>
-</section>
+      </section>
 
-<section class="home-section home-section--compact" id="contact">
-  <div class="contact-card reveal">
-    <div>
-      <p class="section-eyebrow">Contact</p>
-      <h2>Get in touch</h2>
-      <p>
-        If you are interested in collaboration or would like to discuss evaluation, benchmarks, or research tooling, feel free to reach out.
-      </p>
-    </div>
-    <div class="contact-actions">
-      <a class="button-pill button-pill--primary" href="mailto:23302010032@m.fudan.edu.cn">23302010032@m.fudan.edu.cn</a>
-      <a class="button-pill" href="https://github.com/HuayuSha" target="_blank" rel="noopener noreferrer">github.com/HuayuSha</a>
+      <section class="prism-content-card reveal">
+        <div class="prism-section-head prism-section-head--split">
+          <h2>Selected Publications</h2>
+          <a class="prism-view-all" href="{{ '/publications/' | relative_url }}">View All <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+
+        <div class="prism-paper-list" id="publications">
+          {% for post in featured_pubs limit: 3 %}
+            <article class="prism-paper-card">
+              <div class="prism-paper-meta">{{ post.date | date: "%Y" }} · {{ post.venue | default: "Preprint" }}</div>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p>{{ post.excerpt | strip_html | truncate: 210 }}</p>
+              <div class="prism-paper-actions">
+                <a class="prism-link-button" href="{{ post.url | relative_url }}">Details</a>
+                {% if post.paperurl %}
+                  <a class="prism-link-button" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+                {% endif %}
+                {% if post.bibtexurl %}
+                  <a class="prism-link-button" href="{{ post.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="prism-content-card reveal">
+        <div class="prism-section-head">
+          <h2>Current Focus</h2>
+        </div>
+        <div class="prism-tag-list">
+          <span>Robust evaluation</span>
+          <span>Contamination resistance</span>
+          <span>Medical NLP</span>
+          <span>Expert validation</span>
+          <span>Novelty assessment</span>
+          <span>Scientific review</span>
+        </div>
+      </section>
     </div>
   </div>
 </section>
