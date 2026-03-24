@@ -9,14 +9,14 @@
  */
 
 @import
-    "vendor/breakpoint/breakpoint",
+    "vendor/breakpoint/_breakpoint",
 
     "themes",
     "theme/default",
     "theme/dark",
 
     "include/mixins",
-    "vendor/susy/susy",
+    "vendor/susy/_susy",
 
     "layout/reset",
     "layout/base",
@@ -35,9 +35,10 @@
     "layout/page",
     "layout/archive",
     "layout/sidebar",
+    "layout/huayu-custom",
 
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands",
-    "vendor/magnific-popup/magnific-popup"
+    "vendor/magnific-popup/_magnific-popup"
 ;
