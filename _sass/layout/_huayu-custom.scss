@@ -83,7 +83,7 @@ body.home-page .page__footer {
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 222, 168, 0.24) 0%, rgba(255, 222, 168, 0.1) 32%, rgba(255, 222, 168, 0) 68%);
   filter: blur(10px);
-  opacity: 0.5;
+  opacity: 0.32;
 }
 
 .prism-bg-spot--trail {
@@ -94,7 +94,7 @@ body.home-page .page__footer {
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(191, 219, 254, 0.18) 0%, rgba(196, 181, 253, 0.1) 40%, rgba(196, 181, 253, 0) 74%);
   filter: blur(20px);
-  opacity: 0.46;
+  opacity: 0.28;
 }
 
 .prism-bg-spot--one {
@@ -227,12 +227,11 @@ body.home-page #theme-toggle a {
 .resource-card {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.76);
-  border: 1px solid rgba(232, 235, 241, 0.92);
+  background: #ffffff;
+  border: 1px solid rgba(232, 235, 241, 0.96);
   border-radius: 1.15rem;
-  box-shadow: var(--prism-shadow);
-  backdrop-filter: blur(16px);
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+  box-shadow: 0 18px 42px rgba(31, 41, 55, 0.055);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .prism-profile-card,
@@ -389,8 +388,8 @@ body.home-page #theme-toggle a {
   padding: 1rem 1.1rem;
   border: 1px solid var(--prism-border);
   border-radius: 0.9rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(252, 253, 255, 0.78) 100%);
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  background: #ffffff;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .prism-paper-meta {
@@ -508,14 +507,7 @@ body.home-page #theme-toggle a {
 .prism-content-card::after,
 .prism-paper-card::after,
 .archive__item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(160px circle at var(--card-glow-x, 50%) var(--card-glow-y, 0%), rgba(255, 248, 236, 0.42), rgba(255, 248, 236, 0.12) 28%, rgba(255, 248, 236, 0) 72%);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease;
+  content: none;
 }
 
 .prism-profile-card.is-interactive:hover,
@@ -524,16 +516,8 @@ body.home-page #theme-toggle a {
 .prism-paper-card.is-interactive:hover,
 .archive__item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 24px 58px rgba(31, 41, 55, 0.08);
-  border-color: rgba(214, 161, 77, 0.22);
-}
-
-.prism-profile-card.is-interactive:hover::after,
-.prism-side-card.is-interactive:hover::after,
-.prism-content-card.is-interactive:hover::after,
-.prism-paper-card.is-interactive:hover::after,
-.archive__item:hover::after {
-  opacity: 0.42;
+  box-shadow: 0 20px 48px rgba(31, 41, 55, 0.075);
+  border-color: rgba(214, 161, 77, 0.2);
 }
 
 
