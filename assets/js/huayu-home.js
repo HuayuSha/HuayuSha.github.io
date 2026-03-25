@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const isTouchOnly = window.matchMedia('(pointer: coarse)').matches && !window.matchMedia('(hover: hover)').matches;
   const revealItems = Array.from(document.querySelectorAll('.reveal'));
   const live2dCanvas = document.getElementById('prism-live2d-canvas');
   const body = document.body;
@@ -29,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (!reduceMotion && canHover) {
+  if (!reduceMotion && !isTouchOnly) {
     initMouseFollower();
   }
 
-  if (!reduceMotion && canHover && live2dCanvas && window.innerWidth >= 900) {
+  if (!reduceMotion && !isTouchOnly && live2dCanvas && window.innerWidth >= 900) {
     initLive2D(live2dCanvas, basePath).catch((error) => {
       console.warn('Live2D init failed:', error);
     });
@@ -114,6 +114,14 @@ async function initLive2D(canvas, basePath) {
   };
 
   updateLayout();
+
+  window.addEventListener('pointermove', (event) => {
+    const normalizedX = (event.clientX / window.innerWidth) * 2 - 1;
+    const normalizedY = (event.clientY / window.innerHeight) * 2 - 1;
+    if (typeof model.focus === 'function') {
+      model.focus(normalizedX, -normalizedY, false);
+    }
+  }, { passive: true });
 
   model.on('hit', (hitAreas) => {
     const normalized = hitAreas.map((area) => String(area).toLowerCase());
