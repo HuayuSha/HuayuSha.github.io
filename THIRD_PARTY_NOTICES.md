@@ -28,3 +28,9 @@ This site uses the following third-party libraries and assets for homepage inter
 - Rice model (Live2D official sample model)
   - License reference: https://www.live2d.com/eula/live2d-free-material-license-agreement_en.html
   - Local path: `assets/lib/live2d/rice/Rice/`
+
+- Live2dOnWeb widget
+  - Source: https://github.com/Konata09/Live2dOnWeb
+  - Local files:
+    - `assets/lib/live2d-widget/live2d_bundle.js`
+    - `assets/lib/live2d-widget/waifu-tips.js`

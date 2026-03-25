@@ -3,9 +3,8 @@
 {% if page.url == "/" %}
 <script src="{{ base_path }}/assets/lib/gsap/gsap.min.js?v={{ asset_version }}"></script>
 <script src="{{ base_path }}/assets/lib/mouse-follower/mouse-follower.min.js?v={{ asset_version }}"></script>
-<script src="{{ base_path }}/assets/lib/live2d/lib/live2dcubismcore.min.js?v={{ asset_version }}"></script>
-<script src="{{ base_path }}/assets/lib/live2d/lib/pixi.min.js?v={{ asset_version }}"></script>
-<script src="{{ base_path }}/assets/lib/live2d/lib/cubism4.min.js?v={{ asset_version }}"></script>
+<script src="{{ base_path }}/assets/lib/live2d-widget/live2d_bundle.js?v={{ asset_version }}"></script>
+<script type="module" src="{{ base_path }}/assets/lib/live2d-widget/waifu-tips.js?v={{ asset_version }}"></script>
 {% endif %}
 <script src="{{ base_path }}/assets/js/huayu-home.js?v={{ asset_version }}"></script>
 

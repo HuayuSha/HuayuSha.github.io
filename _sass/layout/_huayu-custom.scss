@@ -615,3 +615,36 @@ body.home-page .page__footer footer {
     display: none !important;
   }
 }
+
+
+body.home-page #waifu {
+  z-index: 46;
+  pointer-events: none;
+}
+
+body.home-page #waifu-message,
+body.home-page #waifu .waifu-tool {
+  display: none !important;
+}
+
+body.home-page #live2d2,
+body.home-page #live2d4 {
+  background: transparent !important;
+  pointer-events: auto;
+}
+
+body.home-page #live2d4 {
+  filter: drop-shadow(0 16px 34px rgba(148, 163, 184, 0.18));
+}
+
+@media (max-width: 900px) {
+  body.home-page #waifu {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home-page #waifu {
+    display: none !important;
+  }
+}
