@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMouseFollower();
   }
 
-  if (!reduceMotion && canHover && live2dCanvas && window.innerWidth >= 1100) {
+  if (!reduceMotion && canHover && live2dCanvas && window.innerWidth >= 900) {
     initLive2D(live2dCanvas, basePath).catch((error) => {
       console.warn('Live2D init failed:', error);
     });

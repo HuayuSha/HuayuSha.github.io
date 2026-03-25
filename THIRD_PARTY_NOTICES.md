@@ -19,7 +19,7 @@ This site uses the following third-party libraries and assets for homepage inter
 
 - pixi-live2d-display
   - Source: https://github.com/guansss/pixi-live2d-display
-  - Local file: `assets/lib/live2d/lib/pixi-live2d-display.min.js`
+  - Local file: `assets/lib/live2d/lib/cubism4.min.js`
 
 - Live2D Cubism Core (runtime dependency)
   - Source: https://www.live2d.com/en/sdk/download/web/
