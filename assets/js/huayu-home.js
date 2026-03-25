@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const revealItems = Array.from(document.querySelectorAll('.reveal'));
-  const interactiveBackground = document.querySelector('.prism-interactive-bg');
-  const interactiveCards = Array.from(document.querySelectorAll('.prism-profile-card, .prism-side-card, .prism-content-card, .prism-paper-card'));
-  const pagePet = document.querySelector('.prism-page-pet');
+  const live2dCanvas = document.getElementById('prism-live2d-canvas');
+  const body = document.body;
+  const basePath = body.dataset.basePath || '';
 
   if (reduceMotion || !revealItems.length) {
     revealItems.forEach((item) => item.classList.add('is-visible'));
@@ -28,158 +29,105 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  let targetX = window.innerWidth * 0.6;
-  let targetY = Math.min(window.innerHeight * 0.24, 260);
-  let currentX = targetX;
-  let currentY = targetY;
-  let trailX = targetX;
-  let trailY = targetY;
-  let rafId = null;
+  if (!reduceMotion && canHover) {
+    initMouseFollower();
+  }
 
-  const backgroundStyle = interactiveBackground ? interactiveBackground.style : null;
-
-  const animatePointer = () => {
-    currentX += (targetX - currentX) * 0.18;
-    currentY += (targetY - currentY) * 0.18;
-    trailX += (currentX - trailX) * 0.1;
-    trailY += (currentY - trailY) * 0.1;
-
-    if (backgroundStyle) {
-      backgroundStyle.setProperty('--pointer-x', `${currentX}px`);
-      backgroundStyle.setProperty('--pointer-y', `${currentY}px`);
-      backgroundStyle.setProperty('--pointer-trail-x', `${trailX}px`);
-      backgroundStyle.setProperty('--pointer-trail-y', `${trailY}px`);
-    }
-
-    if (pagePet) {
-      updatePetGaze(currentX, currentY);
-    }
-
-    const active =
-      Math.abs(targetX - currentX) > 0.2 ||
-      Math.abs(targetY - currentY) > 0.2 ||
-      Math.abs(currentX - trailX) > 0.2 ||
-      Math.abs(currentY - trailY) > 0.2;
-
-    if (active) {
-      rafId = window.requestAnimationFrame(animatePointer);
-    } else {
-      rafId = null;
-    }
-  };
-
-  const schedulePointerUpdate = () => {
-    if (!rafId) {
-      rafId = window.requestAnimationFrame(animatePointer);
-    }
-  };
-
-  const updatePointerTarget = (x, y) => {
-    targetX = x;
-    targetY = y;
-    schedulePointerUpdate();
-  };
-
-  const updatePetGaze = (x, y) => {
-    if (!pagePet) {
-      return;
-    }
-
-    const bounds = pagePet.getBoundingClientRect();
-    const centerX = bounds.left + bounds.width * 0.5;
-    const centerY = bounds.top + bounds.height * 0.42;
-    const dx = x - centerX;
-    const dy = y - centerY;
-    const distance = Math.max(Math.hypot(dx, dy), 1);
-    const clamp = (value, max) => Math.max(-max, Math.min(max, value));
-
-    const lookX = clamp((dx / distance) * 7.5, 7.5);
-    const lookY = clamp((dy / distance) * 5.5, 5.5);
-    const tiltX = clamp(dx / window.innerWidth, 0.14);
-    const tiltY = clamp(dy / window.innerHeight, 0.12);
-
-    pagePet.style.setProperty('--pet-look-x', `${lookX.toFixed(2)}px`);
-    pagePet.style.setProperty('--pet-look-y', `${lookY.toFixed(2)}px`);
-    pagePet.style.setProperty('--pet-head-tilt', `${(tiltX * 10).toFixed(2)}deg`);
-    pagePet.style.setProperty('--pet-body-tilt', `${(tiltX * -3.8).toFixed(2)}deg`);
-    pagePet.style.setProperty('--pet-tilt-x', `${(tiltX * 12).toFixed(2)}deg`);
-    pagePet.style.setProperty('--pet-tilt-y', `${(tiltY * -10).toFixed(2)}deg`);
-    pagePet.style.setProperty('--pet-float-x', `${clamp(dx * 0.012, 8).toFixed(2)}px`);
-    pagePet.style.setProperty('--pet-float-y', `${clamp(dy * 0.01, 6).toFixed(2)}px`);
-  };
-
-  updatePointerTarget(targetX, targetY);
-
-  window.addEventListener('pointermove', (event) => {
-    updatePointerTarget(event.clientX, event.clientY);
-  }, { passive: true });
-
-  window.addEventListener('mouseleave', () => {
-    updatePointerTarget(window.innerWidth * 0.6, Math.min(window.innerHeight * 0.24, 260));
-  });
-
-  window.addEventListener('blur', () => {
-    updatePointerTarget(window.innerWidth * 0.6, Math.min(window.innerHeight * 0.24, 260));
-  });
-
-  window.addEventListener('resize', () => {
-    updatePointerTarget(
-      Math.min(targetX, window.innerWidth - 24),
-      Math.min(targetY, window.innerHeight - 24)
-    );
-  }, { passive: true });
-
-  interactiveCards.forEach((card) => {
-    if (reduceMotion) {
-      card.classList.remove('is-interactive');
-      return;
-    }
-
-    card.classList.add('is-interactive');
-
-    card.addEventListener('pointermove', (event) => {
-      const bounds = card.getBoundingClientRect();
-      const glowX = event.clientX - bounds.left;
-      const glowY = event.clientY - bounds.top;
-
-      card.style.setProperty('--card-glow-x', `${glowX}px`);
-      card.style.setProperty('--card-glow-y', `${glowY}px`);
+  if (!reduceMotion && canHover && live2dCanvas && window.innerWidth >= 1100) {
+    initLive2D(live2dCanvas, basePath).catch((error) => {
+      console.warn('Live2D init failed:', error);
     });
-
-    card.addEventListener('pointerleave', () => {
-      card.style.removeProperty('--card-glow-x');
-      card.style.removeProperty('--card-glow-y');
-    });
-  });
-
-  if (pagePet) {
-    let petResetTimer = null;
-
-    if (reduceMotion) {
-      pagePet.classList.add('is-reduced-motion');
-    }
-
-    pagePet.addEventListener('click', () => {
-      pagePet.classList.remove('is-celebrating');
-      void pagePet.offsetWidth;
-      pagePet.classList.add('is-celebrating');
-      pagePet.setAttribute('aria-label', 'Mascot companion says hi');
-
-      window.clearTimeout(petResetTimer);
-      petResetTimer = window.setTimeout(() => {
-        pagePet.classList.remove('is-celebrating');
-        pagePet.setAttribute('aria-label', 'Mascot companion');
-      }, 1100);
-    });
-
-    pagePet.addEventListener('pointerenter', () => {
-      pagePet.classList.add('is-alert');
-    });
-
-    pagePet.addEventListener('pointerleave', () => {
-      pagePet.classList.remove('is-alert');
-    });
-
-    updatePetGaze(targetX, targetY);
   }
 });
+
+function initMouseFollower() {
+  if (!window.MouseFollower || !window.gsap) {
+    return;
+  }
+
+  if (!window.__huayuMouseFollowerRegistered) {
+    window.MouseFollower.registerGSAP(window.gsap);
+    window.__huayuMouseFollowerRegistered = true;
+  }
+
+  if (window.__huayuCursor && typeof window.__huayuCursor.destroy === 'function') {
+    window.__huayuCursor.destroy();
+  }
+
+  document.body.classList.add('has-mouse-follower');
+
+  window.__huayuCursor = new window.MouseFollower({
+    speed: 0.38,
+    ease: 'expo.out',
+    skewing: 0,
+    hideOnLeave: false,
+    visible: true,
+    visibleOnState: false,
+    stateDetection: {
+      '-pointer': 'a, button, .prism-link-button, .masthead a, .archive__item a'
+    }
+  });
+}
+
+async function initLive2D(canvas, basePath) {
+  if (!window.PIXI || !window.PIXI.live2d || !window.PIXI.live2d.Live2DModel) {
+    return;
+  }
+
+  if (window.__huayuLive2dApp) {
+    return;
+  }
+
+  const { Live2DModel } = window.PIXI.live2d;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const app = new window.PIXI.Application({
+    view: canvas,
+    autoStart: true,
+    transparent: true,
+    antialias: true,
+    autoDensity: true,
+    resolution: dpr,
+    width: 280,
+    height: 360
+  });
+
+  const model = await Live2DModel.from(`${basePath}/assets/lib/live2d/rice/Rice/Rice.model3.json`);
+  app.stage.addChild(model);
+
+  model.anchor.set(0.5, 1);
+  model.eventMode = 'static';
+  model.interactive = true;
+  model.cursor = 'pointer';
+
+  const updateLayout = () => {
+    const compact = window.innerWidth < 1320;
+    const width = compact ? 240 : 280;
+    const height = compact ? 320 : 360;
+    const scale = compact ? 0.165 : 0.19;
+
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    app.renderer.resize(width, height);
+    model.scale.set(scale);
+    model.x = width * 0.5;
+    model.y = height * 0.98;
+  };
+
+  updateLayout();
+
+  model.on('hit', (hitAreas) => {
+    const normalized = hitAreas.map((area) => String(area).toLowerCase());
+    if (normalized.includes('body')) {
+      model.motion('TapBody');
+      canvas.classList.remove('is-live2d-bouncing');
+      void canvas.offsetWidth;
+      canvas.classList.add('is-live2d-bouncing');
+      window.setTimeout(() => canvas.classList.remove('is-live2d-bouncing'), 700);
+    }
+  });
+
+  window.addEventListener('resize', updateLayout, { passive: true });
+
+  window.__huayuLive2dApp = app;
+  window.__huayuLive2dModel = model;
+}
