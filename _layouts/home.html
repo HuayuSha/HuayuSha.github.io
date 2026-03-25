@@ -26,6 +26,32 @@ layout: compress
       {{ content }}
     </main>
 
+    <button class="prism-page-pet" type="button" aria-label="Pet companion">
+      <span class="prism-page-pet__halo"></span>
+      <span class="prism-page-pet__hearts" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="prism-page-pet__body" aria-hidden="true">
+        <span class="prism-page-pet__tail"></span>
+        <span class="prism-page-pet__feet prism-page-pet__feet--left"></span>
+        <span class="prism-page-pet__feet prism-page-pet__feet--right"></span>
+      </span>
+      <span class="prism-page-pet__head" aria-hidden="true">
+        <span class="prism-page-pet__ear prism-page-pet__ear--left"></span>
+        <span class="prism-page-pet__ear prism-page-pet__ear--right"></span>
+        <span class="prism-page-pet__face"></span>
+        <span class="prism-page-pet__eye prism-page-pet__eye--left"><span class="prism-page-pet__pupil"></span></span>
+        <span class="prism-page-pet__eye prism-page-pet__eye--right"><span class="prism-page-pet__pupil"></span></span>
+        <span class="prism-page-pet__nose"></span>
+        <span class="prism-page-pet__mouth"></span>
+        <span class="prism-page-pet__blush prism-page-pet__blush--left"></span>
+        <span class="prism-page-pet__blush prism-page-pet__blush--right"></span>
+      </span>
+      <span class="prism-page-pet__hint">click me</span>
+    </button>
+
     <div class="page__footer">
       <footer>
         {% include footer/custom.html %}

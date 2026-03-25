@@ -22,7 +22,7 @@ repository               : "HuayuSha/HuayuSha.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "whiteDog.jpg"
+  avatar           : "huayu-avatar.png"
   name             : "Huayu Sha"
   pronouns         : "he/him"# example: "she/her"  
   bio              : "Software Engineering student at Fudan University working on NLP, trustworthy evaluation of large language models, medical benchmarks, and scientific intelligence."
