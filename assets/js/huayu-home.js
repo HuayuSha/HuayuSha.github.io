@@ -100,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     pagePet.style.setProperty('--pet-look-x', `${lookX.toFixed(2)}px`);
     pagePet.style.setProperty('--pet-look-y', `${lookY.toFixed(2)}px`);
+    pagePet.style.setProperty('--pet-head-tilt', `${(tiltX * 10).toFixed(2)}deg`);
+    pagePet.style.setProperty('--pet-body-tilt', `${(tiltX * -3.8).toFixed(2)}deg`);
     pagePet.style.setProperty('--pet-tilt-x', `${(tiltX * 12).toFixed(2)}deg`);
     pagePet.style.setProperty('--pet-tilt-y', `${(tiltY * -10).toFixed(2)}deg`);
     pagePet.style.setProperty('--pet-float-x', `${clamp(dx * 0.012, 8).toFixed(2)}px`);
@@ -161,12 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
       pagePet.classList.remove('is-celebrating');
       void pagePet.offsetWidth;
       pagePet.classList.add('is-celebrating');
-      pagePet.setAttribute('aria-label', 'Pet companion says hi');
+      pagePet.setAttribute('aria-label', 'Mascot companion says hi');
 
       window.clearTimeout(petResetTimer);
       petResetTimer = window.setTimeout(() => {
         pagePet.classList.remove('is-celebrating');
-        pagePet.setAttribute('aria-label', 'Pet companion');
+        pagePet.setAttribute('aria-label', 'Mascot companion');
       }, 1100);
     });
 

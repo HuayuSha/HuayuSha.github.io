@@ -26,30 +26,57 @@ layout: compress
       {{ content }}
     </main>
 
-    <button class="prism-page-pet" type="button" aria-label="Pet companion">
+    <button class="prism-page-pet" type="button" aria-label="Mascot companion">
       <span class="prism-page-pet__halo"></span>
       <span class="prism-page-pet__hearts" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>
       </span>
-      <span class="prism-page-pet__body" aria-hidden="true">
-        <span class="prism-page-pet__tail"></span>
-        <span class="prism-page-pet__feet prism-page-pet__feet--left"></span>
-        <span class="prism-page-pet__feet prism-page-pet__feet--right"></span>
-      </span>
-      <span class="prism-page-pet__head" aria-hidden="true">
-        <span class="prism-page-pet__ear prism-page-pet__ear--left"></span>
-        <span class="prism-page-pet__ear prism-page-pet__ear--right"></span>
-        <span class="prism-page-pet__face"></span>
-        <span class="prism-page-pet__eye prism-page-pet__eye--left"><span class="prism-page-pet__pupil"></span></span>
-        <span class="prism-page-pet__eye prism-page-pet__eye--right"><span class="prism-page-pet__pupil"></span></span>
-        <span class="prism-page-pet__nose"></span>
-        <span class="prism-page-pet__mouth"></span>
-        <span class="prism-page-pet__blush prism-page-pet__blush--left"></span>
-        <span class="prism-page-pet__blush prism-page-pet__blush--right"></span>
-      </span>
-      <span class="prism-page-pet__hint">click me</span>
+      <svg class="prism-page-pet__scene" viewBox="0 0 180 180" aria-hidden="true">
+        <ellipse class="prism-page-pet__shadow" cx="92" cy="158" rx="40" ry="12"></ellipse>
+        <g class="prism-page-pet__character">
+          <g class="prism-page-pet__body-group">
+            <path class="prism-page-pet__arm prism-page-pet__arm--left" d="M59 109C53 116 52 126 56 132C62 132 66 128 68 121L69 111Z"></path>
+            <path class="prism-page-pet__arm prism-page-pet__arm--right" d="M121 109C127 116 128 126 124 132C118 132 114 128 112 121L111 111Z"></path>
+            <path class="prism-page-pet__dress" d="M74 103C72 117 66 130 59 148H121C114 130 108 117 106 103C99 108 82 108 74 103Z"></path>
+            <path class="prism-page-pet__collar" d="M74 103C79 96 84 93 90 93C96 93 101 96 106 103C101 109 96 112 90 112C84 112 79 109 74 103Z"></path>
+            <circle class="prism-page-pet__gem" cx="90" cy="109" r="5"></circle>
+            <rect class="prism-page-pet__leg prism-page-pet__leg--left" x="77" y="145" width="9" height="14" rx="4.5"></rect>
+            <rect class="prism-page-pet__leg prism-page-pet__leg--right" x="94" y="145" width="9" height="14" rx="4.5"></rect>
+            <ellipse class="prism-page-pet__shoe prism-page-pet__shoe--left" cx="80" cy="160" rx="10" ry="5"></ellipse>
+            <ellipse class="prism-page-pet__shoe prism-page-pet__shoe--right" cx="100" cy="160" rx="10" ry="5"></ellipse>
+          </g>
+          <g class="prism-page-pet__head-group">
+            <path class="prism-page-pet__hair-back" d="M52 74C52 45 68 26 90 26C112 26 129 45 129 75C129 95 122 107 113 116H67C58 107 52 95 52 74Z"></path>
+            <circle class="prism-page-pet__head-shape" cx="90" cy="75" r="31"></circle>
+            <path class="prism-page-pet__hair-front" d="M59 63C64 45 78 36 90 36C102 36 116 45 121 63C114 60 109 61 103 68C98 57 94 54 90 54C86 54 81 57 76 68C70 61 65 60 59 63Z"></path>
+            <path class="prism-page-pet__side-lock prism-page-pet__side-lock--left" d="M59 74C56 92 60 106 68 117C61 114 54 104 53 91C53 85 55 79 59 74Z"></path>
+            <path class="prism-page-pet__side-lock prism-page-pet__side-lock--right" d="M121 74C124 92 120 106 112 117C119 114 126 104 127 91C127 85 125 79 121 74Z"></path>
+            <g class="prism-page-pet__bow prism-page-pet__bow--left">
+              <path d="M64 49C56 42 50 42 46 49C51 52 56 54 61 54Z"></path>
+              <path d="M64 49C71 42 77 42 81 49C76 52 71 54 66 54Z"></path>
+              <circle cx="64" cy="49" r="4"></circle>
+            </g>
+            <g class="prism-page-pet__star-clip">
+              <path d="M113 44L115.8 49.8L122.2 50.7L117.6 55.2L118.7 61.5L113 58.4L107.3 61.5L108.4 55.2L103.8 50.7L110.2 49.8Z"></path>
+            </g>
+            <ellipse class="prism-page-pet__eye-white prism-page-pet__eye-white--left" cx="79" cy="77" rx="9" ry="10"></ellipse>
+            <ellipse class="prism-page-pet__eye-white prism-page-pet__eye-white--right" cx="101" cy="77" rx="9" ry="10"></ellipse>
+            <circle class="prism-page-pet__pupil prism-page-pet__pupil--left" cx="79" cy="78" r="4.5"></circle>
+            <circle class="prism-page-pet__pupil prism-page-pet__pupil--right" cx="101" cy="78" r="4.5"></circle>
+            <circle class="prism-page-pet__eye-spark prism-page-pet__eye-spark--left" cx="81.5" cy="75.5" r="1.35"></circle>
+            <circle class="prism-page-pet__eye-spark prism-page-pet__eye-spark--right" cx="103.5" cy="75.5" r="1.35"></circle>
+            <path class="prism-page-pet__lash prism-page-pet__lash--left" d="M70 68C74 65 79 64 83 65"></path>
+            <path class="prism-page-pet__lash prism-page-pet__lash--right" d="M97 65C101 64 106 65 110 68"></path>
+            <ellipse class="prism-page-pet__blush prism-page-pet__blush--left" cx="67.5" cy="90.5" rx="7" ry="4"></ellipse>
+            <ellipse class="prism-page-pet__blush prism-page-pet__blush--right" cx="112.5" cy="90.5" rx="7" ry="4"></ellipse>
+            <path class="prism-page-pet__mouth" d="M84 96C86 99 88 100.2 90 100.2C92 100.2 94 99 96 96"></path>
+            <circle class="prism-page-pet__nose" cx="90" cy="91.5" r="2.4"></circle>
+          </g>
+        </g>
+      </svg>
+      <span class="prism-page-pet__hint">hi there</span>
     </button>
 
     <div class="page__footer">
