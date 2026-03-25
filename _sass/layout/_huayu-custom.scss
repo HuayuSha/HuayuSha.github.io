@@ -76,25 +76,25 @@ body.home-page .page__footer {
 }
 
 .prism-bg-spot--cursor {
-  width: 26rem;
-  height: 26rem;
+  width: 24rem;
+  height: 24rem;
   left: var(--pointer-x);
   top: var(--pointer-y);
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 215, 140, 0.42) 0%, rgba(255, 215, 140, 0.18) 30%, rgba(255, 215, 140, 0) 70%);
-  filter: blur(8px);
-  opacity: 0.88;
+  background: radial-gradient(circle, rgba(255, 222, 168, 0.24) 0%, rgba(255, 222, 168, 0.1) 32%, rgba(255, 222, 168, 0) 68%);
+  filter: blur(10px);
+  opacity: 0.5;
 }
 
 .prism-bg-spot--trail {
-  width: 33rem;
-  height: 33rem;
+  width: 31rem;
+  height: 31rem;
   left: var(--pointer-trail-x);
   top: var(--pointer-trail-y);
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(191, 219, 254, 0.28) 0%, rgba(196, 181, 253, 0.14) 38%, rgba(196, 181, 253, 0) 74%);
-  filter: blur(18px);
-  opacity: 0.7;
+  background: radial-gradient(circle, rgba(191, 219, 254, 0.18) 0%, rgba(196, 181, 253, 0.1) 40%, rgba(196, 181, 253, 0) 74%);
+  filter: blur(20px);
+  opacity: 0.46;
 }
 
 .prism-bg-spot--one {
@@ -494,6 +494,15 @@ body.home-page #theme-toggle a {
 }
 
 
+.prism-profile-card > *,
+.prism-side-card > *,
+.prism-content-card > *,
+.prism-paper-card > *,
+.archive__item > * {
+  position: relative;
+  z-index: 1;
+}
+
 .prism-profile-card::after,
 .prism-side-card::after,
 .prism-content-card::after,
@@ -502,7 +511,8 @@ body.home-page #theme-toggle a {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(180px circle at var(--card-glow-x, 50%) var(--card-glow-y, 0%), rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 72%);
+  z-index: 0;
+  background: radial-gradient(160px circle at var(--card-glow-x, 50%) var(--card-glow-y, 0%), rgba(255, 248, 236, 0.42), rgba(255, 248, 236, 0.12) 28%, rgba(255, 248, 236, 0) 72%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease;
@@ -523,7 +533,7 @@ body.home-page #theme-toggle a {
 .prism-content-card.is-interactive:hover::after,
 .prism-paper-card.is-interactive:hover::after,
 .archive__item:hover::after {
-  opacity: 1;
+  opacity: 0.42;
 }
 
 
