@@ -1,11 +1,12 @@
-<script src="{{ base_path }}/assets/js/main.min.js"></script>
+{% assign asset_version = site.github.build_revision | default: site.time | date: "%s" %}
+<script src="{{ base_path }}/assets/js/main.min.js?v={{ asset_version }}"></script>
 {% if page.url == "/" %}
-<script src="{{ base_path }}/assets/lib/gsap/gsap.min.js"></script>
-<script src="{{ base_path }}/assets/lib/mouse-follower/mouse-follower.min.js"></script>
-<script src="{{ base_path }}/assets/lib/live2d/lib/live2dcubismcore.min.js"></script>
-<script src="{{ base_path }}/assets/lib/live2d/lib/pixi.min.js"></script>
-<script src="{{ base_path }}/assets/lib/live2d/lib/cubism4.min.js"></script>
+<script src="{{ base_path }}/assets/lib/gsap/gsap.min.js?v={{ asset_version }}"></script>
+<script src="{{ base_path }}/assets/lib/mouse-follower/mouse-follower.min.js?v={{ asset_version }}"></script>
+<script src="{{ base_path }}/assets/lib/live2d/lib/live2dcubismcore.min.js?v={{ asset_version }}"></script>
+<script src="{{ base_path }}/assets/lib/live2d/lib/pixi.min.js?v={{ asset_version }}"></script>
+<script src="{{ base_path }}/assets/lib/live2d/lib/cubism4.min.js?v={{ asset_version }}"></script>
 {% endif %}
-<script src="{{ base_path }}/assets/js/huayu-home.js"></script>
+<script src="{{ base_path }}/assets/js/huayu-home.js?v={{ asset_version }}"></script>
 
 {% include analytics.html %}

@@ -11,7 +11,7 @@ layout: compress
     {% include head/custom.html %}
   </head>
 
-  <body class="home-page" data-base-path="{{ base_path }}">
+  <body class="home-page" data-base-path="{{ base_path }}" data-site-version="{{ site.github.build_revision | default: site.time | date: "%s" }}">
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
