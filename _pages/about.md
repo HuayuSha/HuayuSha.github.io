@@ -19,7 +19,7 @@ redirect_from:
         </div>
 
         <h1 class="prism-name">{{ site.author.name }}</h1>
-        <p class="prism-role">Software Engineering Student</p>
+        <p class="prism-role">Software Engineering · Fudan</p>
         <p class="prism-affiliation">{{ site.author.employer }}</p>
 
         <div class="prism-socials">
