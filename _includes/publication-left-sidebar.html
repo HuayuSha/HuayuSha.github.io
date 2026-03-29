@@ -5,7 +5,7 @@
 {% endif %}
 
 <aside class="prism-sidebar publication-prism-sidebar">
-  <div class="prism-profile-card">
+  <div class="prism-profile-card reveal is-interactive">
     <div class="prism-avatar-wrap">
       <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
     </div>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="prism-side-card" id="research">
+  <div class="prism-side-card reveal is-interactive" id="research">
     {% if is_zh_page %}
       <h3>研究方向</h3>
       <ul class="prism-interest-list">
@@ -46,7 +46,7 @@
     {% endif %}
   </div>
 
-  <div class="prism-side-card prism-side-card--soft" id="contact">
+  <div class="prism-side-card prism-side-card--soft reveal is-interactive" id="contact">
     <h3>{% if is_zh_page %}联系方式{% else %}Contact{% endif %}</h3>
     <p>{{ site.author.email }}</p>
     <p>{% if is_zh_page %}中国上海{% else %}Shanghai, China{% endif %}</p>
