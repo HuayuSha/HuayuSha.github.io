@@ -130,6 +130,14 @@ a, button, [role="button"], .prism-link-button, .button-pill,
   display: block !important;
 }
 
+/* Keep desktop masthead clean: no collapse button/dropdown */
+@media (min-width: 901px) {
+  .greedy-nav > button,
+  .greedy-nav .hidden-links {
+    display: none !important;
+  }
+}
+
 /* Push trailing items (lang + theme toggle) to right */
 .greedy-nav .visible-links .persist.tail {
   margin-left: auto !important;
