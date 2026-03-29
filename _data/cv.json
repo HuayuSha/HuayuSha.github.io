@@ -22,6 +22,11 @@
         "network": "Website",
         "username": "huayusha.org",
         "url": "https://huayusha.org"
+      },
+      {
+        "network": "ORCID",
+        "username": "0009-0006-1742-5816",
+        "url": "https://orcid.org/0009-0006-1742-5816"
       }
     ]
   },

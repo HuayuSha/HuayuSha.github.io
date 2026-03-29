@@ -25,6 +25,7 @@ Links
 ======
 * Website: https://huayusha.org
 * GitHub: https://github.com/HuayuSha
+* ORCID: https://orcid.org/0009-0006-1742-5816
 * Email: 23302010032@m.fudan.edu.cn
 
 Selected Publications
