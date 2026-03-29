@@ -1,8 +1,6 @@
 {% assign asset_version = site.github.build_revision | default: site.time | date: "%s" %}
 <script src="{{ base_path }}/assets/js/main.min.js?v={{ asset_version }}"></script>
 {% if page.url == "/" %}
-<script src="{{ base_path }}/assets/lib/gsap/gsap.min.js?v={{ asset_version }}"></script>
-<script src="{{ base_path }}/assets/lib/mouse-follower/mouse-follower.min.js?v={{ asset_version }}"></script>
 <script src="{{ base_path }}/assets/lib/live2d-widget/live2d_bundle.js?v={{ asset_version }}"></script>
 <script type="module" src="{{ base_path }}/assets/lib/live2d-widget/waifu-tips.js?v={{ asset_version }}"></script>
 {% endif %}

@@ -186,90 +186,7 @@ body.home-page .page__footer {
 }
 
 
-/* -- Masthead --------------------------------------------- */
-body.home-page .masthead {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 40;
-  /* Use exact page bg color - no white leaking */
-  background: rgba(245, 243, 239, 0.92) !important;
-  backdrop-filter: blur(32px) saturate(1.8);
-  -webkit-backdrop-filter: blur(32px) saturate(1.8);
-  border-bottom: 1px solid var(--p-border);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.6), 0 2px 14px rgba(0,0,0,0.04);
-  animation: none !important;
-}
-
-body.home-page .masthead::after { display: none; }
-
-/* Kill white bg on every masthead child */
-body.home-page .masthead__inner-wrap,
-body.home-page .greedy-nav,
-body.home-page .greedy-nav .visible-links,
-body.home-page .masthead__menu-item,
-body.home-page .masthead__menu {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-body.home-page .masthead__inner-wrap {
-  max-width: 1140px;
-  padding: 0.35rem 1rem;
-}
-body.home-page .greedy-nav .visible-links { gap: 0.05rem; }
-
-body.home-page .masthead__menu-item a,
-body.home-page .masthead__menu-item a:visited,
-body.home-page .masthead__menu-item--lg a,
-body.home-page .masthead__menu-item--lg a:visited {
-  color: var(--p-ink-2);
-}
-
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a {
-  padding: 0.46rem 0.92rem;
-  border-radius: 999px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 0.86rem;
-  letter-spacing: 0.01em;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a:hover,
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a:focus {
-  background: var(--p-accent-pale);
-  color: var(--p-accent);
-}
-
-body.home-page .masthead__menu-item--lg a {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.72rem;
-  font-weight: 500;
-  letter-spacing: -0.022em;
-  color: var(--p-ink);
-}
-
-body.home-page #theme-toggle a {
-  width: 2.35rem;
-  height: 2.35rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--p-border-med);
-  border-radius: var(--p-r-sm);
-  background: var(--p-surface);
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
-  color: var(--p-ink-3);
-  box-shadow: var(--p-shadow-xs);
-}
-body.home-page #theme-toggle a:hover {
-  border-color: var(--p-accent-glow);
-  background: var(--p-accent-pale);
-  color: var(--p-accent);
-}
+/* Masthead: handled globally in _huayu-global.scss */
 
 
 /* -- Layout shell ----------------------------------------- */
@@ -830,47 +747,7 @@ body.home-page #theme-toggle a:hover {
 }
 
 
-/* -- Custom cursor ---------------------------------------- */
-body.home-page.has-mouse-follower,
-body.home-page.has-mouse-follower *,
-body.home-page.has-mouse-follower a,
-body.home-page.has-mouse-follower button {
-  cursor: none !important;
-}
-
-/* Force cursor visible and above everything */
-.mf-cursor {
-  position: fixed !important;
-  z-index: 999999 !important;
-  pointer-events: none !important;
-  top: 0;
-  left: 0;
-}
-
-.mf-cursor::before {
-  position: absolute;
-  content: '';
-  border-radius: 50%;
-  top: -13px;
-  left: -13px;
-  width: 26px;
-  height: 26px;
-  background: rgba(26, 99, 82, 0.08);
-  border: 1.5px solid rgba(26, 99, 82, 0.32);
-  box-shadow: 0 0 0 5px rgba(26, 99, 82, 0.04);
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
-
-.mf-cursor.-pointer::before {
-  transform: scale(1.6);
-  background: rgba(26, 99, 82, 0.11);
-  border-color: rgba(26, 99, 82, 0.4);
-}
-
-.mf-cursor.-hidden::before {
-  transform: scale(0.1);
-  opacity: 0;
-}
+/* Cursor: handled globally in _huayu-global.scss */
 
 
 /* -- Live2D mascot ---------------------------------------- */
@@ -925,50 +802,7 @@ body.home-page #live2d4:hover {
 }
 
 
-/* -- Footer ----------------------------------------------- */
-body.home-page .page__footer {
-  /* Override the absolute "sticky footer" positioning from _footer.scss */
-  position: relative !important;
-  bottom: auto !important;
-  margin-top: 0 !important;
-  border-top: 1px solid var(--p-border);
-  background: transparent;
-  animation: none !important;
-}
-
-body.home-page .page__footer footer {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 1.4rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-body.home-page .page__footer-copyright,
-body.home-page .page__footer-follow,
-body.home-page .page__footer a {
-  color: var(--p-ink-4);
-  font-size: 0.80rem;
-  text-decoration: none;
-}
-
-body.home-page .page__footer a:hover {
-  color: var(--p-ink-3);
-}
-
-body.home-page .page__footer .social-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-body.home-page .page__footer-follow { margin-bottom: 0; }
+/* Footer: handled globally in _huayu-global.scss */
 
 
 /* -- Responsive ------------------------------------------- */
@@ -1027,57 +861,7 @@ body.home-page #live2d4 {
   }
 }
 
-/* -- Scroll progress bar ---------------------------------- */
-#prism-scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  width: 0%;
-  z-index: 9999;
-  background: linear-gradient(90deg,
-    var(--p-gold) 0%,
-    var(--p-gold-light) 50%,
-    var(--p-accent-light) 100%);
-  transform-origin: left center;
-  transition: width 80ms linear;
-  pointer-events: none;
-  /* Soft glow */
-  box-shadow: 0 0 8px rgba(184, 131, 46, 0.5);
-}
-
-
-/* -- Nav link underline animation ------------------------- */
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a {
-  position: relative;
-  /* Remove pill background; use underline instead */
-  border-radius: 0;
-  padding: 0.5rem 0.65rem;
-  background: transparent !important;
-}
-
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a::after {
-  content: '';
-  position: absolute;
-  bottom: 0.2rem;
-  left: 50%;
-  width: 0;
-  height: 1.5px;
-  background: var(--p-accent);
-  transform: translateX(-50%);
-  transition: width 240ms cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 2px;
-}
-
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a:hover::after,
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a:focus::after {
-  width: calc(100% - 1.3rem);
-}
-
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a:hover,
-body.home-page .masthead__menu-item:not(.masthead__menu-item--lg) a:focus {
-  color: var(--p-ink);
-}
+/* Scroll bar, nav underline: handled globally in _huayu-global.scss */
 
 
 /* -- Avatar breathing glow -------------------------------- */

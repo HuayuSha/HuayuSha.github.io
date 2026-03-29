@@ -33,11 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(triggerEntranceAnimations, 80);
   }
 
-  // ── Mouse follower cursor ──────────────────────────────
-  if (!reduceMotion && !isTouchOnly) {
-    initMouseFollower();
-  }
-
   // ── Background parallax ────────────────────────────────
   if (!reduceMotion && !isTouchOnly) {
     initBgParallax();
@@ -110,35 +105,6 @@ function triggerEntranceAnimations() {
   document.querySelectorAll(
     '.prism-profile-card, .prism-side-card, .prism-content-card'
   ).forEach(animateCardChildren);
-}
-
-
-/* ── Mouse follower cursor ───────────────────────────────── */
-function initMouseFollower() {
-  if (!window.MouseFollower || !window.gsap) return;
-
-  if (!window.__huayuMouseFollowerRegistered) {
-    window.MouseFollower.registerGSAP(window.gsap);
-    window.__huayuMouseFollowerRegistered = true;
-  }
-
-  if (window.__huayuCursor && typeof window.__huayuCursor.destroy === 'function') {
-    window.__huayuCursor.destroy();
-  }
-
-  document.body.classList.add('has-mouse-follower');
-
-  window.__huayuCursor = new window.MouseFollower({
-    speed: 0.72,        // much snappier
-    ease: 'power3.out', // responsive but still smooth
-    skewing: 0,
-    hideOnLeave: false,
-    visible: true,
-    visibleOnState: false,
-    stateDetection: {
-      '-pointer': 'a, button, .prism-link-button, .masthead a, .archive__item a, .prism-tag-list span'
-    }
-  });
 }
 
 

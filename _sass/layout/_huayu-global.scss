@@ -1,0 +1,504 @@
+/* =========================================================
+   PRISM Global — applies to ALL pages (not just homepage)
+   Consistent typography, masthead, footer, cursor, colors
+   ========================================================= */
+
+
+/* ── Global body ─────────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--p-bg) !important;
+  color: var(--p-ink) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override theme's global-bg-color for inner pages */
+html { background: var(--p-bg); }
+
+
+/* ── Global typography ───────────────────────────────────── */
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+  color: var(--p-ink);
+}
+
+h4, h5, h6 {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--p-ink);
+}
+
+p, li, td, th {
+  font-family: 'Inter', sans-serif;
+  color: var(--p-ink-2);
+  line-height: 1.88;
+}
+
+a {
+  color: var(--p-accent);
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+a:hover { color: var(--p-accent-light); }
+
+strong { color: var(--p-ink); font-weight: 600; }
+em { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
+
+
+/* ── Custom cursor (pure CSS, no library) ────────────────── */
+/* Use a subtle pointer glyph via SVG data URL */
+* { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='none' stroke='%231a6352' stroke-width='1.5' opacity='0.7'/%3E%3Ccircle cx='10' cy='10' r='1.2' fill='%231a6352' opacity='0.9'/%3E%3C/svg%3E") 10 10, auto; }
+
+a, button, [role="button"], .prism-link-button, .button-pill, .prism-tag-list span, label, summary {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='%231a6352' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%231a6352' opacity='0.95'/%3E%3C/svg%3E") 12 12, pointer !important;
+}
+
+
+/* ── Masthead — all pages ────────────────────────────────── */
+.masthead {
+  position: sticky !important;
+  top: 0 !important;
+  width: 100% !important;
+  z-index: 40 !important;
+  background: rgba(245, 243, 239, 0.92) !important;
+  backdrop-filter: blur(32px) saturate(1.8) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.8) !important;
+  border-bottom: 1px solid var(--p-border) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6), 0 2px 14px rgba(0,0,0,0.04) !important;
+  animation: none !important;
+}
+
+.masthead::after { display: none !important; }
+
+/* All masthead children: transparent background */
+.masthead__inner-wrap,
+.greedy-nav,
+.greedy-nav .visible-links,
+.masthead__menu-item,
+.masthead__menu {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Center masthead content */
+.masthead__inner-wrap {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0.35rem 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Nav link style — underline animation */
+.masthead__menu-item:not(.masthead__menu-item--lg) a {
+  position: relative;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.86rem !important;
+  letter-spacing: 0.01em !important;
+  color: var(--p-ink-2) !important;
+  padding: 0.5rem 0.65rem !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  transition: color 180ms ease !important;
+}
+
+.masthead__menu-item:not(.masthead__menu-item--lg) a::after {
+  content: '';
+  position: absolute;
+  bottom: 0.15rem;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--p-accent);
+  transform: translateX(-50%);
+  transition: width 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+}
+
+.masthead__menu-item:not(.masthead__menu-item--lg) a:hover,
+.masthead__menu-item:not(.masthead__menu-item--lg) a:focus {
+  color: var(--p-ink) !important;
+  background: transparent !important;
+}
+
+.masthead__menu-item:not(.masthead__menu-item--lg) a:hover::after,
+.masthead__menu-item:not(.masthead__menu-item--lg) a:focus::after {
+  width: calc(100% - 1.3rem);
+}
+
+/* Site title */
+.masthead__menu-item--lg a {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.022em !important;
+  color: var(--p-ink) !important;
+  background: transparent !important;
+}
+
+/* Theme toggle button */
+#theme-toggle a {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--p-border-med) !important;
+  border-radius: var(--p-r-sm) !important;
+  background: rgba(254,252,249,0.7) !important;
+  color: var(--p-ink-3) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease !important;
+}
+#theme-toggle a:hover {
+  border-color: var(--p-accent-glow) !important;
+  background: var(--p-accent-pale) !important;
+  color: var(--p-accent) !important;
+}
+
+/* Remove body top-padding that was for fixed masthead */
+body {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#main {
+  margin-top: 0 !important;
+  padding-top: 1.5rem !important;
+}
+
+
+/* ── Inner page (#main content) ──────────────────────────── */
+body:not(.home-page) #main {
+  max-width: 1140px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 2rem 1.5rem 4rem !important;
+  animation: none !important;
+}
+
+/* Page article container */
+body:not(.home-page) .page {
+  background: rgba(254, 252, 249, 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: var(--p-r-xl);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.04),
+    0 0 0 0.5px rgba(28,22,14,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.75);
+  padding: 2.5rem 2.5rem 2rem !important;
+  overflow: hidden;
+}
+
+body:not(.home-page) .page__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-size: 2.4rem !important;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--p-ink);
+  margin-top: 0 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+body:not(.home-page) .page header p {
+  color: var(--p-ink-3);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+body:not(.home-page) .page header p i,
+body:not(.home-page) .page header p strong {
+  color: var(--p-gold);
+}
+
+body:not(.home-page) .page__content {
+  margin-top: 1.8rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--p-border);
+}
+
+body:not(.home-page) .page__content p {
+  font-size: 0.97rem;
+  line-height: 1.9;
+  color: var(--p-ink-2);
+  margin-bottom: 1rem;
+}
+
+body:not(.home-page) .page__content h2 {
+  font-size: 1.7rem !important;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--p-border) !important;
+}
+
+body:not(.home-page) .page__content h3 {
+  font-size: 1.3rem !important;
+  margin-top: 1.5rem;
+  color: var(--p-ink-2);
+}
+
+body:not(.home-page) .page__content a {
+  color: var(--p-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(26,99,82,0.3);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 160ms ease, color 160ms ease;
+}
+body:not(.home-page) .page__content a:hover {
+  color: var(--p-accent-light);
+  text-decoration-color: rgba(26,99,82,0.7);
+}
+
+
+/* ── Resource card (paper detail page) ───────────────────── */
+body:not(.home-page) .resource-card {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--p-surface-soft);
+  border: 1px solid var(--p-border-med);
+  border-radius: var(--p-r-lg);
+  box-shadow: none;
+}
+
+.button-pill,
+.button-pill--ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.42rem 0.95rem;
+  border: 1px solid var(--p-border-med);
+  border-radius: 999px;
+  background: rgba(254,252,249,0.8);
+  color: var(--p-ink-3) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 260ms cubic-bezier(0.16,1,0.3,1),
+    box-shadow 260ms ease;
+}
+.button-pill:hover,
+.button-pill--ghost:hover {
+  background: var(--p-accent-pale) !important;
+  border-color: var(--p-accent-glow) !important;
+  color: var(--p-accent) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px var(--p-accent-glow);
+}
+
+/* Citation block */
+.citation-toggle summary {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--p-ink-3);
+  padding: 0.35rem 0;
+  transition: color 160ms ease;
+}
+.citation-toggle summary:hover { color: var(--p-accent); }
+
+.citation-toggle pre {
+  margin-top: 0.7rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--p-r-sm);
+  background: var(--p-bg);
+  border: 1px solid var(--p-border);
+  color: var(--p-ink-3);
+  font-size: 0.8rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
+/* ── Archive pages ───────────────────────────────────────── */
+body:not(.home-page) .archive {
+  font-family: 'Inter', sans-serif;
+}
+
+body:not(.home-page) .archive h2.archive__subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid var(--p-border);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  color: var(--p-ink);
+}
+
+body:not(.home-page) .archive__item {
+  background: rgba(254,252,249,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: var(--p-r-lg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.7);
+  padding: 1.2rem 1.4rem !important;
+  margin-bottom: 0.72rem !important;
+  transition: transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms ease;
+}
+
+body:not(.home-page) .archive__item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+body:not(.home-page) .archive__item-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.18rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35;
+  margin: 0 0 0.4rem !important;
+}
+
+body:not(.home-page) .archive__item-title a {
+  color: var(--p-ink) !important;
+  text-decoration: none !important;
+  transition: color 160ms ease;
+}
+body:not(.home-page) .archive__item-title a:hover { color: var(--p-accent) !important; }
+
+body:not(.home-page) .archive__item-excerpt {
+  font-size: 0.875rem;
+  color: var(--p-ink-3);
+  line-height: 1.75;
+  margin: 0;
+}
+
+body:not(.home-page) .page__meta,
+body:not(.home-page) .page__date {
+  font-size: 0.78rem;
+  color: var(--p-ink-4) !important;
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* ── Sidebar on inner pages ──────────────────────────────── */
+body:not(.home-page) .sidebar {
+  font-family: 'Inter', sans-serif;
+}
+
+body:not(.home-page) .author__name {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  color: var(--p-ink);
+}
+
+body:not(.home-page) .author__bio {
+  font-size: 0.86rem;
+  color: var(--p-ink-3);
+  line-height: 1.7;
+}
+
+body:not(.home-page) .author__urls a {
+  color: var(--p-ink-3) !important;
+  font-size: 0.84rem;
+  transition: color 160ms ease;
+}
+body:not(.home-page) .author__urls a:hover { color: var(--p-accent) !important; }
+
+
+/* ── Footer — all pages ──────────────────────────────────── */
+.page__footer {
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 0 !important;
+  background: transparent !important;
+  border-top: 1px solid var(--p-border) !important;
+  animation: none !important;
+}
+
+.page__footer footer {
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 1.2rem 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  flex-wrap: wrap !important;
+}
+
+.page__footer-copyright,
+.page__footer-follow,
+.page__footer a {
+  color: var(--p-ink-4) !important;
+  font-size: 0.79rem !important;
+  font-family: 'Inter', sans-serif !important;
+  text-decoration: none !important;
+}
+
+.page__footer a:hover { color: var(--p-ink-3) !important; }
+
+.page__footer .social-icons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.page__footer-follow { margin-bottom: 0 !important; }
+
+
+/* ── Scroll progress bar (all pages) ────────────────────── */
+#prism-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  z-index: 9999;
+  background: linear-gradient(90deg,
+    var(--p-gold) 0%,
+    var(--p-gold-light) 50%,
+    var(--p-accent-light) 100%);
+  transition: width 80ms linear;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(184, 131, 46, 0.45);
+}
+
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 720px) {
+  body:not(.home-page) #main {
+    padding: 1.2rem 1rem 3rem !important;
+  }
+
+  body:not(.home-page) .page {
+    padding: 1.4rem 1.2rem 1.5rem !important;
+    border-radius: var(--p-r-lg);
+  }
+
+  body:not(.home-page) .page__title {
+    font-size: 1.85rem !important;
+  }
+
+  .page__footer footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .masthead__inner-wrap {
+    padding: 0.35rem 1rem !important;
+  }
+}
