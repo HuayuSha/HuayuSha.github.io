@@ -8,6 +8,10 @@ date: 2026-01-04
 venue: 'arXiv preprint'
 paperurl: 'https://arxiv.org/abs/2601.01576'
 codeurl: 'https://github.com/january-blue/OpenNovelty'
+authors:
+  - Ming Zhang
+  - Huayu Sha
+  - et al.
 citation: 'Ming Zhang et al. 2026. OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly Novelty Assessment. arXiv:2601.01576.'
 ---
 

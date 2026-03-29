@@ -9,6 +9,23 @@ venue: 'Findings of EMNLP 2025'
 paperurl: 'https://aclanthology.org/2025.findings-emnlp.263/'
 bibtexurl: 'https://aclanthology.org/2025.findings-emnlp.263.bib'
 codeurl: 'https://github.com/llmeval/LLMEval-Med'
+authors:
+  - Ming Zhang
+  - Yujiong Shen
+  - Zelin Li
+  - Huayu Sha
+  - Binze Hu
+  - Yuhui Wang
+  - Chenhao Huang
+  - Shichun Liu
+  - Jingqi Tong
+  - Changhao Jiang
+  - Mingxu Chai
+  - Zhiheng Xi
+  - Shihan Dou
+  - Tao Gui
+  - Qi Zhang
+  - Xuanjing Huang
 citation: 'Ming Zhang, Yujiong Shen, Zelin Li, Huayu Sha, Binze Hu, Yuhui Wang, Chenhao Huang, Shichun Liu, Jingqi Tong, Changhao Jiang, Mingxu Chai, Zhiheng Xi, Shihan Dou, Tao Gui, Qi Zhang, and Xuanjing Huang. 2025. LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation. Findings of EMNLP 2025.'
 ---
 

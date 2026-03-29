@@ -533,6 +533,48 @@ body:not(.home-page) .page header p strong {
   color: var(--p-gold);
 }
 
+.publication-authors-line {
+  margin: 0.25rem 0 0.7rem !important;
+  color: var(--p-ink-3);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.72;
+}
+
+.publication-authors-line .author-me {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--p-gold);
+  color: var(--p-ink) !important;
+  font-weight: 600;
+}
+
+.publication-authors-line--detail {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.2rem !important;
+  font-size: 0.9rem;
+}
+
+.publication-authors-line--archive {
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.55rem !important;
+  font-size: 0.84rem;
+}
+
+.publication-authors-line--card {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.45rem !important;
+  font-size: 0.8rem;
+  color: var(--p-ink-4);
+}
+
+.publication-authors-line--cv {
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.45rem !important;
+  font-size: 0.82rem;
+}
+
 body:not(.home-page) .page__content {
   margin-top: 1.8rem;
   padding-top: 1.5rem;

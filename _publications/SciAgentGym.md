@@ -6,6 +6,9 @@ permalink: /publication/SciAgentGym
 excerpt: 'SciAgentGym is a benchmark-oriented project for evaluating scientific AI agents on task completion quality, tool-use reliability, and reproducibility. Current manuscript status: ICML 2026 submission (under review).'
 date: 2026-03-20
 venue: 'ICML 2026 Submission (Under Review)'
+authors:
+  - Huayu Sha
+  - et al.
 citation: 'Huayu Sha et al. SciAgentGym: A Benchmark and Evaluation Suite for Scientific AI Agents. Submitted to ICML 2026 (under review).'
 ---
 

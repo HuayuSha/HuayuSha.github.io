@@ -8,6 +8,32 @@ date: 2025-08-07
 venue: 'ACL 2026 Submission (Under Review)'
 paperurl: 'https://arxiv.org/abs/2508.05452'
 codeurl: 'https://github.com/HuayuSha/LLMEval-3'
+authors:
+  - Ming Zhang
+  - Yujiong Shen
+  - Jingyi Deng
+  - Yuhui Wang
+  - Yue Zhang
+  - Junzhe Wang
+  - Shichun Liu
+  - Shihan Dou
+  - Huayu Sha
+  - Qiyuan Peng
+  - Changhao Jiang
+  - Jingqi Tong
+  - Yilong Wu
+  - Zhihao Zhang
+  - Mingqi Wu
+  - Zhiheng Xi
+  - Mingxu Chai
+  - Tao Liang
+  - Zhihui Fei
+  - Zhen Wang
+  - Mingyang Wan
+  - Guojun Ma
+  - Tao Gui
+  - Qi Zhang
+  - Xuanjing Huang
 citation: 'Ming Zhang, Yujiong Shen, Jingyi Deng, Yuhui Wang, Yue Zhang, Junzhe Wang, Shichun Liu, Shihan Dou, Huayu Sha, Qiyuan Peng, Changhao Jiang, Jingqi Tong, Yilong Wu, Zhihao Zhang, Mingqi Wu, Zhiheng Xi, Mingxu Chai, Tao Liang, Zhihui Fei, Zhen Wang, Mingyang Wan, Guojun Ma, Tao Gui, Qi Zhang, and Xuanjing Huang. LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models. Submitted to ACL 2026 (under review); preprint arXiv:2508.05452.'
 ---
 

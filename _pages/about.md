@@ -86,6 +86,7 @@ redirect_from:
                 <span class="prism-paper-meta-text">{{ post.venue | default: "Preprint" }}</span>
               </div>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              {% include publication-authors-inline.html authors=post.authors class="publication-authors-line--card" max=6 %}
               <p>{{ post.excerpt | strip_html | truncate: 210 }}</p>
               <div class="prism-paper-actions">
                 <a class="prism-link-button" href="{{ post.url | relative_url }}">Details</a>

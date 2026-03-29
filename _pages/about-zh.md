@@ -83,6 +83,7 @@ lang: zh
                 <span class="prism-paper-meta-text">{{ post.venue | default: "预印本" }}</span>
               </div>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              {% include publication-authors-inline.html authors=post.authors class="publication-authors-line--card" max=6 %}
               <p class="prism-paper-excerpt-zh">{{ post.excerpt_zh | default: post.excerpt | strip_html | truncate: 160 }}</p>
               <div class="prism-paper-actions">
                 <a class="prism-link-button" href="{{ post.url | relative_url }}">详情</a>
