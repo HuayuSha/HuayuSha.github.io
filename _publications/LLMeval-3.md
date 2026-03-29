@@ -3,15 +3,18 @@ title: "LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evalua
 collection: publications
 category: manuscripts
 permalink: /publication/LLMEval-Fair
-excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unseen test sets from a large question bank, combines contamination-resistant curation with anti-cheating design, and studies almost 50 frontier models longitudinally to produce a more reliable picture of progress than static leaderboards.'
+excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unseen test sets from a large question bank, combines contamination-resistant curation with anti-cheating design, and studies frontier models longitudinally to produce a more reliable picture of progress than static leaderboards. Current manuscript status: ACL 2026 submission (under review).'
 date: 2025-08-07
-venue: 'arXiv preprint'
+venue: 'ACL 2026 Submission (Under Review)'
 paperurl: 'https://arxiv.org/abs/2508.05452'
 codeurl: 'https://github.com/HuayuSha/LLMEval-3'
-citation: 'Ming Zhang, Yujiong Shen, Jingyi Deng, Yuhui Wang, Yue Zhang, Junzhe Wang, Shichun Liu, Shihan Dou, Huayu Sha, Qiyuan Peng, Changhao Jiang, Jingqi Tong, Yilong Wu, Zhihao Zhang, Mingqi Wu, Zhiheng Xi, Mingxu Chai, Tao Liang, Zhihui Fei, Zhen Wang, Mingyang Wan, Guojun Ma, Tao Gui, Qi Zhang, and Xuanjing Huang. 2025. LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models. arXiv preprint arXiv:2508.05452.'
+citation: 'Ming Zhang, Yujiong Shen, Jingyi Deng, Yuhui Wang, Yue Zhang, Junzhe Wang, Shichun Liu, Shihan Dou, Huayu Sha, Qiyuan Peng, Changhao Jiang, Jingqi Tong, Yilong Wu, Zhihao Zhang, Mingqi Wu, Zhiheng Xi, Mingxu Chai, Tao Liang, Zhihui Fei, Zhen Wang, Mingyang Wan, Guojun Ma, Tao Gui, Qi Zhang, and Xuanjing Huang. LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models. Submitted to ACL 2026 (under review); preprint arXiv:2508.05452.'
 ---
 
 LLMEval-Fair studies a core reliability issue in LLM benchmarking: whether leaderboard gains reflect real capability growth, or partial overfitting to static public tests.
+
+**Current status:** Submitted to **ACL 2026** (under review).  
+**Public version:** arXiv preprint available.
 
 ![LLMEval logo](https://raw.githubusercontent.com/HuayuSha/LLMEval-3/main/pic/llmeval-logo.png)
 
