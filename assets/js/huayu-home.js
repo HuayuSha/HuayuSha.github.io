@@ -187,7 +187,7 @@ function initDraggableMascot() {
     const dy = e.clientY - startY;
 
     let newRight  = startRight  - dx;
-    let newBottom = startBottom + dy;
+    let newBottom = startBottom - dy;
 
     // Clamp to viewport
     const w = container.offsetWidth;
