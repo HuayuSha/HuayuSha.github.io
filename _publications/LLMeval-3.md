@@ -11,28 +11,59 @@ codeurl: 'https://github.com/HuayuSha/LLMEval-3'
 citation: 'Ming Zhang, Yujiong Shen, Jingyi Deng, Yuhui Wang, Yue Zhang, Junzhe Wang, Shichun Liu, Shihan Dou, Huayu Sha, Qiyuan Peng, Changhao Jiang, Jingqi Tong, Yilong Wu, Zhihao Zhang, Mingqi Wu, Zhiheng Xi, Mingxu Chai, Tao Liang, Zhihui Fei, Zhen Wang, Mingyang Wan, Guojun Ma, Tao Gui, Qi Zhang, and Xuanjing Huang. 2025. LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models. arXiv preprint arXiv:2508.05452.'
 ---
 
-LLMEval-Fair asks a hard but essential question: are current leaderboard gains real capability gains, or partly artifacts of benchmark contamination and overfitting?
+LLMEval-Fair studies a core reliability issue in LLM benchmarking: whether leaderboard gains reflect real capability growth, or partial overfitting to static public tests.
 
-## Research question
+![LLMEval logo](https://raw.githubusercontent.com/HuayuSha/LLMEval-3/main/pic/llmeval-logo.png)
 
-Static benchmarks can be repeatedly optimized against, making scores easier to game over time. LLMEval-Fair studies whether **dynamic test sampling + anti-cheating evaluation design** gives a more faithful estimate of model capability.
+## Benchmark scope
 
-## Benchmark and protocol
+From the project repository:
 
-- Built on a large graduate-level question bank (reported as 220k scale in the paper)
-- Each run dynamically samples unseen test sets
-- Includes contamination-resistant curation and anti-cheating mechanisms
-- Uses calibrated LLM-as-a-judge scoring, with reported high agreement to human experts
-- Supports **longitudinal tracking** across model generations
+- 13 major disciplines (philosophy to medicine and engineering)
+- 50+ sub-disciplines
+- ~200,000 generative QA items in the current bank
+- design target is continued expansion toward larger-scale coverage
 
-## Key contributions
+Unlike multiple-choice-only setups, this benchmark emphasizes **generative answering** (short answer, analysis, calculation, essay-style tasks).
 
-1. A dynamic evaluation framework that is harder to overfit than fixed public test sets.
-2. A large-scale temporal study (30 months, ~60 models) to analyze real progress trends.
-3. A fairness-oriented ranking protocol combining absolute and relative comparison views.
+## Core evaluation design
 
-## What to pay attention to
+### Dynamic sampling + anti-cheating protocol
 
-- The paper emphasizes that evaluation pipelines themselves need robustness engineering.
-- Leaderboard snapshots can be misleading without temporal and contamination controls.
-- For model developers, this work is a reminder to optimize for generalization, not only benchmark familiarity.
+- Each run samples a fresh subset (reported 1,000 questions per evaluation run)
+- For same-institution model submissions, repeated exposure is controlled
+- Questions are delivered sequentially online to reduce crawling/harvesting risk
+
+### Judge-based scoring
+
+- Automated scoring with rubric-aligned prompts
+- Per-question score mapped from a discrete scale
+- Focus on both **answer correctness** and **reasoning validity**
+
+### Two-score reporting
+
+- **Absolute score**: raw normalized performance
+- **Relative score**: normalized to current SOTA baseline
+
+This two-view setup reduces interpretation bias caused by changing model ceilings over time.
+
+## Longitudinal finding
+
+The public leaderboard and temporal tracking emphasize that model progress is non-uniform across disciplines, and simple one-time benchmark snapshots can be misleading without contamination controls and timeline context.
+
+![Model trend over time](https://raw.githubusercontent.com/HuayuSha/LLMEval-3/main/pic/trend_of_models.png)
+
+## Repository usage notes
+
+The repository is positioned as a benchmark + leaderboard project. For serious comparison, the key principle is to keep:
+
+- fixed scoring protocol
+- fresh question sampling
+- strict submission/evaluation process control
+
+Project link: [github.com/HuayuSha/LLMEval-3](https://github.com/HuayuSha/LLMEval-3)  
+Leaderboard website: [llmeval.com](http://llmeval.com/)
+
+## Practical takeaway
+
+If your goal is robust model comparison over time, LLMEval-Fair’s main value is not only the dataset size, but the **evaluation governance design**: dynamic tests, anti-leakage constraints, and temporal analysis as first-class components.

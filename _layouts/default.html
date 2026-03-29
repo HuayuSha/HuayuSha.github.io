@@ -7,6 +7,9 @@ layout: compress
 {% if page.collection == "publications" %}
   {% assign page_classes = page_classes | append: " publication-page" %}
 {% endif %}
+{% if page.permalink == "/cv/" or page.url == "/cv/" %}
+  {% assign page_classes = page_classes | append: " cv-page" %}
+{% endif %}
 {% if page.lang == "zh" %}
   {% assign page_classes = page_classes | append: " zh-page" %}
 {% endif %}

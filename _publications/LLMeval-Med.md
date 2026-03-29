@@ -12,35 +12,82 @@ codeurl: 'https://github.com/llmeval/LLMEval-Med'
 citation: 'Ming Zhang, Yujiong Shen, Zelin Li, Huayu Sha, Binze Hu, Yuhui Wang, Chenhao Huang, Shichun Liu, Jingqi Tong, Changhao Jiang, Mingxu Chai, Zhiheng Xi, Shihan Dou, Tao Gui, Qi Zhang, and Xuanjing Huang. 2025. LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation. Findings of EMNLP 2025.'
 ---
 
-LLMEval-Med focuses on a high-stakes setting where benchmark design quality directly affects safety conclusions: medical LLM evaluation.
+LLMEval-Med targets a high-stakes scenario where evaluation quality directly affects safety conclusions: medical LLM assessment in realistic clinical contexts.
 
-## Why this benchmark is needed
+## Project highlights
 
-Many prior medical evaluations rely heavily on exam-style multiple-choice questions, which do not fully reflect clinical workflow and reasoning complexity. LLMEval-Med is designed to move toward **real-world clinical scenarios** and **expert-grounded assessment criteria**.
-
-## Dataset and evaluation design
-
-- Constructed from real-world clinical context and expert-designed scenarios
-- Covers five core medical capability areas:
+- Focuses on **real clinical scenarios** rather than only exam-style QA
+- Uses **physician-designed checklists** to make scoring criteria explicit
+- Covers five core capability areas:
   - Medical Knowledge
   - Medical Language Understanding
   - Medical Reasoning
   - Medical Ethics and Safety
   - Medical Text Generation
-- Uses checklist-based assessment to ensure critical clinical points are explicitly evaluated
+- Evaluates models with a structured LLM-judge pipeline and expert-aligned criteria
 
-## Methodological strengths
+## What is in the repository
 
-1. **Physician validation** is integrated into benchmark development and evaluation refinement.
-2. **LLM-as-a-Judge with checklist grounding** improves consistency over free-form judgment.
-3. **Human-machine agreement analysis** is used to calibrate prompts and scoring reliability.
+```text
+.
+├── dataset/
+│   └── dataset.json       # Medical evaluation data
+├── evaluate/
+│   ├── Answer.py          # Generate model responses
+│   └── Evaluate.py        # Score responses with checklist prompts
+```
 
-## What this paper shows
+Repository: [github.com/llmeval/LLMEval-Med](https://github.com/llmeval/LLMEval-Med)
 
-By testing multiple model families (medical-specialized, open-source, closed-source), the study provides a more realistic capability map for medical deployment contexts, especially where explanation quality and safety constraints both matter.
+## Dataset format and scale
 
-## Resources
+According to the public repository, `dataset.json` contains a test split with hundreds of physician-reviewed items (the README describes a 667-question test set). The paper reports a broader benchmark construction scale.  
 
-- Anthology paper: https://aclanthology.org/2025.findings-emnlp.263/
-- arXiv preprint: https://arxiv.org/abs/2506.04078
-- Dataset/code: https://github.com/llmeval/LLMEval-Med
+Each sample includes structured metadata such as:
+
+- `category1` / `category2`
+- `scene`
+- `problem`
+- `sanswer` (reference answer)
+- `checklist` (must-cover scoring points)
+
+This makes the benchmark suitable for **fine-grained error analysis**, not just top-line accuracy.
+
+## Evaluation protocol (from code and README)
+
+### Step 1: generate answers
+
+```bash
+python evaluate/Answer.py
+```
+
+### Step 2: evaluate answers
+
+```bash
+python evaluate/Evaluate.py
+```
+
+The evaluation script applies category-specific prompts and produces score + feedback pairs for each response.
+
+## Scoring rubric
+
+The benchmark uses a 5-point clinical-quality rubric:
+
+- 5: correct and clinically safe, meets key + secondary checklist points
+- 4: mostly correct, minor non-critical issues
+- 3: partial correctness, key points missing
+- 2: major mistakes or safety concerns
+- 1: unacceptable, severe factual/safety errors
+
+## Why this benchmark is practically useful
+
+- Better reflects **deployment-facing** medical QA than pure exam benchmarks
+- Makes judgments more reproducible through **checklist grounding**
+- Supports comparison across medical-specialized, open-source, and closed-source models
+
+## Links
+
+- Paper (ACL Anthology): [2025.findings-emnlp.263](https://aclanthology.org/2025.findings-emnlp.263/)
+- arXiv: [2506.04078](https://arxiv.org/abs/2506.04078)
+- Dataset (Hugging Face): [HuayuSha/LLMeval-Med](https://huggingface.co/datasets/HuayuSha/LLMeval-Med)
+- Code: [LLMEval-Med](https://github.com/llmeval/LLMEval-Med)

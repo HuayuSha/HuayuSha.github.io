@@ -11,29 +11,63 @@ codeurl: 'https://github.com/january-blue/OpenNovelty'
 citation: 'Ming Zhang et al. 2026. OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly Novelty Assessment. arXiv:2601.01576.'
 ---
 
-OpenNovelty tackles a central bottleneck in peer review: novelty checking is important but difficult to do consistently at scale.
+OpenNovelty focuses on a difficult but essential part of research evaluation: **verifiable novelty assessment** with explicit evidence traces.
 
-## What problem does it solve?
+![OpenNovelty pipeline](https://raw.githubusercontent.com/january-blue/OpenNovelty/main/docs/images/pipeline_overview.png)
 
-In real reviewing, novelty is rarely a simple keyword match. Reviewers must align **task definitions**, **claimed contributions**, and **prior literature evidence** under limited time. OpenNovelty frames this as a structured pipeline problem rather than a single LLM prompt.
+## Why this system matters
 
-## Core idea
+Novelty review is usually time-constrained, inconsistent across reviewers, and highly dependent on retrieval coverage. OpenNovelty reframes this as a reproducible pipeline problem instead of a one-shot LLM judgment.
 
-The system decomposes novelty assessment into four phases:
+## Four-phase pipeline
 
-1. **Claim extraction** from paper text (core task + contribution claims)
-2. **Literature retrieval** via semantic search from extracted queries
-3. **Contribution-level comparison** against retrieved full papers
-4. **Report generation** with explicit citation evidence and traceable judgments
+The public repository describes a staged workflow:
 
-This design turns novelty analysis into an auditable process with intermediate artifacts, instead of only final model opinions.
+1. **Phase I — Information Extraction**  
+   Extract paper text, core task, and contribution claims.
+2. **Phase II — Literature Retrieval**  
+   Retrieve related work candidates and build citation indices.
+3. **Phase III — Deep Analysis**  
+   Compare claims with retrieved literature and classify novelty evidence.
+4. **Phase IV — Report Generation**  
+   Export structured novelty reports (Markdown/PDF) with citations and snippets.
 
-## Why this matters
+## Output artifacts
 
-- **Evidence-grounded judgments**: every conclusion is tied to retrieved papers/snippets.
-- **Higher reviewer efficiency**: helps surface potentially related work earlier.
-- **Better consistency**: reduces variance from ad-hoc reviewer search habits.
+Typical outputs include:
+
+- `phase1_extracted.json`
+- `citation_index.json`
+- `phase3_complete_report.json`
+- final novelty report (`.md` / `.pdf`)
+
+This makes the full process auditable, with intermediate artifacts available for debugging and review.
+
+## Quick-start workflow
+
+The repository provides script entrypoints for each phase:
+
+```bash
+# Phase 1
+python scripts/run_phase1_batch.py --papers "<paper-url>" --out-root output/demo --force-year 2026
+
+# Phase 2
+bash scripts/run_phase2_concurrent.sh <paper_id> --base-dir output/demo
+
+# Phase 3
+bash scripts/run_phase3_all.sh output/demo/<paper_id>
+
+# Phase 4
+bash scripts/run_phase4.sh output/demo/<paper_id>
+```
+
+## Engineering notes from the repo
+
+- Python 3.8+ environment
+- modular scripts for batch and single-paper workflows
+- retrieval, analysis, and rendering decoupled by intermediate JSON artifacts
+- some external service dependencies are marked as evolving in the current release
 
 ## Practical takeaway
 
-OpenNovelty is useful when you need a **repeatable novelty workflow** for paper triage, internal pre-review, or large-scale scholarly analysis. It is especially helpful for rapidly moving areas where manual literature coverage is hard.
+OpenNovelty is useful when you want **traceable novelty review**, especially for internal pre-review, large-scale triage, or evidence-grounded reviewer assistance where “why this is novel (or not)” must be inspectable.

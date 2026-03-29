@@ -343,6 +343,28 @@ body.publication-page .page {
   padding: 2.2rem 2.2rem 1.8rem !important;
 }
 
+body.cv-page #main {
+  max-width: 1140px !important;
+  padding: 2rem 1.25rem 4rem !important;
+  display: grid !important;
+  grid-template-columns: 296px minmax(0, 1fr) !important;
+  gap: 1.5rem !important;
+  align-items: start !important;
+}
+
+body.cv-page .publication-prism-sidebar {
+  position: sticky !important;
+  top: 6.5rem !important;
+  gap: 0.85rem !important;
+}
+
+body.cv-page .page {
+  float: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
 body.publication-page .page__inner-wrap > header {
   margin-bottom: 1.1rem;
 }
@@ -521,6 +543,45 @@ body:not(.home-page) .resource-card {
   color: var(--p-accent) !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 14px var(--p-accent-glow);
+}
+
+/* Publication detail bottom area: simple buttons + visible citation */
+body.publication-page .publication-links {
+  margin-top: 1.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+body.publication-page .publication-citation {
+  margin-top: 1.15rem;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.publication-page .publication-citation h3 {
+  margin: 0 0 0.45rem;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--p-ink-4) !important;
+}
+
+body.publication-page .publication-citation pre {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: var(--p-r-sm);
+  background: rgba(254,252,249,0.58) !important;
+  border: 1px solid var(--p-border) !important;
+  color: var(--p-ink-3);
+  font-size: 0.8rem;
+  line-height: 1.72;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* Citation block */
@@ -830,6 +891,15 @@ body:not(.home-page) .author__urls-wrapper button {
   }
 
   body.publication-page .publication-prism-sidebar {
+    position: static !important;
+  }
+
+  body.cv-page #main {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  body.cv-page .publication-prism-sidebar {
     position: static !important;
   }
 }

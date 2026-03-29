@@ -3,6 +3,14 @@ layout: default
 ---
 
 {% include base_path %}
+{% assign is_publication = false %}
+{% if page.collection == 'publications' %}
+  {% assign is_publication = true %}
+{% endif %}
+{% assign is_cv_page = false %}
+{% if page.permalink == '/cv/' or page.url == '/cv/' %}
+  {% assign is_cv_page = true %}
+{% endif %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
   {% include page__hero.html %}
@@ -15,7 +23,7 @@ layout: default
 {% endif %}
 
 <div id="main" role="main">
-  {% if page.collection == 'publications' %}
+  {% if is_publication or is_cv_page %}
     {% include publication-left-sidebar.html %}
   {% else %}
     {% include sidebar.html %}
@@ -51,7 +59,25 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% if page.paperurl or page.slidesurl or page.bibtexurl or page.codeurl or page.citation %}
+        {% if is_publication %}
+          {% if page.paperurl or page.codeurl %}
+            <div class="publication-links">
+              {% if page.paperurl %}
+                <a class="button-pill button-pill--ghost" href="{{ page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+              {% endif %}
+              {% if page.codeurl %}
+                <a class="button-pill button-pill--ghost" href="{{ page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if page.citation %}
+            <div class="publication-citation">
+              <h3>Citation</h3>
+              <pre>{{ page.citation }}</pre>
+            </div>
+          {% endif %}
+        {% elsif page.paperurl or page.slidesurl or page.bibtexurl or page.codeurl or page.citation %}
           <div class="resource-card">
             <div class="resource-card__actions">
               {% if page.paperurl %}
@@ -87,11 +113,11 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% unless page.collection == 'publications' %}
+      {% unless is_publication or is_cv_page %}
         {% if page.share %}{% include social-share.html %}{% endif %}
       {% endunless %}
 
-      {% unless page.collection == 'publications' %}
+      {% unless is_publication or is_cv_page %}
         {% include post_pagination.html %}
       {% endunless %}
     </div>
