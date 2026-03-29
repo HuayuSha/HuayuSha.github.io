@@ -319,6 +319,79 @@ body:not(.home-page) #main {
   animation: none !important;
 }
 
+/* Publication detail page layout */
+body.publication-page #main {
+  max-width: 980px !important;
+  padding: 2.2rem 1.25rem 4rem !important;
+}
+
+body.publication-page .page {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 2.2rem 2.2rem 1.8rem !important;
+}
+
+body.publication-page .page__inner-wrap > header {
+  margin-bottom: 1.1rem;
+}
+
+body.publication-page .page__title {
+  font-size: clamp(2.05rem, 3.2vw, 2.85rem) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.018em !important;
+}
+
+body.publication-page .page__inner-wrap > header p {
+  color: var(--p-ink-3) !important;
+  font-size: 0.92rem !important;
+}
+
+body.publication-page .page__content {
+  border-top: 1px solid var(--p-border) !important;
+  padding-top: 1.35rem !important;
+  margin-top: 1rem !important;
+}
+
+body.publication-page .page__content h2,
+body.publication-page .page__content h3 {
+  letter-spacing: -0.01em;
+}
+
+body.publication-page .page__content h2 {
+  font-size: 1.58rem !important;
+  margin-top: 1.8rem;
+  margin-bottom: 0.55rem;
+}
+
+body.publication-page .page__content h3 {
+  font-size: 1.18rem !important;
+  margin-top: 1.15rem;
+  margin-bottom: 0.35rem;
+}
+
+body.publication-page .page__content p,
+body.publication-page .page__content li {
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+body.publication-page .resource-card {
+  margin-top: 1.45rem;
+  border-radius: var(--p-r-lg);
+  background: rgba(254, 252, 249, 0.72);
+}
+
+body.publication-page .resource-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.2rem;
+}
+
+body.publication-page .citation-toggle summary {
+  margin-top: 0.45rem;
+}
+
 /* Page article container */
 body:not(.home-page) .page {
   background: rgba(254, 252, 249, 0.72);
@@ -713,6 +786,18 @@ body:not(.home-page) .author__urls-wrapper button {
   body:not(.home-page) .page {
     padding: 1.4rem 1.2rem 1.5rem !important;
     border-radius: var(--p-r-lg);
+  }
+
+  body.publication-page #main {
+    padding: 1.1rem 0.9rem 2.8rem !important;
+  }
+
+  body.publication-page .page {
+    padding: 1.25rem 1rem 1.2rem !important;
+  }
+
+  body.publication-page .page__title {
+    font-size: 1.82rem !important;
   }
 
   body:not(.home-page) .page__title {

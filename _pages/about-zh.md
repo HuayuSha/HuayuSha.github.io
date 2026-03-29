@@ -1,8 +1,8 @@
 ---
 layout: home
 permalink: /zh/
-title: "沙华宇"
-excerpt: "沙华宇的个人学术主页，复旦大学软件工程专业学生，研究方向为大语言模型可信评测、医疗基准构建与科学智能。"
+title: "沙华煜"
+excerpt: "沙华煜的个人学术主页，复旦大学软件工程专业学生，研究方向为大语言模型可信评测、医疗基准构建与科学智能。"
 lang: zh
 ---
 
@@ -16,7 +16,7 @@ lang: zh
           <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
         </div>
 
-        <h1 class="prism-name">沙华宇</h1>
+        <h1 class="prism-name">沙华煜</h1>
         <p class="prism-role">软件工程 · 复旦大学</p>
         <p class="prism-affiliation">复旦大学</p>
 

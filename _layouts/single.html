@@ -15,7 +15,9 @@ layout: default
 {% endif %}
 
 <div id="main" role="main">
-  {% include sidebar.html %}
+  {% unless page.collection == 'publications' %}
+    {% include sidebar.html %}
+  {% endunless %}
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -47,11 +49,14 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% if page.paperurl or page.slidesurl or page.bibtexurl or page.citation %}
+        {% if page.paperurl or page.slidesurl or page.bibtexurl or page.codeurl or page.citation %}
           <div class="resource-card">
             <div class="resource-card__actions">
               {% if page.paperurl %}
                 <a class="button-pill button-pill--ghost" href="{{ page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+              {% endif %}
+              {% if page.codeurl %}
+                <a class="button-pill button-pill--ghost" href="{{ page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
               {% endif %}
               {% if page.slidesurl %}
                 <a class="button-pill button-pill--ghost" href="{{ page.slidesurl }}" target="_blank" rel="noopener noreferrer">Slides</a>
@@ -80,9 +85,13 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% if page.share %}{% include social-share.html %}{% endif %}
+      {% unless page.collection == 'publications' %}
+        {% if page.share %}{% include social-share.html %}{% endif %}
+      {% endunless %}
 
-      {% include post_pagination.html %}
+      {% unless page.collection == 'publications' %}
+        {% include post_pagination.html %}
+      {% endunless %}
     </div>
 
     {% if site.comments.provider and page.comments %}

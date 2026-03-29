@@ -3,15 +3,22 @@ layout: compress
 ---
 
 {% include base_path %}
+{% assign page_classes = "" %}
+{% if page.collection == "publications" %}
+  {% assign page_classes = page_classes | append: " publication-page" %}
+{% endif %}
+{% if page.lang == "zh" %}
+  {% assign page_classes = page_classes | append: " zh-page" %}
+{% endif %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ page.lang | default: site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}
   </head>
 
-  <body>
+  <body{% if page_classes != "" %} class="{{ page_classes | strip }}"{% endif %}>
 
     {% include browser-upgrade.html %}
     {% include masthead.html %}
