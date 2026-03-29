@@ -1,0 +1,55 @@
+{% include base_path %}
+{% assign is_zh_page = false %}
+{% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
+  {% assign is_zh_page = true %}
+{% endif %}
+
+<aside class="prism-sidebar publication-prism-sidebar">
+  <div class="prism-profile-card">
+    <div class="prism-avatar-wrap">
+      <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+    </div>
+
+    <h1 class="prism-name">{% if is_zh_page %}沙华煜{% else %}{{ site.author.name }}{% endif %}</h1>
+    {% if is_zh_page %}
+      <p class="prism-role">软件工程 · 复旦大学</p>
+    {% else %}
+      <p class="prism-role">Software Engineering · Fudan</p>
+    {% endif %}
+    <p class="prism-affiliation">{{ site.author.employer }}</p>
+
+    <div class="prism-socials">
+      <a href="mailto:{{ site.author.email }}" aria-label="{% if is_zh_page %}邮箱{% else %}Email{% endif %}"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="{{ '/publications/' | relative_url }}" aria-label="{% if is_zh_page %}论文{% else %}Publications{% endif %}"><i class="fa-solid fa-book-open"></i></a>
+      <a href="{{ '/cv/' | relative_url }}" aria-label="{% if is_zh_page %}简历{% else %}CV{% endif %}"><i class="fa-solid fa-file-lines"></i></a>
+    </div>
+  </div>
+
+  <div class="prism-side-card" id="research">
+    {% if is_zh_page %}
+      <h3>研究方向</h3>
+      <ul class="prism-interest-list">
+        <li>大语言模型可信评测</li>
+        <li>医疗基准构建</li>
+        <li>科学智能系统</li>
+        <li>评测体系设计</li>
+      </ul>
+    {% else %}
+      <h3>Research Interests</h3>
+      <ul class="prism-interest-list">
+        <li>Trustworthy LLM evaluation</li>
+        <li>Medical benchmarks</li>
+        <li>Scientific intelligence</li>
+        <li>Benchmark design</li>
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="prism-side-card prism-side-card--soft" id="contact">
+    <h3>{% if is_zh_page %}联系方式{% else %}Contact{% endif %}</h3>
+    <p>{{ site.author.email }}</p>
+    <p>{% if is_zh_page %}中国上海{% else %}Shanghai, China{% endif %}</p>
+    <p><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">github.com/{{ site.author.github }}</a></p>
+  </div>
+</aside>
