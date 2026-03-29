@@ -53,6 +53,9 @@ redirect_from:
         <div class="prism-section-head">
           <h2>About</h2>
         </div>
+        <div class="prism-tagline">
+          <p>Making language model evaluation more honest, robust, and meaningful.</p>
+        </div>
         <div class="prism-prose">
           <p>
             I am a Software Engineering student at Fudan University. My current research focuses on
@@ -76,13 +79,17 @@ redirect_from:
         <div class="prism-paper-list" id="publications">
           {% for post in featured_pubs limit: 3 %}
             <article class="prism-paper-card">
-              <div class="prism-paper-meta">{{ post.date | date: "%Y" }} · {{ post.venue | default: "Preprint" }}</div>
+              <div class="prism-paper-meta">
+                <span class="prism-paper-meta-text">{{ post.date | date: "%Y" }}</span>
+                <span class="prism-paper-meta-dot"></span>
+                <span class="prism-paper-meta-text">{{ post.venue | default: "Preprint" }}</span>
+              </div>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
               <p>{{ post.excerpt | strip_html | truncate: 210 }}</p>
               <div class="prism-paper-actions">
                 <a class="prism-link-button" href="{{ post.url | relative_url }}">Details</a>
                 {% if post.paperurl %}
-                  <a class="prism-link-button" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+                  <a class="prism-link-button" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> Paper</a>
                 {% endif %}
                 {% if post.bibtexurl %}
                   <a class="prism-link-button" href="{{ post.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
