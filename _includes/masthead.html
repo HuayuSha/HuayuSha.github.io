@@ -1,4 +1,13 @@
 {% include base_path %}
+{% assign is_zh_page = false %}
+{% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
+  {% assign is_zh_page = true %}
+{% endif %}
+{% if is_zh_page %}
+  {% assign home_path = base_path | append: "/zh/" %}
+{% else %}
+  {% assign home_path = base_path | append: "/" %}
+{% endif %}
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -6,14 +15,34 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist">
+            <a href="{{ home_path }}">{% if is_zh_page %}沙华煜{% else %}{{ site.title }}{% endif %}</a>
+          </li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
             {% else %}
               {% assign domain = base_path %}
+              {% if is_zh_page and link.url contains '/#' %}
+                {% assign domain = base_path | append: '/zh' %}
+              {% endif %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            {% assign nav_label = link.title %}
+            {% if is_zh_page %}
+              {% case link.title %}
+                {% when "About" %}
+                  {% assign nav_label = "关于我" %}
+                {% when "Research" %}
+                  {% assign nav_label = "研究方向" %}
+                {% when "Publications" %}
+                  {% assign nav_label = "论文" %}
+                {% when "CV" %}
+                  {% assign nav_label = "简历" %}
+                {% when "Contact" %}
+                  {% assign nav_label = "联系" %}
+              {% endcase %}
+            {% endif %}
+            <li class="masthead__menu-item masthead__menu-item--nav"><a href="{{ domain }}{{ link.url }}">{{ nav_label }}</a></li>
           {% endfor %}
           <li id="lang-toggle" class="masthead__menu-item persist">
             <a id="lang-toggle-btn" href="/zh/" aria-label="切换语言 / Switch language">
