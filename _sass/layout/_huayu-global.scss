@@ -48,12 +48,16 @@ strong { color: var(--p-ink); font-weight: 600; }
 em { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
 
 
-/* ── Custom cursor (pure CSS, no library) ────────────────── */
-/* Use a subtle pointer glyph via SVG data URL */
-* { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='none' stroke='%231a6352' stroke-width='1.5' opacity='0.7'/%3E%3Ccircle cx='10' cy='10' r='1.2' fill='%231a6352' opacity='0.9'/%3E%3C/svg%3E") 10 10, auto; }
+/* ── Custom cursor ───────────────────────────────────────── */
+/* Default: minimal dot cursor */
+* {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='3' fill='%231a6352' opacity='0.75'/%3E%3C/svg%3E") 8 8, auto;
+}
 
-a, button, [role="button"], .prism-link-button, .button-pill, .prism-tag-list span, label, summary {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' fill='none' stroke='%231a6352' stroke-width='1.5' opacity='0.6'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%231a6352' opacity='0.95'/%3E%3C/svg%3E") 12 12, pointer !important;
+/* Pointer: arrow with accent dot */
+a, button, [role="button"], .prism-link-button, .button-pill,
+.prism-tag-list span, label, summary, [tabindex] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cpath d='M4 2 L4 16 L8 12 L11 19 L13 18 L10 11 L16 11 Z' fill='%231a6352' opacity='0.85'/%3E%3C/svg%3E") 4 2, pointer !important;
 }
 
 
@@ -76,21 +80,64 @@ a, button, [role="button"], .prism-link-button, .button-pill, .prism-tag-list sp
 /* All masthead children: transparent background */
 .masthead__inner-wrap,
 .greedy-nav,
-.greedy-nav .visible-links,
 .masthead__menu-item,
 .masthead__menu {
   background: transparent !important;
   background-color: transparent !important;
 }
 
-/* Center masthead content */
+/* Center masthead — override the table-layout from _navigation.scss */
 .masthead__inner-wrap {
   max-width: 1140px !important;
   margin: 0 auto !important;
-  padding: 0.35rem 1.5rem !important;
+  padding: 0 1.5rem !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  display: block !important;
 }
+
+.masthead__menu { width: 100% !important; }
+
+/* Make greedy-nav a proper flex row */
+.greedy-nav {
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+/* visible-links: flex row, override display:table */
+.greedy-nav .visible-links {
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  gap: 0 !important;
+  background: transparent !important;
+}
+
+/* Reset the table-cell margin hack on each link */
+.greedy-nav .visible-links li {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.greedy-nav .visible-links a {
+  margin: 0 !important;
+  padding: 0.5rem 0 !important;
+  display: block !important;
+}
+
+/* Push trailing items (lang + theme toggle) to right */
+.greedy-nav .visible-links .persist.tail {
+  margin-left: auto !important;
+}
+
+/* Space between lang and theme toggles */
+#lang-toggle { margin-left: 0.4rem !important; }
+#theme-toggle { margin-left: 0.3rem !important; }
 
 /* Nav link style — underline animation */
 .masthead__menu-item:not(.masthead__menu-item--lg) a {
@@ -138,6 +185,38 @@ a, button, [role="button"], .prism-link-button, .button-pill, .prism-tag-list sp
   letter-spacing: -0.022em !important;
   color: var(--p-ink) !important;
   background: transparent !important;
+}
+
+/* Language toggle button */
+#lang-toggle a {
+  width: auto;
+  padding: 0 0.7rem;
+  height: 2.35rem;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--p-border-med) !important;
+  border-radius: var(--p-r-sm) !important;
+  background: rgba(254,252,249,0.7) !important;
+  color: var(--p-ink-3) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease !important;
+}
+#lang-toggle a:hover {
+  border-color: var(--p-gold-light) !important;
+  background: var(--p-gold-pale) !important;
+  color: var(--p-gold) !important;
+}
+
+/* Active language indicator */
+#lang-toggle a.is-zh {
+  background: var(--p-gold-pale) !important;
+  border-color: rgba(184,131,46,0.35) !important;
+  color: var(--p-gold) !important;
 }
 
 /* Theme toggle button */
@@ -388,29 +467,120 @@ body:not(.home-page) .page__date {
 
 
 /* ── Sidebar on inner pages ──────────────────────────────── */
+
+/* Fix: sidebar was position:fixed with padding-top:70px from _sidebar.scss */
 body:not(.home-page) .sidebar {
+  position: static !important;
+  padding-top: 0 !important;
+  height: auto !important;
+  overflow-y: visible !important;
   font-family: 'Inter', sans-serif;
+  /* Glass card style matching the rest of the site */
+  background: rgba(254,252,249,0.72) !important;
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.55) !important;
+  border-radius: var(--p-r-xl) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.75) !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Avatar: square rounded instead of circle */
+body:not(.home-page) .author__avatar {
+  display: block !important;
+  width: auto !important;
+  margin-bottom: 1.1rem;
+}
+
+body:not(.home-page) .author__avatar img {
+  border-radius: var(--p-r-lg) !important;
+  border: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-shadow:
+    0 0 0 3px var(--p-surface),
+    0 0 0 4px rgba(184,131,46,0.28),
+    0 4px 16px rgba(0,0,0,0.07) !important;
+}
+
+/* Author content block */
+body:not(.home-page) .author__content {
+  display: block !important;
+  padding: 0 !important;
 }
 
 body:not(.home-page) .author__name {
   font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 1.5rem !important;
+  font-size: 1.45rem !important;
   font-weight: 500 !important;
-  color: var(--p-ink);
+  color: var(--p-ink) !important;
+  margin: 0 0 0.25rem !important;
+  letter-spacing: -0.02em;
+}
+
+body:not(.home-page) .author__pronouns {
+  font-size: 0.75rem !important;
+  color: var(--p-gold) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 0.5rem !important;
 }
 
 body:not(.home-page) .author__bio {
-  font-size: 0.86rem;
-  color: var(--p-ink-3);
-  line-height: 1.7;
+  font-size: 0.84rem !important;
+  color: var(--p-ink-3) !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Location / affiliation items */
+body:not(.home-page) .author__urls-wrapper {
+  display: block !important;
+  position: static !important;
+}
+
+body:not(.home-page) .author__urls {
+  display: block !important;
+  position: static !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  padding-top: 0.75rem !important;
+  border-top: 1px solid var(--p-border) !important;
+  margin-top: 0.75rem !important;
+}
+
+body:not(.home-page) .author__urls li {
+  padding: 0.22rem 0 !important;
+  border: none !important;
 }
 
 body:not(.home-page) .author__urls a {
   color: var(--p-ink-3) !important;
-  font-size: 0.84rem;
-  transition: color 160ms ease;
+  font-size: 0.83rem !important;
+  text-decoration: none !important;
+  transition: color 160ms ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
 }
 body:not(.home-page) .author__urls a:hover { color: var(--p-accent) !important; }
+
+body:not(.home-page) .author__urls a i,
+body:not(.home-page) .author__urls a svg {
+  width: 1rem !important;
+  color: var(--p-ink-4) !important;
+  flex-shrink: 0 !important;
+}
+
+/* Hide the "follow" toggle button — always show links */
+body:not(.home-page) .author__urls-wrapper button {
+  display: none !important;
+}
 
 
 /* ── Footer — all pages ──────────────────────────────────── */
