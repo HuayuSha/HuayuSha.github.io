@@ -54,18 +54,19 @@ redirect_from:
           <h2>About</h2>
         </div>
         <div class="prism-tagline">
-          <p>Making language model evaluation more honest, robust, and meaningful.</p>
+          <p>To be, or not to be, that is the question.</p>
         </div>
         <div class="prism-prose">
           <p>
-            I am a Software Engineering student at Fudan University. My current research focuses on
-            <strong>trustworthy evaluation of large language models</strong>,
-            <strong>medical and real-world benchmarks</strong>, and
-            <strong>scientific-intelligence systems</strong> for evaluating novelty and reasoning quality.
+            I am Huayu Sha, an undergraduate student in Software Engineering at Fudan University.
+            My work focuses on
+            <strong>LLM evaluation</strong>,
+            <strong>medical benchmark construction</strong>, and
+            <strong>AI systems for scientific research workflows</strong>.
           </p>
           <p>
-            I am especially interested in evaluation pipelines that are more robust to contamination,
-            closer to real use cases, and better aligned with the kinds of claims we actually make about modern models.
+            I am interested in making research pipelines reproducible, practical, and explainable:
+            from data and protocol design to tool building and systematic validation.
           </p>
         </div>
       </section>
