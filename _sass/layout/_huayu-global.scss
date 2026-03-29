@@ -163,10 +163,10 @@ a, button, [role="button"], .prism-link-button, .button-pill,
   }
 
   .masthead .greedy-nav .visible-links .persist.tail {
-    margin-left: 0.55rem !important;
+    margin-left: auto !important;
   }
 
-  .masthead #lang-toggle { margin-left: 0.7rem !important; }
+  .masthead #lang-toggle { margin-left: auto !important; }
   .masthead #theme-toggle { margin-left: 0.42rem !important; }
 
   .greedy-nav .visible-links .masthead__menu-item--nav + .masthead__menu-item--nav::before {
@@ -174,13 +174,13 @@ a, button, [role="button"], .prism-link-button, .button-pill,
   }
 }
 
-/* Push trailing items (lang + theme toggle) to right */
+/* Push language toggle to the right, keep theme beside it */
 .greedy-nav .visible-links .persist.tail {
   margin-left: auto !important;
 }
 
 /* Space between lang and theme toggles */
-#lang-toggle { margin-left: 0.4rem !important; }
+#lang-toggle { margin-left: auto !important; }
 #theme-toggle { margin-left: 0.3rem !important; }
 
 /* Nav link style - underline animation */
