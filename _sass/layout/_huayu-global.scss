@@ -694,6 +694,7 @@ body.publication-page .publication-citation pre {
   line-height: 1.72;
   white-space: pre-wrap;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* Inner page reveal motion */
@@ -771,6 +772,25 @@ body.cv-page .publication-prism-sidebar .prism-side-card:hover {
     0 12px 32px rgba(0,0,0,0.09),
     0 3px 12px rgba(0,0,0,0.05),
     inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Better overflow handling for narrow screens */
+body.publication-page .page__content pre,
+body.cv-page .page__content pre,
+body.publication-page .page__content .highlight,
+body.cv-page .page__content .highlight {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.publication-page .page__content table,
+body.cv-page .page__content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
 }
 
 /* Citation block */
@@ -1041,6 +1061,26 @@ body:not(.home-page) .author__urls-wrapper button {
 
 /* -- Responsive -------------------------------------------- */
 @media (max-width: 720px) {
+  .masthead__inner-wrap {
+    padding: 0.28rem 0.9rem !important;
+  }
+
+  #lang-toggle a {
+    height: 2.05rem;
+    padding: 0 0.58rem;
+    font-size: 0.72rem !important;
+  }
+
+  #theme-toggle a {
+    width: 2.05rem;
+    height: 2.05rem;
+  }
+
+  .greedy-nav .visible-links .masthead__menu-item--nav + .masthead__menu-item--nav::before {
+    margin: 0 0.45rem 0 0.26rem;
+    font-size: 0.68rem;
+  }
+
   body:not(.home-page) #main {
     padding: 1.2rem 1rem 3rem !important;
   }
@@ -1062,6 +1102,62 @@ body:not(.home-page) .author__urls-wrapper button {
     font-size: 1.82rem !important;
   }
 
+  body.cv-page #main {
+    padding: 1.1rem 0.9rem 2.8rem !important;
+  }
+
+  body.cv-page .page {
+    padding: 1.25rem 1rem 1.2rem !important;
+  }
+
+  body.publication-page .publication-prism-sidebar .prism-profile-card,
+  body.publication-page .publication-prism-sidebar .prism-side-card,
+  body.cv-page .publication-prism-sidebar .prism-profile-card,
+  body.cv-page .publication-prism-sidebar .prism-side-card {
+    padding: 1.15rem !important;
+  }
+
+  body.publication-page .publication-prism-sidebar .prism-avatar-wrap,
+  body.cv-page .publication-prism-sidebar .prism-avatar-wrap {
+    max-width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .publication-authors-line {
+    font-size: 0.8rem;
+    line-height: 1.62;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .publication-authors-line--detail {
+    font-size: 0.82rem;
+    margin-bottom: 0.1rem !important;
+  }
+
+  .publication-authors-line--archive,
+  .publication-authors-line--card,
+  .publication-authors-line--cv {
+    font-size: 0.76rem;
+  }
+
+  body.publication-page .publication-links {
+    gap: 0.4rem;
+  }
+
+  body.publication-page .publication-citation pre {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.75rem;
+    line-height: 1.66;
+  }
+
+  body.publication-page .page__content img,
+  body.cv-page .page__content img {
+    margin-top: 0.7rem;
+    margin-bottom: 0.95rem;
+  }
+
   body:not(.home-page) .page__title {
     font-size: 1.85rem !important;
   }
@@ -1070,6 +1166,63 @@ body:not(.home-page) .author__urls-wrapper button {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 0.4rem !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body:not(.home-page) #main {
+    padding: 0.95rem 0.72rem 2.5rem !important;
+  }
+
+  body.publication-page .page,
+  body.cv-page .page,
+  body:not(.home-page) .page {
+    padding: 1.05rem 0.82rem 1.08rem !important;
+    border-radius: var(--p-r-md) !important;
+  }
+
+  body.publication-page .page__title,
+  body.cv-page .page__title,
+  body:not(.home-page) .page__title {
+    font-size: 1.55rem !important;
+    line-height: 1.16 !important;
+  }
+
+  body.publication-page .page__content h2,
+  body.cv-page .page__content h2,
+  body:not(.home-page) .page__content h2 {
+    font-size: 1.3rem !important;
+  }
+
+  body.publication-page .page__content h3,
+  body.cv-page .page__content h3,
+  body:not(.home-page) .page__content h3 {
+    font-size: 1.03rem !important;
+  }
+
+  body.publication-page .publication-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.34rem;
+  }
+
+  body.publication-page .publication-links .button-pill {
+    justify-content: center;
+    padding: 0.42rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  body.publication-page .page__content p,
+  body.publication-page .page__content li,
+  body.cv-page .page__content p,
+  body.cv-page .page__content li {
+    font-size: 0.92rem;
+    line-height: 1.74;
+  }
+
+  .publication-authors-line {
+    font-size: 0.74rem;
+    line-height: 1.55;
   }
 }
 
