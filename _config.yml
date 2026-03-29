@@ -37,6 +37,7 @@ author:
   googlescholar    : #"https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   impactstory      : # URL
   orcid            : "https://orcid.org/0009-0006-1742-5816"
+  openreview       : "https://openreview.net/profile?id=~Huayu_Sha1"
   semantic         : # URL
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
@@ -146,6 +147,7 @@ social:
   links:
     - "https://github.com/HuayuSha"
     - "https://orcid.org/0009-0006-1742-5816"
+    - "https://openreview.net/profile?id=~Huayu_Sha1"
 
 
 # Analytics
