@@ -16,6 +16,40 @@ body {
 /* Override theme's global-bg-color for inner pages */
 html { background: var(--p-bg); }
 
+/* -- Full dark palette (manual toggle + OS dark) ---------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --p-bg:            #0f141b;
+  --p-surface:       #171e27;
+  --p-surface-soft:  #1c2531;
+  --p-surface-mid:   #24303f;
+
+  --p-border:        rgba(164, 185, 209, 0.15);
+  --p-border-med:    rgba(164, 185, 209, 0.26);
+  --p-border-strong: rgba(164, 185, 209, 0.42);
+
+  --p-ink:           #e7edf5;
+  --p-ink-2:         #c8d3df;
+  --p-ink-3:         #96a9bc;
+  --p-ink-4:         #70869c;
+
+  --p-accent:        #4dbf9e;
+  --p-accent-light:  #79d9ba;
+  --p-accent-pale:   rgba(77, 191, 158, 0.17);
+  --p-accent-glow:   rgba(77, 191, 158, 0.38);
+
+  --p-gold:          #dfb05d;
+  --p-gold-light:    #efc775;
+  --p-gold-pale:     rgba(223, 176, 93, 0.18);
+
+  --p-shadow-xs:     0 1px 2px rgba(0, 0, 0, 0.42);
+  --p-shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.40), 0 1px 3px rgba(0, 0, 0, 0.32);
+  --p-shadow-md:     0 8px 24px rgba(0, 0, 0, 0.44), 0 2px 6px rgba(0, 0, 0, 0.34);
+  --p-shadow-hover:  0 16px 42px rgba(0, 0, 0, 0.52), 0 4px 12px rgba(0, 0, 0, 0.36);
+  --p-shadow-float:  0 24px 62px rgba(0, 0, 0, 0.58), 0 5px 14px rgba(0, 0, 0, 0.4);
+}
+
 
 /* -- Global typography ------------------------------------- */
 h1, h2, h3 {
@@ -1056,6 +1090,163 @@ body:not(.home-page) .author__urls-wrapper button {
   transition: width 80ms linear;
   pointer-events: none;
   box-shadow: 0 0 8px rgba(184, 131, 46, 0.45);
+}
+
+
+/* -- Dark mode component surfaces -------------------------- */
+html[data-theme="dark"] body {
+  background-color: var(--p-bg) !important;
+  color: var(--p-ink) !important;
+}
+
+html[data-theme="dark"] .masthead {
+  background: rgba(11, 16, 23, 0.86) !important;
+  border-bottom: 1px solid var(--p-border) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03),
+    0 8px 28px rgba(0, 0, 0, 0.38) !important;
+}
+
+html[data-theme="dark"] #lang-toggle a,
+html[data-theme="dark"] #theme-toggle a {
+  background: rgba(24, 32, 43, 0.82) !important;
+  border-color: var(--p-border-med) !important;
+  color: var(--p-ink-3) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.32);
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links {
+  background: #121926;
+  border-color: var(--p-border-med);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.46);
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links li {
+  border-bottom-color: var(--p-border);
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links:before {
+  border-color: var(--p-border-med) transparent;
+}
+
+html[data-theme="dark"] .greedy-nav .hidden-links:after {
+  border-color: #121926 transparent;
+}
+
+html[data-theme="dark"] .prism-profile-card,
+html[data-theme="dark"] .prism-side-card,
+html[data-theme="dark"] .prism-content-card,
+html[data-theme="dark"] .prism-paper-card,
+html[data-theme="dark"] .archive__item,
+html[data-theme="dark"] body:not(.home-page) .page,
+html[data-theme="dark"] body:not(.home-page) .sidebar {
+  background: rgba(22, 29, 39, 0.74) !important;
+  border: 1px solid rgba(164, 185, 209, 0.2) !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.34),
+    0 0 0 0.5px rgba(164, 185, 209, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+html[data-theme="dark"] .prism-profile-card::after,
+html[data-theme="dark"] .prism-content-card::after,
+html[data-theme="dark"] .prism-side-card::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.2) 70%,
+    transparent 100%
+  );
+}
+
+html[data-theme="dark"] .prism-profile-card.is-interactive:hover,
+html[data-theme="dark"] .prism-side-card.is-interactive:hover,
+html[data-theme="dark"] .prism-content-card.is-interactive:hover,
+html[data-theme="dark"] .prism-paper-card:hover,
+html[data-theme="dark"] .archive__item:hover,
+html[data-theme="dark"] body.publication-page .page:hover,
+html[data-theme="dark"] body.cv-page .page:hover {
+  background: rgba(28, 37, 49, 0.88) !important;
+  border-color: rgba(164, 185, 209, 0.34) !important;
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.48),
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] body.publication-page .page::before,
+html[data-theme="dark"] body.cv-page .page::before {
+  background: radial-gradient(
+    320px circle at var(--motion-x, 50%) var(--motion-y, 14%),
+    rgba(223, 176, 93, 0.22) 0%,
+    rgba(77, 191, 158, 0.14) 34%,
+    rgba(10, 13, 18, 0) 72%
+  );
+}
+
+html[data-theme="dark"] body:not(.home-page) .resource-card,
+html[data-theme="dark"] body.publication-page .resource-card,
+html[data-theme="dark"] body.publication-page .publication-citation pre,
+html[data-theme="dark"] .citation-toggle pre {
+  background: rgba(18, 24, 33, 0.84) !important;
+  border-color: var(--p-border-med) !important;
+  color: var(--p-ink-2) !important;
+}
+
+html[data-theme="dark"] .prism-link-button,
+html[data-theme="dark"] .button-pill,
+html[data-theme="dark"] .button-pill--ghost {
+  background: rgba(24, 32, 43, 0.8) !important;
+  border-color: var(--p-border-med) !important;
+  color: var(--p-ink-2) !important;
+}
+
+html[data-theme="dark"] .prism-link-button:hover,
+html[data-theme="dark"] .button-pill:hover,
+html[data-theme="dark"] .button-pill:focus,
+html[data-theme="dark"] .button-pill--ghost:hover {
+  background: var(--p-accent-pale) !important;
+  border-color: var(--p-accent-glow) !important;
+  color: var(--p-accent-light) !important;
+}
+
+html[data-theme="dark"] body.publication-page .page__content img,
+html[data-theme="dark"] body.cv-page .page__content img {
+  border-color: rgba(164, 185, 209, 0.22) !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.44),
+    0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+html[data-theme="dark"] body.publication-page .page__content img:hover,
+html[data-theme="dark"] body.cv-page .page__content img:hover {
+  border-color: rgba(223, 176, 93, 0.38) !important;
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.52),
+    0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-theme="dark"] body.home-page::before {
+  opacity: 0.04;
+}
+
+html[data-theme="dark"] .prism-bg-spot--one {
+  background: radial-gradient(
+    circle at 38% 38%,
+    rgba(223, 176, 93, 0.28) 0%,
+    rgba(223, 176, 93, 0.11) 42%,
+    transparent 68%
+  );
+}
+
+html[data-theme="dark"] .prism-bg-spot--two {
+  background: radial-gradient(
+    circle at 62% 62%,
+    rgba(77, 191, 158, 0.18) 0%,
+    rgba(77, 191, 158, 0.06) 44%,
+    transparent 70%
+  );
 }
 
 
