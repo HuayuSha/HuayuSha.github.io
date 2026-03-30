@@ -157,6 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (samePath && sameSearch && target.hash) return;
 
+      const isMastheadNav = !!link.closest('.masthead');
+      if (isMastheadNav) {
+        return;
+      }
+
       event.preventDefault();
       document.body.classList.add('page-leaving');
       window.setTimeout(() => {
