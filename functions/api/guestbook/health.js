@@ -1,5 +1,6 @@
 const DB_BINDING = 'GUESTBOOK_DB';
 const TABLE_NAME = 'guestbook_messages';
+let schemaEnsured = false;
 
 function json(payload, status = 200) {
   return new Response(JSON.stringify(payload), {
@@ -9,6 +10,37 @@ function json(payload, status = 200) {
       'cache-control': 'no-store'
     }
   });
+}
+
+async function ensureSchema(db) {
+  if (!db || schemaEnsured) return;
+
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL CHECK(length(name) <= 80),
+        contact TEXT CHECK(contact IS NULL OR length(contact) <= 120),
+        message TEXT NOT NULL CHECK(length(message) <= 2000),
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+        ip_hash TEXT,
+        user_agent TEXT,
+        status TEXT NOT NULL DEFAULT 'visible' CHECK(status IN ('visible', 'hidden'))
+      )`
+    )
+    .run();
+
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_created_at ON ${TABLE_NAME}(created_at DESC)`)
+    .run();
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_status ON ${TABLE_NAME}(status, id DESC)`)
+    .run();
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_ip_hash ON ${TABLE_NAME}(ip_hash)`)
+    .run();
+
+  schemaEnsured = true;
 }
 
 export async function onRequestGet(context) {
@@ -56,6 +88,8 @@ export async function onRequestGet(context) {
   }
 
   try {
+    await ensureSchema(db);
+
     const count = await db
       .prepare(`SELECT COUNT(1) AS total FROM ${TABLE_NAME} WHERE status = 'visible'`)
       .first();
