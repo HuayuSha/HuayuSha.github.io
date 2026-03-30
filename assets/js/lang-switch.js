@@ -2,6 +2,9 @@
   const STORAGE_KEY = 'preferred_lang';
   const LANG_EN = 'en';
   const LANG_ZH = 'zh';
+  const ROUTE_MAP = {
+    '/guestbook': '/zh/guestbook'
+  };
 
   function normalizePath(pathname) {
     if (!pathname) return '/';
@@ -19,25 +22,52 @@
     return pathLang(path);
   }
 
+  function withTrailingSlash(path) {
+    if (!path || path === '/') return '/';
+    return path.endsWith('/') ? path : `${path}/`;
+  }
+
+  function mapToZh(path) {
+    return ROUTE_MAP[path] || null;
+  }
+
+  function mapToEn(path) {
+    const entries = Object.entries(ROUTE_MAP);
+    for (const [enPath, zhPath] of entries) {
+      if (zhPath === path) return enPath;
+    }
+    return null;
+  }
+
   function buildTargetPath(targetLang, currentPath) {
     if (targetLang === LANG_ZH) {
       if (currentPath === '/' || currentPath === '') return '/zh/';
       if (currentPath === '/zh' || currentPath === '/zh/') return '/zh/';
-      if (currentPath.startsWith('/zh/')) return currentPath;
-      if (currentPath.startsWith('/publication/')) return `/zh${currentPath}/`.replace(/\/{2,}/g, '/').replace(/\/$/, '/');
-      return currentPath;
+      if (currentPath.startsWith('/zh/')) return withTrailingSlash(currentPath);
+
+      const mappedZhPath = mapToZh(currentPath);
+      if (mappedZhPath) return withTrailingSlash(mappedZhPath);
+
+      if (currentPath.startsWith('/publication/')) {
+        return withTrailingSlash(`/zh${currentPath}`.replace(/\/{2,}/g, '/'));
+      }
+
+      return withTrailingSlash(currentPath);
     }
 
     if (currentPath === '/zh' || currentPath === '/zh/') {
       return '/';
     }
 
+    const mappedEnPath = mapToEn(currentPath);
+    if (mappedEnPath) return withTrailingSlash(mappedEnPath);
+
     if (currentPath.startsWith('/zh/')) {
       const stripped = currentPath.slice(3);
-      return stripped && stripped !== '/' ? `${stripped}/`.replace(/\/{2,}/g, '/') : '/';
+      return stripped && stripped !== '/' ? withTrailingSlash(stripped.replace(/\/{2,}/g, '/')) : '/';
     }
 
-    return currentPath;
+    return withTrailingSlash(currentPath);
   }
 
   function refreshToggleUI(toggleButton, label, currentLang, currentPath) {

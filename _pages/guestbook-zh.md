@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "Guestbook"
-permalink: /guestbook/
-lang: en
+title: "留言板"
+permalink: /zh/guestbook/
+lang: zh
 author_profile: false
 use_publication_sidebar: true
 share: false

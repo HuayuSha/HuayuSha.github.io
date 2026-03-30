@@ -1,9 +1,16 @@
 {% assign asset_version = site.github.build_revision | default: site.time | date: "%s" %}
+{% assign is_guestbook_page = false %}
+{% if page.url contains '/guestbook/' or page.permalink contains '/guestbook/' %}
+  {% assign is_guestbook_page = true %}
+{% endif %}
 <script src="{{ base_path }}/assets/js/main.min.js?v={{ asset_version }}"></script>
 <script src="{{ base_path }}/assets/js/navigation-enhance.js?v={{ asset_version }}"></script>
 <script src="{{ base_path }}/assets/js/nav-unfold-desktop.js?v={{ asset_version }}"></script>
 <script src="{{ base_path }}/assets/js/lang-switch.js?v={{ asset_version }}"></script>
 <script src="{{ base_path }}/assets/js/inner-page-motion.js?v={{ asset_version }}"></script>
+{% if is_guestbook_page %}
+<script src="{{ base_path }}/assets/js/guestbook.js?v={{ asset_version }}"></script>
+{% endif %}
 {% if page.url == "/" %}
 <script src="{{ base_path }}/assets/lib/live2d-widget/live2d_bundle.js?v={{ asset_version }}"></script>
 <script type="module" src="{{ base_path }}/assets/lib/live2d-widget/waifu-tips.js?v={{ asset_version }}"></script>

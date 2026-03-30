@@ -23,6 +23,10 @@ layout: default
 {% if page.permalink == '/cv/' or page.url == '/cv/' %}
   {% assign is_cv_page = true %}
 {% endif %}
+{% assign use_publication_sidebar = false %}
+{% if page.use_publication_sidebar %}
+  {% assign use_publication_sidebar = true %}
+{% endif %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
   {% include page__hero.html %}
@@ -35,7 +39,7 @@ layout: default
 {% endif %}
 
 <div id="main" role="main">
-  {% if effective_is_publication or is_cv_page %}
+  {% if effective_is_publication or is_cv_page or use_publication_sidebar %}
     {% include publication-left-sidebar.html %}
   {% else %}
     {% include sidebar.html %}
@@ -132,11 +136,11 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% unless effective_is_publication or is_cv_page %}
+      {% unless effective_is_publication or is_cv_page or use_publication_sidebar %}
         {% if page.share %}{% include social-share.html %}{% endif %}
       {% endunless %}
 
-      {% unless effective_is_publication or is_cv_page %}
+      {% unless effective_is_publication or is_cv_page or use_publication_sidebar %}
         {% include post_pagination.html %}
       {% endunless %}
     </div>

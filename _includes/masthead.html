@@ -25,6 +25,8 @@
               {% assign domain = base_path %}
               {% if is_zh_page and link.url contains '/#' %}
                 {% assign domain = base_path | append: '/zh' %}
+              {% elsif is_zh_page and link.url == '/guestbook/' %}
+                {% assign domain = base_path | append: '/zh' %}
               {% endif %}
             {% endif %}
             {% assign nav_label = link.title %}

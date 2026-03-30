@@ -3,14 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!body) return;
 
   const isInnerMotionPage =
-    body.classList.contains('publication-page') || body.classList.contains('cv-page');
+    body.classList.contains('publication-page') ||
+    body.classList.contains('cv-page') ||
+    body.classList.contains('guestbook-page');
   if (!isInnerMotionPage) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const motionTargets = [
     ...document.querySelectorAll('.publication-prism-sidebar .reveal'),
-    ...document.querySelectorAll('.page__content > h2, .page__content > h3, .page__content > p, .page__content > ul, .page__content > ol, .page__content > pre, .page__content > blockquote, .page__content > figure, .page__content > table, .page__content > .publication-links, .page__content > .publication-citation'),
+    ...document.querySelectorAll('.page__content > h2, .page__content > h3, .page__content > p, .page__content > ul, .page__content > ol, .page__content > pre, .page__content > blockquote, .page__content > figure, .page__content > table, .page__content > .publication-links, .page__content > .publication-citation, .page__content > .guestbook-shell'),
     ...document.querySelectorAll('.page__inner-wrap > header'),
     ...document.querySelectorAll('.page__meta')
   ];

@@ -1,0 +1,62 @@
+{% assign is_zh_page = false %}
+{% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
+  {% assign is_zh_page = true %}
+{% endif %}
+
+<section class="guestbook-shell" id="guestbook-app" data-lang="{% if is_zh_page %}zh{% else %}en{% endif %}">
+  <p class="guestbook-intro">
+    {% if is_zh_page %}
+      欢迎留言。建议写下姓名、单位或联系方式，以及你想交流的话题。
+    {% else %}
+      Welcome. Please leave your name, affiliation/contact, and topic you want to discuss.
+    {% endif %}
+  </p>
+
+  <form id="guestbook-form" class="guestbook-form" novalidate>
+    <div class="guestbook-grid">
+      <label class="guestbook-field">
+        <span>{% if is_zh_page %}姓名{% else %}Name{% endif %}</span>
+        <input id="gb-name" name="name" type="text" maxlength="80" required>
+      </label>
+
+      <label class="guestbook-field">
+        <span>{% if is_zh_page %}联系方式（可选）{% else %}Contact (optional){% endif %}</span>
+        <input id="gb-contact" name="contact" type="text" maxlength="120" placeholder="{% if is_zh_page %}邮箱 / 主页 / OpenReview{% else %}Email / Homepage / OpenReview{% endif %}">
+      </label>
+
+      <label class="guestbook-field guestbook-field--full">
+        <span>{% if is_zh_page %}留言内容{% else %}Message{% endif %}</span>
+        <textarea id="gb-message" name="message" rows="5" maxlength="2000" required></textarea>
+      </label>
+
+      <input class="guestbook-honeypot" id="gb-website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="guestbook-actions">
+      <button id="gb-submit" class="button-pill" type="submit">
+        {% if is_zh_page %}提交留言{% else %}Submit{% endif %}
+      </button>
+      <p id="gb-status" class="guestbook-status" aria-live="polite"></p>
+    </div>
+  </form>
+
+  <p class="guestbook-note">
+    {% if is_zh_page %}
+      说明：为防滥用，服务端会记录时间、User-Agent 与 IP 的不可逆哈希值，不公开原始 IP。
+    {% else %}
+      Note: to prevent abuse, the server stores timestamp, user-agent, and a one-way hash of IP (not the raw IP).
+    {% endif %}
+  </p>
+
+  <div id="guestbook-list" class="guestbook-list" aria-live="polite"></div>
+
+  <noscript>
+    <p class="guestbook-note">
+      {% if is_zh_page %}
+        你的浏览器关闭了 JavaScript，暂时无法显示留言列表。
+      {% else %}
+        JavaScript is disabled, so the guestbook list cannot be loaded.
+      {% endif %}
+    </p>
+  </noscript>
+</section>
