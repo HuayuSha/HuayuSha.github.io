@@ -56,8 +56,36 @@ function pickLimit(url) {
   return Math.max(1, Math.min(MAX_LIMIT, limitRaw));
 }
 
+function looksLikeD1Binding(value) {
+  return !!(value && typeof value === 'object' && typeof value.prepare === 'function');
+}
+
+function resolveDbBinding(env) {
+  if (!env) return { db: null, bindingName: null };
+
+  const exact = env[DB_BINDING];
+  if (looksLikeD1Binding(exact)) {
+    return { db: exact, bindingName: DB_BINDING };
+  }
+
+  for (const [key, value] of Object.entries(env)) {
+    if (!looksLikeD1Binding(value)) continue;
+    if (key.toUpperCase().includes('GUESTBOOK') || key.toUpperCase().includes('D1')) {
+      return { db: value, bindingName: key };
+    }
+  }
+
+  for (const [key, value] of Object.entries(env)) {
+    if (looksLikeD1Binding(value)) {
+      return { db: value, bindingName: key };
+    }
+  }
+
+  return { db: null, bindingName: null };
+}
+
 function getDb(env) {
-  return env && env[DB_BINDING] ? env[DB_BINDING] : null;
+  return resolveDbBinding(env).db;
 }
 
 function getStorageMode(env) {
@@ -160,11 +188,13 @@ export function onRequestOptions() {
 
 export async function onRequestGet(context) {
   const limit = pickLimit(new URL(context.request.url));
-  const db = getDb(context.env);
+  const resolved = resolveDbBinding(context.env);
+  const db = resolved.db;
   if (!db) {
     return json({
       messages: listMemoryMessages(limit),
-      storage_mode: getStorageMode(context.env)
+      storage_mode: getStorageMode(context.env),
+      binding_name: null
     });
   }
 
@@ -184,7 +214,8 @@ export async function onRequestGet(context) {
     const result = await query.all();
     return json({
       messages: result.results || [],
-      storage_mode: getStorageMode(context.env)
+      storage_mode: getStorageMode(context.env),
+      binding_name: resolved.bindingName || DB_BINDING
     });
   } catch (error) {
     console.error('[guestbook][GET] failed', error);
@@ -193,7 +224,8 @@ export async function onRequestGet(context) {
 }
 
 export async function onRequestPost(context) {
-  const db = getDb(context.env);
+  const resolved = resolveDbBinding(context.env);
+  const db = resolved.db;
 
   let body;
   try {
@@ -236,7 +268,8 @@ export async function onRequestPost(context) {
     return json({
       ok: true,
       message: inserted,
-      storage_mode: storageMode
+      storage_mode: storageMode,
+      binding_name: null
     }, 201);
   }
 
@@ -286,7 +319,8 @@ export async function onRequestPost(context) {
     return json({
       ok: true,
       message: insertedRow || null,
-      storage_mode: storageMode
+      storage_mode: storageMode,
+      binding_name: resolved.bindingName || DB_BINDING
     }, 201);
   } catch (error) {
     console.error('[guestbook][POST] failed', error);

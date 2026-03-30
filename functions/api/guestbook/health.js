@@ -12,7 +12,36 @@ function json(payload, status = 200) {
 }
 
 export async function onRequestGet(context) {
-  const db = context.env && context.env[DB_BINDING] ? context.env[DB_BINDING] : null;
+  const env = context.env || {};
+
+  function looksLikeD1Binding(value) {
+    return !!(value && typeof value === 'object' && typeof value.prepare === 'function');
+  }
+
+  function resolveDbBinding() {
+    const exact = env[DB_BINDING];
+    if (looksLikeD1Binding(exact)) {
+      return { db: exact, bindingName: DB_BINDING, exactMatch: true };
+    }
+
+    for (const [key, value] of Object.entries(env)) {
+      if (!looksLikeD1Binding(value)) continue;
+      if (key.toUpperCase().includes('GUESTBOOK') || key.toUpperCase().includes('D1')) {
+        return { db: value, bindingName: key, exactMatch: false };
+      }
+    }
+
+    for (const [key, value] of Object.entries(env)) {
+      if (looksLikeD1Binding(value)) {
+        return { db: value, bindingName: key, exactMatch: false };
+      }
+    }
+
+    return { db: null, bindingName: null, exactMatch: false };
+  }
+
+  const resolved = resolveDbBinding();
+  const db = resolved.db;
 
   if (!db) {
     return json({
@@ -20,6 +49,8 @@ export async function onRequestGet(context) {
       storage_mode: 'memory',
       has_d1_binding: false,
       d1_binding_name: DB_BINDING,
+      detected_binding_name: null,
+      exact_binding_match: false,
       timestamp: new Date().toISOString()
     });
   }
@@ -34,6 +65,8 @@ export async function onRequestGet(context) {
       storage_mode: 'd1',
       has_d1_binding: true,
       d1_binding_name: DB_BINDING,
+      detected_binding_name: resolved.bindingName,
+      exact_binding_match: resolved.exactMatch,
       visible_messages: Number(count && count.total ? count.total : 0),
       timestamp: new Date().toISOString()
     });
@@ -43,6 +76,8 @@ export async function onRequestGet(context) {
       storage_mode: 'd1',
       has_d1_binding: true,
       d1_binding_name: DB_BINDING,
+      detected_binding_name: resolved.bindingName,
+      exact_binding_match: resolved.exactMatch,
       error: String(error && error.message ? error.message : error),
       hint: `Run schema migration for table ${TABLE_NAME}.`,
       timestamp: new Date().toISOString()
