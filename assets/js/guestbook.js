@@ -7,6 +7,9 @@
   const status = document.getElementById('gb-status');
   const submit = document.getElementById('gb-submit');
   if (!form || !list || !status || !submit) return;
+  const runtimeHint = document.createElement('p');
+  runtimeHint.className = 'guestbook-runtime-hint';
+  list.insertAdjacentElement('beforebegin', runtimeHint);
 
   const API_ENDPOINT = '/api/guestbook';
   const lang = (app.dataset.lang || 'en').toLowerCase() === 'zh' ? 'zh' : 'en';
@@ -22,7 +25,8 @@
       submitSuccess: '留言提交成功。',
       submitFailed: '提交失败，请稍后重试。',
       tooFrequent: '提交过于频繁，请稍后再试。',
-      contactLabel: '联系方式'
+      contactLabel: '联系方式',
+      temporaryMode: '当前为临时留言模式（未绑定数据库）。留言会保留一段时间，但不保证长期持久。'
     },
     en: {
       loading: 'Loading messages...',
@@ -34,7 +38,8 @@
       submitSuccess: 'Message submitted successfully.',
       submitFailed: 'Submission failed. Please try again later.',
       tooFrequent: 'Too many requests. Please wait and retry.',
-      contactLabel: 'Contact'
+      contactLabel: 'Contact',
+      temporaryMode: 'Temporary mode is active (database not bound). Messages may not be permanently retained.'
     }
   };
 
@@ -69,6 +74,16 @@
     if (type === 'error') status.classList.add('is-error');
     if (type === 'success') status.classList.add('is-success');
     if (type === 'muted') status.classList.add('is-muted');
+  }
+
+  function setRuntimeMode(storageMode) {
+    if (storageMode === 'memory') {
+      runtimeHint.textContent = t('temporaryMode');
+      runtimeHint.classList.add('is-visible');
+      return;
+    }
+    runtimeHint.textContent = '';
+    runtimeHint.classList.remove('is-visible');
   }
 
   function renderMessages(messages) {
@@ -114,6 +129,7 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const payload = await response.json();
+      setRuntimeMode(payload.storage_mode);
       renderMessages(payload.messages || []);
     } catch (error) {
       console.error('[guestbook] load failed', error);
@@ -159,6 +175,7 @@
       });
 
       const payload = await response.json().catch(() => ({}));
+      setRuntimeMode(payload.storage_mode);
 
       if (!response.ok) {
         if (response.status === 429) {

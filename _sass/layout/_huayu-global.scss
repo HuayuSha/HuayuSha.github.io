@@ -962,6 +962,22 @@ body.guestbook-page .page__content {
   margin: 0 !important;
 }
 
+.guestbook-runtime-hint {
+  margin: -0.1rem 0 0.2rem !important;
+  padding: 0.52rem 0.68rem;
+  border-radius: var(--p-r-sm);
+  border: 1px dashed rgba(184, 131, 46, 0.38);
+  background: rgba(184, 131, 46, 0.08);
+  color: var(--p-ink-3);
+  font-size: 0.82rem !important;
+  line-height: 1.6;
+  display: none;
+}
+
+.guestbook-runtime-hint.is-visible {
+  display: block;
+}
+
 .guestbook-form {
   background: rgba(254, 252, 249, 0.7);
   border: 1px solid var(--p-border);
@@ -1484,6 +1500,12 @@ html[data-theme="dark"] .guestbook-item,
 html[data-theme="dark"] .guestbook-empty {
   background: rgba(18, 24, 33, 0.78) !important;
   border-color: var(--p-border-med) !important;
+}
+
+html[data-theme="dark"] .guestbook-runtime-hint {
+  background: rgba(223, 176, 93, 0.13) !important;
+  border-color: rgba(223, 176, 93, 0.38) !important;
+  color: var(--p-ink-2) !important;
 }
 
 html[data-theme="dark"] .guestbook-field input,

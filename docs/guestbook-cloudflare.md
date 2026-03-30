@@ -1,6 +1,7 @@
 # Guestbook Deployment (Cloudflare Pages + D1)
 
 This project now uses a custom guestbook API at `/api/guestbook` backed by Cloudflare D1.
+If D1 is not bound yet, the API automatically falls back to temporary in-memory mode (non-durable).
 
 ## 1) Create D1 database
 

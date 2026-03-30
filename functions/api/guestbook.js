@@ -6,6 +6,15 @@ const CONTACT_MAX = 120;
 const MESSAGE_MAX = 2000;
 const USER_AGENT_MAX = 255;
 const RATE_LIMIT_SECONDS = 30;
+const FALLBACK_MAX_MESSAGES = 300;
+
+const fallbackState = globalThis.__guestbookMemoryState || {
+  messages: [],
+  idSequence: 1,
+  lastPostByIp: new Map()
+};
+
+globalThis.__guestbookMemoryState = fallbackState;
 
 function json(payload, status = 200) {
   return new Response(JSON.stringify(payload), {
@@ -48,6 +57,64 @@ function getDb(env) {
   return env && env[DB_BINDING] ? env[DB_BINDING] : null;
 }
 
+function getStorageMode(env) {
+  return getDb(env) ? 'd1' : 'memory';
+}
+
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function listMemoryMessages(limit) {
+  return fallbackState.messages
+    .filter((item) => item.status === 'visible')
+    .slice(-limit)
+    .reverse()
+    .map(({ id, name, contact, message, created_at }) => ({
+      id,
+      name,
+      contact,
+      message,
+      created_at
+    }));
+}
+
+function isRateLimitedInMemory(ipHash) {
+  const now = Date.now();
+  const last = fallbackState.lastPostByIp.get(ipHash);
+  if (last && now - last < RATE_LIMIT_SECONDS * 1000) {
+    return true;
+  }
+  fallbackState.lastPostByIp.set(ipHash, now);
+  return false;
+}
+
+function insertMemoryMessage({ name, contact, message, ipHash, userAgent }) {
+  const item = {
+    id: fallbackState.idSequence++,
+    name,
+    contact: contact || null,
+    message,
+    created_at: nowIso(),
+    ip_hash: ipHash,
+    user_agent: userAgent || null,
+    status: 'visible'
+  };
+
+  fallbackState.messages.push(item);
+  if (fallbackState.messages.length > FALLBACK_MAX_MESSAGES) {
+    fallbackState.messages.splice(0, fallbackState.messages.length - FALLBACK_MAX_MESSAGES);
+  }
+
+  return {
+    id: item.id,
+    name: item.name,
+    contact: item.contact,
+    message: item.message,
+    created_at: item.created_at
+  };
+}
+
 export function onRequestOptions() {
   return new Response(null, {
     status: 204,
@@ -58,13 +125,16 @@ export function onRequestOptions() {
 }
 
 export async function onRequestGet(context) {
+  const limit = pickLimit(new URL(context.request.url));
   const db = getDb(context.env);
   if (!db) {
-    return json({ error: `Missing Cloudflare D1 binding: ${DB_BINDING}` }, 500);
+    return json({
+      messages: listMemoryMessages(limit),
+      storage_mode: getStorageMode(context.env)
+    });
   }
 
   try {
-    const limit = pickLimit(new URL(context.request.url));
     const query = db
       .prepare(
         `SELECT id, name, contact, message, created_at
@@ -76,7 +146,10 @@ export async function onRequestGet(context) {
       .bind(limit);
 
     const result = await query.all();
-    return json({ messages: result.results || [] });
+    return json({
+      messages: result.results || [],
+      storage_mode: getStorageMode(context.env)
+    });
   } catch (error) {
     console.error('[guestbook][GET] failed', error);
     return json({ error: 'Failed to load messages.' }, 500);
@@ -85,9 +158,6 @@ export async function onRequestGet(context) {
 
 export async function onRequestPost(context) {
   const db = getDb(context.env);
-  if (!db) {
-    return json({ error: `Missing Cloudflare D1 binding: ${DB_BINDING}` }, 500);
-  }
 
   let body;
   try {
@@ -112,6 +182,27 @@ export async function onRequestPost(context) {
   const ip = pickIp(context.request);
   const ipSalt = String(context.env.GUESTBOOK_IP_SALT || 'guestbook-default-salt');
   const ipHash = await sha256Hex(`${ipSalt}:${ip}`);
+  const storageMode = getStorageMode(context.env);
+
+  if (!db) {
+    if (isRateLimitedInMemory(ipHash)) {
+      return json({ error: 'Too many requests. Please retry later.' }, 429);
+    }
+
+    const inserted = insertMemoryMessage({
+      name,
+      contact,
+      message,
+      ipHash,
+      userAgent
+    });
+
+    return json({
+      ok: true,
+      message: inserted,
+      storage_mode: storageMode
+    }, 201);
+  }
 
   try {
     const rateLimited = await db
@@ -154,7 +245,11 @@ export async function onRequestPost(context) {
       .bind(insertedId)
       .first();
 
-    return json({ ok: true, message: insertedRow || null }, 201);
+    return json({
+      ok: true,
+      message: insertedRow || null,
+      storage_mode: storageMode
+    }, 201);
   } catch (error) {
     console.error('[guestbook][POST] failed', error);
     return json({ error: 'Failed to submit message.' }, 500);

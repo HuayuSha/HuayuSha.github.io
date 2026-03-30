@@ -13,7 +13,7 @@ title                    : "Huayu Sha"
 title_separator          : "-"
 name                     : &name "Huayu Sha"
 description              : &description "Research homepage of Huayu Sha — Fudan University, NLP, trustworthy LLM evaluation, and scientific intelligence."
-url                      : https://huayusha.org # custom domain
+url                      : https://www.huayusha.org # custom domain
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "HuayuSha/HuayuSha.github.io"
 
