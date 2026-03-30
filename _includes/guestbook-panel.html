@@ -40,14 +40,6 @@
     </div>
   </form>
 
-  <p class="guestbook-note">
-    {% if is_zh_page %}
-      说明：为防滥用，服务端会记录时间、User-Agent 与 IP 的不可逆哈希值，不公开原始 IP。
-    {% else %}
-      Note: to prevent abuse, the server stores timestamp, user-agent, and a one-way hash of IP (not the raw IP).
-    {% endif %}
-  </p>
-
   <div id="guestbook-list" class="guestbook-list" aria-live="polite"></div>
 
   <noscript>
