@@ -42,6 +42,7 @@ In **Cloudflare Pages → your project → Settings → Functions → D1 binding
 In **Cloudflare Pages → Settings → Environment variables** add:
 
 - `GUESTBOOK_IP_SALT` = a long random secret string
+- `GUESTBOOK_ADMIN_TOKEN` = a long random admin token (for protected admin IP view API)
 
 Set for both Preview and Production environments.
 
@@ -58,6 +59,24 @@ You can run quick checks with:
 ```bash
 ./scripts/guestbook_d1_check.sh https://www.huayusha.org
 ```
+
+## 7) Admin IP view (protected API)
+
+To inspect message source IPs (admin only), call:
+
+```bash
+curl -sS \
+  -H "Authorization: Bearer YOUR_GUESTBOOK_ADMIN_TOKEN" \
+  "https://www.huayusha.org/api/guestbook/admin?limit=30"
+```
+
+This endpoint returns records including:
+- `ip_plain` (direct IP)
+- `country` (Cloudflare country code)
+- `user_agent`
+- linked message fields (`name`, `message`, `created_at`)
+
+Never expose this token on frontend pages.
 
 ## 6) Optional moderation
 

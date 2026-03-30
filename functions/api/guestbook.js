@@ -8,11 +8,13 @@ const USER_AGENT_MAX = 255;
 const RATE_LIMIT_SECONDS = 30;
 const FALLBACK_MAX_MESSAGES = 300;
 const TABLE_NAME = 'guestbook_messages';
+const AUDIT_TABLE_NAME = 'guestbook_message_audit';
 
 let schemaEnsured = false;
 
 const fallbackState = globalThis.__guestbookMemoryState || {
   messages: [],
+  audits: [],
   idSequence: 1,
   lastPostByIp: new Map()
 };
@@ -119,6 +121,25 @@ async function ensureSchema(db) {
   await db
     .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_ip_hash ON ${TABLE_NAME}(ip_hash)`)
     .run();
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS ${AUDIT_TABLE_NAME} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        message_id INTEGER,
+        ip_plain TEXT,
+        ip_hash TEXT,
+        country TEXT,
+        user_agent TEXT,
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+      )`
+    )
+    .run();
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_audit_message_id ON ${AUDIT_TABLE_NAME}(message_id DESC)`)
+    .run();
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_audit_created_at ON ${AUDIT_TABLE_NAME}(created_at DESC)`)
+    .run();
 
   schemaEnsured = true;
 }
@@ -175,6 +196,21 @@ function insertMemoryMessage({ name, contact, message, ipHash, userAgent }) {
     message: item.message,
     created_at: item.created_at
   };
+}
+
+function insertMemoryAudit({ messageId, ipPlain, ipHash, country, userAgent }) {
+  fallbackState.audits.push({
+    id: fallbackState.audits.length + 1,
+    message_id: messageId,
+    ip_plain: ipPlain,
+    ip_hash: ipHash,
+    country: country || null,
+    user_agent: userAgent || null,
+    created_at: nowIso()
+  });
+  if (fallbackState.audits.length > FALLBACK_MAX_MESSAGES) {
+    fallbackState.audits.splice(0, fallbackState.audits.length - FALLBACK_MAX_MESSAGES);
+  }
 }
 
 export function onRequestOptions() {
@@ -248,6 +284,7 @@ export async function onRequestPost(context) {
 
   const userAgent = normalizeText(context.request.headers.get('user-agent'), USER_AGENT_MAX);
   const ip = pickIp(context.request);
+  const country = normalizeText(context.request.headers.get('CF-IPCountry'), 8).toUpperCase();
   const ipSalt = String(context.env.GUESTBOOK_IP_SALT || 'guestbook-default-salt');
   const ipHash = await sha256Hex(`${ipSalt}:${ip}`);
   const storageMode = getStorageMode(context.env);
@@ -262,6 +299,13 @@ export async function onRequestPost(context) {
       contact,
       message,
       ipHash,
+      userAgent
+    });
+    insertMemoryAudit({
+      messageId: inserted.id,
+      ipPlain: ip,
+      ipHash,
+      country,
       userAgent
     });
 
@@ -315,6 +359,15 @@ export async function onRequestPost(context) {
       )
       .bind(insertedId)
       .first();
+
+    await db
+      .prepare(
+        `INSERT INTO ${AUDIT_TABLE_NAME}
+         (message_id, ip_plain, ip_hash, country, user_agent)
+         VALUES (?1, ?2, ?3, ?4, ?5)`
+      )
+      .bind(insertedId || null, ip, ipHash, country || null, userAgent || null)
+      .run();
 
     return json({
       ok: true,
