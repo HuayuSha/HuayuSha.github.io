@@ -2,7 +2,9 @@
 title: "OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly Novelty Assessment"
 collection: publications
 category: manuscripts
-permalink: /publication/OpenNovelty
+permalink: /publication/OpenNovelty/
+redirect_from:
+  - /publication/OpenNovelty
 excerpt: 'OpenNovelty builds an evidence-grounded agent pipeline for scholarly novelty assessment. Instead of giving opaque yes/no judgments, it retrieves related literature, compares contribution claims against full texts, and produces verifiable novelty reports with explicit evidence snippets and citations.'
 date: 2026-01-04
 venue: 'arXiv preprint'

@@ -11,13 +11,28 @@
     return path || '/';
   }
 
-  function detectLang(path) {
+  function pathLang(path) {
     return path === '/zh' || path.startsWith('/zh/') ? LANG_ZH : LANG_EN;
+  }
+
+  function detectLang(path, preferredLang) {
+    const langFromPath = pathLang(path);
+
+    if (langFromPath === LANG_ZH) return LANG_ZH;
+    if (path === '/' || path === '/zh') return LANG_EN;
+
+    if (preferredLang === LANG_ZH || preferredLang === LANG_EN) {
+      return preferredLang;
+    }
+    return LANG_EN;
   }
 
   function buildTargetPath(targetLang, currentPath) {
     if (targetLang === LANG_ZH) {
-      return '/zh/';
+      if (currentPath === '/' || currentPath === '') return '/zh/';
+      if (currentPath === '/zh' || currentPath === '/zh/') return '/zh/';
+      if (currentPath.startsWith('/zh/')) return currentPath;
+      return currentPath;
     }
 
     if (currentPath === '/zh' || currentPath === '/zh/') {
@@ -29,7 +44,7 @@
       return stripped && stripped !== '/' ? stripped : '/';
     }
 
-    return '/';
+    return currentPath;
   }
 
   function refreshToggleUI(toggleButton, label, currentLang, currentPath) {
@@ -51,21 +66,29 @@
     if (!toggleButton || !label) return;
 
     const currentPath = normalizePath(window.location.pathname);
-    const currentLang = detectLang(currentPath);
     const preferredLang = localStorage.getItem(STORAGE_KEY);
+    const currentLangFromPath = pathLang(currentPath);
+    let activeLang = detectLang(currentPath, preferredLang);
 
-    if ((currentPath === '/' || currentPath === '/zh') && preferredLang && preferredLang !== currentLang) {
+    if ((currentPath === '/' || currentPath === '/zh') && preferredLang && preferredLang !== currentLangFromPath) {
       window.location.replace(buildTargetPath(preferredLang, currentPath));
       return;
     }
 
-    refreshToggleUI(toggleButton, label, currentLang, currentPath);
+    refreshToggleUI(toggleButton, label, activeLang, currentPath);
 
     toggleButton.addEventListener('click', function (event) {
       event.preventDefault();
-      const nextLang = currentLang === LANG_ZH ? LANG_EN : LANG_ZH;
+      const nextLang = activeLang === LANG_ZH ? LANG_EN : LANG_ZH;
       const targetPath = buildTargetPath(nextLang, currentPath);
       localStorage.setItem(STORAGE_KEY, nextLang);
+
+      if (normalizePath(targetPath) === currentPath) {
+        activeLang = nextLang;
+        refreshToggleUI(toggleButton, label, activeLang, currentPath);
+        return;
+      }
+
       window.location.assign(targetPath);
     });
   });

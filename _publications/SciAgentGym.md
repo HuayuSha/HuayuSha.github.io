@@ -2,7 +2,9 @@
 title: "SciAgentGym: Benchmarking Multi-Step Scientific Tool-use in LLM Agents"
 collection: publications
 category: manuscripts
-permalink: /publication/SciAgentGym
+permalink: /publication/SciAgentGym/
+redirect_from:
+  - /publication/SciAgentGym
 excerpt: 'SciAgentGym benchmarks multi-step scientific tool use for LLM agents with 1,780 tools and long-horizon workflows. It reports systematic failures on extended trajectories and introduces SciForge data synthesis to improve tool-use training. Current manuscript status: ICML 2026 submission (under review).'
 date: 2026-02-13
 venue: 'arXiv preprint · ICML 2026 submission (under review)'

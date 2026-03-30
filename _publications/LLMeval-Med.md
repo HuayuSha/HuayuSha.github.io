@@ -2,7 +2,9 @@
 title: "LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation"
 collection: publications
 category: manuscripts
-permalink: /publication/LLMEval-Med
+permalink: /publication/LLMEval-Med/
+redirect_from:
+  - /publication/LLMEval-Med
 excerpt: 'LLMEval-Med is a physician-validated clinical benchmark built from real-world electronic health records and expert-designed scenarios. It targets the weaknesses of existing medical LLM evaluations by moving beyond exam-style questions toward realistic clinical reasoning and checklist-based expert assessment.'
 date: 2025-06-04
 venue: 'Findings of EMNLP 2025'

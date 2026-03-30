@@ -2,7 +2,9 @@
 title: "LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models"
 collection: publications
 category: manuscripts
-permalink: /publication/LLMEval-Fair
+permalink: /publication/LLMEval-Fair/
+redirect_from:
+  - /publication/LLMEval-Fair
 excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unseen test sets from a large question bank, combines contamination-resistant curation with anti-cheating design, and studies frontier models longitudinally to produce a more reliable picture of progress than static leaderboards. Current manuscript status: ACL 2026 submission (under review).'
 date: 2025-08-07
 venue: 'ACL 2026 Submission (Under Review)'
