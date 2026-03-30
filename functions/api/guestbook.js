@@ -7,6 +7,9 @@ const MESSAGE_MAX = 2000;
 const USER_AGENT_MAX = 255;
 const RATE_LIMIT_SECONDS = 30;
 const FALLBACK_MAX_MESSAGES = 300;
+const TABLE_NAME = 'guestbook_messages';
+
+let schemaEnsured = false;
 
 const fallbackState = globalThis.__guestbookMemoryState || {
   messages: [],
@@ -59,6 +62,37 @@ function getDb(env) {
 
 function getStorageMode(env) {
   return getDb(env) ? 'd1' : 'memory';
+}
+
+async function ensureSchema(db) {
+  if (!db || schemaEnsured) return;
+
+  await db
+    .prepare(
+      `CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL CHECK(length(name) <= 80),
+        contact TEXT CHECK(contact IS NULL OR length(contact) <= 120),
+        message TEXT NOT NULL CHECK(length(message) <= 2000),
+        created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+        ip_hash TEXT,
+        user_agent TEXT,
+        status TEXT NOT NULL DEFAULT 'visible' CHECK(status IN ('visible', 'hidden'))
+      )`
+    )
+    .run();
+
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_created_at ON ${TABLE_NAME}(created_at DESC)`)
+    .run();
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_status ON ${TABLE_NAME}(status, id DESC)`)
+    .run();
+  await db
+    .prepare(`CREATE INDEX IF NOT EXISTS idx_guestbook_ip_hash ON ${TABLE_NAME}(ip_hash)`)
+    .run();
+
+  schemaEnsured = true;
 }
 
 function nowIso() {
@@ -135,10 +169,12 @@ export async function onRequestGet(context) {
   }
 
   try {
+    await ensureSchema(db);
+
     const query = db
       .prepare(
         `SELECT id, name, contact, message, created_at
-         FROM guestbook_messages
+         FROM ${TABLE_NAME}
          WHERE status = 'visible'
          ORDER BY id DESC
          LIMIT ?1`
@@ -205,10 +241,12 @@ export async function onRequestPost(context) {
   }
 
   try {
+    await ensureSchema(db);
+
     const rateLimited = await db
       .prepare(
         `SELECT COUNT(1) AS count
-         FROM guestbook_messages
+         FROM ${TABLE_NAME}
          WHERE ip_hash = ?1
            AND created_at > datetime('now', ?2)`
       )
@@ -221,7 +259,7 @@ export async function onRequestPost(context) {
 
     const insertResult = await db
       .prepare(
-        `INSERT INTO guestbook_messages
+        `INSERT INTO ${TABLE_NAME}
          (name, contact, message, ip_hash, user_agent, status)
          VALUES (?1, ?2, ?3, ?4, ?5, 'visible')`
       )
@@ -239,7 +277,7 @@ export async function onRequestPost(context) {
     const insertedRow = await db
       .prepare(
         `SELECT id, name, contact, message, created_at
-         FROM guestbook_messages
+         FROM ${TABLE_NAME}
          WHERE id = ?1`
       )
       .bind(insertedId)

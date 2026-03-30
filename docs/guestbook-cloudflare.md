@@ -3,6 +3,12 @@
 This project now uses a custom guestbook API at `/api/guestbook` backed by Cloudflare D1.
 If D1 is not bound yet, the API automatically falls back to temporary in-memory mode (non-durable).
 
+You can check current runtime mode with:
+
+```bash
+curl -sS https://www.huayusha.org/api/guestbook/health
+```
+
 ## 1) Create D1 database
 
 Use Cloudflare dashboard or Wrangler CLI:
@@ -20,6 +26,9 @@ Run:
 ```bash
 wrangler d1 execute huayusha_guestbook --file=scripts/guestbook_schema.sql
 ```
+
+Note: the runtime also has auto-schema creation on first request when D1 is bound.
+Manual migration is still recommended for explicit setup.
 
 ## 3) Bind D1 to Pages project
 
@@ -42,6 +51,13 @@ Set for both Preview and Production environments.
 - After deploy, open `/guestbook/` and `/zh/guestbook/` to verify:
   - listing works (`GET /api/guestbook`)
   - submit works (`POST /api/guestbook`)
+  - database mode is active (`GET /api/guestbook/health`, `storage_mode` should be `d1`)
+
+You can run quick checks with:
+
+```bash
+./scripts/guestbook_d1_check.sh https://www.huayusha.org
+```
 
 ## 6) Optional moderation
 
