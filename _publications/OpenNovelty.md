@@ -7,12 +7,76 @@ excerpt: 'OpenNovelty builds an evidence-grounded agent pipeline for scholarly n
 date: 2026-01-04
 venue: 'arXiv preprint'
 paperurl: 'https://arxiv.org/abs/2601.01576'
+bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2601-01576.bib'
 codeurl: 'https://github.com/january-blue/OpenNovelty'
 authors:
   - Ming Zhang
+  - Kexin Tan
+  - Yueyuan Huang
+  - Yujiong Shen
+  - Chunchun Ma
+  - Li Ju
+  - Xinran Zhang
+  - Yuhui Wang
+  - Wenqing Jing
+  - Jingyi Deng
   - Huayu Sha
-  - et al.
-citation: 'Ming Zhang et al. 2026. OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly Novelty Assessment. arXiv:2601.01576.'
+  - Binze Hu
+  - Jingqi Tong
+  - Changhao Jiang
+  - Yage Geng
+  - Yuankai Ying
+  - Yue Zhang
+  - Zhangyue Yin
+  - Zhiheng Xi
+  - Shihan Dou
+  - Tao Gui
+  - Qi Zhang
+  - Xuanjing Huang
+equal_contrib_authors:
+  - Ming Zhang
+  - Kexin Tan
+  - Yueyuan Huang
+corresponding_authors:
+  - Ming Zhang
+  - Qi Zhang
+citation: |-
+  @article{abs-2601-01576,
+    author       = {Ming Zhang and
+                    Kexin Tan and
+                    Yueyuan Huang and
+                    Yujiong Shen and
+                    Chunchun Ma and
+                    Li Ju and
+                    Xinran Zhang and
+                    Yuhui Wang and
+                    Wenqing Jing and
+                    Jingyi Deng and
+                    Huayu Sha and
+                    Binze Hu and
+                    Jingqi Tong and
+                    Changhao Jiang and
+                    Yage Geng and
+                    Yuankai Ying and
+                    Yue Zhang and
+                    Zhangyue Yin and
+                    Zhiheng Xi and
+                    Shihan Dou and
+                    Tao Gui and
+                    Qi Zhang and
+                    Xuanjing Huang},
+    title        = {OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly
+                    Novelty Assessment},
+    journal      = {CoRR},
+    volume       = {abs/2601.01576},
+    year         = {2026},
+    url          = {https://doi.org/10.48550/arXiv.2601.01576},
+    doi          = {10.48550/ARXIV.2601.01576},
+    eprinttype   = {arXiv},
+    eprint       = {2601.01576},
+    biburl       = {https://dblp.org/rec/journals/corr/abs-2601-01576.bib},
+    bibsource    = {dblp computer science bibliography, https://dblp.org}
+  }
 ---
 
 OpenNovelty focuses on a difficult but essential part of research evaluation: **verifiable novelty assessment** with explicit evidence traces.

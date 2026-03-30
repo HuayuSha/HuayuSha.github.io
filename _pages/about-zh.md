@@ -42,11 +42,11 @@ lang: zh
 
       <div class="prism-side-card prism-side-card--soft reveal" id="contact">
         <h3>联系方式</h3>
-        <p>{{ site.author.email }}</p>
-        <p>中国上海</p>
-        <p><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">github.com/{{ site.author.github }}</a></p>
-        <p><a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">orcid.org/0009-0006-1742-5816</a></p>
-        <p><a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer">openreview.net/profile?id=~Huayu_Sha1</a></p>
+        <p>邮箱：<a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+        <p>地区：中国上海</p>
+        <p>GitHub：<a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">@{{ site.author.github }}</a></p>
+        <p>ORCID：<a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">0009-0006-1742-5816</a></p>
+        <p>OpenReview：<a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer">~Huayu_Sha1</a></p>
       </div>
     </aside>
 
@@ -87,7 +87,7 @@ lang: zh
                 <span class="prism-paper-meta-text">{{ post.venue | default: "预印本" }}</span>
               </div>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              {% include publication-authors-inline.html authors=post.authors class="publication-authors-line--card" max=6 %}
+              {% include publication-authors-inline.html authors=post.authors equal_contrib=post.equal_contrib_authors corresponding=post.corresponding_authors class="publication-authors-line--card" max=6 %}
               <p class="prism-paper-excerpt-zh">{{ post.excerpt_zh | default: post.excerpt | strip_html | truncate: 160 }}</p>
               <div class="prism-paper-actions">
                 <a class="prism-link-button" href="{{ post.url | relative_url }}">详情</a>

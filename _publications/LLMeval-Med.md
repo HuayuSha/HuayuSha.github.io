@@ -7,7 +7,7 @@ excerpt: 'LLMEval-Med is a physician-validated clinical benchmark built from rea
 date: 2025-06-04
 venue: 'Findings of EMNLP 2025'
 paperurl: 'https://aclanthology.org/2025.findings-emnlp.263/'
-bibtexurl: 'https://aclanthology.org/2025.findings-emnlp.263.bib'
+bibtexurl: 'https://dblp.org/rec/conf/emnlp/ZhangSLSHWHLTJCXDGZH25.bib'
 codeurl: 'https://github.com/llmeval/LLMEval-Med'
 authors:
   - Ming Zhang
@@ -26,7 +26,46 @@ authors:
   - Tao Gui
   - Qi Zhang
   - Xuanjing Huang
-citation: 'Ming Zhang, Yujiong Shen, Zelin Li, Huayu Sha, Binze Hu, Yuhui Wang, Chenhao Huang, Shichun Liu, Jingqi Tong, Changhao Jiang, Mingxu Chai, Zhiheng Xi, Shihan Dou, Tao Gui, Qi Zhang, and Xuanjing Huang. 2025. LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation. Findings of EMNLP 2025.'
+equal_contrib_authors:
+  - Ming Zhang
+  - Yujiong Shen
+  - Zelin Li
+corresponding_authors:
+  - Qi Zhang
+  - Xuanjing Huang
+citation: |-
+  @inproceedings{Zhang2025,
+    author       = {Ming Zhang and
+                    Yujiong Shen and
+                    Zelin Li and
+                    Huayu Sha and
+                    Binze Hu and
+                    Yuhui Wang and
+                    Chenhao Huang and
+                    Shichun Liu and
+                    Jingqi Tong and
+                    Changhao Jiang and
+                    Mingxu Chai and
+                    Zhiheng Xi and
+                    Shihan Dou and
+                    Tao Gui and
+                    Qi Zhang and
+                    Xuanjing Huang},
+    editor       = {Christos Christodoulopoulos and
+                    Tanmoy Chakraborty and
+                    Carolyn Rose and
+                    Violet Peng},
+    title        = {LLMEval-Med: {A} Real-world Clinical Benchmark for Medical LLMs with
+                    Physician Validation},
+    booktitle    = {Findings of the Association for Computational Linguistics: {EMNLP}
+                    2025, Suzhou, China, November 4-9, 2025},
+    pages        = {4888--4914},
+    publisher    = {Association for Computational Linguistics},
+    year         = {2025},
+    url          = {https://aclanthology.org/2025.findings-emnlp.263/},
+    biburl       = {https://dblp.org/rec/conf/emnlp/ZhangSLSHWHLTJCXDGZH25.bib},
+    bibsource    = {dblp computer science bibliography, https://dblp.org}
+  }
 ---
 
 LLMEval-Med targets a high-stakes scenario where evaluation quality directly affects safety conclusions: medical LLM assessment in realistic clinical contexts.

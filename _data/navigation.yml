@@ -20,5 +20,8 @@ main:
   - title: "CV"
     url: /cv/
 
+  - title: "Guestbook"
+    url: /guestbook/
+
   - title: "Contact"
     url: /#contact

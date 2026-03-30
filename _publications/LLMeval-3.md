@@ -7,40 +7,86 @@ excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unse
 date: 2025-08-07
 venue: 'ACL 2026 Submission (Under Review)'
 paperurl: 'https://arxiv.org/abs/2508.05452'
-codeurl: 'https://github.com/HuayuSha/LLMEval-3'
+bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2508-05452.bib'
+codeurl: 'https://github.com/llmeval/LLMEval-Fair'
 authors:
   - Ming Zhang
   - Yujiong Shen
   - Jingyi Deng
   - Yuhui Wang
+  - Huayu Sha
+  - Kexin Tan
+  - Qiyuan Peng
   - Yue Zhang
   - Junzhe Wang
   - Shichun Liu
-  - Shihan Dou
-  - Huayu Sha
-  - Qiyuan Peng
+  - Yueyuan Huang
   - Changhao Jiang
   - Jingqi Tong
   - Yilong Wu
   - Zhihao Zhang
   - Mingqi Wu
-  - Zhiheng Xi
   - Mingxu Chai
-  - Tao Liang
-  - Zhihui Fei
-  - Zhen Wang
-  - Mingyang Wan
-  - Guojun Ma
+  - Zhiheng Xi
+  - Shihan Dou
   - Tao Gui
   - Qi Zhang
   - Xuanjing Huang
-citation: 'Ming Zhang, Yujiong Shen, Jingyi Deng, Yuhui Wang, Yue Zhang, Junzhe Wang, Shichun Liu, Shihan Dou, Huayu Sha, Qiyuan Peng, Changhao Jiang, Jingqi Tong, Yilong Wu, Zhihao Zhang, Mingqi Wu, Zhiheng Xi, Mingxu Chai, Tao Liang, Zhihui Fei, Zhen Wang, Mingyang Wan, Guojun Ma, Tao Gui, Qi Zhang, and Xuanjing Huang. LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models. Submitted to ACL 2026 (under review); preprint arXiv:2508.05452.'
+equal_contrib_authors:
+  - Ming Zhang
+  - Yujiong Shen
+  - Jingyi Deng
+  - Yuhui Wang
+corresponding_authors:
+  - Ming Zhang
+  - Qi Zhang
+citation: |-
+  @article{abs-2508-05452,
+    author       = {Ming Zhang and
+                    Yujiong Shen and
+                    Jingyi Deng and
+                    Yuhui Wang and
+                    Yue Zhang and
+                    Junzhe Wang and
+                    Shichun Liu and
+                    Shihan Dou and
+                    Huayu Sha and
+                    Qiyuan Peng and
+                    Changhao Jiang and
+                    Jingqi Tong and
+                    Yilong Wu and
+                    Zhihao Zhang and
+                    Mingqi Wu and
+                    Zhiheng Xi and
+                    Mingxu Chai and
+                    Tao Liang and
+                    Zhihui Fei and
+                    Zhen Wang and
+                    Mingyang Wan and
+                    Guojun Ma and
+                    Tao Gui and
+                    Qi Zhang and
+                    Xuanjing Huang},
+    title        = {LLMEval-3: {A} Large-Scale Longitudinal Study on Robust and Fair Evaluation
+                    of Large Language Models},
+    journal      = {CoRR},
+    volume       = {abs/2508.05452},
+    year         = {2025},
+    url          = {https://doi.org/10.48550/arXiv.2508.05452},
+    doi          = {10.48550/ARXIV.2508.05452},
+    eprinttype   = {arXiv},
+    eprint       = {2508.05452},
+    biburl       = {https://dblp.org/rec/journals/corr/abs-2508-05452.bib},
+    bibsource    = {dblp computer science bibliography, https://dblp.org}
+  }
 ---
 
 LLMEval-Fair studies a core reliability issue in LLM benchmarking: whether leaderboard gains reflect real capability growth, or partial overfitting to static public tests.
 
 **Current status:** Submitted to **ACL 2026** (under review).  
 **Public version:** arXiv preprint available.
+
+> Note: DBLP currently indexes the preprint entry under the title **LLMEval-3** (`abs-2508-05452`).
 
 ![LLMEval logo](https://raw.githubusercontent.com/HuayuSha/LLMEval-3/main/pic/llmeval-logo.png)
 

@@ -1,15 +1,77 @@
 ---
-title: "SciAgentGym: A Benchmark and Evaluation Suite for Scientific AI Agents"
+title: "SciAgentGym: Benchmarking Multi-Step Scientific Tool-use in LLM Agents"
 collection: publications
 category: manuscripts
 permalink: /publication/SciAgentGym
-excerpt: 'SciAgentGym is a benchmark-oriented project for evaluating scientific AI agents on task completion quality, tool-use reliability, and reproducibility. Current manuscript status: ICML 2026 submission (under review).'
-date: 2026-03-20
-venue: 'ICML 2026 Submission (Under Review)'
+excerpt: 'SciAgentGym benchmarks multi-step scientific tool use for LLM agents with 1,780 tools and long-horizon workflows. It reports systematic failures on extended trajectories and introduces SciForge data synthesis to improve tool-use training. Current manuscript status: ICML 2026 submission (under review).'
+date: 2026-02-13
+venue: 'arXiv preprint · ICML 2026 submission (under review)'
+paperurl: 'https://arxiv.org/abs/2602.12984'
+bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2602-12984.bib'
+codeurl: 'https://github.com/CMarsRover/SciAgentGYM'
 authors:
+  - Yujiong Shen
+  - Yajie Yang
+  - Zhiheng Xi
+  - Binze Hu
   - Huayu Sha
-  - et al.
-citation: 'Huayu Sha et al. SciAgentGym: A Benchmark and Evaluation Suite for Scientific AI Agents. Submitted to ICML 2026 (under review).'
+  - Jiazheng Zhang
+  - Qiyuan Peng
+  - Junlin Shang
+  - Jixuan Huang
+  - Yutao Fan
+  - Jingqi Tong
+  - Shihan Dou
+  - Ming Zhang
+  - Lei Bai
+  - Zhenfei Yin
+  - Tao Gui
+  - Xingjun Ma
+  - Qi Zhang
+  - Xuanjing Huang
+  - Yu-Gang Jiang
+equal_contrib_authors:
+  - Yujiong Shen
+  - Yajie Yang
+  - Zhiheng Xi
+corresponding_authors:
+  - Zhenfei Yin
+  - Tao Gui
+  - Xuanjing Huang
+citation: |-
+  @article{abs-2602-12984,
+    author       = {Yujiong Shen and
+                    Yajie Yang and
+                    Zhiheng Xi and
+                    Binze Hu and
+                    Huayu Sha and
+                    Jiazheng Zhang and
+                    Qiyuan Peng and
+                    Junlin Shang and
+                    Jixuan Huang and
+                    Yutao Fan and
+                    Jingqi Tong and
+                    Shihan Dou and
+                    Ming Zhang and
+                    Lei Bai and
+                    Zhenfei Yin and
+                    Tao Gui and
+                    Xingjun Ma and
+                    Qi Zhang and
+                    Xuanjing Huang and
+                    Yu{-}Gang Jiang},
+    title        = {SciAgentGym: Benchmarking Multi-Step Scientific Tool-use in {LLM}
+                    Agents},
+    journal      = {CoRR},
+    volume       = {abs/2602.12984},
+    year         = {2026},
+    url          = {https://doi.org/10.48550/arXiv.2602.12984},
+    doi          = {10.48550/ARXIV.2602.12984},
+    eprinttype   = {arXiv},
+    eprint       = {2602.12984},
+    biburl       = {https://dblp.org/rec/journals/corr/abs-2602-12984.bib},
+    bibsource    = {dblp computer science bibliography, https://dblp.org}
+  }
 ---
 
 SciAgentGym is an in-progress benchmark project for evaluating scientific AI agents in realistic research workflows.
