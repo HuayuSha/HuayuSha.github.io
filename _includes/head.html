@@ -13,7 +13,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
-  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  (function () {
+    var root = document.documentElement;
+    root.className = root.className.replace(/\bno-js\b/g, '') + ' js ';
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('site-intro-pending');
+        window.setTimeout(function () {
+          root.classList.remove('site-intro-pending');
+        }, 2800);
+      }
+    } catch (e) {
+      root.classList.add('site-intro-pending');
+      window.setTimeout(function () {
+        root.classList.remove('site-intro-pending');
+      }, 2800);
+    }
+  })();
 </script>
 
 <!-- For all browsers -->
