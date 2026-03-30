@@ -130,8 +130,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function enableLeaveTransition() {
+    if (reduceMotion) return;
+
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented) return;
+      if (event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+      if (!link) return;
+      if (link.id === 'lang-toggle-btn') return;
+      if (link.target && link.target.toLowerCase() === '_blank') return;
+      if (!isInternalNavigable(link)) return;
+
+      let target;
+      try {
+        target = new URL(link.href, window.location.origin);
+      } catch {
+        return;
+      }
+
+      const current = new URL(window.location.href);
+      const samePath = normalizePath(target.pathname) === normalizePath(current.pathname);
+      const sameSearch = target.search === current.search;
+
+      if (samePath && sameSearch && target.hash) return;
+
+      event.preventDefault();
+      document.body.classList.add('page-leaving');
+      window.setTimeout(() => {
+        window.location.assign(`${target.pathname}${target.search}${target.hash}`);
+      }, 110);
+    });
+  }
+
   canonicalizePublicationLinks();
   limitSmoothScrollToHashLinks();
   addInternalPrefetch();
   enhanceClickMotion();
+  enableLeaveTransition();
 });

@@ -7,6 +7,18 @@ layout: default
 {% if page.collection == 'publications' %}
   {% assign is_publication = true %}
 {% endif %}
+{% assign source_publication = nil %}
+{% if page.source_publication %}
+  {% assign source_publication = site.publications | where: "permalink", page.source_publication | first %}
+{% endif %}
+{% assign active_page = page %}
+{% if source_publication %}
+  {% assign active_page = source_publication %}
+{% endif %}
+{% assign effective_is_publication = is_publication %}
+{% if source_publication %}
+  {% assign effective_is_publication = true %}
+{% endif %}
 {% assign is_cv_page = false %}
 {% if page.permalink == '/cv/' or page.url == '/cv/' %}
   {% assign is_cv_page = true %}
@@ -23,90 +35,94 @@ layout: default
 {% endif %}
 
 <div id="main" role="main">
-  {% if is_publication or is_cv_page %}
+  {% if effective_is_publication or is_cv_page %}
     {% include publication-left-sidebar.html %}
   {% else %}
     {% include sidebar.html %}
   {% endif %}
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
-    {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">{% endif %}
+    {% if active_page.title %}<meta itemprop="headline" content="{{ active_page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if active_page.excerpt %}<meta itemprop="description" content="{{ active_page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if active_page.date %}<meta itemprop="datePublished" content="{{ active_page.date | date: "%B %d, %Y" }}">{% endif %}
+    {% if active_page.modified %}<meta itemprop="dateModified" content="{{ active_page.modified | date: "%B %d, %Y" }}">{% endif %}
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
-          {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% if page.read_time %}
+          {% if active_page.title %}<h1 class="page__title" itemprop="headline">{{ active_page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+          {% if active_page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
-          {% if page.modified %}
-            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
+          {% if active_page.modified %}
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ active_page.modified | date: "%Y-%m-%d" }}">{{ active_page.modified | date: "%B %d, %Y" }}</time></p>
           {% endif %}
 
-          {% if page.collection == 'teaching' %}
-            <p>{{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }}</p>
-          {% elsif page.venue and page.date %}
-            <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }}</p>
-          {% elsif page.date %}
-            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+          {% if active_page.collection == 'teaching' %}
+            <p>{{ active_page.type }}, <i>{{ active_page.venue }}</i>, {{ active_page.date | default: "1900-01-01" | date: "%Y" }}</p>
+          {% elsif active_page.venue and active_page.date %}
+            <p>Published in <i>{{ active_page.venue }}</i>, {{ active_page.date | default: "1900-01-01" | date: "%Y" }}</p>
+          {% elsif active_page.date %}
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ active_page.date | date_to_xmlschema }}">{{ active_page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
           {% endif %}
-          {% if is_publication %}
-            {% include publication-authors-inline.html authors=page.authors equal_contrib=page.equal_contrib_authors corresponding=page.corresponding_authors class="publication-authors-line--detail" show_note=true %}
+          {% if effective_is_publication %}
+            {% include publication-authors-inline.html authors=active_page.authors equal_contrib=active_page.equal_contrib_authors corresponding=active_page.corresponding_authors class="publication-authors-line--detail" show_note=true %}
           {% endif %}
         </header>
       {% endunless %}
 
       <section class="page__content" itemprop="text">
-        {{ content }}
+        {% if source_publication %}
+          {{ source_publication.content | markdownify }}
+        {% else %}
+          {{ content }}
+        {% endif %}
 
-        {% if is_publication %}
-          {% if page.paperurl or page.codeurl %}
+        {% if effective_is_publication %}
+          {% if active_page.paperurl or active_page.codeurl %}
             <div class="publication-links">
-              {% if page.paperurl %}
-                <a class="button-pill button-pill--ghost" href="{{ page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+              {% if active_page.paperurl %}
+                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
               {% endif %}
-              {% if page.codeurl %}
-                <a class="button-pill button-pill--ghost" href="{{ page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
+              {% if active_page.codeurl %}
+                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
               {% endif %}
             </div>
           {% endif %}
 
-          {% if page.citation %}
+          {% if active_page.citation %}
             <div class="publication-citation">
               <h3>Citation</h3>
-              <pre>{{ page.citation }}</pre>
+              <pre>{{ active_page.citation }}</pre>
             </div>
           {% endif %}
-        {% elsif page.paperurl or page.slidesurl or page.bibtexurl or page.codeurl or page.citation %}
+        {% elsif active_page.paperurl or active_page.slidesurl or active_page.bibtexurl or active_page.codeurl or active_page.citation %}
           <div class="resource-card">
             <div class="resource-card__actions">
-              {% if page.paperurl %}
-                <a class="button-pill button-pill--ghost" href="{{ page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+              {% if active_page.paperurl %}
+                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
               {% endif %}
-              {% if page.codeurl %}
-                <a class="button-pill button-pill--ghost" href="{{ page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
+              {% if active_page.codeurl %}
+                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
               {% endif %}
-              {% if page.slidesurl %}
-                <a class="button-pill button-pill--ghost" href="{{ page.slidesurl }}" target="_blank" rel="noopener noreferrer">Slides</a>
+              {% if active_page.slidesurl %}
+                <a class="button-pill button-pill--ghost" href="{{ active_page.slidesurl }}" target="_blank" rel="noopener noreferrer">Slides</a>
               {% endif %}
-              {% if page.bibtexurl %}
-                <a class="button-pill button-pill--ghost" href="{{ page.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
+              {% if active_page.bibtexurl %}
+                <a class="button-pill button-pill--ghost" href="{{ active_page.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
               {% endif %}
             </div>
 
-            {% if page.citation %}
+            {% if active_page.citation %}
               <details class="citation-toggle">
                 <summary>Show citation</summary>
-                <pre>{{ page.citation }}</pre>
+                <pre>{{ active_page.citation }}</pre>
               </details>
             {% endif %}
           </div>
         {% endif %}
 
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+        {% if active_page.link %}<div><a href="{{ active_page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
       <footer class="page__meta">
@@ -116,11 +132,11 @@ layout: default
         {% include page__taxonomy.html %}
       </footer>
 
-      {% unless is_publication or is_cv_page %}
+      {% unless effective_is_publication or is_cv_page %}
         {% if page.share %}{% include social-share.html %}{% endif %}
       {% endunless %}
 
-      {% unless is_publication or is_cv_page %}
+      {% unless effective_is_publication or is_cv_page %}
         {% include post_pagination.html %}
       {% endunless %}
     </div>

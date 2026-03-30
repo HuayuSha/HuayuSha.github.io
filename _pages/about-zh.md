@@ -86,11 +86,11 @@ lang: zh
                 <span class="prism-paper-meta-dot"></span>
                 <span class="prism-paper-meta-text">{{ post.venue | default: "预印本" }}</span>
               </div>
-              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <h3><a href="{{ '/zh' | append: post.url | relative_url }}">{{ post.title }}</a></h3>
               {% include publication-authors-inline.html authors=post.authors equal_contrib=post.equal_contrib_authors corresponding=post.corresponding_authors class="publication-authors-line--card" max=6 %}
               <p class="prism-paper-excerpt-zh">{{ post.excerpt_zh | default: post.excerpt | strip_html | truncate: 160 }}</p>
               <div class="prism-paper-actions">
-                <a class="prism-link-button" href="{{ post.url | relative_url }}">详情</a>
+                <a class="prism-link-button" href="{{ '/zh' | append: post.url | relative_url }}">详情</a>
                 {% if post.paperurl %}
                   <a class="prism-link-button" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> 论文</a>
                 {% endif %}

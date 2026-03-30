@@ -15,16 +15,8 @@
     return path === '/zh' || path.startsWith('/zh/') ? LANG_ZH : LANG_EN;
   }
 
-  function detectLang(path, preferredLang) {
-    const langFromPath = pathLang(path);
-
-    if (langFromPath === LANG_ZH) return LANG_ZH;
-    if (path === '/' || path === '/zh') return LANG_EN;
-
-    if (preferredLang === LANG_ZH || preferredLang === LANG_EN) {
-      return preferredLang;
-    }
-    return LANG_EN;
+  function detectLang(path) {
+    return pathLang(path);
   }
 
   function buildTargetPath(targetLang, currentPath) {
@@ -32,6 +24,7 @@
       if (currentPath === '/' || currentPath === '') return '/zh/';
       if (currentPath === '/zh' || currentPath === '/zh/') return '/zh/';
       if (currentPath.startsWith('/zh/')) return currentPath;
+      if (currentPath.startsWith('/publication/')) return `/zh${currentPath}/`.replace(/\/{2,}/g, '/').replace(/\/$/, '/');
       return currentPath;
     }
 
@@ -41,7 +34,7 @@
 
     if (currentPath.startsWith('/zh/')) {
       const stripped = currentPath.slice(3);
-      return stripped && stripped !== '/' ? stripped : '/';
+      return stripped && stripped !== '/' ? `${stripped}/`.replace(/\/{2,}/g, '/') : '/';
     }
 
     return currentPath;
@@ -68,7 +61,7 @@
     const currentPath = normalizePath(window.location.pathname);
     const preferredLang = localStorage.getItem(STORAGE_KEY);
     const currentLangFromPath = pathLang(currentPath);
-    let activeLang = detectLang(currentPath, preferredLang);
+    let activeLang = detectLang(currentPath);
 
     if ((currentPath === '/' || currentPath === '/zh') && preferredLang && preferredLang !== currentLangFromPath) {
       window.location.replace(buildTargetPath(preferredLang, currentPath));
