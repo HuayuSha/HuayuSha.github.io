@@ -162,6 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const isPublicationDetailTarget =
+        target.pathname.startsWith('/publication/') || target.pathname.startsWith('/zh/publication/');
+      if (isPublicationDetailTarget) {
+        return;
+      }
+
       event.preventDefault();
       document.body.classList.add('page-leaving');
       window.setTimeout(() => {

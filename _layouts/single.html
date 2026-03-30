@@ -11,12 +11,27 @@ layout: default
 {% if page.source_publication %}
   {% assign source_publication = site.publications | where: "permalink", page.source_publication | first %}
 {% endif %}
+{% if source_publication == nil and page.source_publication %}
+  {% assign source_publication_by_url = site.publications | where: "url", page.source_publication | first %}
+  {% if source_publication_by_url %}
+    {% assign source_publication = source_publication_by_url %}
+  {% endif %}
+{% endif %}
+{% if source_publication == nil and page.url contains '/zh/publication/' %}
+  {% assign source_publication_by_title = site.publications | where: "title", page.title | first %}
+  {% if source_publication_by_title %}
+    {% assign source_publication = source_publication_by_title %}
+  {% endif %}
+{% endif %}
 {% assign active_page = page %}
 {% if source_publication %}
   {% assign active_page = source_publication %}
 {% endif %}
 {% assign effective_is_publication = is_publication %}
 {% if source_publication %}
+  {% assign effective_is_publication = true %}
+{% endif %}
+{% if page.url contains '/publication/' %}
   {% assign effective_is_publication = true %}
 {% endif %}
 {% assign is_cv_page = false %}

@@ -4,7 +4,11 @@ layout: compress
 
 {% include base_path %}
 {% assign page_classes = "" %}
-{% if page.collection == "publications" %}
+{% assign is_publication_like_page = false %}
+{% if page.collection == "publications" or page.source_publication or page.url contains "/publication/" %}
+  {% assign is_publication_like_page = true %}
+{% endif %}
+{% if is_publication_like_page %}
   {% assign page_classes = page_classes | append: " publication-page" %}
 {% endif %}
 {% if page.permalink == "/cv/" or page.url == "/cv/" %}
