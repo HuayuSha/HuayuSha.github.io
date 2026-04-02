@@ -23,8 +23,8 @@
       <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
       <a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer" aria-label="ORCID"><i class="fab fa-orcid"></i></a>
       <a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer" aria-label="OpenReview"><i class="fa-solid fa-link"></i></a>
-      <a href="{{ '/publications/' | relative_url }}" aria-label="{% if is_zh_page %}论文{% else %}Publications{% endif %}"><i class="fa-solid fa-book-open"></i></a>
-      <a href="{{ '/cv/' | relative_url }}" aria-label="{% if is_zh_page %}简历{% else %}CV{% endif %}"><i class="fa-solid fa-file-lines"></i></a>
+      <a href="{% if is_zh_page %}{{ '/zh/publications/' | relative_url }}{% else %}{{ '/publications/' | relative_url }}{% endif %}" aria-label="{% if is_zh_page %}论文{% else %}Publications{% endif %}"><i class="fa-solid fa-book-open"></i></a>
+      <a href="{% if is_zh_page %}{{ '/zh/cv/' | relative_url }}{% else %}{{ '/cv/' | relative_url }}{% endif %}" aria-label="{% if is_zh_page %}简历{% else %}CV{% endif %}"><i class="fa-solid fa-file-lines"></i></a>
     </div>
   </div>
 

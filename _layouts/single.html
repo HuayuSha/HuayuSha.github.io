@@ -35,7 +35,7 @@ layout: default
   {% assign effective_is_publication = true %}
 {% endif %}
 {% assign is_cv_page = false %}
-{% if page.permalink == '/cv/' or page.url == '/cv/' %}
+{% if page.permalink == '/cv/' or page.url == '/cv/' or page.permalink == '/zh/cv/' or page.url == '/zh/cv/' %}
   {% assign is_cv_page = true %}
 {% endif %}
 {% assign use_publication_sidebar = false %}

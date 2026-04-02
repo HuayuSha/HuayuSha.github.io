@@ -5,13 +5,13 @@ layout: compress
 {% include base_path %}
 {% assign page_classes = "" %}
 {% assign is_publication_like_page = false %}
-{% if page.collection == "publications" or page.source_publication or page.url contains "/publication/" %}
+{% if page.collection == "publications" or page.source_publication or page.url contains "/publication/" or page.permalink == "/publications/" or page.url == "/publications/" or page.permalink == "/zh/publications/" or page.url == "/zh/publications/" %}
   {% assign is_publication_like_page = true %}
 {% endif %}
 {% if is_publication_like_page %}
   {% assign page_classes = page_classes | append: " publication-page" %}
 {% endif %}
-{% if page.permalink == "/cv/" or page.url == "/cv/" %}
+{% if page.permalink == "/cv/" or page.url == "/cv/" or page.permalink == "/zh/cv/" or page.url == "/zh/cv/" %}
   {% assign page_classes = page_classes | append: " cv-page" %}
 {% endif %}
 {% if page.url contains "/guestbook/" or page.permalink contains "/guestbook/" %}

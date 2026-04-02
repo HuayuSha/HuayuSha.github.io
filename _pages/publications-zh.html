@@ -1,0 +1,43 @@
+---
+layout: archive
+title: "论文"
+permalink: /zh/publications/
+lang: zh
+author_profile: false
+use_publication_sidebar: true
+---
+
+<p>
+  这里汇总了我目前的论文与在投工作，重点围绕大语言模型评测、医疗基准构建、开放式新颖性评估与科学智能系统。
+</p>
+
+{% include base_path %}
+
+{% if site.publication_category %}
+  {% for category in site.publication_category %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        {% case category[0] %}
+          {% when 'books' %}
+            <h2>书籍</h2><hr />
+          {% when 'manuscripts' %}
+            <h2>论文与预印本</h2><hr />
+          {% when 'conferences' %}
+            <h2>会议论文</h2><hr />
+          {% else %}
+            <h2>{{ category[1].title }}</h2><hr />
+        {% endcase %}
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}

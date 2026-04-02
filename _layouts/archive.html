@@ -12,8 +12,17 @@ layout: default
   {% endunless %}
 {% endif %}
 
+{% assign use_publication_sidebar = false %}
+{% if page.use_publication_sidebar or page.permalink == '/publications/' or page.url == '/publications/' or page.permalink == '/zh/publications/' or page.url == '/zh/publications/' %}
+  {% assign use_publication_sidebar = true %}
+{% endif %}
+
 <div id="main" role="main">
-  {% include sidebar.html %}
+  {% if use_publication_sidebar %}
+    {% include publication-left-sidebar.html %}
+  {% else %}
+    {% include sidebar.html %}
+  {% endif %}
 
   <div class="archive">
     {% unless page.header.overlay_color or page.header.overlay_image %}

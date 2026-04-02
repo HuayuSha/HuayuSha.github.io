@@ -25,8 +25,8 @@ lang: zh
           <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
           <a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer" aria-label="ORCID"><i class="fab fa-orcid"></i></a>
           <a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer" aria-label="OpenReview"><i class="fa-solid fa-link"></i></a>
-          <a href="{{ '/publications/' | relative_url }}" aria-label="论文"><i class="fa-solid fa-book-open"></i></a>
-          <a href="{{ '/cv/' | relative_url }}" aria-label="简历"><i class="fa-solid fa-file-lines"></i></a>
+          <a href="{{ '/zh/publications/' | relative_url }}" aria-label="论文"><i class="fa-solid fa-book-open"></i></a>
+          <a href="{{ '/zh/cv/' | relative_url }}" aria-label="简历"><i class="fa-solid fa-file-lines"></i></a>
         </div>
       </div>
 
@@ -75,7 +75,7 @@ lang: zh
       <section class="prism-content-card reveal">
         <div class="prism-section-head prism-section-head--split">
           <h2>代表论文</h2>
-          <a class="prism-view-all" href="{{ '/publications/' | relative_url }}">全部论文 <i class="fa-solid fa-arrow-right-long"></i></a>
+          <a class="prism-view-all" href="{{ '/zh/publications/' | relative_url }}">全部论文 <i class="fa-solid fa-arrow-right-long"></i></a>
         </div>
 
         <div class="prism-paper-list" id="publications">

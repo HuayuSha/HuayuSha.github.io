@@ -3,7 +3,9 @@
   const LANG_EN = 'en';
   const LANG_ZH = 'zh';
   const ROUTE_MAP = {
-    '/guestbook': '/zh/guestbook'
+    '/guestbook': '/zh/guestbook',
+    '/cv': '/zh/cv',
+    '/publications': '/zh/publications'
   };
 
   function normalizePath(pathname) {
