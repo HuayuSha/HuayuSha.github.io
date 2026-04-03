@@ -6,6 +6,7 @@ permalink: /publication/OpenNovelty/
 redirect_from:
   - /publication/OpenNovelty
 excerpt: 'OpenNovelty builds an evidence-grounded agent pipeline for scholarly novelty assessment. Instead of giving opaque yes/no judgments, it retrieves related literature, compares contribution claims against full texts, and produces verifiable novelty reports with explicit evidence snippets and citations.'
+excerpt_zh: 'OpenNovelty 将学术新颖性判断建模为带证据链的多阶段流程：检索相关工作、比较贡献声明、输出可核验的新颖性报告，而不是只给出黑盒判断。'
 date: 2026-01-04
 venue: 'arXiv preprint'
 paperurl: 'https://arxiv.org/abs/2601.01576'
