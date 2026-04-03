@@ -1787,11 +1787,19 @@ html[data-theme="dark"] .prism-bg-spot--two {
 }
 
 @media (max-width: 520px) {
+  .greedy-nav .visible-links {
+    padding-left: 4.9rem !important;
+    padding-right: 8rem !important;
+  }
+
   .greedy-nav .visible-links .masthead__menu-item--lg {
-    flex: 0 0 auto !important;
-    min-width: max-content !important;
+    position: absolute !important;
+    left: 0.9rem !important;
+    top: 0.52rem !important;
+    z-index: 29 !important;
+    margin: 0 !important;
     width: auto !important;
-    margin-right: 0.4rem !important;
+    min-width: max-content !important;
   }
 
   .greedy-nav .visible-links .masthead__menu-item--lg a {
