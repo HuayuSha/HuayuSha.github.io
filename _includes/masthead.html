@@ -13,6 +13,30 @@
   {% assign is_home_like_page = true %}
 {% endif %}
 
+{% assign current_path = page.url | default: page.permalink | default: '/' %}
+{% assign lang_toggle_href = '/zh/' %}
+{% if is_zh_page %}
+  {% assign lang_toggle_href = '/' %}
+  {% if current_path != '/zh/' and current_path != '/zh' %}
+    {% assign stripped_path = current_path | remove_first: '/zh' %}
+    {% if stripped_path == '' %}
+      {% assign stripped_path = '/' %}
+    {% endif %}
+    {% assign lang_toggle_href = stripped_path %}
+  {% endif %}
+{% else %}
+  {% if current_path != '/' %}
+    {% assign lang_toggle_href = '/zh' | append: current_path %}
+  {% endif %}
+{% endif %}
+{% if lang_toggle_href != '/' and lang_toggle_href != '/zh/' and lang_toggle_href != '/zh' and lang_toggle_href != '' %}
+  {% assign lang_toggle_last_char = lang_toggle_href | slice: -1, 1 %}
+  {% unless lang_toggle_last_char == '/' %}
+    {% assign lang_toggle_href = lang_toggle_href | append: '/' %}
+  {% endunless %}
+{% endif %}
+
+
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
@@ -67,11 +91,11 @@
           {% endfor %}
           <li id="lang-toggle" class="masthead__menu-item persist tail">
             {% if is_zh_page %}
-            <a id="lang-toggle-btn" href="/" aria-label="Switch to English / 切换到英文">
+            <a id="lang-toggle-btn" href="{{ lang_toggle_href }}" aria-label="Switch to English / 切换到英文">
               <span id="lang-label">EN</span>
             </a>
             {% else %}
-            <a id="lang-toggle-btn" href="/zh/" aria-label="切换到中文 / Switch to Chinese">
+            <a id="lang-toggle-btn" href="{{ lang_toggle_href }}" aria-label="切换到中文 / Switch to Chinese">
               <span id="lang-label">中文</span>
             </a>
             {% endif %}
