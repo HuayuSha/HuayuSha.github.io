@@ -1787,6 +1787,25 @@ html[data-theme="dark"] .prism-bg-spot--two {
 }
 
 @media (max-width: 520px) {
+  .greedy-nav .visible-links .masthead__menu-item--lg {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+    width: auto !important;
+    margin-right: 0.4rem !important;
+  }
+
+  .greedy-nav .visible-links .masthead__menu-item--lg a {
+    white-space: nowrap !important;
+    font-size: 1.16rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .greedy-nav .visible-links .masthead__menu-item--nav a {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 520px) {
   body:not(.home-page) #main {
     padding: 0.95rem 0.72rem 2.5rem !important;
   }
