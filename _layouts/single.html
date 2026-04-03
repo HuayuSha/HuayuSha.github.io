@@ -101,17 +101,17 @@ layout: default
           {% if active_page.paperurl or active_page.codeurl %}
             <div class="publication-links">
               {% if active_page.paperurl %}
-                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}论文{% else %}Paper{% endif %}</a>
               {% endif %}
               {% if active_page.codeurl %}
-                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
+                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}代码{% else %}Code{% endif %}</a>
               {% endif %}
             </div>
           {% endif %}
 
           {% if active_page.citation %}
             <div class="publication-citation">
-              <h3>Citation</h3>
+              <h3>{% if page.lang == "zh" %}引用{% else %}Citation{% endif %}</h3>
               <pre>{{ active_page.citation }}</pre>
             </div>
           {% endif %}
@@ -119,10 +119,10 @@ layout: default
           <div class="resource-card">
             <div class="resource-card__actions">
               {% if active_page.paperurl %}
-                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}论文{% else %}Paper{% endif %}</a>
               {% endif %}
               {% if active_page.codeurl %}
-                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">Code</a>
+                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}代码{% else %}Code{% endif %}</a>
               {% endif %}
               {% if active_page.slidesurl %}
                 <a class="button-pill button-pill--ghost" href="{{ active_page.slidesurl }}" target="_blank" rel="noopener noreferrer">Slides</a>

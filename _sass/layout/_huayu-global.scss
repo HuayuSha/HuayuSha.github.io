@@ -1386,8 +1386,8 @@ body:not(.home-page) .author__urls-wrapper button {
   padding: 1.2rem 1.5rem !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
-  gap: 1rem !important;
+  justify-content: center !important;
+  gap: 0.75rem 1.5rem !important;
   flex-wrap: wrap !important;
 }
 
@@ -1634,6 +1634,39 @@ html[data-theme="dark"] .prism-bg-spot--two {
 @media (max-width: 720px) {
   .masthead__inner-wrap {
     padding: 0.28rem 0.9rem !important;
+  }
+
+  .greedy-nav {
+    position: relative !important;
+    min-height: 3.4rem !important;
+  }
+
+  .greedy-nav .visible-links {
+    padding-right: 8rem !important;
+  }
+
+  .greedy-nav > button {
+    position: absolute !important;
+    right: 0.9rem !important;
+    top: 0.56rem !important;
+    margin: 0 !important;
+    z-index: 30 !important;
+  }
+
+  #theme-toggle {
+    position: absolute !important;
+    right: 3.95rem !important;
+    top: 0.56rem !important;
+    z-index: 29 !important;
+    display: block !important;
+  }
+
+  #lang-toggle {
+    position: absolute !important;
+    right: 6.7rem !important;
+    top: 0.56rem !important;
+    z-index: 29 !important;
+    display: block !important;
   }
 
   #lang-toggle a {

@@ -76,7 +76,7 @@
     const nextLang = currentLang === LANG_ZH ? LANG_EN : LANG_ZH;
     const nextPath = buildTargetPath(nextLang, currentPath);
 
-    label.textContent = currentLang === LANG_ZH ? '中文' : 'EN';
+    label.textContent = currentLang === LANG_ZH ? 'EN' : '中文';
     toggleButton.classList.toggle('is-zh', currentLang === LANG_ZH);
     toggleButton.setAttribute(
       'aria-label',
