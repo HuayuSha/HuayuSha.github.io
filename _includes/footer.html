@@ -1,6 +1,10 @@
 {% include base_path %}
+{% assign is_zh_footer = false %}
+{% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
+  {% assign is_zh_footer = true %}
+{% endif %}
 
 <div class="page__footer-copyright">
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</span>
-  <span>{% if page.lang == "zh" %}最近更新{% else %}Last updated{% endif %} {{ "now" | date: '%Y-%m-%d' }}</span>
+  <span>{% if is_zh_footer %}最近更新{% else %}Last updated{% endif %} {{ "now" | date: '%Y-%m-%d' }}</span>
 </div>
