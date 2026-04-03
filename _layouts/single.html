@@ -42,6 +42,10 @@ layout: default
 {% if page.use_publication_sidebar %}
   {% assign use_publication_sidebar = true %}
 {% endif %}
+{% assign is_zh_page = false %}
+{% if page.lang == "zh" or page.url contains '/zh/' or page.permalink contains '/zh/' %}
+  {% assign is_zh_page = true %}
+{% endif %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
   {% include page__hero.html %}
@@ -68,21 +72,21 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header>
+        <header class="page__header{% if effective_is_publication %} page__header--publication{% endif %}{% if is_cv_page %} page__header--cv{% endif %}">
           {% if active_page.title %}<h1 class="page__title" itemprop="headline">{{ active_page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if active_page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
           {% if active_page.modified %}
-            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ active_page.modified | date: "%Y-%m-%d" }}">{{ active_page.modified | date: "%B %d, %Y" }}</time></p>
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {% if is_zh_page %}最近更新：{% else %}Updated:{% endif %}</strong> <time datetime="{{ active_page.modified | date: "%Y-%m-%d" }}">{{ active_page.modified | date: "%B %d, %Y" }}</time></p>
           {% endif %}
 
           {% if active_page.collection == 'teaching' %}
             <p>{{ active_page.type }}, <i>{{ active_page.venue }}</i>, {{ active_page.date | default: "1900-01-01" | date: "%Y" }}</p>
           {% elsif active_page.venue and active_page.date %}
-            <p>Published in <i>{{ active_page.venue }}</i>, {{ active_page.date | default: "1900-01-01" | date: "%Y" }}</p>
+            <p class="page__lede page__lede--venue">{% if is_zh_page %}发表于 <i>{{ active_page.venue }}</i> · {{ active_page.date | default: "1900-01-01" | date: "%Y" }}{% else %}Published in <i>{{ active_page.venue }}</i> · {{ active_page.date | default: "1900-01-01" | date: "%Y" }}{% endif %}</p>
           {% elsif active_page.date %}
-            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ active_page.date | date_to_xmlschema }}">{{ active_page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+            <p class="page__date page__date--meta"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {% if is_zh_page %}日期：{% else %}Date:{% endif %}</strong> <time datetime="{{ active_page.date | date_to_xmlschema }}">{{ active_page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
           {% endif %}
           {% if effective_is_publication %}
             {% include publication-authors-inline.html authors=active_page.authors equal_contrib=active_page.equal_contrib_authors corresponding=active_page.corresponding_authors class="publication-authors-line--detail" show_note=true %}
