@@ -2,5 +2,5 @@
 
 <div class="page__footer-copyright">
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</span>
-  <span>Last updated {{ "now" | date: '%Y-%m-%d' }}</span>
+  <span>{% if page.lang == "zh" %}最近更新{% else %}Last updated{% endif %} {{ "now" | date: '%Y-%m-%d' }}</span>
 </div>

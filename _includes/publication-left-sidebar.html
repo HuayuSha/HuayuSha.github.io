@@ -16,7 +16,7 @@
     {% else %}
       <p class="prism-role">Software Engineering · Fudan</p>
     {% endif %}
-    <p class="prism-affiliation">{{ site.author.employer }}</p>
+    <p class="prism-affiliation">{% if is_zh_page %}复旦大学{% else %}{{ site.author.employer }}{% endif %}</p>
 
     <div class="prism-socials">
       <a href="mailto:{{ site.author.email }}" aria-label="{% if is_zh_page %}邮箱{% else %}Email{% endif %}"><i class="fa-solid fa-envelope"></i></a>
