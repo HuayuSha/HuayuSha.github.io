@@ -157,16 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (samePath && sameSearch && target.hash) return;
 
-      const isMastheadNav = !!link.closest('.masthead');
-      if (isMastheadNav) {
-        return;
-      }
-
-      const isPublicationDetailTarget =
-        target.pathname.startsWith('/publication/') || target.pathname.startsWith('/zh/publication/');
-      if (isPublicationDetailTarget) {
-        return;
-      }
 
       event.preventDefault();
       document.body.classList.add('page-leaving');
