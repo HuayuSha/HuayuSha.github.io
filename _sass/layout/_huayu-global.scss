@@ -1636,6 +1636,10 @@ html[data-theme="dark"] .prism-bg-spot--two {
     padding: 0.28rem 0.9rem !important;
   }
 
+  .greedy-nav .visible-links .masthead__menu-item--nav {
+    display: none !important;
+  }
+
   .greedy-nav {
     position: relative !important;
     min-height: 3.4rem !important;
