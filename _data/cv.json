@@ -4,7 +4,7 @@
     "email": "23302010032@m.fudan.edu.cn",
     "phone": "",
     "website": "https://huayusha.org",
-    "summary": "Software Engineering student at Fudan University working on NLP, trustworthy evaluation of large language models, medical benchmarks, and scientific intelligence.",
+    "summary": "Undergraduate researcher in Software Engineering at Fudan University, focusing on trustworthy LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -51,9 +51,9 @@
     {
       "name": "Research Areas",
       "keywords": [
-        "Natural Language Processing",
         "Trustworthy LLM Evaluation",
-        "Medical NLP",
+        "Medical Benchmarks",
+        "Novelty Assessment",
         "Scientific Intelligence"
       ]
     }
@@ -65,18 +65,18 @@
       "keywords": [
         "Robust and fair evaluation of language models",
         "Medical benchmarks with expert validation",
-        "Open-ended novelty assessment"
+        "Open-ended novelty assessment and scientific intelligence"
       ]
     }
   ],
   "references": [],
   "publications": [
     {
-      "name": "OpenNovelty: An Open-domain Benchmark for Evaluating the Open-ended Novelty of Language Models",
+      "name": "OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly Novelty Assessment",
       "publisher": "arXiv",
-      "releaseDate": "2026-01-03",
+      "releaseDate": "2026-01-04",
       "website": "https://arxiv.org/abs/2601.01576",
-      "summary": "A benchmark for evaluating whether language models can assess the novelty of open-ended research ideas and claims."
+      "summary": "An evidence-grounded agentic system for scholarly novelty assessment with retrieval, comparison, and verifiable reporting."
     },
     {
       "name": "LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models",
@@ -89,7 +89,7 @@
       "name": "LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation",
       "publisher": "Findings of EMNLP 2025",
       "releaseDate": "2025-06-04",
-      "website": "https://aclanthology.org/2025.findings-emnlp.1146/",
+      "website": "https://aclanthology.org/2025.findings-emnlp.263/",
       "summary": "A physician-validated real-world clinical benchmark for evaluating medical LLMs across diverse medical scenarios."
     }
   ]
