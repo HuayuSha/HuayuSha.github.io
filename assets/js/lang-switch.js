@@ -85,10 +85,11 @@
     toggleButton.setAttribute('href', nextPath);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function initLangToggle() {
     const toggleButton = document.getElementById('lang-toggle-btn');
     const label = document.getElementById('lang-label');
     if (!toggleButton || !label) return;
+    if (toggleButton.dataset.langReady === 'true') return;
 
     const currentPath = normalizePath(window.location.pathname);
     const preferredLang = localStorage.getItem(STORAGE_KEY);
@@ -101,6 +102,7 @@
     }
 
     refreshToggleUI(toggleButton, label, activeLang, currentPath);
+    toggleButton.dataset.langReady = 'true';
 
     toggleButton.addEventListener('click', function (event) {
       event.preventDefault();
@@ -116,5 +118,11 @@
 
       window.location.assign(targetPath);
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLangToggle);
+  } else {
+    initLangToggle();
+  }
 })();
