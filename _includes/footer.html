@@ -3,8 +3,12 @@
 {% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
   {% assign is_zh_footer = true %}
 {% endif %}
+{% assign footer_site_name = site.name | default: site.title %}
+{% if is_zh_footer %}
+  {% assign footer_site_name = '沙华煜' %}
+{% endif %}
 
 <div class="page__footer-copyright">
-  <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</span>
+  <span>&copy; {{ site.time | date: '%Y' }} {{ footer_site_name }}</span>
   <span>{% if is_zh_footer %}最近更新{% else %}Last updated{% endif %} {{ "now" | date: '%Y-%m-%d' }}</span>
 </div>
