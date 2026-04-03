@@ -37,7 +37,11 @@ $(document).ready(function () {
     });
 
   // Toggle the theme manually
-  var toggleTheme = function () {
+  var toggleTheme = function (event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     const current_theme = $("html").attr("data-theme");
     const new_theme = current_theme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", new_theme);

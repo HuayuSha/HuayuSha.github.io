@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
       if (!link) return;
-      if (link.id === 'lang-toggle-btn') return;
       if (link.target && link.target.toLowerCase() === '_blank') return;
       if (!isInternalNavigable(link)) return;
 
