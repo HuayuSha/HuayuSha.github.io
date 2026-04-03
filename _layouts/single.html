@@ -17,12 +17,6 @@ layout: default
     {% assign source_publication = source_publication_by_url %}
   {% endif %}
 {% endif %}
-{% if source_publication == nil and page.url contains '/zh/publication/' %}
-  {% assign source_publication_by_title = site.publications | where: "title", page.title | first %}
-  {% if source_publication_by_title %}
-    {% assign source_publication = source_publication_by_title %}
-  {% endif %}
-{% endif %}
 {% assign active_page = page %}
 {% if source_publication %}
   {% assign active_page = source_publication %}
