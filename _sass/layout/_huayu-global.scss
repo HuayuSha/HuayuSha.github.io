@@ -1937,4 +1937,24 @@ html[data-theme="dark"] .prism-bg-spot--two {
   .masthead__inner-wrap {
     padding: 0.35rem 1rem !important;
   }
+
+  body.publication-page #main,
+  body.cv-page #main,
+  body.guestbook-page #main {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  body.publication-page .page,
+  body.cv-page .page,
+  body.guestbook-page .page {
+    order: 1;
+  }
+
+  body.publication-page .publication-prism-sidebar,
+  body.cv-page .publication-prism-sidebar,
+  body.guestbook-page .publication-prism-sidebar {
+    order: 2;
+  }
 }
