@@ -111,6 +111,19 @@ layout: default
           </div>
           {% if effective_is_publication %}
             {% include publication-authors-inline.html authors=active_page.authors equal_contrib=active_page.equal_contrib_authors corresponding=active_page.corresponding_authors class="publication-authors-line--detail" show_note=true %}
+            {% if active_page.paperurl or active_page.codeurl or active_page.bibtexurl %}
+              <div class="publication-hero-actions">
+                {% if active_page.paperurl %}
+                  <a class="button-pill button-pill--primary" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}阅读论文{% else %}Read Paper{% endif %}</a>
+                {% endif %}
+                {% if active_page.codeurl %}
+                  <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}项目代码{% else %}Project Code{% endif %}</a>
+                {% endif %}
+                {% if active_page.bibtexurl %}
+                  <a class="button-pill button-pill--ghost" href="{{ active_page.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
+                {% endif %}
+              </div>
+            {% endif %}
           {% endif %}
         </header>
       {% endunless %}
@@ -123,22 +136,33 @@ layout: default
         {% endif %}
 
         {% if effective_is_publication %}
-          {% if active_page.paperurl or active_page.codeurl %}
-            <div class="publication-links">
-              {% if active_page.paperurl %}
-                <a class="button-pill button-pill--ghost" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}论文{% else %}Paper{% endif %}</a>
+          {% if active_page.paperurl or active_page.codeurl or active_page.bibtexurl or active_page.citation %}
+            <section class="publication-resource-hub" aria-label="{% if page.lang == 'zh' %}论文资源{% else %}Publication resources{% endif %}">
+              <div class="publication-resource-hub__header">
+                <h2>{% if page.lang == "zh" %}资源与引用{% else %}Resources & Citation{% endif %}</h2>
+                <p>{% if page.lang == "zh" %}在这里快速访问论文、代码与引用信息。{% else %}Quick access to the paper, code, and citation metadata.{% endif %}</p>
+              </div>
+              {% if active_page.paperurl or active_page.codeurl or active_page.bibtexurl %}
+                <div class="publication-links">
+                  {% if active_page.paperurl %}
+                    <a class="button-pill button-pill--primary" href="{{ active_page.paperurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}阅读论文{% else %}Read Paper{% endif %}</a>
+                  {% endif %}
+                  {% if active_page.codeurl %}
+                    <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}项目代码{% else %}Project Code{% endif %}</a>
+                  {% endif %}
+                  {% if active_page.bibtexurl %}
+                    <a class="button-pill button-pill--ghost" href="{{ active_page.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
+                  {% endif %}
+                </div>
               {% endif %}
-              {% if active_page.codeurl %}
-                <a class="button-pill button-pill--ghost" href="{{ active_page.codeurl }}" target="_blank" rel="noopener noreferrer">{% if page.lang == "zh" %}代码{% else %}Code{% endif %}</a>
-              {% endif %}
-            </div>
-          {% endif %}
 
-          {% if active_page.citation %}
-            <div class="publication-citation">
-              <h3>{% if page.lang == "zh" %}引用{% else %}Citation{% endif %}</h3>
-              <pre>{{ active_page.citation }}</pre>
-            </div>
+              {% if active_page.citation %}
+                <div class="publication-citation">
+                  <h3>{% if page.lang == "zh" %}推荐引用格式{% else %}Suggested Citation{% endif %}</h3>
+                  <pre>{{ active_page.citation }}</pre>
+                </div>
+              {% endif %}
+            </section>
           {% endif %}
         {% elsif active_page.paperurl or active_page.slidesurl or active_page.bibtexurl or active_page.codeurl or active_page.citation %}
           <div class="resource-card">
