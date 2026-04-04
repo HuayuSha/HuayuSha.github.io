@@ -2,6 +2,7 @@
 layout: archive
 title: "CV"
 excerpt: "JSON-rendered CV of Huayu Sha with profile, education, research interests, and publications."
+description: "JSON-rendered CV of Huayu Sha with profile, education, research interests, and publications."
 permalink: /cv-json/
 author_profile: false
 redirect_from:
