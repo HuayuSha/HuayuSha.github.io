@@ -2,7 +2,7 @@
 layout: home
 permalink: /
 title: "Huayu Sha"
-excerpt: "Research homepage of Huayu Sha, a Fudan University student working on trustworthy language-model evaluation, medical benchmarks, and scientific intelligence."
+excerpt: "Research homepage of Huayu Sha at Fudan University, focusing on trustworthy LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
 redirect_from:
   - /about/
   - /about.html
@@ -37,8 +37,8 @@ redirect_from:
         <ul class="prism-interest-list">
           <li>Trustworthy LLM evaluation</li>
           <li>Medical benchmarks</li>
+          <li>Novelty assessment</li>
           <li>Scientific intelligence</li>
-          <li>Benchmark design</li>
         </ul>
       </div>
 

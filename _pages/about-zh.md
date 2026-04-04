@@ -2,7 +2,7 @@
 layout: home
 permalink: /zh/
 title: "沙华煜"
-excerpt: "沙华煜的个人学术主页，复旦大学软件工程专业学生，研究方向为大语言模型可信评测、医疗基准构建与科学智能。"
+excerpt: "沙华煜的个人学术主页，聚焦大语言模型可信评测、医疗基准、新颖性评估与科学智能。"
 lang: zh
 ---
 
@@ -35,8 +35,8 @@ lang: zh
         <ul class="prism-interest-list">
           <li>大语言模型可信评测</li>
           <li>医疗基准构建</li>
+          <li>新颖性评估</li>
           <li>科学智能系统</li>
-          <li>评测体系设计</li>
         </ul>
       </div>
 
