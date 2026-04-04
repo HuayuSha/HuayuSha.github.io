@@ -24,10 +24,25 @@ layout: default
     {% include sidebar.html %}
   {% endif %}
 
-  <div class="archive">
-    {% unless page.header.overlay_color or page.header.overlay_image %}
-      <h1 class="page__title">{{ page.title }}</h1>
-    {% endunless %}
-    {{ content }}
-  </div>
+  {% if use_publication_sidebar %}
+    <article class="page">
+      <div class="page__inner-wrap">
+        {% unless page.header.overlay_color or page.header.overlay_image %}
+          <header class="page__header page__header--publication page__header--archive">
+            <h1 class="page__title">{{ page.title }}</h1>
+          </header>
+        {% endunless %}
+        <section class="page__content archive archive--publication">
+          {{ content }}
+        </section>
+      </div>
+    </article>
+  {% else %}
+    <div class="archive">
+      {% unless page.header.overlay_color or page.header.overlay_image %}
+        <h1 class="page__title">{{ page.title }}</h1>
+      {% endunless %}
+      {{ content }}
+    </div>
+  {% endif %}
 </div>

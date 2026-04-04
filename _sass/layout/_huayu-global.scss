@@ -2087,3 +2087,44 @@ html[data-theme="dark"] .prism-bg-spot--two {
     order: 2;
   }
 }
+
+
+body.publication-page .page__header--archive {
+  margin-bottom: 1.05rem;
+}
+
+body.publication-page .archive--publication {
+  border-top: 1px solid var(--p-border);
+  padding-top: 1.35rem !important;
+  margin-top: 1rem !important;
+}
+
+body.publication-page .archive--publication > p:first-child {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--p-ink-2);
+  margin: 0 0 1.4rem;
+  max-width: 52rem;
+}
+
+body.publication-page .archive--publication > h2 {
+  font-size: 1.58rem !important;
+  margin-top: 1.7rem;
+  margin-bottom: 0.55rem;
+  letter-spacing: -0.01em;
+  border-bottom: none !important;
+  padding-bottom: 0.3rem;
+}
+
+body.publication-page .archive--publication > h2::after {
+  content: "";
+  display: block;
+  margin-top: 0.36rem;
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(184,131,46,0.7), rgba(184,131,46,0));
+}
+
+body.publication-page .archive--publication > hr {
+  display: none;
+}
