@@ -1,6 +1,7 @@
 ---
 layout: single
 title: "CV"
+excerpt: "Curriculum vitae of Huayu Sha, including education, research interests, links, and selected publications."
 permalink: /cv/
 author_profile: false
 share: false

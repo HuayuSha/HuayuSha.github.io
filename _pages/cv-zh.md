@@ -1,6 +1,7 @@
 ---
 layout: single
 title: "简历"
+excerpt: "沙华煜的个人简历页面，包含教育背景、研究方向、链接信息与代表论文。"
 permalink: /zh/cv/
 lang: zh
 author_profile: false
