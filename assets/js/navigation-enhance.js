@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  const body = document.body;
+  let navInFlight = false;
 
   function normalizePath(pathname) {
     if (!pathname) return '/';
@@ -62,6 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function mountNavMask() {
+    let mask = document.querySelector('.site-intro-mask--nav');
+    if (mask) return mask;
+
+    mask = document.createElement('div');
+    mask.className = 'site-intro-mask site-intro-mask--nav';
+    mask.setAttribute('aria-hidden', 'true');
+    body.appendChild(mask);
+    return mask;
+  }
+
+  function clearNavTransition() {
+    navInFlight = false;
+    root.classList.remove('site-nav-transitioning');
+    body.classList.remove('page-leaving');
+    const mask = document.querySelector('.site-intro-mask--nav');
+    if (mask && mask.parentNode) {
+      mask.parentNode.removeChild(mask);
+    }
+  }
+
   function addInternalPrefetch() {
     const prefetched = new Set();
 
@@ -119,14 +143,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function enhanceClickMotion() {
     if (reduceMotion) return;
-    const page = document.querySelector('.page');
-    if (!page) return;
-    page.classList.add('page-entered');
 
-    const archiveItems = document.querySelectorAll('.archive__item');
-    archiveItems.forEach((item, index) => {
-      item.classList.add('page-entered');
-      item.style.animationDelay = `${Math.min(index * 26, 180)}ms`;
+    requestAnimationFrame(() => {
+      body.classList.add('page-mounted');
+
+      const page = document.querySelector('.page');
+      if (page) {
+        page.classList.add('page-entered');
+      }
+
+      const archiveItems = document.querySelectorAll('.archive__item');
+      archiveItems.forEach((item, index) => {
+        item.classList.add('page-entered');
+        item.style.animationDelay = `${Math.min(index * 30, 220)}ms`;
+      });
     });
   }
 
@@ -141,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
       if (!link) return;
       if (link.target && link.target.toLowerCase() === '_blank') return;
+      if (link.dataset.noTransition === 'true') return;
       if (!isInternalNavigable(link)) return;
 
       let target;
@@ -153,15 +184,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const current = new URL(window.location.href);
       const samePath = normalizePath(target.pathname) === normalizePath(current.pathname);
       const sameSearch = target.search === current.search;
+      const sameHash = target.hash === current.hash;
 
-      if (samePath && sameSearch && target.hash) return;
+      if (samePath && sameSearch && (target.hash || sameHash)) return;
+      if (navInFlight) {
+        event.preventDefault();
+        return;
+      }
 
-
+      navInFlight = true;
       event.preventDefault();
-      document.body.classList.add('page-leaving');
+
+      mountNavMask();
+      root.classList.add('site-nav-transitioning');
+      body.classList.add('page-leaving');
+
       window.setTimeout(() => {
         window.location.assign(`${target.pathname}${target.search}${target.hash}`);
-      }, 110);
+      }, 170);
+    });
+
+    window.addEventListener('pageshow', () => {
+      clearNavTransition();
     });
   }
 

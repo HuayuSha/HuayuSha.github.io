@@ -27,11 +27,22 @@ html.site-intro-pending body > *:not(.site-intro-mask) {
   filter: blur(1.2px);
 }
 
-html.site-intro-transitioning body > *:not(.site-intro-mask) {
+html.site-intro-transitioning body > *:not(.site-intro-mask),
+html.site-nav-transitioning body > *:not(.site-intro-mask) {
   transition:
     opacity 460ms cubic-bezier(0.16, 1, 0.3, 1),
     transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
     filter 420ms ease;
+}
+
+html.site-nav-transitioning body {
+  overflow: hidden !important;
+}
+
+html.site-nav-transitioning body > *:not(.site-intro-mask) {
+  opacity: 0 !important;
+  transform: translateY(8px) scale(0.997);
+  filter: blur(1.1px);
 }
 
 .site-intro-mask {
@@ -47,12 +58,20 @@ html.site-intro-transitioning body > *:not(.site-intro-mask) {
   transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.site-intro-mask--nav {
+  transition-duration: 280ms;
+}
+
 html.site-intro-pending .site-intro-mask {
   opacity: 1;
 }
 
 html.site-intro-transitioning:not(.site-intro-pending) .site-intro-mask {
   opacity: 0;
+}
+
+html.site-nav-transitioning .site-intro-mask--nav {
+  opacity: 1;
 }
 
 
@@ -550,11 +569,13 @@ body.guestbook-page .page:hover::before {
 @keyframes pageLiftIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px) scale(0.996);
+    filter: blur(0.8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
@@ -562,18 +583,19 @@ body.publication-page .page.page-entered,
 body.cv-page .page.page-entered,
 body.guestbook-page .page.page-entered,
 body:not(.home-page) .archive__item.page-entered {
-  animation: pageLiftIn 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: pageLiftIn 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 body #main,
 body .home-shell {
-  transition: opacity 180ms ease, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 220ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1), filter 220ms ease;
 }
 
 body.page-leaving #main,
 body.page-leaving .home-shell {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(8px) scale(0.997);
+  filter: blur(0.8px);
 }
 
 body:not(.home-page) .page__inner-wrap > header {
@@ -1105,17 +1127,20 @@ body.publication-page .motion-item,
 body.cv-page .motion-item,
 body.guestbook-page .motion-item {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(14px) scale(0.997);
+  filter: blur(0.75px);
   transition:
     opacity 560ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform 560ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 420ms ease;
 }
 
 body.publication-page .motion-item.is-visible,
 body.cv-page .motion-item.is-visible,
 body.guestbook-page .motion-item.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 /* Figure and image behavior on inner pages */
