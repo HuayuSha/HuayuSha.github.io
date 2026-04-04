@@ -44,6 +44,14 @@
   --p-shadow-md:     0 4px 18px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.04);
   --p-shadow-hover:  0 10px 36px rgba(0,0,0,0.08), 0 3px 10px rgba(0,0,0,0.05);
   --p-shadow-float:  0 20px 56px rgba(0,0,0,0.10), 0 4px 14px rgba(0,0,0,0.06);
+  --p-shadow-control-hover: 0 8px 22px rgba(26,99,82,0.11), 0 2px 6px rgba(0,0,0,0.05);
+
+  /* Interaction */
+  --p-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --p-hover-lift-card: -4px;
+  --p-hover-lift-panel: -2px;
+  --p-hover-lift-control: -1px;
+  --p-ring-focus: 0 0 0 3px rgba(26, 99, 82, 0.12);
 
   /* Radius */
   --p-r-xs:  0.3rem;
@@ -235,10 +243,11 @@ body.home-page .page__footer {
     0 0 0 0.5px rgba(28,22,14,0.05),
     inset 0 1px 0 rgba(255,255,255,0.75);
   transition:
-    transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 360ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 360ms var(--p-ease-standard),
+    box-shadow 360ms var(--p-ease-standard),
     border-color 280ms ease,
     background 280ms ease;
+  will-change: transform, box-shadow;
 }
 
 /* Inset top sheen */
@@ -286,14 +295,13 @@ body.home-page .page__footer {
 .prism-content-card.is-interactive:hover,
 .prism-paper-card:hover,
 .archive__item:hover {
-  transform: translateY(-4px);
-  background: rgba(254,252,249,0.88) !important;
-  border-color: rgba(255,255,255,0.75);
+  transform: translateY(var(--p-hover-lift-card));
+  background: linear-gradient(160deg, rgba(254,252,249,0.94) 0%, rgba(248,244,238,0.90) 100%) !important;
+  border-color: rgba(184,131,46,0.18);
   box-shadow:
-    0 12px 40px rgba(0,0,0,0.08),
-    0 4px 14px rgba(0,0,0,0.05),
+    var(--p-shadow-hover),
     0 0 0 0.5px rgba(28,22,14,0.07),
-    inset 0 1px 0 rgba(255,255,255,0.90);
+    inset 0 1px 0 rgba(255,255,255,0.92);
 }
 
 /* Accent left-bar on paper cards */
@@ -317,8 +325,8 @@ body.home-page .page__footer {
 .prism-paper-card {
   background: var(--p-surface);
   transition:
-    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 340ms var(--p-ease-standard),
+    box-shadow 340ms var(--p-ease-standard),
     border-color 280ms ease,
     background 280ms ease;
 }
@@ -661,7 +669,7 @@ body.home-page .page__footer {
     background 160ms ease,
     border-color 160ms ease,
     color 160ms ease,
-    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms var(--p-ease-standard),
     box-shadow 260ms ease;
 }
 .prism-link-button:hover,
@@ -670,8 +678,8 @@ body.home-page .page__footer {
   background: var(--p-accent-pale);
   border-color: var(--p-accent-glow);
   color: var(--p-accent);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px var(--p-accent-glow);
+  transform: translateY(var(--p-hover-lift-control));
+  box-shadow: var(--p-shadow-control-hover);
   text-decoration: none;
 }
 

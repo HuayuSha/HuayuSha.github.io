@@ -167,6 +167,7 @@ function initDraggableMascot() {
     // Only drag on left button
     if (e.button !== 0) return;
     isDragging = true;
+    container.classList.add('is-dragging');
     container.style.cursor = 'grabbing';
     container.style.userSelect = 'none';
     container.style.transition = 'none';
@@ -204,6 +205,7 @@ function initDraggableMascot() {
   document.addEventListener('mouseup', () => {
     if (!isDragging) return;
     isDragging = false;
+    container.classList.remove('is-dragging');
     container.style.cursor = 'grab';
     container.style.transition = '';
 
