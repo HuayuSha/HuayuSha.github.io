@@ -16,9 +16,8 @@
   {% assign post_detail_url = '/zh' | append: post.url %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
+<li class="{{ include.type | default: "list" }}__item cv-publication-list__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    <li>
     {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
         <img src=
@@ -44,6 +43,5 @@
     {% if post.venue %}
       <p class="archive__item-excerpt" itemprop="description"><i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
     {% endif %}
-    </li>
- </article>
-</div>
+  </article>
+</li>

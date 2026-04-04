@@ -36,9 +36,30 @@ layout: default
 {% if page.use_publication_sidebar %}
   {% assign use_publication_sidebar = true %}
 {% endif %}
+{% assign is_guestbook_page = false %}
+{% if page.permalink == '/guestbook/' or page.url == '/guestbook/' or page.permalink == '/zh/guestbook/' or page.url == '/zh/guestbook/' %}
+  {% assign is_guestbook_page = true %}
+{% endif %}
 {% assign is_zh_page = false %}
 {% if page.lang == "zh" or page.url contains '/zh/' or page.permalink contains '/zh/' %}
   {% assign is_zh_page = true %}
+{% endif %}
+{% if effective_is_publication %}
+  {% assign page_eyebrow = 'Publication Detail' %}
+  {% if is_zh_page %}{% assign page_eyebrow = '论文详情' %}{% endif %}
+{% elsif is_cv_page %}
+  {% assign page_eyebrow = 'Curriculum Vitae' %}
+  {% if is_zh_page %}{% assign page_eyebrow = '个人简历' %}{% endif %}
+{% elsif is_guestbook_page %}
+  {% assign page_eyebrow = 'Guestbook' %}
+  {% if is_zh_page %}{% assign page_eyebrow = '留言板' %}{% endif %}
+{% else %}
+  {% assign page_eyebrow = 'Page' %}
+  {% if is_zh_page %}{% assign page_eyebrow = '页面' %}{% endif %}
+{% endif %}
+{% assign localized_summary = active_page.excerpt %}
+{% if is_zh_page and active_page.excerpt_zh %}
+  {% assign localized_summary = active_page.excerpt_zh %}
 {% endif %}
 
 {% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
@@ -58,7 +79,7 @@ layout: default
     {% include sidebar.html %}
   {% endif %}
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="page{% if effective_is_publication %} page--publication{% endif %}{% if is_cv_page %} page--cv{% endif %}{% if is_guestbook_page %} page--guestbook{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
     {% if active_page.title %}<meta itemprop="headline" content="{{ active_page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if active_page.excerpt %}<meta itemprop="description" content="{{ active_page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if active_page.date %}<meta itemprop="datePublished" content="{{ active_page.date | date: "%B %d, %Y" }}">{% endif %}
@@ -66,29 +87,35 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header class="page__header{% if effective_is_publication %} page__header--publication{% endif %}{% if is_cv_page %} page__header--cv{% endif %}">
+        <header class="page__header{% if effective_is_publication %} page__header--publication{% endif %}{% if is_cv_page %} page__header--cv{% endif %}{% if is_guestbook_page %} page__header--guestbook{% endif %}">
+          <div class="page__eyebrow">{{ page_eyebrow }}</div>
           {% if active_page.title %}<h1 class="page__title" itemprop="headline">{{ active_page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% if active_page.read_time %}
-            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-          {% endif %}
-          {% if active_page.modified %}
-            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {% if is_zh_page %}最近更新：{% else %}Updated:{% endif %}</strong> <time datetime="{{ active_page.modified | date: "%Y-%m-%d" }}">{{ active_page.modified | date: "%B %d, %Y" }}</time></p>
+          {% if localized_summary %}
+            <p class="page__summary">{{ localized_summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
           {% endif %}
 
-          {% if active_page.collection == 'teaching' %}
-            <p>{{ active_page.type }}, <i>{{ active_page.venue }}</i>, {{ active_page.date | default: "1900-01-01" | date: "%Y" }}</p>
-          {% elsif active_page.venue and active_page.date %}
-            <p class="page__lede page__lede--venue">{% if is_zh_page %}发表于 <i>{{ active_page.venue }}</i> · {{ active_page.date | default: "1900-01-01" | date: "%Y" }}{% else %}Published in <i>{{ active_page.venue }}</i> · {{ active_page.date | default: "1900-01-01" | date: "%Y" }}{% endif %}</p>
-          {% elsif active_page.date %}
-            <p class="page__date page__date--meta"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {% if is_zh_page %}日期：{% else %}Date:{% endif %}</strong> <time datetime="{{ active_page.date | date_to_xmlschema }}">{{ active_page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
-          {% endif %}
+          <div class="page__header-meta">
+            {% if active_page.read_time %}
+              <p class="page__meta-chip page__meta-chip--muted"><i class="fa fa-clock" aria-hidden="true"></i><span>{% include read-time.html %}</span></p>
+            {% endif %}
+            {% if active_page.modified %}
+              <p class="page__meta-chip page__meta-chip--muted"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i><span>{% if is_zh_page %}最近更新{% else %}Updated{% endif %}: <time datetime="{{ active_page.modified | date: "%Y-%m-%d" }}">{{ active_page.modified | date: "%B %d, %Y" }}</time></span></p>
+            {% endif %}
+            {% if active_page.collection == 'teaching' %}
+              <p class="page__meta-chip page__meta-chip--venue"><span>{{ active_page.type }}, <i>{{ active_page.venue }}</i>, {{ active_page.date | default: "1900-01-01" | date: "%Y" }}</span></p>
+            {% elsif active_page.venue and active_page.date %}
+              <p class="page__meta-chip page__meta-chip--venue"><span>{% if is_zh_page %}发表于 <i>{{ active_page.venue }}</i> · {{ active_page.date | default: "1900-01-01" | date: "%Y" }}{% else %}Published in <i>{{ active_page.venue }}</i> · {{ active_page.date | default: "1900-01-01" | date: "%Y" }}{% endif %}</span></p>
+            {% elsif active_page.date %}
+              <p class="page__meta-chip page__meta-chip--date"><i class="fa fa-fw fa-calendar" aria-hidden="true"></i><span>{% if is_zh_page %}日期{% else %}Date{% endif %}: <time datetime="{{ active_page.date | date_to_xmlschema }}">{{ active_page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></span></p>
+            {% endif %}
+          </div>
           {% if effective_is_publication %}
             {% include publication-authors-inline.html authors=active_page.authors equal_contrib=active_page.equal_contrib_authors corresponding=active_page.corresponding_authors class="publication-authors-line--detail" show_note=true %}
           {% endif %}
         </header>
       {% endunless %}
 
-      <section class="page__content" itemprop="text">
+      <section class="page__content{% if effective_is_publication %} page__content--publication{% endif %}{% if is_cv_page %} page__content--cv{% endif %}{% if is_guestbook_page %} page__content--guestbook{% endif %}" itemprop="text">
         {% if source_publication %}
           {{ source_publication.content | markdownify }}
         {% else %}
