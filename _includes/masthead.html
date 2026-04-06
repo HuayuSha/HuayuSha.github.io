@@ -36,7 +36,6 @@
   {% endunless %}
 {% endif %}
 
-
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
@@ -87,7 +86,22 @@
                   {% assign nav_label = "联系" %}
               {% endcase %}
             {% endif %}
-            <li class="masthead__menu-item masthead__menu-item--nav"><a href="{{ domain }}{{ link_url_override }}">{{ nav_label }}</a></li>
+
+            {% assign nav_href = domain | append: link_url_override %}
+            {% assign is_active = false %}
+            {% if link.title == 'About' and is_home_like_page %}
+              {% assign is_active = true %}
+            {% elsif link.title == 'Publications' and page.collection == 'publications' %}
+              {% assign is_active = true %}
+            {% elsif link.title == 'Publications' and current_path contains '/publications/' %}
+              {% assign is_active = true %}
+            {% elsif link.title == 'CV' and current_path contains '/cv/' %}
+              {% assign is_active = true %}
+            {% elsif link.title == 'Guestbook' and current_path contains '/guestbook/' %}
+              {% assign is_active = true %}
+            {% endif %}
+
+            <li class="masthead__menu-item masthead__menu-item--nav{% if is_active %} masthead__menu-item--active{% endif %}"><a href="{{ nav_href }}"{% if is_active %} aria-current="page"{% endif %}>{{ nav_label }}</a></li>
           {% endfor %}
           <li id="lang-toggle" class="masthead__menu-item persist tail">
             {% if is_zh_page %}

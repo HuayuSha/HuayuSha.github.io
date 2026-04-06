@@ -57,6 +57,12 @@ layout: default
   {% assign page_eyebrow = 'Page' %}
   {% if is_zh_page %}{% assign page_eyebrow = '页面' %}{% endif %}
 {% endif %}
+{% assign show_page_eyebrow = true %}
+{% assign show_page_summary = true %}
+{% if is_cv_page or is_guestbook_page %}
+  {% assign show_page_eyebrow = false %}
+  {% assign show_page_summary = false %}
+{% endif %}
 {% assign localized_summary = active_page.excerpt %}
 {% if is_zh_page and active_page.excerpt_zh %}
   {% assign localized_summary = active_page.excerpt_zh %}
@@ -87,10 +93,10 @@ layout: default
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header class="page__header{% if effective_is_publication %} page__header--publication{% endif %}{% if is_cv_page %} page__header--cv{% endif %}{% if is_guestbook_page %} page__header--guestbook{% endif %}">
-          <div class="page__eyebrow">{{ page_eyebrow }}</div>
+        <header class="page__header{% if effective_is_publication %} page__header--publication{% endif %}{% if is_cv_page %} page__header--cv{% endif %}{% if is_guestbook_page %} page__header--guestbook{% endif %}{% unless show_page_eyebrow %} page__header--minimal{% endunless %}">
+          {% if show_page_eyebrow %}<div class="page__eyebrow">{{ page_eyebrow }}</div>{% endif %}
           {% if active_page.title %}<h1 class="page__title" itemprop="headline">{{ active_page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% if localized_summary %}
+          {% if show_page_summary and localized_summary %}
             <p class="page__summary">{{ localized_summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
           {% endif %}
 

@@ -116,6 +116,19 @@
       .join('');
 
     list.innerHTML = html;
+
+    const items = Array.from(list.querySelectorAll('.guestbook-item'));
+    items.forEach((item, index) => {
+      item.classList.add('is-entering');
+      item.style.animationDelay = `${Math.min(index * 55, 240)}ms`;
+    });
+
+    window.setTimeout(() => {
+      items.forEach((item) => {
+        item.classList.remove('is-entering');
+        item.style.animationDelay = '';
+      });
+    }, 700);
   }
 
   async function loadMessages() {
