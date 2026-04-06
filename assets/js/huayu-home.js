@@ -94,6 +94,15 @@ function animateCardChildren(card) {
     interestList.classList.add('is-animated');
   }
 
+  const statusChips = card.querySelector('.prism-status-chips');
+  if (statusChips) statusChips.classList.add('is-animated');
+
+  const contactList = card.querySelector('.prism-contact-list');
+  if (contactList) contactList.classList.add('is-animated');
+
+  const statGrid = card.querySelector('.prism-stat-grid');
+  if (statGrid) statGrid.classList.add('is-animated');
+
   const tagline = card.querySelector('.prism-tagline');
   if (tagline) tagline.classList.add('is-animated');
 
@@ -114,21 +123,53 @@ function initBgParallax() {
   const spotTwo = document.querySelector('.prism-bg-spot--two');
   if (!spotOne || !spotTwo) return;
 
-  let targetX = 0, targetY = 0, currentX = 0, currentY = 0, rafId = null;
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let pointerTargetX = window.innerWidth * 0.52;
+  let pointerTargetY = window.innerHeight * 0.28;
+  let pointerX = pointerTargetX;
+  let pointerY = pointerTargetY;
+  let rafId = null;
+
+  updatePointerVars();
 
   document.addEventListener('mousemove', (e) => {
-    targetX = (e.clientX / window.innerWidth  - 0.5) * 2;
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
     targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    pointerTargetX = e.clientX;
+    pointerTargetY = e.clientY;
     if (!rafId) rafId = requestAnimationFrame(tick);
   }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    pointerTargetX = Math.min(pointerTargetX, window.innerWidth);
+    pointerTargetY = Math.min(pointerTargetY, window.innerHeight);
+    updatePointerVars();
+  }, { passive: true });
+
+  function updatePointerVars() {
+    document.body.style.setProperty('--prism-pointer-x', `${(pointerX / Math.max(window.innerWidth, 1)) * 100}%`);
+    document.body.style.setProperty('--prism-pointer-y', `${(pointerY / Math.max(window.innerHeight, 1)) * 100}%`);
+  }
 
   function tick() {
     currentX += (targetX - currentX) * 0.055;
     currentY += (targetY - currentY) * 0.055;
+    pointerX += (pointerTargetX - pointerX) * 0.085;
+    pointerY += (pointerTargetY - pointerY) * 0.085;
+
     spotOne.style.transform = `translate(${currentX * 18}px, ${currentY * 14}px)`;
     spotTwo.style.transform = `translate(${-currentX * 12}px, ${-currentY * 10}px)`;
-    rafId = (Math.abs(targetX - currentX) + Math.abs(targetY - currentY)) > 0.001
-      ? requestAnimationFrame(tick) : null;
+    updatePointerVars();
+
+    rafId = (
+      Math.abs(targetX - currentX) +
+      Math.abs(targetY - currentY) +
+      Math.abs(pointerTargetX - pointerX) / Math.max(window.innerWidth, 1) +
+      Math.abs(pointerTargetY - pointerY) / Math.max(window.innerHeight, 1)
+    ) > 0.001 ? requestAnimationFrame(tick) : null;
   }
 }
 
