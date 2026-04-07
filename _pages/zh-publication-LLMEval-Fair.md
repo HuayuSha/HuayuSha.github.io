@@ -6,9 +6,9 @@ lang: zh
 author_profile: false
 share: false
 related: false
-excerpt: 'LLMEval-Fair 通过动态采样、反作弊约束与长期时间轴分析，研究大模型评测中的公平性与稳健性问题，避免静态公开测试集带来的污染与误判。'
+excerpt: 'LLMEval-Fair 通过动态采样、反作弊约束与长期时间轴分析，研究大模型评测中的公平性与稳健性问题；该工作现已被 ACL 2026 Main Conference 接收。'
 date: 2025-08-07
-venue: 'ACL 2026 Submission (Under Review)'
+venue: 'ACL 2026 Main Conference'
 paperurl: 'https://arxiv.org/abs/2508.05452'
 bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2508-05452.bib'
 codeurl: 'https://github.com/llmeval/LLMEval-Fair'
@@ -86,7 +86,7 @@ citation: |-
 
 LLMEval-Fair 关注大模型评测中的一个核心问题：排行榜分数的提升，究竟代表了模型能力真的在变强，还是只是对公开静态测试集的部分“过拟合”与污染利用。
 
-**当前状态：** 已投稿至 **ACL 2026**（under review）。  
+**当前状态：** 已被 **ACL 2026 Main Conference** 接收。  
 **公开版本：** arXiv preprint 已可访问。
 
 > 说明：DBLP 当前仍以 **LLMEval-3** (`abs-2508-05452`) 的标题收录该预印本条目。

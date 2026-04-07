@@ -127,6 +127,30 @@ redirect_from:
         </div>
       </section>
 
+      <section class="prism-content-card prism-content-card--news reveal">
+        <div class="prism-section-head prism-section-head--split">
+          <div>
+            <span class="prism-eyebrow">News</span>
+            <h2>Recent Update</h2>
+          </div>
+        </div>
+
+        <article class="prism-note-card prism-note-card--hero">
+          <span class="prism-note-card__eyebrow">Good News</span>
+          <div class="prism-prose">
+            <p class="prism-lead">LLMEval-Fair is accepted to ACL 2026 Main Conference.</p>
+            <p>
+              Our work on robust and fair longitudinal evaluation of large language models has been accepted to the
+              <strong>ACL 2026 Main Conference</strong>.
+            </p>
+          </div>
+          <div class="prism-paper-actions">
+            <a class="prism-link-button button-pill--primary" href="{{ '/publication/LLMEval-Fair/' | relative_url }}">View Paper</a>
+            <a class="prism-link-button" href="https://arxiv.org/abs/2508.05452" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+          </div>
+        </article>
+      </section>
+
       <section class="prism-content-card reveal">
         <div class="prism-section-head prism-section-head--split">
           <div>

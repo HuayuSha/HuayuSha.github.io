@@ -80,10 +80,10 @@
     },
     {
       "name": "LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models",
-      "publisher": "arXiv",
+      "publisher": "ACL 2026 Main Conference",
       "releaseDate": "2025-08-07",
       "website": "https://arxiv.org/abs/2508.05452",
-      "summary": "A dynamic evaluation framework for robust, contamination-resistant, and fair assessment of large language models."
+      "summary": "A dynamic evaluation framework for robust, contamination-resistant, and fair assessment of large language models, now accepted to ACL 2026 Main Conference."
     },
     {
       "name": "LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation",

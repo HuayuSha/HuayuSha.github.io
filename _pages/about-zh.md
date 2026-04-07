@@ -124,6 +124,30 @@ lang: zh
         </div>
       </section>
 
+      <section class="prism-content-card prism-content-card--news reveal">
+        <div class="prism-section-head prism-section-head--split">
+          <div>
+            <span class="prism-eyebrow">最新动态</span>
+            <h2>近期喜报</h2>
+          </div>
+        </div>
+
+        <article class="prism-note-card prism-note-card--hero">
+          <span class="prism-note-card__eyebrow">喜报</span>
+          <div class="prism-prose">
+            <p class="prism-lead">LLMEval-Fair 已被 ACL 2026 Main Conference 接收。</p>
+            <p>
+              关于大语言模型稳健与公平纵向评测的工作 <strong>LLMEval-Fair</strong> 已正式被
+              <strong>ACL 2026 Main Conference</strong> 接收。
+            </p>
+          </div>
+          <div class="prism-paper-actions">
+            <a class="prism-link-button button-pill--primary" href="{{ '/zh/publication/LLMEval-Fair/' | relative_url }}">查看论文</a>
+            <a class="prism-link-button" href="https://arxiv.org/abs/2508.05452" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+          </div>
+        </article>
+      </section>
+
       <section class="prism-content-card reveal">
         <div class="prism-section-head prism-section-head--split">
           <div>

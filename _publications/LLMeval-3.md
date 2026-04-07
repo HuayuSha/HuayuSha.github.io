@@ -5,10 +5,10 @@ category: manuscripts
 permalink: /publication/LLMEval-Fair/
 redirect_from:
   - /publication/LLMEval-Fair
-excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unseen test sets from a large question bank, combines contamination-resistant curation with anti-cheating design, and studies frontier models longitudinally to produce a more reliable picture of progress than static leaderboards. Current manuscript status: ACL 2026 submission (under review).'
-excerpt_zh: 'LLMEval-Fair 通过动态采样、反作弊约束与长期时间轴分析，研究大模型评测中的公平性与稳健性问题，避免静态公开测试集带来的污染与误判。'
+excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unseen test sets from a large question bank, combines contamination-resistant curation with anti-cheating design, and studies frontier models longitudinally to produce a more reliable picture of progress than static leaderboards. Current manuscript status: accepted to ACL 2026 Main Conference.'
+excerpt_zh: 'LLMEval-Fair 聚焦大模型评测中的公平性与稳健性问题，结合动态采样、反作弊约束与长期时间轴分析；该工作现已被 ACL 2026 Main Conference 接收。'
 date: 2025-08-07
-venue: 'ACL 2026 Submission (Under Review)'
+venue: 'ACL 2026 Main Conference'
 paperurl: 'https://arxiv.org/abs/2508.05452'
 bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2508-05452.bib'
 codeurl: 'https://github.com/llmeval/LLMEval-Fair'
@@ -86,7 +86,7 @@ citation: |-
 
 LLMEval-Fair studies a core reliability issue in LLM benchmarking: whether leaderboard gains reflect real capability growth, or partial overfitting to static public tests.
 
-**Current status:** Submitted to **ACL 2026** (under review).  
+**Current status:** Accepted to **ACL 2026 Main Conference**.  
 **Public version:** arXiv preprint available.
 
 > Note: DBLP currently indexes the preprint entry under the title **LLMEval-3** (`abs-2508-05452`).
