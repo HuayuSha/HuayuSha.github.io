@@ -2774,7 +2774,7 @@ body.cv-page .cv-publication-list__item {
 }
 
 .cv-link-list a::after {
-  content: '↗';
+  content: '\2197';
   position: absolute;
   right: 0.9rem;
   top: 50%;
@@ -2872,7 +2872,7 @@ body.cv-page .cv-publication-list__item {
 }
 
 .page__footer-copyright span + span::before {
-  content: '•';
+  content: '\2022';
   margin-right: 0.7rem;
   color: var(--p-ink-4);
 }
