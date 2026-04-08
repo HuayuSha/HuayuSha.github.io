@@ -39,17 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Draggable Live2D mascot ────────────────────────────
-  initDraggableMascot();
+  if (!isTouchOnly) {
+    initDraggableMascot();
 
-  // ── Live2D click bounce ────────────────────────────────
-  ['prism-live2d-canvas', 'live2d4'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('click', () => {
-      el.classList.add('is-live2d-bouncing');
-      setTimeout(() => el.classList.remove('is-live2d-bouncing'), 600);
+    // ── Live2D click bounce ──────────────────────────────
+    ['prism-live2d-canvas', 'live2d4'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('click', () => {
+        el.classList.add('is-live2d-bouncing');
+        setTimeout(() => el.classList.remove('is-live2d-bouncing'), 600);
+      });
     });
-  });
+  }
 });
 
 

@@ -1,0 +1,46 @@
+{% include base_path %}
+{% assign is_zh_page = false %}
+{% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
+  {% assign is_zh_page = true %}
+{% endif %}
+{% assign is_home = false %}
+{% if page.url == '/' or page.url == '/zh/' %}
+  {% assign is_home = true %}
+{% endif %}
+
+<nav class="prism-tab-bar" aria-label="Mobile navigation">
+  <a class="prism-tab-bar__item{% if is_home %} is-active{% endif %}"
+     href="{% if is_zh_page %}{{ base_path }}/zh/{% else %}{{ base_path }}/{% endif %}#about"
+     aria-label="{% if is_zh_page %}关于我{% else %}About{% endif %}">
+    <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <span>{% if is_zh_page %}主页{% else %}Home{% endif %}</span>
+  </a>
+
+  <a class="prism-tab-bar__item{% if page.collection == 'publications' or page.url contains '/publications/' %} is-active{% endif %}"
+     href="{% if is_zh_page %}{{ base_path }}/zh/{% else %}{{ base_path }}/{% endif %}#publications"
+     aria-label="{% if is_zh_page %}论文{% else %}Publications{% endif %}">
+    <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+    <span>{% if is_zh_page %}论文{% else %}Papers{% endif %}</span>
+  </a>
+
+  <a class="prism-tab-bar__item{% if page.url contains '/cv/' %} is-active{% endif %}"
+     href="{% if is_zh_page %}{{ base_path }}/zh/cv/{% else %}{{ base_path }}/cv/{% endif %}"
+     aria-label="CV">
+    <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+    <span>CV</span>
+  </a>
+
+  <a class="prism-tab-bar__item{% if page.url contains '/guestbook/' %} is-active{% endif %}"
+     href="{% if is_zh_page %}{{ base_path }}/zh/guestbook/{% else %}{{ base_path }}/guestbook/{% endif %}"
+     aria-label="{% if is_zh_page %}留言板{% else %}Guestbook{% endif %}">
+    <i class="fa-solid fa-comments" aria-hidden="true"></i>
+    <span>{% if is_zh_page %}留言{% else %}Guest{% endif %}</span>
+  </a>
+
+  <a class="prism-tab-bar__item"
+     href="{% if is_zh_page %}{{ base_path }}/zh/{% else %}{{ base_path }}/{% endif %}#contact"
+     aria-label="{% if is_zh_page %}联系{% else %}Contact{% endif %}">
+    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+    <span>{% if is_zh_page %}联系{% else %}Contact{% endif %}</span>
+  </a>
+</nav>

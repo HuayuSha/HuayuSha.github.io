@@ -91,6 +91,13 @@
     if (!toggleButton || !label) return;
     if (toggleButton.dataset.langReady === 'true') return;
 
+    // Restore scroll position after lang switch
+    const savedScroll = sessionStorage.getItem('lang_switch_scroll');
+    if (savedScroll !== null) {
+      sessionStorage.removeItem('lang_switch_scroll');
+      window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+    }
+
     const currentPath = normalizePath(window.location.pathname);
     const preferredLang = localStorage.getItem(STORAGE_KEY);
     const currentLangFromPath = pathLang(currentPath);
@@ -116,6 +123,8 @@
         return;
       }
 
+      // Save scroll position before navigating
+      sessionStorage.setItem('lang_switch_scroll', window.scrollY);
       window.location.assign(targetPath);
     });
   }

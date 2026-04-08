@@ -107,6 +107,8 @@ html[data-theme="dark"] {
   --p-shadow-md:     0 8px 24px rgba(0, 0, 0, 0.44), 0 2px 6px rgba(0, 0, 0, 0.34);
   --p-shadow-hover:  0 16px 42px rgba(0, 0, 0, 0.52), 0 4px 12px rgba(0, 0, 0, 0.36);
   --p-shadow-float:  0 24px 62px rgba(0, 0, 0, 0.58), 0 5px 14px rgba(0, 0, 0, 0.4);
+
+  --p-error:         var(--p-error-dark);
 }
 
 
@@ -1557,7 +1559,7 @@ body.guestbook-page .page__content {
 }
 
 .guestbook-status.is-error {
-  color: #c64d4d !important;
+  color: var(--p-error) !important;
 }
 
 .guestbook-status.is-muted {
@@ -1626,7 +1628,7 @@ body.guestbook-page .page__content {
 }
 
 .guestbook-empty--error {
-  color: #c64d4d;
+  color: var(--p-error);
   border-color: rgba(198, 77, 77, 0.4);
 }
 
@@ -2057,7 +2059,7 @@ html[data-theme="dark"] .guestbook-field textarea:focus {
 
 html[data-theme="dark"] .guestbook-status.is-error,
 html[data-theme="dark"] .guestbook-empty--error {
-  color: #ff8c8c !important;
+  color: var(--p-error-dark) !important;
 }
 
 html[data-theme="dark"] body:not(.home-page) .page__lede {
@@ -2969,4 +2971,65 @@ body.guestbook-page .guestbook-intro {
   padding: 0.72rem 0.86rem;
   font-size: 0.86rem !important;
   line-height: 1.72 !important;
+}
+
+
+/* -- Mobile tab bar --------------------------------------- */
+.prism-tab-bar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .prism-tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--p-surface);
+    border-top: 1px solid var(--p-border-med);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .prism-tab-bar__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.22rem;
+    padding: 0.55rem 0.25rem;
+    color: var(--p-ink-3);
+    text-decoration: none;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 160ms ease;
+  }
+
+  .prism-tab-bar__item i {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .prism-tab-bar__item.is-active {
+    color: var(--p-accent);
+  }
+
+  .prism-tab-bar__item:hover {
+    color: var(--p-accent);
+    text-decoration: none;
+  }
+
+  /* Push page content above tab bar */
+  .page__footer {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0)) !important;
+  }
+
+  /* Hide hamburger button when tab bar is visible */
+  .greedy-nav > button {
+    display: none !important;
+  }
 }
