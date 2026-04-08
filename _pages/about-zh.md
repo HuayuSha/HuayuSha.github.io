@@ -82,42 +82,47 @@ lang: zh
         <div class="prism-section-head prism-section-head--hero">
           <span class="prism-eyebrow">研究简介</span>
           <h2>关于我</h2>
+          <p class="prism-hero-subtitle">自 2025 年 3 月起在复旦 NLP 组开展本科科研。</p>
         </div>
 
         <div class="prism-hero-grid">
           <div class="prism-hero-copy">
-            <div class="prism-tagline">
-              <p>评测不是指标，而是对真实的承诺。</p>
+            <div class="prism-tagline prism-tagline--hero">
+              <p>生存还是死亡，这是一个问题。</p>
             </div>
 
             <div class="prism-prose">
               <p class="prism-lead">
-                我是沙华煜，复旦大学软件工程专业本科生。我的研究主要围绕
+                我是沙华煜，复旦大学软件工程专业本科生，研究主要围绕
                 <strong>大语言模型可信评测</strong>、
                 <strong>医疗基准构建</strong>，以及
                 <strong>服务科研工作流的智能系统</strong>。
               </p>
               <p>
-                我希望把研究做得更可复现、更可落地，也更容易被验证与信任：
-                从数据和协议设计，到工具链实现，再到系统化评估与分析。
+                自 <strong>2025 年 3 月</strong> 加入 <strong>复旦 NLP 组</strong> 以来，我持续关注评测协议设计、
+                真实场景基准构建，以及让实验结果更易验证、更可复现的科研工具系统。
               </p>
             </div>
           </div>
 
           <aside class="prism-note-card prism-note-card--hero">
-            <span class="prism-note-card__eyebrow">快速概览</span>
-            <div class="prism-stat-grid">
+            <span class="prism-note-card__eyebrow">研究概览</span>
+            <div class="prism-stat-grid prism-stat-grid--hero">
               <div class="prism-stat">
                 <span class="prism-stat-label">论文数量</span>
                 <span class="prism-stat-value">{{ site.publications | size }} 篇</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">当前状态</span>
-                <span class="prism-stat-value">本科在读 · 2026 届</span>
+                <span class="prism-stat-label">科研起始</span>
+                <span class="prism-stat-value">2025.03</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">欢迎</span>
-                <span class="prism-stat-value">科研合作交流</span>
+                <span class="prism-stat-label">所在课题组</span>
+                <span class="prism-stat-value">复旦 NLP 组</span>
+              </div>
+              <div class="prism-stat">
+                <span class="prism-stat-label">当前状态</span>
+                <span class="prism-stat-value">本科在读 · 2026 届</span>
               </div>
             </div>
           </aside>

@@ -85,42 +85,48 @@ redirect_from:
         <div class="prism-section-head prism-section-head--hero">
           <span class="prism-eyebrow">Research Profile</span>
           <h2>About</h2>
+          <p class="prism-hero-subtitle">Started undergraduate research in March 2025 at the Fudan NLP Group.</p>
         </div>
 
         <div class="prism-hero-grid">
           <div class="prism-hero-copy">
-            <div class="prism-tagline">
-              <p>Evaluation is not a metric — it is a commitment to truth.</p>
+            <div class="prism-tagline prism-tagline--hero">
+              <p>To be, or not to be, that is the question.</p>
             </div>
 
             <div class="prism-prose">
               <p class="prism-lead">
-                I am Huayu Sha, an undergraduate student in Software Engineering at Fudan University.
-                My work centers on <strong>trustworthy LLM evaluation</strong>,
+                I am Huayu Sha, an undergraduate student in Software Engineering at Fudan University,
+                working on <strong>trustworthy LLM evaluation</strong>,
                 <strong>medical benchmark construction</strong>, and
-                <strong>AI systems that support scientific research workflows</strong>.
+                <strong>AI systems for scientific research workflows</strong>.
               </p>
               <p>
-                I care about building research pipelines that are reproducible, practical, and explainable:
-                from dataset and protocol design, to tooling, to systematic validation that makes results easier to trust.
+                Since joining the <strong>Fudan NLP Group</strong> in <strong>March 2025</strong>, I have been focusing on
+                evaluation protocols, realistic benchmark design, and research tools that make experimental results
+                easier to verify, reproduce, and trust.
               </p>
             </div>
           </div>
 
           <aside class="prism-note-card prism-note-card--hero">
-            <span class="prism-note-card__eyebrow">At a Glance</span>
-            <div class="prism-stat-grid">
+            <span class="prism-note-card__eyebrow">Research Snapshot</span>
+            <div class="prism-stat-grid prism-stat-grid--hero">
               <div class="prism-stat">
                 <span class="prism-stat-label">Publications</span>
                 <span class="prism-stat-value">{{ site.publications | size }} Papers</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">Status</span>
-                <span class="prism-stat-value">Undergraduate · Class of 2026</span>
+                <span class="prism-stat-label">Research Since</span>
+                <span class="prism-stat-value">2025.03</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">Open to</span>
-                <span class="prism-stat-value">Research Collaboration</span>
+                <span class="prism-stat-label">Research Group</span>
+                <span class="prism-stat-value">Fudan NLP Group</span>
+              </div>
+              <div class="prism-stat">
+                <span class="prism-stat-label">Current Status</span>
+                <span class="prism-stat-value">Undergraduate · Class of 2026</span>
               </div>
             </div>
           </aside>
