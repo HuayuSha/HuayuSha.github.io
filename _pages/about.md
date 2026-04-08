@@ -43,7 +43,7 @@ redirect_from:
         </div>
       </div>
 
-      <div class="prism-side-card reveal" id="research">
+      <div class="prism-side-card prism-side-card--combined reveal" id="research">
         <h3>Research Interests</h3>
         <ul class="prism-interest-list">
           <li>Trustworthy LLM evaluation</li>
@@ -51,10 +51,10 @@ redirect_from:
           <li>Novelty assessment</li>
           <li>Scientific intelligence systems</li>
         </ul>
-      </div>
 
-      <div class="prism-side-card prism-side-card--soft reveal" id="contact">
-        <h3>Contact</h3>
+        <hr class="prism-side-divider">
+
+        <h3 id="contact">Contact</h3>
         <ul class="prism-contact-list">
           <li>
             <span class="prism-contact-label">Email</span>
@@ -90,7 +90,7 @@ redirect_from:
         <div class="prism-hero-grid">
           <div class="prism-hero-copy">
             <div class="prism-tagline">
-              <p>To be, or not to be, that is the question.</p>
+              <p>Evaluation is not a metric — it is a commitment to truth.</p>
             </div>
 
             <div class="prism-prose">
@@ -111,16 +111,16 @@ redirect_from:
             <span class="prism-note-card__eyebrow">At a Glance</span>
             <div class="prism-stat-grid">
               <div class="prism-stat">
-                <span class="prism-stat-label">Focus</span>
-                <span class="prism-stat-value">Trustworthy AI Evaluation</span>
+                <span class="prism-stat-label">Publications</span>
+                <span class="prism-stat-value">{{ site.publications | size }} Papers</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">Domain</span>
-                <span class="prism-stat-value">Medical NLP and Scientific Agents</span>
+                <span class="prism-stat-label">Status</span>
+                <span class="prism-stat-value">Undergraduate · Class of 2026</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">Base</span>
-                <span class="prism-stat-value">Fudan University, Shanghai</span>
+                <span class="prism-stat-label">Open to</span>
+                <span class="prism-stat-value">Research Collaboration</span>
               </div>
             </div>
           </aside>
@@ -131,24 +131,32 @@ redirect_from:
         <div class="prism-section-head prism-section-head--split">
           <div>
             <span class="prism-eyebrow">News</span>
-            <h2>Recent Update</h2>
+            <h2>Recent Updates</h2>
           </div>
         </div>
 
-        <article class="prism-note-card prism-note-card--hero">
-          <span class="prism-note-card__eyebrow">Good News</span>
-          <div class="prism-prose">
-            <p class="prism-lead">LLMEval-Fair is accepted to ACL 2026 Main Conference.</p>
-            <p>
-              Our work on robust and fair longitudinal evaluation of large language models has been accepted to the
-              <strong>ACL 2026 Main Conference</strong>.
-            </p>
-          </div>
-          <div class="prism-paper-actions">
-            <a class="prism-link-button button-pill--primary" href="{{ '/publication/LLMEval-Fair/' | relative_url }}">View Paper</a>
-            <a class="prism-link-button" href="https://arxiv.org/abs/2508.05452" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-          </div>
-        </article>
+        <ol class="prism-timeline">
+          {% for item in site.data.news %}
+          <li class="prism-timeline__item">
+            <span class="prism-timeline__date">{{ item.date }}</span>
+            <div class="prism-timeline__body">
+              <span class="prism-timeline__badge">{{ item.badge }}</span>
+              <p class="prism-timeline__text">{{ item.text }}</p>
+              {% if item.links and item.links.size > 0 %}
+              <div class="prism-paper-actions">
+                {% for link in item.links %}
+                  {% if link.external %}
+                    <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% if link.icon %}<i class="{{ link.icon }}"></i> {% endif %}{{ link.label }}</a>
+                  {% else %}
+                    <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url | relative_url }}">{{ link.label }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ol>
       </section>
 
       <section class="prism-content-card reveal">
@@ -166,7 +174,15 @@ redirect_from:
               <div class="prism-paper-meta">
                 <span class="prism-paper-meta-text">{{ post.date | date: "%Y" }}</span>
                 <span class="prism-paper-meta-dot"></span>
-                <span class="prism-paper-meta-text">{{ post.venue | default: "Preprint" }}</span>
+                <span class="prism-paper-venue-badge">{{ post.venue | default: "Preprint" }}</span>
+                {% if post.status %}
+                  <span class="prism-paper-status prism-paper-status--{{ post.status }}">
+                    {% if post.status == 'accepted' %}Accepted
+                    {% elsif post.status == 'published' %}Published
+                    {% elsif post.status == 'under-review' %}Under Review
+                    {% else %}Preprint{% endif %}
+                  </span>
+                {% endif %}
               </div>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
               {% include publication-authors-inline.html authors=post.authors equal_contrib=post.equal_contrib_authors corresponding=post.corresponding_authors class="publication-authors-line--card" max=6 %}

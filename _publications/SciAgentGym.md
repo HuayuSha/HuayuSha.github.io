@@ -9,6 +9,7 @@ excerpt: 'SciAgentGym benchmarks multi-step scientific tool use for LLM agents w
 excerpt_zh: 'SciAgentGym 面向真实科研流程构建科学智能体评测基准，覆盖多步工具调用、长链任务执行与可审计评测。当前稿件状态：ICML 2026 投稿中。'
 date: 2026-02-13
 venue: 'arXiv preprint · ICML 2026 submission (under review)'
+status: 'under-review'
 paperurl: 'https://arxiv.org/abs/2602.12984'
 bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2602-12984.bib'
 codeurl: 'https://github.com/CMarsRover/SciAgentGYM'

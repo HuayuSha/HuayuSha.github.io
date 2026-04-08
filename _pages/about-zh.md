@@ -40,7 +40,7 @@ lang: zh
         </div>
       </div>
 
-      <div class="prism-side-card reveal" id="research">
+      <div class="prism-side-card prism-side-card--combined reveal" id="research">
         <h3>研究方向</h3>
         <ul class="prism-interest-list">
           <li>大语言模型可信评测</li>
@@ -48,10 +48,10 @@ lang: zh
           <li>新颖性评估</li>
           <li>科学智能系统</li>
         </ul>
-      </div>
 
-      <div class="prism-side-card prism-side-card--soft reveal" id="contact">
-        <h3>联系方式</h3>
+        <hr class="prism-side-divider">
+
+        <h3 id="contact">联系方式</h3>
         <ul class="prism-contact-list">
           <li>
             <span class="prism-contact-label">邮箱</span>
@@ -87,7 +87,7 @@ lang: zh
         <div class="prism-hero-grid">
           <div class="prism-hero-copy">
             <div class="prism-tagline">
-              <p>生存还是死亡，这是一个问题。</p>
+              <p>评测不是指标，而是对真实的承诺。</p>
             </div>
 
             <div class="prism-prose">
@@ -108,16 +108,16 @@ lang: zh
             <span class="prism-note-card__eyebrow">快速概览</span>
             <div class="prism-stat-grid">
               <div class="prism-stat">
-                <span class="prism-stat-label">核心关注</span>
-                <span class="prism-stat-value">可信 AI 评测</span>
+                <span class="prism-stat-label">论文数量</span>
+                <span class="prism-stat-value">{{ site.publications | size }} 篇</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">应用场景</span>
-                <span class="prism-stat-value">医疗 NLP 与科学智能体</span>
+                <span class="prism-stat-label">当前状态</span>
+                <span class="prism-stat-value">本科在读 · 2026 届</span>
               </div>
               <div class="prism-stat">
-                <span class="prism-stat-label">所在地</span>
-                <span class="prism-stat-value">复旦大学，上海</span>
+                <span class="prism-stat-label">欢迎</span>
+                <span class="prism-stat-value">科研合作交流</span>
               </div>
             </div>
           </aside>
@@ -128,24 +128,32 @@ lang: zh
         <div class="prism-section-head prism-section-head--split">
           <div>
             <span class="prism-eyebrow">最新动态</span>
-            <h2>近期喜报</h2>
+            <h2>近期动态</h2>
           </div>
         </div>
 
-        <article class="prism-note-card prism-note-card--hero">
-          <span class="prism-note-card__eyebrow">喜报</span>
-          <div class="prism-prose">
-            <p class="prism-lead">LLMEval-Fair 已被 ACL 2026 Main Conference 接收。</p>
-            <p>
-              关于大语言模型稳健与公平纵向评测的工作 <strong>LLMEval-Fair</strong> 已正式被
-              <strong>ACL 2026 Main Conference</strong> 接收。
-            </p>
-          </div>
-          <div class="prism-paper-actions">
-            <a class="prism-link-button button-pill--primary" href="{{ '/zh/publication/LLMEval-Fair/' | relative_url }}">查看论文</a>
-            <a class="prism-link-button" href="https://arxiv.org/abs/2508.05452" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-          </div>
-        </article>
+        <ol class="prism-timeline">
+        {% for item in site.data.news %}
+          <li class="prism-timeline__item">
+            <span class="prism-timeline__date">{{ item.date }}</span>
+            <div class="prism-timeline__body">
+              <span class="prism-timeline__badge">{{ item.badge_zh }}</span>
+              <p class="prism-timeline__text">{{ item.text_zh }}</p>
+              {% if item.links and item.links.size > 0 %}
+              <div class="prism-paper-actions">
+                {% for link in item.links %}
+                  {% if link.external %}
+                    <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% if link.icon %}<i class="{{ link.icon }}"></i> {% endif %}{{ link.label_zh }}</a>
+                  {% else %}
+                    <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url | prepend: '/zh' | relative_url }}">{{ link.label_zh }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ol>
       </section>
 
       <section class="prism-content-card reveal">
@@ -163,7 +171,15 @@ lang: zh
               <div class="prism-paper-meta">
                 <span class="prism-paper-meta-text">{{ post.date | date: "%Y" }}</span>
                 <span class="prism-paper-meta-dot"></span>
-                <span class="prism-paper-meta-text">{{ post.venue | default: "预印本" }}</span>
+                <span class="prism-paper-venue-badge">{{ post.venue | default: "预印本" }}</span>
+                {% if post.status %}
+                  <span class="prism-paper-status prism-paper-status--{{ post.status }}">
+                    {% if post.status == 'accepted' %}已接收
+                    {% elsif post.status == 'published' %}已发表
+                    {% elsif post.status == 'under-review' %}审稿中
+                    {% else %}预印本{% endif %}
+                  </span>
+                {% endif %}
               </div>
               <h3><a href="{{ '/zh' | append: post.url | relative_url }}">{{ post.title }}</a></h3>
               {% include publication-authors-inline.html authors=post.authors equal_contrib=post.equal_contrib_authors corresponding=post.corresponding_authors class="publication-authors-line--card" max=6 %}

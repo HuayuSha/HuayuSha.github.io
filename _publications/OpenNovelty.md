@@ -9,6 +9,7 @@ excerpt: 'OpenNovelty builds an evidence-grounded agent pipeline for scholarly n
 excerpt_zh: 'OpenNovelty 将学术新颖性判断建模为带证据链的多阶段流程：检索相关工作、比较贡献声明、输出可核验的新颖性报告，而不是只给出黑盒判断。'
 date: 2026-01-04
 venue: 'arXiv preprint'
+status: 'preprint'
 paperurl: 'https://arxiv.org/abs/2601.01576'
 bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2601-01576.bib'
 codeurl: 'https://github.com/january-blue/OpenNovelty'

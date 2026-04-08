@@ -9,6 +9,7 @@ excerpt: 'LLMEval-Med is a physician-validated clinical benchmark built from rea
 excerpt_zh: 'LLMEval-Med 是一个经过医生验证的真实临床评测基准，强调面向临床场景的医学推理、检查清单打分与更贴近部署环境的安全评估。'
 date: 2025-06-04
 venue: 'Findings of EMNLP 2025'
+status: 'published'
 paperurl: 'https://aclanthology.org/2025.findings-emnlp.263/'
 bibtexurl: 'https://dblp.org/rec/conf/emnlp/ZhangSLSHWHLTJCXDGZH25.bib'
 codeurl: 'https://github.com/llmeval/LLMEval-Med'

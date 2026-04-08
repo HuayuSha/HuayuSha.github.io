@@ -9,6 +9,7 @@ excerpt: 'LLMEval-Fair proposes a dynamic evaluation framework that samples unse
 excerpt_zh: 'LLMEval-Fair 聚焦大模型评测中的公平性与稳健性问题，结合动态采样、反作弊约束与长期时间轴分析；该工作现已被 ACL 2026 Main Conference 接收。'
 date: 2025-08-07
 venue: 'ACL 2026 Main Conference'
+status: 'accepted'
 paperurl: 'https://arxiv.org/abs/2508.05452'
 bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2508-05452.bib'
 codeurl: 'https://github.com/llmeval/LLMEval-Fair'

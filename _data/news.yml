@@ -1,0 +1,22 @@
+- date: "2026-04"
+  badge: "Good News"
+  badge_zh: "好消息"
+  text: "LLMEval-Fair is accepted to ACL 2026 Main Conference."
+  text_zh: "LLMEval-Fair 被 ACL 2026 主会议接收。"
+  links:
+    - label: "View Paper"
+      label_zh: "查看论文"
+      url: "/publication/LLMEval-Fair/"
+      primary: true
+    - label: "arXiv"
+      label_zh: "arXiv"
+      url: "https://arxiv.org/abs/2508.05452"
+      icon: "fa-solid fa-file-pdf"
+      external: true
+
+- date: "2025-09"
+  badge: "Update"
+  badge_zh: "动态"
+  text: "Started undergraduate research at Fudan NLP Group."
+  text_zh: "加入复旦大学 NLP 组，开始本科科研。"
+  links: []

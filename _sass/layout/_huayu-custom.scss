@@ -6,7 +6,7 @@
    Typeface: Cormorant Garamond (display) + Inter (body)
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+/* Fonts loaded via <link> in head.html for non-blocking performance */
 
 /* -- Tokens ----------------------------------------------- */
 :root {
@@ -60,6 +60,10 @@
   --p-r-lg:  1.2rem;
   --p-r-xl:  1.5rem;
   --p-r-2xl: 2rem;
+
+  /* Status */
+  --p-error:            #c64d4d;
+  --p-error-dark:       #ff8c8c;
 
   /* Legacy compat */
   --prism-accent:       var(--p-accent);
@@ -444,6 +448,15 @@ body.home-page .page__footer {
   box-shadow: none;
 }
 
+.prism-side-card--combined h3 + ul { margin-bottom: 0; }
+.prism-side-card--combined h3:not(:first-child) { margin-top: 0; }
+
+.prism-side-divider {
+  border: none;
+  border-top: 1px solid var(--p-border);
+  margin: 1.4rem 0;
+}
+
 .prism-side-card p {
   margin: 0.3rem 0 0;
   color: var(--p-ink-3);
@@ -551,26 +564,43 @@ body.home-page .page__footer {
 
 /* -- Tagline / quote -------------------------------------- */
 .prism-tagline {
-  margin: 0 0 1.1rem;
-  padding: 0.8rem 1rem 0.8rem 1.2rem;
-  border-left: 2px solid var(--p-gold);
+  margin: 0 0 1.4rem;
+  padding: 1.1rem 1.4rem;
+  border-left: 3px solid var(--p-gold);
   background: var(--p-gold-pale);
-  border-radius: 0 var(--p-r-sm) var(--p-r-sm) 0;
+  border-radius: 0 var(--p-r-md) var(--p-r-md) 0;
+  position: relative;
+}
+
+.prism-tagline::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.1em;
+  left: 0.7rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--p-gold);
+  opacity: 0.25;
+  pointer-events: none;
 }
 
 .prism-tagline p {
   margin: 0;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  font-size: 1.1rem;
-  color: var(--p-ink-2);
-  line-height: 1.6;
+  font-size: 1.28rem;
+  font-weight: 400;
+  color: var(--p-ink);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
 }
 
 
 /* -- Prose ------------------------------------------------ */
 .prism-prose p {
   margin: 0 0 0.95rem;
+  font-weight: 400;
   color: var(--p-ink-2);
   font-size: 0.96rem;
   line-height: 1.92;
@@ -607,6 +637,54 @@ body.home-page .page__footer {
   border-radius: 50%;
   background: var(--p-border-strong);
   flex-shrink: 0;
+}
+
+.prism-paper-venue-badge {
+  color: var(--p-gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prism-paper-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1em 0.55em;
+  border-radius: var(--p-r-xs);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.prism-paper-status--accepted {
+  background: rgba(26, 99, 82, 0.1);
+  color: var(--p-accent);
+  border: 1px solid var(--p-accent-glow);
+}
+
+.prism-paper-status--published {
+  background: rgba(184, 131, 46, 0.1);
+  color: var(--p-gold);
+  border: 1px solid var(--p-gold-pale);
+}
+
+.prism-paper-status--under-review {
+  background: var(--p-surface-soft);
+  color: var(--p-ink-3);
+  border: 1px solid var(--p-border-med);
+}
+
+.prism-paper-status--preprint {
+  background: var(--p-surface-soft);
+  color: var(--p-ink-4);
+  border: 1px solid var(--p-border);
 }
 
 .prism-paper-card h3,
@@ -683,15 +761,103 @@ body.home-page .page__footer {
   text-decoration: none;
 }
 
+/* -- Timeline --------------------------------------------- */
+.prism-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.prism-timeline::before {
+  content: '';
+  position: absolute;
+  left: 5.5rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: var(--p-border-med);
+}
+
+.prism-timeline__item {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 0 1.4rem;
+  padding: 0.9rem 0;
+  position: relative;
+}
+
+.prism-timeline__item + .prism-timeline__item {
+  border-top: 1px solid var(--p-border);
+}
+
+.prism-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: calc(5.5rem - 4px);
+  top: 1.35rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--p-accent);
+  border: 2px solid var(--p-surface);
+  box-shadow: 0 0 0 1px var(--p-accent-glow);
+}
+
+.prism-timeline__date {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--p-ink-4);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-top: 0.18rem;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.prism-timeline__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.prism-timeline__badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  background: var(--p-accent-pale);
+  padding: 0.1em 0.5em;
+  border-radius: var(--p-r-xs);
+  align-self: flex-start;
+}
+
+.prism-timeline__text {
+  margin: 0;
+  font-size: 0.93rem;
+  color: var(--p-ink-2);
+  line-height: 1.7;
+}
+
+@media (max-width: 540px) {
+  .prism-timeline::before { left: 0; }
+  .prism-timeline__item { grid-template-columns: 1fr; gap: 0.2rem; }
+  .prism-timeline__item::before { display: none; }
+  .prism-timeline__date { text-align: left; }
+}
+
+
 .button-pill--primary {
   background: var(--p-ink);
   border-color: var(--p-ink);
-  color: #fefcf9;
+  color: var(--p-surface);
 }
 .button-pill--primary:hover {
   background: var(--p-ink-2);
   border-color: var(--p-ink-2);
-  color: #fefcf9;
+  color: var(--p-surface);
 }
 
 
@@ -839,7 +1005,8 @@ body.home-page #live2d4 {
 
 @media (max-width: 900px) {
   #prism-live2d-canvas,
-  body.home-page #waifu { display: none !important; }
+  body.home-page #waifu,
+  body.home-page #live2d4 { display: none !important; }
 }
 
 @media (max-width: 720px) {
@@ -1248,6 +1415,7 @@ body.home-page {
 
 .prism-lead {
   font-size: 1.03rem !important;
+  font-weight: 400 !important;
   line-height: 1.9 !important;
   color: var(--p-ink) !important;
 }
@@ -1477,3 +1645,4 @@ html[data-theme="dark"] body.home-page .prism-interactive-bg::after {
     opacity: 1 !important;
   }
 }
+
