@@ -1670,6 +1670,106 @@ html[data-theme="dark"] body.home-page .prism-stat-grid--hero .prism-stat {
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
+.prism-content-card--hero {
+  padding: 1.34rem 1.4rem 1.22rem;
+}
+
+.prism-section-head--hero {
+  margin-bottom: 0.78rem;
+}
+
+.prism-content-card--hero .prism-section-head h2 {
+  font-size: 1.58rem;
+}
+
+.prism-hero-grid {
+  grid-template-columns: minmax(0, 1.72fr) minmax(276px, 0.72fr);
+  gap: 0.92rem;
+}
+
+.prism-hero-copy {
+  gap: 0.72rem;
+}
+
+.prism-tagline--hero {
+  max-width: 32rem;
+  padding: 0.72rem 0.88rem 0.72rem 0.96rem;
+  border-left-width: 2px;
+}
+
+.prism-tagline--hero::before {
+  left: 0.56rem;
+  top: 0.04rem;
+  font-size: 2.15rem;
+  opacity: 0.13;
+}
+
+.prism-tagline--hero p {
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.prism-content-card--hero .prism-prose p {
+  font-size: 0.88rem;
+  line-height: 1.76;
+}
+
+.prism-content-card--hero .prism-lead {
+  font-size: 0.94rem !important;
+  line-height: 1.72 !important;
+}
+
+.prism-note-card--hero {
+  max-width: 19.75rem;
+  justify-self: end;
+  align-self: start;
+  padding: 0.88rem 0.92rem;
+}
+
+.prism-note-card--hero .prism-note-card__eyebrow {
+  margin-bottom: 0.64rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.11em;
+}
+
+.prism-stat-grid--hero {
+  gap: 0.52rem;
+}
+
+.prism-stat-grid--hero .prism-stat {
+  gap: 0.14rem;
+  padding: 0.62rem 0.66rem;
+  min-height: 0;
+}
+
+.prism-stat-grid--hero .prism-stat-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+}
+
+.prism-stat-grid--hero .prism-stat-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+
+html[lang="zh"] body.home-page .prism-stat-grid--hero .prism-stat-value {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 1200px) {
+  .prism-hero-grid {
+    grid-template-columns: minmax(0, 1.58fr) minmax(260px, 0.8fr);
+  }
+
+  .prism-note-card--hero {
+    max-width: 18.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .prism-grid {
     grid-template-columns: 1fr;
@@ -1697,27 +1797,41 @@ html[data-theme="dark"] body.home-page .prism-stat-grid--hero .prism-stat {
   }
 
   .prism-content-card--hero {
-    padding: 1.08rem 1.02rem 1.12rem;
+    padding: 1.02rem 0.96rem 1.04rem;
   }
 
   .prism-hero-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.76rem;
   }
 
   .prism-tagline--hero {
-    padding: 0.78rem 0.88rem 0.8rem 0.96rem;
+    max-width: none;
+    padding: 0.68rem 0.78rem 0.72rem 0.86rem;
   }
 
   .prism-tagline--hero p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .prism-note-card--hero,
+  .prism-note-card--hero-float {
+    float: none;
+    max-width: none;
+    width: 100%;
+    margin: 0;
   }
 
   .prism-stat-grid--hero {
     grid-template-columns: 1fr;
+    gap: 0.42rem;
+  }
+
+  .prism-stat-grid--hero .prism-stat {
+    padding: 0.56rem 0.62rem;
   }
 
   .prism-lead {
-    font-size: 0.97rem !important;
+    font-size: 0.92rem !important;
   }
 
   .prism-contact-list li {
@@ -1785,3 +1899,28 @@ html[data-theme="dark"] body.home-page .prism-stat-grid--hero .prism-stat {
   }
 }
 
+
+
+.prism-hero-flow {
+  display: block;
+}
+
+.prism-prose--hero::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.prism-note-card--hero-float {
+  float: right;
+  width: min(18.9rem, 37%);
+  max-width: 18.9rem;
+  margin: 0.08rem 0 0.4rem 1rem;
+}
+
+@media (max-width: 1200px) {
+  .prism-note-card--hero-float {
+    width: min(17.5rem, 39%);
+    max-width: 17.5rem;
+  }
+}

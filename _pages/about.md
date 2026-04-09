@@ -85,31 +85,15 @@ redirect_from:
         <div class="prism-section-head prism-section-head--hero">
           <span class="prism-eyebrow">Research Profile</span>
           <h2>About</h2>
-          <p class="prism-hero-subtitle">Started undergraduate research in March 2025 at the Fudan NLP Group.</p>
+          <p class="prism-hero-subtitle">Started undergraduate research in March 2025 at the Fudan NLP Lab.</p>
         </div>
 
-        <div class="prism-hero-grid">
-          <div class="prism-hero-copy">
-            <div class="prism-tagline prism-tagline--hero">
-              <p>To be, or not to be, that is the question.</p>
-            </div>
-
-            <div class="prism-prose">
-              <p class="prism-lead">
-                I am Huayu Sha, an undergraduate student in Software Engineering at Fudan University,
-                working on <strong>trustworthy LLM evaluation</strong>,
-                <strong>medical benchmark construction</strong>, and
-                <strong>AI systems for scientific research workflows</strong>.
-              </p>
-              <p>
-                Since joining the <strong>Fudan NLP Group</strong> in <strong>March 2025</strong>, I have been focusing on
-                evaluation protocols, realistic benchmark design, and research tools that make experimental results
-                easier to verify, reproduce, and trust.
-              </p>
-            </div>
+        <div class="prism-hero-flow">
+          <div class="prism-tagline prism-tagline--hero">
+            <p>To be, or not to be, that is the question.</p>
           </div>
 
-          <aside class="prism-note-card prism-note-card--hero">
+          <aside class="prism-note-card prism-note-card--hero prism-note-card--hero-float">
             <span class="prism-note-card__eyebrow">Research Snapshot</span>
             <div class="prism-stat-grid prism-stat-grid--hero">
               <div class="prism-stat">
@@ -126,10 +110,24 @@ redirect_from:
               </div>
               <div class="prism-stat">
                 <span class="prism-stat-label">Current Status</span>
-                <span class="prism-stat-value">Undergraduate · Class of 2026</span>
+                <span class="prism-stat-value">Undergrad · 2026</span>
               </div>
             </div>
           </aside>
+
+          <div class="prism-prose prism-prose--hero">
+            <p class="prism-lead">
+              I am Huayu Sha, an undergraduate student in Software Engineering at Fudan University,
+              working on <strong>trustworthy LLM evaluation</strong>,
+              <strong>medical benchmark construction</strong>, and
+              <strong>AI systems for scientific research workflows</strong>.
+            </p>
+            <p>
+              Since joining the <strong>Fudan NLP Group</strong> in <strong>March 2025</strong>, I have been focusing on
+              evaluation protocols, realistic benchmark design, and research tools that make experimental results
+              easier to verify, reproduce, and trust.
+            </p>
+          </div>
         </div>
       </section>
 

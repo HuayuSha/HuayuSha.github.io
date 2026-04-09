@@ -85,27 +85,12 @@ lang: zh
           <p class="prism-hero-subtitle">自 2025 年 3 月起在复旦 NLP 组开展本科科研。</p>
         </div>
 
-        <div class="prism-hero-grid">
-          <div class="prism-hero-copy">
-            <div class="prism-tagline prism-tagline--hero">
-              <p>生存还是死亡，这是一个问题。</p>
-            </div>
-
-            <div class="prism-prose">
-              <p class="prism-lead">
-                我是沙华煜，复旦大学软件工程专业本科生，研究主要围绕
-                <strong>大语言模型可信评测</strong>、
-                <strong>医疗基准构建</strong>，以及
-                <strong>服务科研工作流的智能系统</strong>。
-              </p>
-              <p>
-                自 <strong>2025 年 3 月</strong> 加入 <strong>复旦 NLP 组</strong> 以来，我持续关注评测协议设计、
-                真实场景基准构建，以及让实验结果更易验证、更可复现的科研工具系统。
-              </p>
-            </div>
+        <div class="prism-hero-flow">
+          <div class="prism-tagline prism-tagline--hero">
+            <p>生存还是死亡，这是一个问题。</p>
           </div>
 
-          <aside class="prism-note-card prism-note-card--hero">
+          <aside class="prism-note-card prism-note-card--hero prism-note-card--hero-float">
             <span class="prism-note-card__eyebrow">研究概览</span>
             <div class="prism-stat-grid prism-stat-grid--hero">
               <div class="prism-stat">
@@ -122,10 +107,23 @@ lang: zh
               </div>
               <div class="prism-stat">
                 <span class="prism-stat-label">当前状态</span>
-                <span class="prism-stat-value">本科在读 · 2026 届</span>
+                <span class="prism-stat-value">本科在读 · 2026届</span>
               </div>
             </div>
           </aside>
+
+          <div class="prism-prose prism-prose--hero">
+            <p class="prism-lead">
+              我是沙华煜，复旦大学软件工程专业本科生，研究主要围绕
+              <strong>大语言模型可信评测</strong>、
+              <strong>医疗基准构建</strong>，以及
+              <strong>服务科研工作流的智能系统</strong>。
+            </p>
+            <p>
+              自 <strong>2025 年 3 月</strong> 加入 <strong>复旦 NLP 组</strong> 以来，我持续关注评测协议设计、
+              真实场景基准构建，以及让实验结果更易验证、更可复现的科研工具系统。
+            </p>
+          </div>
         </div>
       </section>
 
