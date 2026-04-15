@@ -135,28 +135,32 @@ lang: zh
           </div>
         </div>
 
-        <ol class="prism-timeline">
-        {% for item in site.data.news %}
-          <li class="prism-timeline__item">
-            <span class="prism-timeline__date">{{ item.date }}</span>
-            <div class="prism-timeline__body">
-              <span class="prism-timeline__badge">{{ item.badge_zh }}</span>
-              <p class="prism-timeline__text">{{ item.text_zh }}</p>
-              {% if item.links and item.links.size > 0 %}
-              <div class="prism-paper-actions">
-                {% for link in item.links %}
-                  {% if link.external %}
-                    <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% if link.icon %}<i class="{{ link.icon }}"></i> {% endif %}{{ link.label_zh }}</a>
-                  {% else %}
-                    <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url | prepend: '/zh' | relative_url }}">{{ link.label_zh }}</a>
-                  {% endif %}
-                {% endfor %}
+        <div class="prism-timeline-scroll" data-scroll-fade tabindex="0" aria-label="可滚动的动态时间线">
+          <div class="prism-scroll-fade prism-scroll-fade--top" aria-hidden="true"></div>
+          <ol class="prism-timeline">
+          {% for item in site.data.news %}
+            <li class="prism-timeline__item">
+              <span class="prism-timeline__date">{{ item.date }}</span>
+              <div class="prism-timeline__body">
+                <span class="prism-timeline__badge">{{ item.badge_zh }}</span>
+                <p class="prism-timeline__text">{{ item.text_zh }}</p>
+                {% if item.links and item.links.size > 0 %}
+                <div class="prism-paper-actions">
+                  {% for link in item.links %}
+                    {% if link.external %}
+                      <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% if link.icon %}<i class="{{ link.icon }}"></i> {% endif %}{{ link.label_zh }}</a>
+                    {% else %}
+                      <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url | prepend: '/zh' | relative_url }}">{{ link.label_zh }}</a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                {% endif %}
               </div>
-              {% endif %}
-            </div>
-          </li>
-          {% endfor %}
-        </ol>
+            </li>
+            {% endfor %}
+          </ol>
+          <div class="prism-scroll-fade prism-scroll-fade--bottom" aria-hidden="true"></div>
+        </div>
       </section>
 
       <section class="prism-content-card reveal">

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Scroll progress bar ────────────────────────────────
   initScrollProgress();
+  initScrollFades();
 
   // ── Reveal animations ─────────────────────────────────
   const revealItems = Array.from(document.querySelectorAll('.reveal'));
@@ -72,6 +73,46 @@ function initScrollProgress() {
     });
     ticking = true;
   }, { passive: true });
+}
+
+
+/* ── Scroll fade regions ─────────────────────────────────── */
+function initScrollFades() {
+  const scrollRegions = Array.from(document.querySelectorAll('[data-scroll-fade]'));
+  if (!scrollRegions.length) return;
+
+  const syncState = (region) => {
+    const overflow = region.scrollHeight - region.clientHeight > 12;
+    const atTop = region.scrollTop <= 6;
+    const atBottom = region.scrollTop + region.clientHeight >= region.scrollHeight - 6;
+
+    region.classList.toggle('is-scrollable', overflow);
+    region.classList.toggle('is-scrolled-top', overflow && !atTop);
+    region.classList.toggle('is-scrolled-bottom', overflow && !atBottom);
+  };
+
+  scrollRegions.forEach((region) => {
+    let ticking = false;
+
+    const requestSync = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        syncState(region);
+        ticking = false;
+      });
+    };
+
+    requestSync();
+    region.addEventListener('scroll', requestSync, { passive: true });
+    window.addEventListener('resize', requestSync, { passive: true });
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(requestSync);
+      resizeObserver.observe(region);
+      if (region.firstElementChild) resizeObserver.observe(region.firstElementChild);
+    }
+  });
 }
 
 
