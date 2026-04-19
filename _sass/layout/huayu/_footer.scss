@@ -1,0 +1,212 @@
+/* =========================================================
+   PRISM Footer - 3-column engineered minimal
+   Used by: _includes/footer.html (all pages, en + zh)
+   Layout: identity / site map / elsewhere, plus a thin
+   meta bar with copyright + last updated + back-to-top.
+   ========================================================= */
+
+.prism-footer {
+  position: relative;
+  background: var(--p-bg);
+  border-top: 1px solid var(--p-border);
+}
+
+.prism-footer__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2.6rem 1.5rem 1.8rem;
+  display: grid;
+  grid-template-columns: 1.5fr 0.9fr 0.9fr;
+  gap: 2rem 3rem;
+  align-items: start;
+}
+
+.prism-footer__col {
+  min-width: 0;
+}
+
+/* -- Identity column ------------------------------------ */
+.prism-footer__brand {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  color: var(--p-ink) !important;
+  text-decoration: none !important;
+  letter-spacing: -0.005em;
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  transition: color 200ms ease;
+}
+
+.prism-footer__brand:hover {
+  color: var(--p-accent) !important;
+}
+
+.prism-footer__role {
+  margin: 0 0 0.3rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: var(--p-ink-2) !important;
+  line-height: 1.4;
+}
+
+.prism-footer__tag {
+  margin: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 400 !important;
+  color: var(--p-ink-3) !important;
+  line-height: 1.55;
+  max-width: 28rem;
+}
+
+/* -- Heading (Site / Elsewhere) ------------------------- */
+.prism-footer__heading {
+  margin: 0 0 0.85rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.66rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  line-height: 1;
+}
+
+/* -- Link lists ----------------------------------------- */
+.prism-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.prism-footer__links a {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.86rem !important;
+  font-weight: 400 !important;
+  color: var(--p-ink-2) !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.05rem;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: color 180ms ease, background-size 220ms ease;
+  padding-bottom: 1px;
+}
+
+.prism-footer__links a:hover,
+.prism-footer__links a:focus-visible {
+  color: var(--p-ink) !important;
+  background-size: 100% 1px;
+  outline: none;
+}
+
+/* -- Bottom meta bar ------------------------------------ */
+.prism-footer__bar {
+  border-top: 1px solid var(--p-border-soft, var(--p-border));
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0.95rem 1.5rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.prism-footer__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--p-ink-3);
+}
+
+.prism-footer__dot {
+  color: var(--p-ink-4);
+}
+
+.prism-footer__top {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 500 !important;
+  color: var(--p-ink-3) !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.prism-footer__top:hover,
+.prism-footer__top:focus-visible {
+  color: var(--p-ink) !important;
+  background: var(--p-surface-soft);
+  outline: none;
+}
+
+/* -- Footer quote (home page only easter egg) ----------- */
+.prism-footer-quote {
+  max-width: 1140px;
+  margin: 0 auto !important;
+  padding: 0 1.5rem;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic;
+  font-size: 0.92rem !important;
+  color: var(--p-ink-4) !important;
+  text-align: center;
+  padding-top: 1.6rem;
+  letter-spacing: 0.005em;
+  line-height: 1.4;
+}
+
+/* -- Responsive ----------------------------------------- */
+@media (max-width: 880px) {
+  .prism-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem 2rem;
+    padding: 2rem 1.25rem 1.4rem;
+  }
+
+  .prism-footer__col--identity {
+    grid-column: 1 / -1;
+  }
+
+  .prism-footer__bar {
+    padding: 0.85rem 1.25rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .prism-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .prism-footer__col--identity {
+    grid-column: auto;
+  }
+}
+
+/* -- Dark mode tweaks ----------------------------------- */
+html[data-theme="dark"] .prism-footer {
+  background: var(--p-bg);
+}
+
+html[data-theme="dark"] .prism-footer__top:hover,
+html[data-theme="dark"] .prism-footer__top:focus-visible {
+  background: rgba(255, 255, 255, 0.04);
+}

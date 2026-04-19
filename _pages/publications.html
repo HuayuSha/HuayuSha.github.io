@@ -1,38 +1,114 @@
 ---
-layout: archive
+layout: default
 title: "Publications"
 excerpt: "Publication list of Huayu Sha, including papers, preprints, and ongoing work on LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
 description: "Publication list of Huayu Sha, including papers, preprints, and ongoing work on LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
 permalink: /publications/
 author_profile: false
+share: false
 ---
-
-<p>
-  This page collects my current papers and preprints. I am especially interested in rigorous evaluation,
-  medical benchmarks, and scientific-intelligence systems for research workflows.
-</p>
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+{%- assign all_pubs = site.publications | sort: "date" | reverse -%}
+{%- assign pub_count = all_pubs | size -%}
 
+<section class="prism-shell prism-shell--pubs">
+  <div class="prism-pubs">
 
+    <header class="prism-pubs-hero">
+      <p class="prism-pubs-hero__eyebrow">
+        <span class="prism-pubs-hero__rule" aria-hidden="true"></span>Publications
+      </p>
+      <h1 class="prism-pubs-hero__title">All papers, preprints, and ongoing work.</h1>
+      <p class="prism-pubs-hero__lead">
+        Trustworthy LLM evaluation, medical benchmarks, novelty assessment, and AI tools for scientific research workflows.
+      </p>
+      <p class="prism-pubs-hero__meta">
+        {{ pub_count }} publication{% if pub_count != 1 %}s{% endif %} · sorted by year ·
+        <a class="prism-pubs-hero__back" href="{{ '/' | relative_url }}">Back to home <span aria-hidden="true">↗</span></a>
+      </p>
+    </header>
+
+    <div class="prism-pubs-stream">
+      {%- assign last_year = "" -%}
+      {% for post in all_pubs %}
+        {%- assign post_year = post.date | date: "%Y" -%}
+
+        {%- if post_year != last_year -%}
+          {%- unless forloop.first -%}
+            </ol>
+          </section>
+          {%- endunless -%}
+          <section class="prism-pubs-year">
+            <header class="prism-pubs-year__head">
+              <h2 class="prism-pubs-year__label">{{ post_year }}</h2>
+              <span class="prism-pubs-year__line" aria-hidden="true"></span>
+            </header>
+            <ol class="prism-pubs-year__list">
+          {%- assign last_year = post_year -%}
+        {%- endif -%}
+
+        <li class="prism-pubs-item">
+          <div class="prism-pubs-item__meta">
+            {%- if post.venue -%}
+              <span class="prism-pubs-item__venue">{{ post.venue }}</span>
+            {%- endif -%}
+            {%- if post.status -%}
+              <span class="prism-pubs-item__status prism-pubs-item__status--{{ post.status }}">
+                {%- if post.status == 'accepted' -%}Accepted
+                {%- elsif post.status == 'published' -%}Published
+                {%- elsif post.status == 'under-review' -%}Under Review
+                {%- else -%}Preprint{%- endif -%}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <h3 class="prism-pubs-item__title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+
+          {% include publication-authors-inline.html
+            authors=post.authors
+            equal_contrib=post.equal_contrib_authors
+            corresponding=post.corresponding_authors
+            class="prism-pubs-item__authors"
+            max=8 %}
+
+          {% if post.excerpt and post.excerpt != "" %}
+            <p class="prism-pubs-item__excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+          {% endif %}
+
+          <div class="prism-pubs-item__actions">
+            <a class="prism-pubs-link" href="{{ post.url | relative_url }}">Details</a>
+            {% if post.paperurl %}
+              <a class="prism-pubs-link" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer">PDF<span aria-hidden="true">&nbsp;↗</span></a>
+            {% endif %}
+            {% if post.codeurl %}
+              <a class="prism-pubs-link" href="{{ post.codeurl }}" target="_blank" rel="noopener noreferrer">Code<span aria-hidden="true">&nbsp;↗</span></a>
+            {% endif %}
+            {% if post.bibtexurl %}
+              <a class="prism-pubs-link" href="{{ post.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX<span aria-hidden="true">&nbsp;↗</span></a>
+            {% endif %}
+          </div>
+        </li>
+
+        {% if forloop.last %}
+            </ol>
+          </section>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <footer class="prism-pubs-footer">
+      <a class="prism-pubs-footer__link" href="{{ '/' | relative_url }}">
+        <span aria-hidden="true">←</span> Back to home
+      </a>
+      <span class="prism-pubs-footer__divider" aria-hidden="true">·</span>
+      <a class="prism-pubs-footer__link" href="{{ '/cv/' | relative_url }}">
+        Curriculum vitae <span aria-hidden="true">→</span>
+      </a>
+    </footer>
+
+  </div>
+</section>

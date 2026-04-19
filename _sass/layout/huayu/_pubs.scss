@@ -1,0 +1,350 @@
+/* =========================================================
+   PRISM Publications List - Engineered Minimal Index
+   Used by: _pages/publications.html
+   Goal: scannable year-grouped publication index in the same
+   academic-minimal language as homepage and publication detail.
+   Namespaced .prism-pubs-* to avoid collision with old archive.
+   ========================================================= */
+
+.prism-shell--pubs {
+  position: relative;
+  padding: 2.4rem 0 5rem;
+  background:
+    radial-gradient(900px 380px at 14% -10%, rgba(184, 131, 46, 0.045) 0%, rgba(184, 131, 46, 0) 70%),
+    radial-gradient(700px 320px at 96% 4%, rgba(26, 99, 82, 0.04) 0%, rgba(26, 99, 82, 0) 72%);
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.prism-pubs {
+  position: relative;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.4rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--p-ink-2);
+  z-index: 1;
+}
+
+/* -- Hero ----------------------------------------------- */
+.prism-pubs-hero {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.prism-pubs-hero__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.prism-pubs-hero__rule {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1px;
+  background: var(--p-accent);
+  opacity: 0.7;
+}
+
+.prism-pubs-hero__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 2.4rem !important;
+  font-weight: 600 !important;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  color: var(--p-ink);
+  margin: 0 0 0.95rem !important;
+  max-width: 36rem;
+}
+
+.prism-pubs-hero__lead {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--p-ink-2);
+  max-width: 42rem;
+  margin: 0 0 1.2rem;
+}
+
+.prism-pubs-hero__meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  color: var(--p-ink-3);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.prism-pubs-hero__back {
+  color: var(--p-accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease;
+}
+
+.prism-pubs-hero__back:hover,
+.prism-pubs-hero__back:focus-visible {
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+/* -- Year stream / groups ------------------------------- */
+.prism-pubs-stream {
+  display: grid;
+  gap: 2.6rem;
+}
+
+.prism-pubs-year + .prism-pubs-year {
+  margin-top: 0.4rem;
+}
+
+.prism-pubs-year__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.prism-pubs-year__label {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--p-ink);
+  margin: 0 !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.prism-pubs-year__line {
+  flex: 1;
+  height: 1px;
+  background: var(--p-border);
+  display: block;
+}
+
+.prism-pubs-year__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.6rem;
+}
+
+/* -- Item ----------------------------------------------- */
+.prism-pubs-item {
+  padding: 1.05rem 0 1.4rem;
+  border-bottom: 1px dashed var(--p-border);
+}
+
+.prism-pubs-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.4rem;
+}
+
+.prism-pubs-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--p-ink-3);
+  margin-bottom: 0.45rem;
+}
+
+.prism-pubs-item__venue {
+  color: var(--p-accent);
+  font-weight: 500;
+}
+
+.prism-pubs-item__status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.55rem;
+  border: 1px solid var(--p-border-med, var(--p-border));
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--p-ink-3);
+}
+
+.prism-pubs-item__status--published {
+  background: rgba(77, 191, 158, 0.10);
+  border-color: rgba(77, 191, 158, 0.36);
+  color: var(--p-accent-dark, var(--p-accent));
+}
+
+.prism-pubs-item__status--accepted {
+  background: rgba(223, 176, 93, 0.10);
+  border-color: rgba(223, 176, 93, 0.40);
+  color: var(--p-gold, #b78b3c);
+}
+
+.prism-pubs-item__status--under-review {
+  background: rgba(120, 132, 158, 0.08);
+  border-color: rgba(120, 132, 158, 0.32);
+  color: var(--p-ink-3);
+}
+
+.prism-pubs-item__status--preprint {
+  background: transparent;
+  color: var(--p-ink-3);
+}
+
+.prism-pubs-item__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  line-height: 1.28;
+  letter-spacing: -0.003em;
+  color: var(--p-ink);
+  margin: 0 0 0.55rem !important;
+}
+
+.prism-pubs-item__title a {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(transparent calc(100% - 1px), var(--p-accent) calc(100% - 1px));
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 220ms ease, color 160ms ease;
+}
+
+.prism-pubs-item__title a:hover,
+.prism-pubs-item__title a:focus-visible {
+  color: var(--p-accent);
+  background-size: 100% 100%;
+  outline: none;
+}
+
+.prism-pubs-item__authors {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  margin: 0 0 0.55rem;
+  max-width: 52rem;
+}
+
+.prism-pubs-item__authors .author-me {
+  font-weight: 600;
+  color: var(--p-ink);
+  border-bottom: 1px solid var(--p-accent);
+  padding-bottom: 1px;
+}
+
+.prism-pubs-item__excerpt {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--p-ink-3);
+  margin: 0.2rem 0 0.7rem;
+  max-width: 48rem;
+}
+
+.prism-pubs-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-top: 0.45rem;
+}
+
+.prism-pubs-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--p-ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--p-border);
+  padding-bottom: 1px;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-pubs-link:hover,
+.prism-pubs-link:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+/* -- Footer --------------------------------------------- */
+.prism-pubs-footer {
+  margin-top: 3.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--p-border);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--p-ink-3);
+}
+
+.prism-pubs-footer__link {
+  color: var(--p-ink-3);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-pubs-footer__link:hover,
+.prism-pubs-footer__link:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-pubs-footer__divider {
+  color: var(--p-ink-4, var(--p-ink-3));
+  opacity: 0.55;
+}
+
+/* -- Responsive ----------------------------------------- */
+@media (max-width: 880px) {
+  .prism-shell--pubs { padding: 1.6rem 0 4rem; }
+  .prism-pubs { padding: 0 1.1rem; }
+  .prism-pubs-hero { margin-bottom: 2.2rem; padding-bottom: 1.6rem; }
+  .prism-pubs-hero__title { font-size: 1.95rem !important; }
+  .prism-pubs-stream { gap: 2rem; }
+  .prism-pubs-year__head { margin-bottom: 1rem; }
+  .prism-pubs-item__title { font-size: 1.18rem !important; }
+}
+
+/* -- Dark mode ------------------------------------------ */
+html[data-theme="dark"] .prism-pubs-item__venue {
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-pubs-item__status--published {
+  background: rgba(77, 191, 158, 0.12);
+  border-color: rgba(77, 191, 158, 0.32);
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-pubs-item__status--accepted {
+  background: rgba(223, 176, 93, 0.12);
+  border-color: rgba(223, 176, 93, 0.32);
+  color: var(--p-gold-light);
+}
+
+html[data-theme="dark"] .prism-pubs-item__authors .author-me {
+  border-bottom-color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-pubs-item__title a {
+  background-image: linear-gradient(transparent calc(100% - 1px), var(--p-accent-light) calc(100% - 1px));
+}
+
+

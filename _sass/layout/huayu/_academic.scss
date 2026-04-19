@@ -1,0 +1,1292 @@
+/* =========================================================
+   Homepage v6 refinements
+   ========================================================= */
+body.home-page {
+  --prism-pointer-x: 52%;
+  --prism-pointer-y: 28%;
+}
+
+.prism-interactive-bg::after {
+  content: '';
+  position: absolute;
+  inset: -12rem;
+  pointer-events: none;
+  background:
+    radial-gradient(22rem 22rem at var(--prism-pointer-x) var(--prism-pointer-y), rgba(184, 131, 46, 0.10) 0%, rgba(184, 131, 46, 0.04) 32%, rgba(184, 131, 46, 0) 66%),
+    radial-gradient(18rem 18rem at calc(var(--prism-pointer-x) + 2%) calc(var(--prism-pointer-y) + 8%), rgba(26, 99, 82, 0.06) 0%, rgba(26, 99, 82, 0) 68%);
+  opacity: 0.9;
+}
+
+.prism-grid {
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 1.65rem;
+}
+
+.prism-main {
+  gap: 1rem;
+}
+
+.prism-profile-card {
+  padding: 1.55rem;
+}
+
+.prism-profile-kicker {
+  margin: 0 0 0.68rem;
+  color: var(--p-gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.prism-profile-note {
+  margin: 0.95rem 0 0;
+  color: var(--p-ink-3);
+  font-size: 0.88rem;
+  line-height: 1.78;
+  text-align: center;
+}
+
+.prism-status-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.42rem;
+  margin-top: 1rem;
+}
+
+.prism-status-chips span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.34rem 0.72rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(184, 131, 46, 0.14);
+  color: var(--p-ink-2);
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.prism-contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.56rem;
+}
+
+.prism-contact-list li {
+  display: grid;
+  grid-template-columns: 4.9rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.62rem 0.72rem;
+  border-radius: var(--p-r-md);
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(28, 22, 14, 0.05);
+}
+
+.prism-contact-label {
+  color: var(--p-ink-4);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prism-contact-list li span:last-child,
+.prism-contact-list li a {
+  min-width: 0;
+  color: var(--p-ink-2);
+  font-size: 0.84rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.prism-contact-list li a {
+  color: var(--p-accent);
+}
+
+.prism-section-head--hero {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.prism-section-head--split > div {
+  display: grid;
+  gap: 0.36rem;
+}
+
+.prism-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  color: var(--p-gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.prism-eyebrow::before {
+  content: '';
+  width: 1.8rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(184, 131, 46, 0.9), rgba(184, 131, 46, 0));
+}
+
+.prism-content-card--hero {
+  padding: 1.7rem;
+  background:
+    radial-gradient(34rem 20rem at 100% 0%, rgba(184, 131, 46, 0.09) 0%, rgba(184, 131, 46, 0) 60%),
+    linear-gradient(160deg, rgba(254, 252, 249, 0.88) 0%, rgba(247, 243, 237, 0.8) 100%);
+}
+
+.prism-hero-grid,
+.prism-focus-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.34fr) minmax(240px, 0.92fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.prism-hero-copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.prism-lead {
+  font-size: 1.03rem !important;
+  font-weight: 400 !important;
+  line-height: 1.9 !important;
+  color: var(--p-ink) !important;
+}
+
+.prism-note-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 1.05rem;
+  border-radius: calc(var(--p-r-lg) - 0.1rem);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(184, 131, 46, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.prism-note-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.prism-note-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.prism-note-card__eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.82rem;
+  color: var(--p-gold);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.prism-note-card p {
+  margin: 0;
+  color: var(--p-ink-3);
+  font-size: 0.87rem;
+  line-height: 1.8;
+}
+
+.prism-stat-grid {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.prism-stat {
+  display: grid;
+  gap: 0.2rem;
+  padding-bottom: 0.72rem;
+  border-bottom: 1px solid rgba(28, 22, 14, 0.08);
+}
+
+.prism-stat:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.prism-stat-label {
+  color: var(--p-ink-4);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.prism-stat-value {
+  color: var(--p-ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.prism-paper-list {
+  gap: 0.92rem;
+}
+
+.prism-paper-card {
+  padding: 1.25rem 1.4rem 1.3rem;
+}
+
+.prism-paper-card h3 {
+  padding-right: 2.25rem;
+}
+
+.prism-paper-card p,
+.prism-paper-excerpt-zh {
+  margin-top: 0.3rem;
+}
+
+.publication-authors-line--card {
+  display: block;
+  margin: 0 0 0.72rem;
+  color: var(--p-ink-3);
+}
+
+.prism-paper-actions {
+  margin-top: 1rem;
+}
+
+.prism-tag-list {
+  align-content: start;
+}
+
+.prism-note-card--compact {
+  min-height: 100%;
+}
+
+.prism-note-card--compact p {
+  max-width: 28rem;
+}
+
+html[data-theme="dark"] body.home-page .prism-content-card--hero {
+  background:
+    radial-gradient(34rem 20rem at 100% 0%, rgba(223, 176, 93, 0.13) 0%, rgba(223, 176, 93, 0) 62%),
+    linear-gradient(160deg, rgba(25, 33, 43, 0.88) 0%, rgba(21, 28, 37, 0.84) 100%);
+}
+
+html[data-theme="dark"] body.home-page .prism-note-card,
+html[data-theme="dark"] body.home-page .prism-contact-list li,
+html[data-theme="dark"] body.home-page .prism-status-chips span {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(164, 185, 209, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+html[data-theme="dark"] body.home-page .prism-interactive-bg::after {
+  background:
+    radial-gradient(22rem 22rem at var(--prism-pointer-x) var(--prism-pointer-y), rgba(223, 176, 93, 0.12) 0%, rgba(223, 176, 93, 0.04) 34%, rgba(223, 176, 93, 0) 66%),
+    radial-gradient(18rem 18rem at calc(var(--prism-pointer-x) + 2%) calc(var(--prism-pointer-y) + 8%), rgba(77, 191, 158, 0.08) 0%, rgba(77, 191, 158, 0) 68%);
+}
+
+
+.prism-section-head--hero {
+  gap: 0.24rem;
+  margin-bottom: 0.92rem;
+}
+
+.prism-hero-subtitle {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--p-ink-4);
+  font-size: 0.84rem;
+  line-height: 1.72;
+  letter-spacing: 0.01em;
+}
+
+.prism-content-card--hero {
+  padding: 1.45rem 1.5rem 1.52rem;
+  background:
+    radial-gradient(24rem 14rem at 100% 0%, rgba(184, 131, 46, 0.055) 0%, rgba(184, 131, 46, 0) 62%),
+    linear-gradient(160deg, rgba(254, 252, 249, 0.9) 0%, rgba(247, 243, 237, 0.82) 100%);
+}
+
+.prism-content-card--hero .prism-section-head h2 {
+  font-size: 1.66rem;
+  line-height: 1.16;
+}
+
+.prism-content-card--hero .prism-section-head h2::before {
+  display: none;
+}
+
+.prism-hero-grid {
+  grid-template-columns: minmax(0, 1.42fr) minmax(260px, 0.88fr);
+  gap: 1.08rem;
+}
+
+.prism-hero-copy {
+  gap: 0.82rem;
+}
+
+.prism-tagline--hero {
+  max-width: 34rem;
+  margin-bottom: 0;
+  padding: 0.88rem 1rem 0.88rem 1.05rem;
+  border-left-width: 2px;
+  background: linear-gradient(90deg, rgba(239, 226, 201, 0.62), rgba(239, 226, 201, 0.28));
+}
+
+.prism-tagline--hero::before {
+  top: 0.02rem;
+  left: 0.62rem;
+  font-size: 2.45rem;
+  opacity: 0.16;
+}
+
+.prism-tagline--hero p {
+  font-size: 1.04rem;
+  line-height: 1.72;
+}
+
+.prism-note-card--hero {
+  padding: 0.98rem;
+}
+
+.prism-stat-grid--hero {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.prism-stat-grid--hero .prism-stat {
+  gap: 0.14rem;
+  min-height: 100%;
+  padding: 0.8rem 0.82rem;
+  border: 1px solid rgba(28, 22, 14, 0.08);
+  border-radius: var(--p-r-sm);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.prism-stat-grid--hero .prism-stat:last-child {
+  border-bottom: 1px solid rgba(28, 22, 14, 0.08);
+  padding-bottom: 0.8rem;
+}
+
+.prism-stat-grid--hero .prism-stat-label {
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+}
+
+.prism-stat-grid--hero .prism-stat-value {
+  font-size: 0.96rem;
+  line-height: 1.34;
+}
+
+html[lang="zh"] body.home-page .prism-content-card--hero .prism-section-head h2 {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+html[lang="zh"] body.home-page .prism-tagline--hero p {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-style: normal;
+  font-size: 1.06rem;
+  line-height: 1.84;
+}
+
+html[data-theme="dark"] body.home-page .prism-content-card--hero {
+  background:
+    radial-gradient(24rem 14rem at 100% 0%, rgba(223, 176, 93, 0.09) 0%, rgba(223, 176, 93, 0) 64%),
+    linear-gradient(160deg, rgba(25, 33, 43, 0.9) 0%, rgba(21, 28, 37, 0.86) 100%);
+}
+
+html[data-theme="dark"] body.home-page .prism-stat-grid--hero .prism-stat {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(164, 185, 209, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.prism-content-card--hero {
+  padding: 1.34rem 1.4rem 1.22rem;
+}
+
+.prism-section-head--hero {
+  margin-bottom: 0.78rem;
+}
+
+.prism-content-card--hero .prism-section-head h2 {
+  font-size: 1.58rem;
+}
+
+.prism-hero-grid {
+  grid-template-columns: minmax(0, 1.72fr) minmax(276px, 0.72fr);
+  gap: 0.92rem;
+}
+
+.prism-hero-copy {
+  gap: 0.72rem;
+}
+
+.prism-tagline--hero {
+  max-width: 32rem;
+  padding: 0.72rem 0.88rem 0.72rem 0.96rem;
+  border-left-width: 2px;
+}
+
+.prism-tagline--hero::before {
+  left: 0.56rem;
+  top: 0.04rem;
+  font-size: 2.15rem;
+  opacity: 0.13;
+}
+
+.prism-tagline--hero p {
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.prism-content-card--hero .prism-prose p {
+  font-size: 0.88rem;
+  line-height: 1.76;
+}
+
+.prism-content-card--hero .prism-lead {
+  font-size: 0.94rem !important;
+  line-height: 1.72 !important;
+}
+
+.prism-note-card--hero {
+  max-width: 19.75rem;
+  justify-self: end;
+  align-self: start;
+  padding: 0.88rem 0.92rem;
+}
+
+.prism-note-card--hero .prism-note-card__eyebrow {
+  margin-bottom: 0.64rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.11em;
+}
+
+.prism-stat-grid--hero {
+  gap: 0.52rem;
+}
+
+.prism-stat-grid--hero .prism-stat {
+  gap: 0.14rem;
+  padding: 0.62rem 0.66rem;
+  min-height: 0;
+}
+
+.prism-stat-grid--hero .prism-stat-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+}
+
+.prism-stat-grid--hero .prism-stat-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+
+html[lang="zh"] body.home-page .prism-stat-grid--hero .prism-stat-value {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 1200px) {
+  .prism-hero-grid {
+    grid-template-columns: minmax(0, 1.58fr) minmax(260px, 0.8fr);
+  }
+
+  .prism-note-card--hero {
+    max-width: 18.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .prism-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prism-hero-grid,
+  .prism-focus-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .prism-profile-kicker,
+  .prism-status-chips {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .prism-content-card--hero,
+  .prism-profile-card,
+  .prism-side-card,
+  .prism-content-card,
+  .prism-paper-card {
+    padding: 1.18rem;
+  }
+
+  .prism-content-card--hero {
+    padding: 1.02rem 0.96rem 1.04rem;
+  }
+
+  .prism-hero-subtitle {
+    font-size: 0.76rem;
+  }
+
+  .prism-tagline--hero {
+    max-width: none;
+    padding: 0.68rem 0.78rem 0.72rem 0.86rem;
+  }
+
+  .prism-tagline--hero p {
+    font-size: 0.9rem;
+  }
+
+  .prism-note-card--hero,
+  .prism-note-card--hero-float {
+    float: none;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
+
+  .prism-stat-grid--hero {
+    grid-template-columns: 1fr;
+    gap: 0.42rem;
+  }
+
+  .prism-stat-grid--hero .prism-stat {
+    padding: 0.56rem 0.62rem;
+  }
+
+  .prism-lead {
+    font-size: 0.92rem !important;
+  }
+
+  .prism-contact-list li {
+    grid-template-columns: 1fr;
+    gap: 0.28rem;
+  }
+
+  .prism-contact-label {
+    font-size: 0.66rem;
+  }
+
+  .prism-paper-card h3 {
+    padding-right: 1.7rem;
+  }
+
+  .prism-eyebrow {
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prism-interactive-bg::after {
+    display: none !important;
+  }
+}
+
+.prism-status-chips span,
+.prism-contact-list li,
+.prism-stat-grid .prism-stat {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.prism-status-chips.is-animated span,
+.prism-contact-list.is-animated li,
+.prism-stat-grid.is-animated .prism-stat {
+  opacity: 1;
+  transform: none;
+}
+
+.prism-status-chips.is-animated span:nth-child(1),
+.prism-contact-list.is-animated li:nth-child(1),
+.prism-stat-grid.is-animated .prism-stat:nth-child(1) { transition-delay: 0.16s; }
+.prism-status-chips.is-animated span:nth-child(2),
+.prism-contact-list.is-animated li:nth-child(2),
+.prism-stat-grid.is-animated .prism-stat:nth-child(2) { transition-delay: 0.23s; }
+.prism-status-chips.is-animated span:nth-child(3),
+.prism-contact-list.is-animated li:nth-child(3),
+.prism-stat-grid.is-animated .prism-stat:nth-child(3) { transition-delay: 0.30s; }
+.prism-contact-list.is-animated li:nth-child(4) { transition-delay: 0.37s; }
+.prism-contact-list.is-animated li:nth-child(5) { transition-delay: 0.44s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .prism-status-chips span,
+  .prism-contact-list li,
+  .prism-stat-grid .prism-stat {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+
+.prism-hero-flow {
+  display: block;
+}
+
+.prism-prose--hero::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.prism-note-card--hero-float {
+  float: right;
+  width: min(18.9rem, 37%);
+  max-width: 18.9rem;
+  margin: 0.08rem 0 0.4rem 1rem;
+}
+
+@media (max-width: 1200px) {
+  .prism-note-card--hero-float {
+    width: min(17.5rem, 39%);
+    max-width: 17.5rem;
+  }
+}
+
+
+/* =========================================================
+   PRISM Academic - Engineered Minimal Hero (v6)
+   Used by: _pages/about.md (homepage)
+   Goal: crisp academic minimal x product-grade polish.
+   Style direction blends Anthropic researcher pages,
+   Vercel docs, and Linear changelogs.
+   All classes are namespaced .prism-academic-* so existing
+   .prism-* rules above are not affected.
+   ========================================================= */
+
+/* Shell variant: lighter top/bottom rhythm, no card shadow */
+.prism-shell--academic {
+  padding: 2.4rem 0 6rem;
+}
+
+/* -- Sidebar -------------------------------------------- */
+.prism-academic-sidebar {
+  position: sticky;
+  top: 6.5rem;
+  display: grid;
+  gap: 1.6rem;
+  padding-right: 0.4rem;
+  align-self: start;
+}
+
+.prism-academic-identity {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.prism-academic-avatar {
+  width: 9.5rem;
+  height: 9.5rem;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--p-border-med);
+  box-shadow: var(--p-shadow-sm);
+  margin-bottom: 0.45rem;
+  background: var(--p-surface);
+}
+
+.prism-academic-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--p-ink);
+}
+
+.prism-academic-role {
+  font-size: 0.86rem;
+  color: var(--p-ink-2);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.prism-academic-affil {
+  font-size: 0.82rem;
+  color: var(--p-ink-3);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.prism-academic-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prism-academic-socials li {
+  margin: 0;
+  padding: 0;
+}
+
+.prism-academic-socials a {
+  width: 2.05rem;
+  height: 2.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--p-r-sm);
+  border: 1px solid var(--p-border-med);
+  color: var(--p-ink-3);
+  background: var(--p-surface);
+  font-size: 0.92rem;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 220ms var(--p-ease-standard),
+    box-shadow 220ms ease;
+}
+
+.prism-academic-socials a:hover {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+  background: var(--p-accent-pale);
+  transform: translateY(var(--p-hover-lift-control));
+  box-shadow: var(--p-shadow-control-hover);
+}
+
+.prism-academic-aside {
+  border-top: 1px solid var(--p-border);
+  padding-top: 1.05rem;
+}
+
+.prism-academic-aside__title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 0.55rem !important;
+}
+
+.prism-academic-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.32rem;
+}
+
+.prism-academic-list li {
+  font-size: 0.86rem;
+  color: var(--p-ink-2);
+  line-height: 1.55;
+  position: relative;
+  padding-left: 0.85rem;
+  margin: 0;
+}
+
+.prism-academic-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.32rem;
+  height: 1px;
+  background: var(--p-ink-4);
+}
+
+.prism-academic-contact {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  row-gap: 0.36rem;
+  column-gap: 0.7rem;
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.prism-academic-contact dt {
+  color: var(--p-ink-3);
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.prism-academic-contact dd {
+  margin: 0;
+  color: var(--p-ink-2);
+  word-break: break-word;
+}
+
+.prism-academic-contact a {
+  color: var(--p-ink-2);
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-academic-contact a:hover {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+}
+
+/* -- Main column ---------------------------------------- */
+.prism-academic-main {
+  display: grid;
+  gap: 2.4rem;
+  min-width: 0;
+}
+
+.prism-academic-section {
+  padding: 0.4rem 0 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.prism-academic-section + .prism-academic-section {
+  border-top: 1px solid var(--p-border);
+  padding-top: 2rem;
+}
+
+.prism-academic-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.05rem;
+}
+
+/* Eyebrow heading: small uppercase with leading rule */
+.prism-academic-h2 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 1rem !important;
+  line-height: 1;
+}
+
+.prism-academic-section__head .prism-academic-h2 {
+  margin: 0 !important;
+}
+
+.prism-academic-eyebrow {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.prism-academic-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.1rem;
+  height: 1px;
+  background: var(--p-accent);
+  opacity: 0.75;
+}
+
+.prism-academic-more {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--p-ink-3);
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+  white-space: nowrap;
+}
+
+.prism-academic-more:hover {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+}
+
+/* -- About prose ---------------------------------------- */
+.prism-academic-prose {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--p-ink-2);
+  max-width: 42rem;
+}
+
+.prism-academic-prose p {
+  margin: 0 0 1rem;
+  line-height: 1.72;
+  color: var(--p-ink-2);
+  font-family: 'Inter', sans-serif;
+}
+
+.prism-academic-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prism-academic-prose strong {
+  color: var(--p-ink);
+  font-weight: 600;
+}
+
+.prism-academic-prose em {
+  color: var(--p-ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05em;
+  letter-spacing: 0.005em;
+}
+
+.prism-academic-lead {
+  font-size: 1.08rem;
+  color: var(--p-ink) !important;
+}
+
+/* -- Publication list ----------------------------------- */
+.prism-academic-pub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.prism-academic-pub {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr;
+  column-gap: 1.4rem;
+  align-items: start;
+  position: relative;
+}
+
+.prism-academic-pub__year {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  color: var(--p-ink-4);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  padding-top: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.prism-academic-pub__body {
+  display: grid;
+  gap: 0.42rem;
+  min-width: 0;
+}
+
+.prism-academic-pub__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.prism-academic-pub__venue {
+  color: var(--p-accent);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+.prism-academic-pub__status {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  padding: 0.16rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--p-border-med);
+  color: var(--p-ink-3);
+  background: var(--p-surface);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.prism-academic-pub__status--published {
+  color: var(--p-accent);
+  border-color: rgba(26, 99, 82, 0.3);
+  background: var(--p-accent-pale);
+}
+
+.prism-academic-pub__status--accepted {
+  color: var(--p-gold);
+  border-color: rgba(184, 131, 46, 0.3);
+  background: var(--p-gold-pale);
+}
+
+.prism-academic-pub__status--under-review {
+  color: var(--p-ink-2);
+}
+
+.prism-academic-pub__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.32rem !important;
+  line-height: 1.32 !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.005em;
+  margin: 0 !important;
+  color: var(--p-ink);
+}
+
+.prism-academic-pub__title a {
+  color: var(--p-ink);
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-academic-pub__title a:hover {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+}
+
+.prism-academic-pub__authors {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.86rem !important;
+  line-height: 1.55 !important;
+  color: var(--p-ink-3) !important;
+  margin: 0 !important;
+}
+
+.prism-academic-pub__authors .author-me {
+  color: var(--p-ink);
+  font-weight: 600;
+  border-bottom: 1px solid var(--p-accent);
+  padding-bottom: 1px;
+}
+
+.prism-academic-pub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.prism-academic-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--p-ink-2);
+  border-bottom: 1px solid var(--p-border-med);
+  padding-bottom: 1px;
+  transition: color 160ms ease, border-color 160ms ease;
+  white-space: nowrap;
+}
+
+.prism-academic-link:hover {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+}
+
+/* -- News timeline -------------------------------------- */
+.prism-academic-news {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.prism-academic-news__row {
+  display: grid;
+  grid-template-columns: 4.6rem 6.2rem 1fr;
+  column-gap: 1rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.prism-academic-news__date {
+  font-family: 'Inter', sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  color: var(--p-ink-4);
+  letter-spacing: 0.02em;
+}
+
+.prism-academic-news__badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--p-accent);
+  padding: 0.14rem 0.55rem;
+  border: 1px solid rgba(26, 99, 82, 0.25);
+  border-radius: 999px;
+  background: var(--p-accent-pale);
+  white-space: nowrap;
+  justify-self: start;
+  align-self: center;
+  line-height: 1.2;
+}
+
+.prism-academic-news__text {
+  margin: 0;
+  color: var(--p-ink-2);
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+}
+
+.prism-academic-news__link {
+  margin-left: 0.55rem;
+  color: var(--p-accent);
+  font-size: 0.83rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease, color 160ms ease;
+  white-space: nowrap;
+}
+
+.prism-academic-news__link:hover {
+  border-color: var(--p-accent);
+  color: var(--p-accent-light);
+}
+
+/* -- Footer easter-egg quote (home only) ---------------- */
+.prism-footer-quote {
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--p-ink-4);
+  margin: 0.4rem auto 0.85rem;
+  letter-spacing: 0.005em;
+  opacity: 0.78;
+  font-weight: 400 !important;
+}
+
+/* -- Responsive ----------------------------------------- */
+@media (max-width: 900px) {
+  .prism-shell--academic { padding: 1.6rem 0 4rem; }
+
+  .prism-academic-sidebar {
+    position: static;
+    top: auto;
+    grid-template-columns: 1fr;
+    padding-right: 0;
+    gap: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .prism-academic-avatar { width: 7rem; height: 7rem; }
+  .prism-academic-name { font-size: 1.7rem; }
+
+  .prism-academic-main { gap: 1.9rem; }
+
+  .prism-academic-section + .prism-academic-section {
+    padding-top: 1.6rem;
+  }
+
+  .prism-academic-pub {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .prism-academic-pub__year {
+    font-size: 1.05rem;
+    padding-top: 0;
+    color: var(--p-ink-3);
+  }
+
+  .prism-academic-pub__title {
+    font-size: 1.18rem !important;
+  }
+
+  .prism-academic-news__row {
+    grid-template-columns: 4.6rem 1fr;
+    grid-template-areas:
+      "date badge"
+      "text text";
+    row-gap: 0.32rem;
+    column-gap: 0.7rem;
+  }
+  .prism-academic-news__date  { grid-area: date; }
+  .prism-academic-news__badge { grid-area: badge; justify-self: start; }
+  .prism-academic-news__text  { grid-area: text; }
+}
+
+/* -- Dark mode tweaks ----------------------------------- */
+html[data-theme="dark"] .prism-academic-avatar {
+  border-color: var(--p-border-med);
+  background: var(--p-surface-soft);
+}
+
+html[data-theme="dark"] .prism-academic-socials a {
+  background: var(--p-surface-soft);
+}
+
+html[data-theme="dark"] .prism-academic-pub__status--published {
+  background: rgba(77, 191, 158, 0.12);
+  border-color: rgba(77, 191, 158, 0.32);
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-academic-pub__status--accepted {
+  background: rgba(223, 176, 93, 0.12);
+  border-color: rgba(223, 176, 93, 0.32);
+  color: var(--p-gold-light);
+}
+
+html[data-theme="dark"] .prism-academic-news__badge {
+  background: rgba(77, 191, 158, 0.10);
+  border-color: rgba(77, 191, 158, 0.30);
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-academic-pub__authors .author-me {
+  border-bottom-color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-academic-pub__venue {
+  color: var(--p-accent-light);
+}
+
+/* -- Reduced motion: respect user preference globally --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .prism-bg-spot { animation: none !important; }
+  .site-intro-mask,
+  .site-intro-mask--nav { transition: none !important; opacity: 0 !important; }
+  html.site-intro-pending body > *:not(.site-intro-mask),
+  html.site-nav-transitioning body > *:not(.site-intro-mask) {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+

@@ -1,0 +1,597 @@
+/* =========================================================
+   PRISM Publication - Engineered Minimal Detail Page
+   Used by: _layouts/publication.html (publications collection)
+   Goal: clean, scannable single-paper page in the same
+   academic-minimal language as the new homepage. All classes
+   are namespaced .prism-publication-* so existing
+   single.html / publication-* styles above are not affected.
+   ========================================================= */
+
+.prism-shell--publication {
+  position: relative;
+  padding: 2.4rem 0 5rem;
+  background:
+    radial-gradient(900px 380px at 18% -10%, rgba(184, 131, 46, 0.045) 0%, rgba(184, 131, 46, 0) 70%),
+    radial-gradient(700px 320px at 96% 4%, rgba(26, 99, 82, 0.04) 0%, rgba(26, 99, 82, 0) 72%);
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.prism-publication {
+  position: relative;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.4rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--p-ink-2);
+  z-index: 1;
+}
+
+/* -- Back link ------------------------------------------ */
+.prism-publication-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--p-ink-3);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-publication-back:hover,
+.prism-publication-back:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-publication-back--bottom {
+  margin-top: 3rem;
+}
+
+/* -- Hero ------------------------------------------------ */
+.prism-publication-hero {
+  margin-top: 1.4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.prism-publication-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--p-ink-3);
+  margin-bottom: 0.95rem;
+}
+
+.prism-publication-hero__year {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--p-ink);
+}
+
+.prism-publication-hero__sep {
+  color: var(--p-ink-4, var(--p-ink-3));
+  opacity: 0.55;
+}
+
+.prism-publication-hero__venue {
+  color: var(--p-accent);
+  font-weight: 500;
+}
+
+.prism-publication-hero__status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--p-border-med, var(--p-border));
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-left: 0.2rem;
+  background: transparent;
+  color: var(--p-ink-3);
+}
+
+.prism-publication-hero__status--published {
+  background: rgba(77, 191, 158, 0.10);
+  border-color: rgba(77, 191, 158, 0.36);
+  color: var(--p-accent-dark, var(--p-accent));
+}
+
+.prism-publication-hero__status--accepted {
+  background: rgba(223, 176, 93, 0.10);
+  border-color: rgba(223, 176, 93, 0.40);
+  color: var(--p-gold, #b78b3c);
+}
+
+.prism-publication-hero__status--under-review {
+  background: rgba(120, 132, 158, 0.08);
+  border-color: rgba(120, 132, 158, 0.32);
+  color: var(--p-ink-3);
+}
+
+.prism-publication-hero__status--preprint {
+  background: transparent;
+  color: var(--p-ink-3);
+}
+
+.prism-publication-hero__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 2.25rem !important;
+  font-weight: 600 !important;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  color: var(--p-ink);
+  margin: 0 0 1.1rem !important;
+}
+
+.prism-publication-hero__authors {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--p-ink-2);
+  margin: 0 0 0.5rem;
+  max-width: 52rem;
+}
+
+.prism-publication-hero__authors .author-me {
+  font-weight: 600;
+  color: var(--p-ink);
+  border-bottom: 1px solid var(--p-accent);
+  padding-bottom: 1px;
+}
+
+.prism-publication-hero__authors-note {
+  font-size: 0.78rem;
+  color: var(--p-ink-3);
+  margin: 0 0 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.prism-publication-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.3rem;
+  margin-top: 0.6rem;
+}
+
+.prism-publication-action {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--p-ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--p-border);
+  padding-bottom: 2px;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-publication-action:hover,
+.prism-publication-action:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-publication-action--primary {
+  color: var(--p-ink);
+  font-weight: 600;
+  border-bottom-color: var(--p-accent);
+}
+
+.prism-publication-action--primary:hover,
+.prism-publication-action--primary:focus-visible {
+  color: var(--p-accent);
+}
+
+/* -- Body grid ------------------------------------------ */
+.prism-publication-body {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: 2.6rem;
+  margin-top: 2.4rem;
+  align-items: start;
+}
+
+.prism-publication-aside {
+  position: sticky;
+  top: 6.5rem;
+  display: grid;
+  gap: 1.2rem;
+  align-self: start;
+}
+
+/* -- Aside cards ---------------------------------------- */
+.prism-publication-card {
+  border: 1px solid var(--p-border);
+  border-radius: 6px;
+  padding: 1rem 1.05rem 1.1rem;
+  background: var(--p-surface, transparent);
+}
+
+.prism-publication-card__title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.66rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 0.85rem !important;
+  line-height: 1;
+}
+
+.prism-publication-meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 5.4rem 1fr;
+  row-gap: 0.5rem;
+  column-gap: 0.7rem;
+  font-size: 0.84rem;
+}
+
+.prism-publication-meta dt {
+  color: var(--p-ink-3);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.prism-publication-meta dd {
+  margin: 0;
+  color: var(--p-ink);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.prism-publication-resources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.05rem;
+}
+
+.prism-publication-resources li + li {
+  border-top: 1px dashed var(--p-border);
+  padding-top: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.prism-publication-resources a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--p-ink-2);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  transition: color 160ms ease;
+}
+
+.prism-publication-resources a:hover,
+.prism-publication-resources a:focus-visible {
+  color: var(--p-accent);
+  outline: none;
+}
+
+.prism-publication-resources__arrow {
+  color: var(--p-ink-3);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.prism-publication-resources a:hover .prism-publication-resources__arrow {
+  color: var(--p-accent);
+  transform: translate(2px, -2px);
+}
+
+/* -- Main content --------------------------------------- */
+.prism-publication-main {
+  min-width: 0;
+  display: grid;
+  gap: 2.4rem;
+}
+
+.prism-publication-section {
+  background: transparent;
+  box-shadow: none;
+}
+
+.prism-publication-section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.95rem;
+}
+
+.prism-publication-h2 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 0.95rem !important;
+  line-height: 1;
+}
+
+.prism-publication-section__head .prism-publication-h2 {
+  margin: 0 !important;
+}
+
+.prism-publication-eyebrow {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.prism-publication-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.1rem;
+  height: 1px;
+  background: var(--p-accent);
+  opacity: 0.75;
+}
+
+/* -- Prose ---------------------------------------------- */
+.prism-publication-prose {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--p-ink-2);
+  max-width: 44rem;
+}
+
+.prism-publication-prose p {
+  margin: 0 0 1rem;
+  line-height: 1.72;
+}
+
+.prism-publication-prose p:last-child { margin-bottom: 0; }
+
+.prism-publication-prose strong {
+  color: var(--p-ink);
+  font-weight: 600;
+}
+
+.prism-publication-prose em {
+  color: var(--p-ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05em;
+  letter-spacing: 0.005em;
+}
+
+.prism-publication-prose a {
+  color: var(--p-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(77, 191, 158, 0.36);
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-publication-prose a:hover,
+.prism-publication-prose a:focus-visible {
+  color: var(--p-accent-dark, var(--p-accent));
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-publication-prose h2,
+.prism-publication-prose h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  color: var(--p-ink);
+  font-weight: 600 !important;
+  letter-spacing: -0.003em;
+}
+
+.prism-publication-prose h2 {
+  font-size: 1.4rem !important;
+  margin: 2rem 0 0.75rem !important;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.prism-publication-prose h3 {
+  font-size: 1.15rem !important;
+  margin: 1.5rem 0 0.55rem !important;
+}
+
+.prism-publication-prose ul,
+.prism-publication-prose ol {
+  padding-left: 1.3rem;
+  margin: 0 0 1rem;
+}
+
+.prism-publication-prose li {
+  margin: 0.25rem 0;
+  line-height: 1.65;
+}
+
+.prism-publication-prose code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+  background: var(--p-code-bg, rgba(120, 132, 158, 0.10));
+  color: var(--p-ink);
+  padding: 0.08em 0.36em;
+  border-radius: 3px;
+  border: 1px solid var(--p-border);
+}
+
+.prism-publication-prose pre {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  background: var(--p-code-bg, rgba(120, 132, 158, 0.06));
+  border: 1px solid var(--p-border);
+  border-radius: 6px;
+  padding: 0.95rem 1.05rem;
+  overflow-x: auto;
+  color: var(--p-ink);
+  margin: 0 0 1.2rem;
+}
+
+.prism-publication-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 1em;
+  color: inherit;
+}
+
+.prism-publication-prose--lead {
+  font-size: 1.05rem;
+  color: var(--p-ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  letter-spacing: 0.003em;
+}
+
+.prism-publication-prose--lead p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* -- Citation ------------------------------------------- */
+.prism-publication-bibtex {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  background: var(--p-code-bg, rgba(120, 132, 158, 0.06));
+  border: 1px solid var(--p-border);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  color: var(--p-ink);
+  margin: 0;
+  white-space: pre;
+}
+
+.prism-publication-bibtex code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 1em;
+  color: inherit;
+  font-family: inherit;
+}
+
+.prism-publication-copy {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid var(--p-border);
+  border-radius: 4px;
+  padding: 0.28rem 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.prism-publication-copy:hover,
+.prism-publication-copy:focus-visible {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-publication-copy.is-copied {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+  background: rgba(77, 191, 158, 0.08);
+}
+
+/* -- Responsive ----------------------------------------- */
+@media (max-width: 880px) {
+  .prism-shell--publication { padding: 1.6rem 0 4rem; }
+
+  .prism-publication { padding: 0 1.1rem; }
+
+  .prism-publication-hero { padding-bottom: 1.6rem; }
+  .prism-publication-hero__title {
+    font-size: 1.85rem !important;
+    line-height: 1.22;
+  }
+
+  .prism-publication-body {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+    margin-top: 1.8rem;
+  }
+
+  .prism-publication-aside {
+    position: static;
+    order: 2;
+    grid-template-columns: 1fr;
+  }
+
+  .prism-publication-main { order: 1; }
+
+  .prism-publication-meta { grid-template-columns: 6rem 1fr; }
+}
+
+@media (max-width: 520px) {
+  .prism-publication-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .prism-publication-bibtex { font-size: 0.72rem; }
+}
+
+/* -- Dark mode tweaks ----------------------------------- */
+html[data-theme="dark"] .prism-publication-card {
+  background: var(--p-surface-soft);
+}
+
+html[data-theme="dark"] .prism-publication-hero__status--published {
+  background: rgba(77, 191, 158, 0.12);
+  border-color: rgba(77, 191, 158, 0.32);
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-publication-hero__status--accepted {
+  background: rgba(223, 176, 93, 0.12);
+  border-color: rgba(223, 176, 93, 0.32);
+  color: var(--p-gold-light);
+}
+
+html[data-theme="dark"] .prism-publication-hero__venue {
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-publication-hero__authors .author-me {
+  border-bottom-color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-publication-bibtex,
+html[data-theme="dark"] .prism-publication-prose pre,
+html[data-theme="dark"] .prism-publication-prose code {
+  background: rgba(255, 255, 255, 0.04);
+}
+

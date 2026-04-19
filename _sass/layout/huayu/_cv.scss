@@ -1,0 +1,588 @@
+/* =========================================================
+   PRISM CV - Engineered Minimal Curriculum Vitae
+   Used by: _pages/cv.md
+   Sticky identity sidebar + timeline-style sections.
+   Namespaced .prism-cv-* so existing .cv-* (legacy) is untouched.
+   ========================================================= */
+
+.prism-shell--cv {
+  position: relative;
+  padding: 2.4rem 0 5rem;
+  background:
+    radial-gradient(900px 380px at 86% -10%, rgba(184, 131, 46, 0.045) 0%, rgba(184, 131, 46, 0) 70%),
+    radial-gradient(700px 320px at 6% 6%, rgba(26, 99, 82, 0.04) 0%, rgba(26, 99, 82, 0) 72%);
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.prism-cv {
+  position: relative;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.4rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--p-ink-2);
+  z-index: 1;
+}
+
+/* -- Hero ----------------------------------------------- */
+.prism-cv-hero {
+  margin-bottom: 2.6rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.prism-cv-hero__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.prism-cv-hero__rule {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1px;
+  background: var(--p-accent);
+  opacity: 0.7;
+}
+
+.prism-cv-hero__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 2.6rem !important;
+  font-weight: 600 !important;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--p-ink);
+  margin: 0 0 0.9rem !important;
+}
+
+.prism-cv-hero__lead {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--p-ink-2);
+  max-width: 44rem;
+  margin: 0;
+}
+
+.prism-cv-hero__lead strong {
+  color: var(--p-ink);
+  font-weight: 600;
+}
+
+/* -- Grid ----------------------------------------------- */
+.prism-cv-grid {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: 2.6rem;
+  align-items: start;
+}
+
+.prism-cv-sidebar {
+  position: sticky;
+  top: 6.5rem;
+  display: grid;
+  gap: 1.2rem;
+  align-self: start;
+}
+
+/* -- Sidebar cards -------------------------------------- */
+.prism-cv-card {
+  border: 1px solid var(--p-border);
+  border-radius: 6px;
+  padding: 1rem 1.05rem 1.1rem;
+  background: var(--p-surface);
+}
+
+.prism-cv-card--identity {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+}
+
+.prism-cv-avatar {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--p-border-med, var(--p-border));
+  background: var(--p-surface-soft);
+}
+
+.prism-cv-identity__name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--p-ink);
+  margin: 0 0 0.1rem;
+  letter-spacing: -0.005em;
+}
+
+.prism-cv-identity__role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  color: var(--p-ink-3);
+  letter-spacing: 0.02em;
+  margin: 0 0 0.1rem;
+}
+
+.prism-cv-identity__affil {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  color: var(--p-ink-3);
+  margin: 0;
+}
+
+.prism-cv-card__title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.66rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 0.85rem !important;
+  line-height: 1;
+}
+
+.prism-cv-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prism-cv-links li + li {
+  border-top: 1px dashed var(--p-border);
+  padding-top: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.prism-cv-links a {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+  color: var(--p-ink-2);
+  text-decoration: none;
+  padding: 0.1rem 0;
+  font-size: 0.84rem;
+  transition: color 160ms ease;
+}
+
+.prism-cv-links a:hover,
+.prism-cv-links a:focus-visible {
+  color: var(--p-accent);
+  outline: none;
+}
+
+.prism-cv-links__label {
+  color: var(--p-ink-3);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+}
+
+.prism-cv-links__value {
+  color: var(--p-ink);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.prism-cv-links a:hover .prism-cv-links__value,
+.prism-cv-links a:focus-visible .prism-cv-links__value {
+  color: var(--p-accent);
+}
+
+.prism-cv-links--compact a {
+  grid-template-columns: 1fr;
+}
+
+/* -- Main area ------------------------------------------ */
+.prism-cv-main {
+  min-width: 0;
+  display: grid;
+  gap: 2.6rem;
+}
+
+.prism-cv-section {
+  background: transparent;
+  box-shadow: none;
+}
+
+.prism-cv-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prism-cv-h2 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--p-ink-3);
+  margin: 0 0 1rem !important;
+  line-height: 1;
+}
+
+.prism-cv-section__head .prism-cv-h2 {
+  margin: 0 !important;
+}
+
+.prism-cv-eyebrow {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.prism-cv-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.1rem;
+  height: 1px;
+  background: var(--p-accent);
+  opacity: 0.75;
+}
+
+.prism-cv-more {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--p-ink-3);
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+  white-space: nowrap;
+}
+
+.prism-cv-more:hover,
+.prism-cv-more:focus-visible {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+  outline: none;
+}
+
+/* -- Timeline ------------------------------------------- */
+.prism-cv-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.prism-cv-timeline__item {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.4rem;
+  align-items: baseline;
+}
+
+.prism-cv-timeline__when {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--p-ink-3);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.15rem;
+}
+
+.prism-cv-timeline__head {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--p-ink);
+  margin: 0 0 0.2rem;
+}
+
+.prism-cv-timeline__org {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--p-ink-2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* -- Tags (research interests) -------------------------- */
+.prism-cv-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+}
+
+.prism-cv-tags li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--p-ink-2);
+  padding: 0.32rem 0.7rem;
+  border: 1px solid var(--p-border);
+  border-radius: 4px;
+  background: var(--p-surface);
+  letter-spacing: 0.005em;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.prism-cv-tags li:hover {
+  border-color: var(--p-border-med, var(--p-accent));
+  color: var(--p-ink);
+}
+
+/* -- Publications inside CV ----------------------------- */
+.prism-cv-pubs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.prism-cv-pub {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  gap: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px dashed var(--p-border);
+}
+
+.prism-cv-pub:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.prism-cv-pub__year {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--p-ink-3);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.18rem;
+}
+
+.prism-cv-pub__body { min-width: 0; }
+
+.prism-cv-pub__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.6rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--p-ink-3);
+  margin-bottom: 0.4rem;
+}
+
+.prism-cv-pub__venue {
+  color: var(--p-accent);
+  font-weight: 500;
+}
+
+.prism-cv-pub__status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.14rem 0.5rem;
+  border: 1px solid var(--p-border-med, var(--p-border));
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--p-ink-3);
+}
+
+.prism-cv-pub__status--published {
+  background: rgba(77, 191, 158, 0.10);
+  border-color: rgba(77, 191, 158, 0.36);
+  color: var(--p-accent-dark, var(--p-accent));
+}
+
+.prism-cv-pub__status--accepted {
+  background: rgba(223, 176, 93, 0.10);
+  border-color: rgba(223, 176, 93, 0.40);
+  color: var(--p-gold, #b78b3c);
+}
+
+.prism-cv-pub__status--under-review {
+  background: rgba(120, 132, 158, 0.08);
+  border-color: rgba(120, 132, 158, 0.32);
+  color: var(--p-ink-3);
+}
+
+.prism-cv-pub__title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  line-height: 1.28;
+  color: var(--p-ink);
+  margin: 0 0 0.45rem !important;
+}
+
+.prism-cv-pub__title a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-cv-pub__title a:hover,
+.prism-cv-pub__title a:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-cv-pub__authors {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  margin: 0 0 0.4rem;
+}
+
+.prism-cv-pub__authors .author-me {
+  font-weight: 600;
+  color: var(--p-ink);
+  border-bottom: 1px solid var(--p-accent);
+  padding-bottom: 1px;
+}
+
+.prism-cv-pub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.05rem;
+  margin-top: 0.3rem;
+}
+
+.prism-cv-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--p-ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--p-border);
+  padding-bottom: 1px;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-cv-link:hover,
+.prism-cv-link:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+/* -- Footer --------------------------------------------- */
+.prism-cv-footer {
+  margin-top: 3.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--p-border);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: var(--p-ink-3);
+}
+
+.prism-cv-footer__link {
+  color: var(--p-ink-3);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.prism-cv-footer__link:hover,
+.prism-cv-footer__link:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+.prism-cv-footer__divider {
+  color: var(--p-ink-4, var(--p-ink-3));
+  opacity: 0.55;
+}
+
+/* -- Responsive ----------------------------------------- */
+@media (max-width: 880px) {
+  .prism-shell--cv { padding: 1.6rem 0 4rem; }
+  .prism-cv { padding: 0 1.1rem; }
+
+  .prism-cv-hero { margin-bottom: 1.8rem; padding-bottom: 1.4rem; }
+  .prism-cv-hero__title { font-size: 2rem !important; }
+
+  .prism-cv-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .prism-cv-sidebar {
+    position: static;
+    grid-template-columns: 1fr;
+    order: 2;
+  }
+
+  .prism-cv-main { order: 1; }
+
+  .prism-cv-timeline__item {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .prism-cv-pub {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .prism-cv-pub__year {
+    padding-top: 0;
+    font-size: 0.95rem;
+  }
+}
+
+/* -- Dark mode ------------------------------------------ */
+html[data-theme="dark"] .prism-cv-card,
+html[data-theme="dark"] .prism-cv-tags li {
+  background: var(--p-surface-soft);
+}
+
+html[data-theme="dark"] .prism-cv-avatar {
+  border-color: var(--p-border-med, var(--p-border));
+}
+
+html[data-theme="dark"] .prism-cv-pub__venue,
+html[data-theme="dark"] .prism-cv-pub__authors .author-me {
+  color: var(--p-accent-light);
+  border-bottom-color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-cv-pub__status--published {
+  background: rgba(77, 191, 158, 0.12);
+  border-color: rgba(77, 191, 158, 0.32);
+  color: var(--p-accent-light);
+}
+
+html[data-theme="dark"] .prism-cv-pub__status--accepted {
+  background: rgba(223, 176, 93, 0.12);
+  border-color: rgba(223, 176, 93, 0.32);
+  color: var(--p-gold-light);
+}
+
+

@@ -10,232 +10,129 @@ redirect_from:
 
 {% assign featured_pubs = site.publications | sort: "date" | reverse %}
 
-<section class="home-section prism-shell" id="about">
+<section class="home-section prism-shell prism-shell--academic" id="about">
   <div class="prism-grid">
-    <aside class="prism-sidebar reveal">
-      <div class="prism-profile-card">
-        <div class="prism-avatar-wrap">
-          <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
-        </div>
 
-        <p class="prism-profile-kicker">Research Homepage</p>
-        <h1 class="prism-name">{{ site.author.name }}</h1>
-        <p class="prism-role">Software Engineering Undergraduate</p>
-        <p class="prism-affiliation">{{ site.author.employer }} · Shanghai</p>
-        <p class="prism-profile-note">
-          Building careful evaluation pipelines for language models, medical benchmarks,
-          and scientific agents for research workflows.
-        </p>
+    <aside class="prism-academic-sidebar reveal">
+      <div class="prism-academic-identity">
+        <img class="prism-academic-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+        <h1 class="prism-academic-name">{{ site.author.name }}</h1>
+        <p class="prism-academic-role">Software Engineering, Undergraduate</p>
+        <p class="prism-academic-affil">{{ site.author.employer }} · Shanghai</p>
 
-        <div class="prism-status-chips" aria-label="Research themes">
-          <span>LLM Evaluation</span>
-          <span>Medical AI</span>
-          <span>Scientific Agents</span>
-        </div>
-
-        <div class="prism-socials">
-          <a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer" aria-label="ORCID"><i class="fab fa-orcid"></i></a>
-          <a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer" aria-label="OpenReview"><i class="fa-solid fa-link"></i></a>
-          <a href="{{ '/publications/' | relative_url }}" aria-label="Publications"><i class="fa-solid fa-book-open"></i></a>
-          <a href="{{ '/cv/' | relative_url }}" aria-label="CV"><i class="fa-solid fa-file-lines"></i></a>
-        </div>
+        <ul class="prism-academic-socials" aria-label="Profile links">
+          <li><a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a></li>
+          <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+          <li><a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer" aria-label="ORCID"><i class="fab fa-orcid"></i></a></li>
+          <li><a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer" aria-label="OpenReview"><i class="fa-solid fa-book-open"></i></a></li>
+          <li><a href="{{ '/cv/' | relative_url }}" aria-label="CV"><i class="fa-solid fa-file-lines"></i></a></li>
+        </ul>
       </div>
 
-      <div class="prism-side-card prism-side-card--combined reveal" id="research">
-        <h3>Research Interests</h3>
-        <ul class="prism-interest-list">
+      <div class="prism-academic-aside" id="research">
+        <h3 class="prism-academic-aside__title">Research</h3>
+        <ul class="prism-academic-list">
           <li>Trustworthy LLM evaluation</li>
           <li>Medical benchmark design</li>
           <li>Novelty assessment</li>
           <li>Scientific intelligence systems</li>
         </ul>
+      </div>
 
-        <hr class="prism-side-divider">
-
-        <h3 id="contact">Contact</h3>
-        <ul class="prism-contact-list">
-          <li>
-            <span class="prism-contact-label">Email</span>
-            <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-          </li>
-          <li>
-            <span class="prism-contact-label">Location</span>
-            <span>Shanghai, China</span>
-          </li>
-          <li>
-            <span class="prism-contact-label">GitHub</span>
-            <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">@{{ site.author.github }}</a>
-          </li>
-          <li>
-            <span class="prism-contact-label">ORCID</span>
-            <a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">0009-0006-1742-5816</a>
-          </li>
-          <li>
-            <span class="prism-contact-label">OpenReview</span>
-            <a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer">~Huayu_Sha1</a>
-          </li>
-        </ul>
+      <div class="prism-academic-aside" id="contact">
+        <h3 class="prism-academic-aside__title">Contact</h3>
+        <dl class="prism-academic-contact">
+          <dt>Email</dt>
+          <dd><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></dd>
+          <dt>Group</dt>
+          <dd>Fudan NLP Group</dd>
+          <dt>OpenReview</dt>
+          <dd><a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer">~Huayu_Sha1</a></dd>
+        </dl>
       </div>
     </aside>
 
-    <div class="prism-main">
-      <section class="prism-content-card prism-content-card--hero reveal">
-        <div class="prism-section-head prism-section-head--hero">
-          <span class="prism-eyebrow">Research Profile</span>
-          <h2>About</h2>
-          <p class="prism-hero-subtitle">Started undergraduate research in March 2025 at the Fudan NLP Lab.</p>
-        </div>
+    <div class="prism-main prism-academic-main">
 
-        <div class="prism-hero-flow">
-          <div class="prism-tagline prism-tagline--hero">
-            <p>To be, or not to be, that is the question.</p>
-          </div>
-
-          <aside class="prism-note-card prism-note-card--hero prism-note-card--hero-float">
-            <span class="prism-note-card__eyebrow">Research Snapshot</span>
-            <div class="prism-stat-grid prism-stat-grid--hero">
-              <div class="prism-stat">
-                <span class="prism-stat-label">Publications</span>
-                <span class="prism-stat-value">{{ site.publications | size }} Papers</span>
-              </div>
-              <div class="prism-stat">
-                <span class="prism-stat-label">Research Since</span>
-                <span class="prism-stat-value">2025.03</span>
-              </div>
-              <div class="prism-stat">
-                <span class="prism-stat-label">Research Group</span>
-                <span class="prism-stat-value">Fudan NLP Group</span>
-              </div>
-              <div class="prism-stat">
-                <span class="prism-stat-label">Current Status</span>
-                <span class="prism-stat-value">Undergrad · 2026</span>
-              </div>
-            </div>
-          </aside>
-
-          <div class="prism-prose prism-prose--hero">
-            <p class="prism-lead">
-              I am Huayu Sha, an undergraduate student in Software Engineering at Fudan University,
-              working on <strong>trustworthy LLM evaluation</strong>,
-              <strong>medical benchmark construction</strong>, and
-              <strong>AI systems for scientific research workflows</strong>.
-            </p>
-            <p>
-              Since joining the <strong>Fudan NLP Group</strong> in <strong>March 2025</strong>, I have been focusing on
-              evaluation protocols, realistic benchmark design, and research tools that make experimental results
-              easier to verify, reproduce, and trust.
-            </p>
-          </div>
+      <section class="prism-academic-section reveal" aria-labelledby="about-h">
+        <h2 class="prism-academic-h2" id="about-h"><span class="prism-academic-eyebrow">About</span></h2>
+        <div class="prism-academic-prose">
+          <p class="prism-academic-lead">
+            I'm an undergraduate student in Software Engineering at <strong>Fudan University</strong>,
+            working with the <strong>Fudan NLP Group</strong> since March 2025.
+          </p>
+          <p>
+            I work on <strong>trustworthy LLM evaluation</strong>, <strong>medical benchmark construction</strong>,
+            and AI tools for scientific research workflows. I'm interested in evaluation protocols and benchmarks
+            that are <em>realistic</em>, <em>reproducible</em>, and <em>resistant to contamination</em>.
+          </p>
+          <p>
+            Currently focused on robust LLM evaluation, expert-validated medical benchmarks,
+            and novelty assessment for scientific peer review.
+          </p>
         </div>
       </section>
 
-      <section class="prism-content-card prism-content-card--news reveal">
-        <div class="prism-section-head prism-section-head--split">
-          <div>
-            <span class="prism-eyebrow">News</span>
-            <h2>Recent Updates</h2>
-          </div>
-        </div>
-
-        <div class="prism-timeline-scroll" data-scroll-fade tabindex="0" aria-label="Scrollable news timeline">
-          <div class="prism-scroll-fade prism-scroll-fade--top" aria-hidden="true"></div>
-          <ol class="prism-timeline">
-            {% for item in site.data.news %}
-            <li class="prism-timeline__item">
-              <span class="prism-timeline__date">{{ item.date }}</span>
-              <div class="prism-timeline__body">
-                <span class="prism-timeline__badge">{{ item.badge }}</span>
-                <p class="prism-timeline__text">{{ item.text }}</p>
+      <section class="prism-academic-section reveal" aria-labelledby="news-h">
+        <h2 class="prism-academic-h2" id="news-h"><span class="prism-academic-eyebrow">News</span></h2>
+        <ol class="prism-academic-news">
+          {% for item in site.data.news limit: 6 %}
+            <li class="prism-academic-news__row">
+              <span class="prism-academic-news__date">{{ item.date }}</span>
+              <span class="prism-academic-news__badge">{{ item.badge }}</span>
+              <p class="prism-academic-news__text">
+                {{ item.text }}
                 {% if item.links and item.links.size > 0 %}
-                <div class="prism-paper-actions">
                   {% for link in item.links %}
                     {% if link.external %}
-                      <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% if link.icon %}<i class="{{ link.icon }}"></i> {% endif %}{{ link.label }}</a>
+                      <a class="prism-academic-news__link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}&nbsp;<span aria-hidden="true">↗</span></a>
                     {% else %}
-                      <a class="prism-link-button{% if link.primary %} button-pill--primary{% endif %}" href="{{ link.url | relative_url }}">{{ link.label }}</a>
+                      <a class="prism-academic-news__link" href="{{ link.url | relative_url }}">{{ link.label }}&nbsp;<span aria-hidden="true">→</span></a>
                     {% endif %}
                   {% endfor %}
-                </div>
                 {% endif %}
+              </p>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+
+      <section class="prism-academic-section reveal" aria-labelledby="pubs-h" id="publications">
+        <header class="prism-academic-section__head">
+          <h2 class="prism-academic-h2" id="pubs-h"><span class="prism-academic-eyebrow">Selected Publications</span></h2>
+          <a class="prism-academic-more" href="{{ '/publications/' | relative_url }}">All publications →</a>
+        </header>
+
+        <ul class="prism-academic-pub-list">
+          {% for post in featured_pubs limit: 3 %}
+            <li class="prism-academic-pub">
+              <span class="prism-academic-pub__year">{{ post.date | date: "%Y" }}</span>
+              <div class="prism-academic-pub__body">
+                <div class="prism-academic-pub__meta">
+                  <span class="prism-academic-pub__venue">{{ post.venue | default: "Preprint" }}</span>
+                  {% if post.status %}
+                    <span class="prism-academic-pub__status prism-academic-pub__status--{{ post.status }}">
+                      {%- if post.status == 'accepted' -%}Accepted
+                      {%- elsif post.status == 'published' -%}Published
+                      {%- elsif post.status == 'under-review' -%}Under Review
+                      {%- else -%}Preprint{%- endif -%}
+                    </span>
+                  {% endif %}
+                </div>
+                <h3 class="prism-academic-pub__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                {% include publication-authors-inline.html authors=post.authors equal_contrib=post.equal_contrib_authors corresponding=post.corresponding_authors class="prism-academic-pub__authors" max=8 %}
+                <div class="prism-academic-pub__actions">
+                  <a class="prism-academic-link" href="{{ post.url | relative_url }}">Details</a>
+                  {% if post.paperurl %}<a class="prism-academic-link" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer">PDF&nbsp;<span aria-hidden="true">↗</span></a>{% endif %}
+                  {% if post.codeurl %}<a class="prism-academic-link" href="{{ post.codeurl }}" target="_blank" rel="noopener noreferrer">Code&nbsp;<span aria-hidden="true">↗</span></a>{% endif %}
+                  {% if post.bibtexurl %}<a class="prism-academic-link" href="{{ post.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX&nbsp;<span aria-hidden="true">↗</span></a>{% endif %}
+                </div>
               </div>
             </li>
-            {% endfor %}
-          </ol>
-          <div class="prism-scroll-fade prism-scroll-fade--bottom" aria-hidden="true"></div>
-        </div>
-      </section>
-
-      <section class="prism-content-card reveal">
-        <div class="prism-section-head prism-section-head--split">
-          <div>
-            <span class="prism-eyebrow">Publications</span>
-            <h2>Selected Publications</h2>
-          </div>
-          <a class="prism-view-all" href="{{ '/publications/' | relative_url }}">View All <i class="fa-solid fa-arrow-right-long"></i></a>
-        </div>
-
-        <div class="prism-paper-list" id="publications">
-          {% for post in featured_pubs limit: 3 %}
-            <article class="prism-paper-card">
-              <div class="prism-paper-meta">
-                <span class="prism-paper-meta-text">{{ post.date | date: "%Y" }}</span>
-                <span class="prism-paper-meta-dot"></span>
-                <span class="prism-paper-venue-badge">{{ post.venue | default: "Preprint" }}</span>
-                {% if post.status %}
-                  <span class="prism-paper-status prism-paper-status--{{ post.status }}">
-                    {% if post.status == 'accepted' %}Accepted
-                    {% elsif post.status == 'published' %}Published
-                    {% elsif post.status == 'under-review' %}Under Review
-                    {% else %}Preprint{% endif %}
-                  </span>
-                {% endif %}
-              </div>
-              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-              {% include publication-authors-inline.html authors=post.authors equal_contrib=post.equal_contrib_authors corresponding=post.corresponding_authors class="publication-authors-line--card" max=6 %}
-              <p>{{ post.excerpt | strip_html | truncate: 210 }}</p>
-              <div class="prism-paper-actions">
-                <a class="prism-link-button button-pill--primary" href="{{ post.url | relative_url }}">Details</a>
-                {% if post.paperurl %}
-                  <a class="prism-link-button" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> Paper</a>
-                {% endif %}
-                {% if post.bibtexurl %}
-                  <a class="prism-link-button" href="{{ post.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX</a>
-                {% endif %}
-              </div>
-            </article>
           {% endfor %}
-        </div>
+        </ul>
       </section>
 
-      <section class="prism-content-card reveal">
-        <div class="prism-section-head prism-section-head--split">
-          <div>
-            <span class="prism-eyebrow">Current Work</span>
-            <h2>Current Focus</h2>
-          </div>
-        </div>
-
-        <div class="prism-focus-grid">
-          <div class="prism-tag-list">
-            <span>Robust evaluation</span>
-            <span>Contamination resistance</span>
-            <span>Medical NLP</span>
-            <span>Expert validation</span>
-            <span>Novelty assessment</span>
-            <span>Scientific review</span>
-          </div>
-
-          <aside class="prism-note-card prism-note-card--compact">
-            <span class="prism-note-card__eyebrow">Working Style</span>
-            <p>
-              I prefer simple, verifiable systems: clear task setups, careful annotation,
-              faithful baselines, and tooling that makes research easier to reproduce.
-            </p>
-          </aside>
-        </div>
-      </section>
     </div>
   </div>
 </section>

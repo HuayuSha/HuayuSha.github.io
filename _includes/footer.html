@@ -3,12 +3,80 @@
 {% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
   {% assign is_zh_footer = true %}
 {% endif %}
+
 {% assign footer_site_name = site.name | default: site.title %}
+{% assign footer_role = "Software Engineering · Fudan University" %}
+{% assign footer_tag = "Trustworthy LLM evaluation · Medical benchmarks · Scientific intelligence" %}
+{% assign nav_about = "About" %}
+{% assign nav_pubs = "Publications" %}
+{% assign nav_cv = "CV" %}
+{% assign nav_guestbook = "Guestbook" %}
+{% assign h_site = "Site" %}
+{% assign h_elsewhere = "Elsewhere" %}
+{% assign last_updated_label = "Last updated" %}
+{% assign back_top_label = "Back to top" %}
+{% assign home_url = "/" %}
+{% assign about_url = "/" %}
+{% assign pubs_url = "/publications/" %}
+{% assign cv_url = "/cv/" %}
+{% assign guestbook_url = "/guestbook/" %}
+
 {% if is_zh_footer %}
-  {% assign footer_site_name = '沙华煜' %}
+  {% assign footer_site_name = "沙华煜" %}
+  {% assign footer_role = "复旦大学 · 软件工程" %}
+  {% assign footer_tag = "可信大模型评测 · 医疗基准 · 科学智能" %}
+  {% assign nav_about = "关于" %}
+  {% assign nav_pubs = "论文" %}
+  {% assign nav_cv = "简历" %}
+  {% assign nav_guestbook = "留言板" %}
+  {% assign h_site = "站点" %}
+  {% assign h_elsewhere = "其它" %}
+  {% assign last_updated_label = "最近更新" %}
+  {% assign back_top_label = "回到顶部" %}
+  {% assign home_url = "/zh/" %}
+  {% assign about_url = "/zh/" %}
+  {% assign pubs_url = "/zh/publications/" %}
+  {% assign cv_url = "/zh/cv/" %}
+  {% assign guestbook_url = "/zh/guestbook/" %}
 {% endif %}
 
-<div class="page__footer-copyright">
-  <span>&copy; {{ site.time | date: '%Y' }} {{ footer_site_name }}</span>
-  <span>{% if is_zh_footer %}最近更新{% else %}Last updated{% endif %} {{ "now" | date: '%Y-%m-%d' }}</span>
+<div class="prism-footer">
+  <div class="prism-footer__inner">
+
+    <div class="prism-footer__col prism-footer__col--identity">
+      <a class="prism-footer__brand" href="{{ home_url | relative_url }}">{{ footer_site_name }}</a>
+      <p class="prism-footer__role">{{ footer_role }}</p>
+      <p class="prism-footer__tag">{{ footer_tag }}</p>
+    </div>
+
+    <div class="prism-footer__col prism-footer__col--site">
+      <p class="prism-footer__heading">{{ h_site }}</p>
+      <ul class="prism-footer__links">
+        <li><a href="{{ about_url | relative_url }}">{{ nav_about }}</a></li>
+        <li><a href="{{ pubs_url | relative_url }}">{{ nav_pubs }}</a></li>
+        <li><a href="{{ cv_url | relative_url }}">{{ nav_cv }}</a></li>
+        <li><a href="{{ guestbook_url | relative_url }}">{{ nav_guestbook }}</a></li>
+      </ul>
+    </div>
+
+    <div class="prism-footer__col prism-footer__col--elsewhere">
+      <p class="prism-footer__heading">{{ h_elsewhere }}</p>
+      <ul class="prism-footer__links">
+        <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&nbsp;↗</span></a></li>
+        <li><a href="{{ site.author.openreview }}" target="_blank" rel="noopener noreferrer">OpenReview<span aria-hidden="true">&nbsp;↗</span></a></li>
+        <li><a href="{{ site.author.orcid }}" target="_blank" rel="noopener noreferrer">ORCID<span aria-hidden="true">&nbsp;↗</span></a></li>
+        <li><a href="mailto:{{ site.author.email }}">Email<span aria-hidden="true">&nbsp;↗</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="prism-footer__bar">
+    <div class="prism-footer__meta">
+      <span>&copy; {{ site.time | date: '%Y' }} {{ footer_site_name }}</span>
+      <span class="prism-footer__dot" aria-hidden="true">·</span>
+      <span>{{ last_updated_label }} <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y-%m-%d' }}</time></span>
+    </div>
+    <a href="#top" class="prism-footer__top">{{ back_top_label }} <span aria-hidden="true">↑</span></a>
+  </div>
 </div>
