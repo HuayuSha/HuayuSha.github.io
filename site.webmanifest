@@ -1,0 +1,56 @@
+---
+# Web App Manifest — makes the site installable on Android / desktop
+# (iOS uses apple-touch-icon + apple-mobile-web-app-* meta in head.html).
+# Templated through Jekyll so start_url stays in sync with site.url.
+# `layout: none` keeps Jekyll from wrapping us in HTML page chrome.
+layout: none
+permalink: /site.webmanifest
+sitemap: false
+no_lang_alt: true
+---
+{
+  "name": "Huayu Sha · 沙华煜",
+  "short_name": "Huayu Sha",
+  "description": "{{ site.description | strip_newlines | escape }}",
+  "start_url": "{{ '/' | absolute_url }}",
+  "scope": "{{ '/' | absolute_url }}",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8f6f1",
+  "theme_color": "#1a6352",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "productivity", "personal"],
+  "icons": [
+    {
+      "src": "{{ '/images/favicon.svg' | relative_url }}",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ '/images/favicon-32x32.png' | relative_url }}",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ '/images/favicon-192x192.png' | relative_url }}",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{ '/images/favicon-512x512.png' | relative_url }}",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{ '/images/apple-touch-icon-180x180.png' | relative_url }}",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

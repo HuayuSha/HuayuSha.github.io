@@ -32,10 +32,39 @@
 
 <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 
+{%- comment -%}
+  Favicon set + PWA manifest. Files live in /images/ and were already
+  committed; head.html previously didn't reference any of them, so
+  browser tabs / iOS add-to-homescreen / Android install banners all
+  fell back to a default. SVG first (vector, dark-mode aware), ICO as
+  legacy fallback, sized PNGs for older Android, apple-touch-icon for
+  iOS, manifest for installability.
+{%- endcomment -%}
+<link rel="icon" type="image/svg+xml" href="{{ '/images/favicon.svg' | relative_url }}">
+<link rel="alternate icon" type="image/x-icon" href="{{ '/images/favicon.ico' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/images/favicon-192x192.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/images/favicon-512x512.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon-180x180.png' | relative_url }}">
+<link rel="mask-icon" href="{{ '/images/favicon.svg' | relative_url }}" color="#1a6352">
+<link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+
+{%- comment -%}
+  Mobile chrome (URL bar tint). Match the light cream + dark slate of
+  the PRISM palette so the OS chrome feels continuous with the page,
+  with media queries handling system theme switches.
+{%- endcomment -%}
+<meta name="theme-color" content="#f8f6f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+<meta name="msapplication-TileColor" content="#1a6352">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="{% if page.lang == 'zh' %}沙华煜{% else %}Huayu Sha{% endif %}">
+
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <script>
   (function () {
