@@ -539,31 +539,11 @@ body.cv-page .page {
   margin: 0 !important;
 }
 
-body.guestbook-page #main {
-  max-width: 1140px !important;
-  padding: 2rem 1.25rem 4rem !important;
-  display: grid !important;
-  grid-template-columns: 296px minmax(0, 1fr) !important;
-  gap: 1.5rem !important;
-  align-items: start !important;
-}
-
-body.guestbook-page .publication-prism-sidebar {
-  position: sticky !important;
-  top: 6.5rem !important;
-  gap: 0.85rem !important;
-}
-
-body.guestbook-page .page {
-  float: none !important;
-  width: auto !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-}
+/* (guestbook-page sidebar/grid + .page chrome rules removed —
+   guestbook is now layout: default + .prism-shell, no .page wrapper.) */
 
 body.publication-page .page,
-body.cv-page .page,
-body.guestbook-page .page {
+body.cv-page .page {
   position: relative;
   transition:
     transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -572,8 +552,7 @@ body.guestbook-page .page {
 }
 
 body.publication-page .page::before,
-body.cv-page .page::before,
-body.guestbook-page .page::before {
+body.cv-page .page::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -590,8 +569,7 @@ body.guestbook-page .page::before {
 }
 
 body.publication-page .page:hover,
-body.cv-page .page:hover,
-body.guestbook-page .page:hover {
+body.cv-page .page:hover {
   transform: translateY(var(--p-hover-lift-panel));
   box-shadow:
     var(--p-shadow-hover),
@@ -599,8 +577,7 @@ body.guestbook-page .page:hover {
 }
 
 body.publication-page .page:hover::before,
-body.cv-page .page:hover::before,
-body.guestbook-page .page:hover::before {
+body.cv-page .page:hover::before {
   opacity: 1;
 }
 
@@ -619,7 +596,6 @@ body.guestbook-page .page:hover::before {
 
 body.publication-page .page.page-entered,
 body.cv-page .page.page-entered,
-body.guestbook-page .page.page-entered,
 body:not(.home-page) .archive__item.page-entered {
   animation: pageLiftIn 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -1243,8 +1219,7 @@ body:not(.home-page) .page__date--meta {
 }
 
 body.cv-page .page__content > h2:first-of-type,
-body.publication-page .page__content > h2:first-of-type,
-body.guestbook-page .page__content > h2:first-of-type {
+body.publication-page .page__content > h2:first-of-type {
   margin-top: 0.4rem;
 }
 
@@ -1317,8 +1292,7 @@ body.cv-page .archive__item {
 
 /* Inner page reveal motion */
 body.publication-page .motion-item,
-body.cv-page .motion-item,
-body.guestbook-page .motion-item {
+body.cv-page .motion-item {
   opacity: 0;
   transform: translateY(14px) scale(0.997);
   filter: blur(0.75px);
@@ -1329,8 +1303,7 @@ body.guestbook-page .motion-item {
 }
 
 body.publication-page .motion-item.is-visible,
-body.cv-page .motion-item.is-visible,
-body.guestbook-page .motion-item.is-visible {
+body.cv-page .motion-item.is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
@@ -1775,8 +1748,7 @@ html[data-theme="dark"] .prism-content-card.is-interactive:hover,
 html[data-theme="dark"] .prism-paper-card:hover,
 html[data-theme="dark"] .archive__item:hover,
 html[data-theme="dark"] body.publication-page .page:hover,
-html[data-theme="dark"] body.cv-page .page:hover,
-html[data-theme="dark"] body.guestbook-page .page:hover {
+html[data-theme="dark"] body.cv-page .page:hover {
   background: rgba(28, 37, 49, 0.88) !important;
   border-color: rgba(164, 185, 209, 0.34) !important;
   box-shadow:
@@ -1789,8 +1761,7 @@ html[data-theme="dark"] #lang-toggle a:hover {
 }
 
 html[data-theme="dark"] body.publication-page .page::before,
-html[data-theme="dark"] body.cv-page .page::before,
-html[data-theme="dark"] body.guestbook-page .page::before {
+html[data-theme="dark"] body.cv-page .page::before {
   background: radial-gradient(
     320px circle at var(--motion-x, 50%) var(--motion-y, 14%),
     rgba(223, 176, 93, 0.22) 0%,
@@ -1844,37 +1815,9 @@ html[data-theme="dark"] body.publication-page .page__content td {
   border-bottom-color: rgba(164,185,209,0.12) !important;
 }
 
-html[data-theme="dark"] .guestbook-form,
-html[data-theme="dark"] .guestbook-item,
-html[data-theme="dark"] .guestbook-empty {
-  background: rgba(18, 24, 33, 0.78) !important;
-  border-color: var(--p-border-med) !important;
-}
-
-html[data-theme="dark"] .guestbook-runtime-hint {
-  background: rgba(223, 176, 93, 0.13) !important;
-  border-color: rgba(223, 176, 93, 0.38) !important;
-  color: var(--p-ink-2) !important;
-}
-
-html[data-theme="dark"] .guestbook-field input,
-html[data-theme="dark"] .guestbook-field textarea {
-  background: rgba(16, 22, 31, 0.84) !important;
-  color: var(--p-ink) !important;
-  border-color: var(--p-border-med) !important;
-}
-
-html[data-theme="dark"] .guestbook-field input:focus,
-html[data-theme="dark"] .guestbook-field textarea:focus {
-  border-color: var(--p-accent-glow) !important;
-  box-shadow: 0 0 0 3px rgba(77, 191, 158, 0.15) !important;
-  background: rgba(22, 30, 41, 0.9) !important;
-}
-
-html[data-theme="dark"] .guestbook-status.is-error,
-html[data-theme="dark"] .guestbook-empty--error {
-  color: var(--p-error-dark) !important;
-}
+/* (legacy guestbook dark-mode rules removed — superseded by
+   _sass/layout/huayu/_guestbook.scss; kept .gb-status / .guestbook-item
+   etc. in the new partial without dark overrides for now.) */
 
 html[data-theme="dark"] body:not(.home-page) .page__lede {
   background: rgba(77, 60, 27, 0.34);
@@ -1968,19 +1911,11 @@ html[data-theme="dark"] body:not(.home-page) .page__meta-chip--venue {
   color: var(--p-accent-light) !important;
 }
 
-html[data-theme="dark"] .guestbook-intro,
-html[data-theme="dark"] .guestbook-form,
-html[data-theme="dark"] .guestbook-item,
 html[data-theme="dark"] .cv-link-list a,
 html[data-theme="dark"] body:not(.home-page) .resource-card {
   background: linear-gradient(155deg, rgba(24, 32, 43, 0.82) 0%, rgba(18, 24, 33, 0.78) 100%) !important;
   border-color: rgba(164, 185, 209, 0.16) !important;
   box-shadow: var(--p-shadow-sm), inset 0 1px 0 rgba(255,255,255,0.03) !important;
-}
-
-html[data-theme="dark"] .guestbook-empty {
-  background: rgba(24, 32, 43, 0.56) !important;
-  border-color: rgba(223,176,93,0.22) !important;
 }
 
 html[data-theme="dark"] body.home-page::before {
@@ -2091,14 +2026,6 @@ html[data-theme="dark"] .prism-bg-spot--two {
   }
 
   body.cv-page .page {
-    padding: 1.25rem 1rem 1.2rem !important;
-  }
-
-  body.guestbook-page #main {
-    padding: 1.1rem 0.9rem 2.8rem !important;
-  }
-
-  body.guestbook-page .page {
     padding: 1.25rem 1rem 1.2rem !important;
   }
 
@@ -2229,7 +2156,6 @@ html[data-theme="dark"] .prism-bg-spot--two {
 
   body.publication-page .page,
   body.cv-page .page,
-  body.guestbook-page .page,
   body:not(.home-page) .page {
     padding: 1.05rem 0.82rem 1.08rem !important;
     border-radius: var(--p-r-md) !important;
@@ -2237,7 +2163,6 @@ html[data-theme="dark"] .prism-bg-spot--two {
 
   body.publication-page .page__title,
   body.cv-page .page__title,
-  body.guestbook-page .page__title,
   body:not(.home-page) .page__title {
     font-size: 1.55rem !important;
     line-height: 1.16 !important;
@@ -2245,14 +2170,12 @@ html[data-theme="dark"] .prism-bg-spot--two {
 
   body.publication-page .page__content h2,
   body.cv-page .page__content h2,
-  body.guestbook-page .page__content h2,
   body:not(.home-page) .page__content h2 {
     font-size: 1.3rem !important;
   }
 
   body.publication-page .page__content h3,
   body.cv-page .page__content h3,
-  body.guestbook-page .page__content h3,
   body:not(.home-page) .page__content h3 {
     font-size: 1.03rem !important;
   }
@@ -2280,9 +2203,7 @@ html[data-theme="dark"] .prism-bg-spot--two {
   body.publication-page .page__content p,
   body.publication-page .page__content li,
   body.cv-page .page__content p,
-  body.cv-page .page__content li,
-  body.guestbook-page .page__content p,
-  body.guestbook-page .page__content li {
+  body.cv-page .page__content li {
     font-size: 0.92rem;
     line-height: 1.74;
   }
@@ -2294,20 +2215,6 @@ html[data-theme="dark"] .prism-bg-spot--two {
 
   .publication-authors-note {
     font-size: 0.67rem;
-  }
-
-  .guestbook-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .guestbook-actions .button-pill {
-    width: 100%;
-  }
-
-  .guestbook-item__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.18rem;
   }
 
   .cv-link-list a {
@@ -2339,18 +2246,8 @@ html[data-theme="dark"] .prism-bg-spot--two {
     position: static !important;
   }
 
-  body.guestbook-page #main {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-  }
-
-  body.guestbook-page .publication-prism-sidebar {
-    position: static !important;
-  }
-
   body.publication-page .motion-item,
-  body.cv-page .motion-item,
-  body.guestbook-page .motion-item {
+  body.cv-page .motion-item {
     transition-delay: 0ms !important;
   }
 }
@@ -2361,22 +2258,19 @@ html[data-theme="dark"] .prism-bg-spot--two {
   }
 
   body.publication-page #main,
-  body.cv-page #main,
-  body.guestbook-page #main {
+  body.cv-page #main {
     display: flex !important;
     flex-direction: column !important;
     gap: 1rem !important;
   }
 
   body.publication-page .page,
-  body.cv-page .page,
-  body.guestbook-page .page {
+  body.cv-page .page {
     order: 1;
   }
 
   body.publication-page .publication-prism-sidebar,
-  body.cv-page .publication-prism-sidebar,
-  body.guestbook-page .publication-prism-sidebar {
+  body.cv-page .publication-prism-sidebar {
     order: 2;
   }
 }
@@ -2430,7 +2324,6 @@ body.publication-page .archive--publication > hr {
   .archive__item:hover,
   body.publication-page .page:hover,
   body.cv-page .page:hover,
-  body.guestbook-page .page:hover,
   #lang-toggle a:hover,
   #theme-toggle a:hover,
   .prism-link-button:hover,
@@ -2605,61 +2498,10 @@ body.cv-page .cv-publication-list__item {
   color: var(--p-accent);
 }
 
-.guestbook-form,
-.guestbook-item,
-.guestbook-intro,
-.guestbook-empty {
-  transition:
-    transform 300ms var(--p-ease-standard),
-    box-shadow 300ms var(--p-ease-standard),
-    border-color 220ms ease,
-    background 220ms ease;
-}
-
-.guestbook-form:hover,
-.guestbook-item:hover,
-.guestbook-intro:hover {
-  transform: translateY(var(--p-hover-lift-panel));
-}
-
-.guestbook-item {
-  position: relative;
-  overflow: hidden;
-}
-
-.guestbook-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 18%;
-  bottom: 18%;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, transparent 0%, var(--p-gold) 22%, var(--p-accent) 78%, transparent 100%);
-  opacity: 0;
-  transition: opacity 240ms ease;
-}
-
-.guestbook-item:hover::before {
-  opacity: 1;
-}
-
-.guestbook-item.is-entering {
-  animation: guestbookItemIn 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes guestbookItemIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.995);
-    filter: blur(0.8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
+/* (legacy guestbook hover-lift / accent-edge / guestbookItemIn keyframe
+   removed — superseded by _sass/layout/huayu/_guestbook.scss, which
+   restyles .guestbook-item with no-card, divider-line look and a
+   gentler prismGbIn entry animation that respects prefers-reduced-motion.) */
 
 .page__footer {
   margin-top: 0.8rem !important;
@@ -2758,33 +2600,22 @@ body.home-page #contact {
   scroll-margin-top: 6.7rem;
 }
 
-body.cv-page .page__header--minimal,
-body.guestbook-page .page__header--minimal {
+body.cv-page .page__header--minimal {
   padding-top: 1rem !important;
   padding-bottom: 0.92rem !important;
   margin-bottom: 0.8rem !important;
 }
 
-body.cv-page .page__header--minimal .page__title,
-body.guestbook-page .page__header--minimal .page__title {
+body.cv-page .page__header--minimal .page__title {
   margin-bottom: 0 !important;
 }
 
-body.cv-page .page__content,
-body.guestbook-page .page__content {
+body.cv-page .page__content {
   margin-top: 0 !important;
 }
 
-body.cv-page .page__content > h2:first-of-type,
-body.guestbook-page .page__content > h2:first-of-type {
+body.cv-page .page__content > h2:first-of-type {
   margin-top: 0.15rem;
-}
-
-body.guestbook-page .guestbook-intro {
-  margin-bottom: 0.72rem !important;
-  padding: 0.72rem 0.86rem;
-  font-size: 0.86rem !important;
-  line-height: 1.72 !important;
 }
 
 
