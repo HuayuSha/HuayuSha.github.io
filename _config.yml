@@ -24,10 +24,21 @@ author:
   # Biographic information
   avatar           : "huayu-avatar.png"
   name             : "Huayu Sha"
-  pronouns         : "he/him"# example: "she/her"  
+  given_name       : "Huayu"          # for schema.org Person/givenName
+  family_name      : "Sha"            # for schema.org Person/familyName
+  alt_name         : "沙华煜"          # CN — for schema.org Person/alternateName
+  pronouns         : "he/him"# example: "she/her"
   bio              : "Undergraduate researcher in Software Engineering at Fudan University, focusing on trustworthy LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
   location         : "Shanghai, China"
   employer         : "Fudan University"
+  job_title        : "Undergraduate Researcher"   # schema.org Person/jobTitle
+  knows_about:                                    # schema.org Person/knowsAbout — research topics
+    - "Large Language Models"
+    - "Trustworthy LLM Evaluation"
+    - "Medical AI Benchmarks"
+    - "Scholarly Novelty Assessment"
+    - "Scientific Intelligence"
+    - "LLM Agents"
   uri              : "https://www.huayusha.org"
   email            : "23302010032@m.fudan.edu.cn" 
 

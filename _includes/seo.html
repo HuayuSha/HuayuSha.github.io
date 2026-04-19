@@ -159,14 +159,68 @@
   </script>
 {% endif %}
 
+{%- comment -%}
+  Person/Organization JSON-LD. Enriched from _config.yml so the page
+  ships everything the Google Knowledge Graph and academic crawlers
+  use to build a "person card": name, alt_name (CN), description,
+  jobTitle, image, employer (worksFor + affiliation), location,
+  research areas (knowsAbout), and verified profiles (sameAs).
+
+  All optional — fields are only emitted when present in _config.yml,
+  so removing knows_about / job_title / etc. silently degrades back
+  to a minimal Person.
+{%- endcomment -%}
 {% if site.social %}
+  {%- if site.og_image -%}
+    {%- assign person_image = site.og_image | prepend: '/images/' | prepend: base_path | prepend: site.url -%}
+  {%- endif -%}
   <script type="application/ld+json">
     {
-      "@context" : "https://schema.org",
-      "@type" : "{% if site.social.type %}{{ site.social.type }}{% else %}Person{% endif %}",
-      "name" : "{{ site.social.name | default: site.name }}",
-      "url" : {{ seo_url | jsonify }},
-      "sameAs" : {{ site.social.links | jsonify }}
+      "@context": "https://schema.org",
+      "@type": "{% if site.social.type %}{{ site.social.type }}{% else %}Person{% endif %}",
+      "name": {{ site.social.name | default: site.name | jsonify }},
+      {%- if site.author.alt_name %}
+      "alternateName": {{ site.author.alt_name | jsonify }},
+      {%- endif %}
+      {%- if site.author.given_name %}
+      "givenName": {{ site.author.given_name | jsonify }},
+      {%- endif %}
+      {%- if site.author.family_name %}
+      "familyName": {{ site.author.family_name | jsonify }},
+      {%- endif %}
+      "url": {{ seo_url | jsonify }},
+      {%- if person_image %}
+      "image": {{ person_image | jsonify }},
+      {%- endif %}
+      {%- if site.author.bio %}
+      "description": {{ site.author.bio | strip_newlines | jsonify }},
+      {%- endif %}
+      {%- if site.author.email %}
+      "email": {{ site.author.email | prepend: 'mailto:' | jsonify }},
+      {%- endif %}
+      {%- if site.author.job_title %}
+      "jobTitle": {{ site.author.job_title | jsonify }},
+      {%- endif %}
+      {%- if site.author.employer %}
+      "worksFor": {
+        "@type": "Organization",
+        "name": {{ site.author.employer | jsonify }}
+      },
+      "affiliation": {
+        "@type": "Organization",
+        "name": {{ site.author.employer | jsonify }}
+      },
+      {%- endif %}
+      {%- if site.author.location %}
+      "homeLocation": {
+        "@type": "Place",
+        "name": {{ site.author.location | jsonify }}
+      },
+      {%- endif %}
+      {%- if site.author.knows_about %}
+      "knowsAbout": {{ site.author.knows_about | jsonify }},
+      {%- endif %}
+      "sameAs": {{ site.social.links | jsonify }}
     }
   </script>
 {% endif %}
