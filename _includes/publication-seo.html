@@ -50,7 +50,34 @@
 <meta name="citation_abstract_html_url" content="{{ pub_url }}">
 <meta name="citation_language" content="{{ page.lang | default: 'en' }}">
 
-{%- comment -%} Twitter large image card (override default summary) {%- endcomment -%}
+{%- comment -%}
+  Open Graph article tags (publication detail = article). seo.html
+  already emits og:type=article + article:published_time when page.date
+  is set, but it doesn't know about authors / venue / topic, so we
+  enrich here. All values are HTML-escaped because OG `content` is
+  rendered as an attribute by crawlers.
+{%- endcomment -%}
+{%- if page.authors -%}
+  {%- for a in page.authors -%}
+<meta property="article:author" content="{{ a | strip_html | strip_newlines | escape }}">
+  {%- endfor -%}
+{%- endif -%}
+{%- if pub_journal != '' -%}
+<meta property="article:section" content="{{ pub_journal | escape }}">
+{%- endif -%}
+{%- if page.category -%}
+<meta property="article:tag" content="{{ page.category | escape }}">
+{%- endif -%}
+{%- if page.status -%}
+<meta property="article:tag" content="{{ page.status | escape }}">
+{%- endif -%}
+
+{%- comment -%}
+  Twitter large image card. Override the default `summary` from
+  seo.html — papers benefit from the bigger preview, even when the
+  image is currently the square avatar fallback (Twitter will
+  letterbox it cleanly).
+{%- endcomment -%}
 <meta name="twitter:card" content="summary_large_image">
 
 {%- comment -%} JSON-LD ScholarlyArticle {%- endcomment -%}
