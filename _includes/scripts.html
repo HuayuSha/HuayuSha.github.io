@@ -13,8 +13,26 @@
 <script src="{{ base_path }}/assets/js/guestbook.js?v={{ asset_version }}"></script>
 {% endif %}
 {% if page.url == "/" or page.url == "/zh/" %}
-<script src="{{ base_path }}/assets/lib/live2d-widget/live2d_bundle.js?v={{ asset_version }}"></script>
-<script type="module" src="{{ base_path }}/assets/lib/live2d-widget/waifu-tips.js?v={{ asset_version }}"></script>
+{% comment %}
+  Gate Live2D loading by viewport width.
+  At <1024px the canvas is hidden via CSS anyway, but still costs ~3-4MB
+  of textures + JS over the wire. Inject the scripts only on desktop to
+  save mobile bandwidth and avoid layout-shift on small screens.
+{% endcomment %}
+<script>
+  (function () {
+    if (window.matchMedia && !window.matchMedia('(min-width: 1024px)').matches) return;
+    var base = "{{ base_path }}";
+    var v = "{{ asset_version }}";
+    var s1 = document.createElement('script');
+    s1.src = base + "/assets/lib/live2d-widget/live2d_bundle.js?v=" + v;
+    document.head.appendChild(s1);
+    var s2 = document.createElement('script');
+    s2.type = 'module';
+    s2.src = base + "/assets/lib/live2d-widget/waifu-tips.js?v=" + v;
+    s1.addEventListener('load', function () { document.head.appendChild(s2); });
+  })();
+</script>
 {% endif %}
 <script src="{{ base_path }}/assets/js/huayu-home.js?v={{ asset_version }}"></script>
 
