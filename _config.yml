@@ -189,6 +189,13 @@ exclude:
   - README
   - tmp
   - vendor
+  # Template leftovers (interactive talks map + scratch notebooks).
+  # Not used; excluding stops them shipping to _site/ and showing up in
+  # sitemap.xml as `/talkmap/map.html` etc.
+  - talkmap
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
 keep_files:
   - .git
   - .svn
@@ -245,6 +252,8 @@ defaults:
       comments: true
       share: true
       related: true
+      sitemap: false
+      no_lang_alt: true
   # _pages
   - scope:
       path: ""
@@ -261,6 +270,8 @@ defaults:
       author_profile: true
       share: true
       comments: true
+      sitemap: false
+      no_lang_alt: true
   # _publications
   - scope:
       path: ""
@@ -279,6 +290,8 @@ defaults:
       author_profile: true
       share: true
       comment: true
+      sitemap: false
+      no_lang_alt: true
   # _talks
   - scope:
       path: ""
@@ -287,6 +300,8 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+      sitemap: false
+      no_lang_alt: true
 
 
 # Sass/SCSS

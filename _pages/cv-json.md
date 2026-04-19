@@ -5,6 +5,7 @@ excerpt: "JSON-rendered CV of Huayu Sha with profile, education, research intere
 description: "JSON-rendered CV of Huayu Sha with profile, education, research interests, and publications."
 permalink: /cv-json/
 author_profile: false
+sitemap: false
 no_lang_alt: true
 redirect_from:
   - /resume-json
