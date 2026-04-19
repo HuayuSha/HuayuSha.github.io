@@ -1,0 +1,111 @@
+{%- comment -%}
+  Publication-specific SEO block.
+
+  Emits two things on top of the generic SEO output:
+
+  1. Highwire Press / Google Scholar `citation_*` meta tags so the paper
+     gets indexed by Google Scholar (Scholar's crawler looks for these
+     specifically; OG/JSON-LD is not enough).
+     Ref: https://scholar.google.com/intl/en/scholar/inclusion.html#indexing
+
+  2. Schema.org JSON-LD `ScholarlyArticle` for general crawlers, with
+     authors, venue, date, identifiers, and code/PDF links.
+
+  Included from `_includes/seo.html` when the current page is a publication
+  detail page (layout=publication or collection=publications), so it works
+  for both the English `_publications/*.md` and the Chinese
+  `_pages/zh-publication-*.md` (mapped via layout).
+{%- endcomment -%}
+
+{%- assign pub_url = page.url | prepend: seo_url | replace: '/index.html', '/' -%}
+{%- assign pub_journal = page.venue | default: '' -%}
+{%- assign pub_year = page.date | date: '%Y' -%}
+{%- assign pub_publication_date = page.date | date: '%Y/%m/%d' -%}
+
+{%- comment -%} Highwire Press meta tags (Google Scholar) {%- endcomment -%}
+<meta name="citation_title" content="{{ page.title | strip_html | strip_newlines | escape }}">
+{%- if page.authors -%}
+  {%- for a in page.authors -%}
+<meta name="citation_author" content="{{ a | strip_html | strip_newlines | escape }}">
+  {%- endfor -%}
+{%- endif -%}
+{%- if page.date -%}
+<meta name="citation_publication_date" content="{{ pub_publication_date }}">
+<meta name="citation_date" content="{{ pub_publication_date }}">
+{%- endif -%}
+{%- if pub_journal != '' -%}
+<meta name="citation_journal_title" content="{{ pub_journal | escape }}">
+<meta name="citation_conference_title" content="{{ pub_journal | escape }}">
+{%- endif -%}
+{%- if page.paperurl -%}
+<meta name="citation_pdf_url" content="{{ page.paperurl }}">
+<meta name="citation_fulltext_html_url" content="{{ page.paperurl }}">
+{%- endif -%}
+{%- if page.doi -%}
+<meta name="citation_doi" content="{{ page.doi }}">
+{%- endif -%}
+{%- if page.arxiv -%}
+<meta name="citation_arxiv_id" content="{{ page.arxiv }}">
+{%- endif -%}
+<meta name="citation_abstract_html_url" content="{{ pub_url }}">
+<meta name="citation_language" content="{{ page.lang | default: 'en' }}">
+
+{%- comment -%} Twitter large image card (override default summary) {%- endcomment -%}
+<meta name="twitter:card" content="summary_large_image">
+
+{%- comment -%} JSON-LD ScholarlyArticle {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": {{ page.title | strip_html | strip_newlines | jsonify }},
+  "name": {{ page.title | strip_html | strip_newlines | jsonify }},
+  {%- if page.excerpt %}
+  "abstract": {{ page.excerpt | strip_html | strip_newlines | jsonify }},
+  "description": {{ page.excerpt | strip_html | strip_newlines | jsonify }},
+  {%- endif %}
+  "url": {{ pub_url | jsonify }},
+  "mainEntityOfPage": {{ pub_url | jsonify }},
+  "inLanguage": {{ page.lang | default: 'en' | jsonify }},
+  {%- if page.date %}
+  "datePublished": {{ page.date | date: '%Y-%m-%d' | jsonify }},
+  {%- endif %}
+  {%- if pub_journal != '' %}
+  "publication": {{ pub_journal | jsonify }},
+  "isPartOf": {
+    "@type": "Periodical",
+    "name": {{ pub_journal | jsonify }}
+  },
+  {%- endif %}
+  {%- if page.authors %}
+  "author": [
+    {%- for a in page.authors -%}
+    {
+      "@type": "Person",
+      "name": {{ a | strip_html | strip_newlines | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ],
+  {%- endif %}
+  "creator": {
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ seo_url | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ pub_journal | default: site.author.employer | jsonify }}
+  }{% if page.codeurl or page.paperurl %},
+  "sameAs": [
+    {%- assign first_link = true -%}
+    {%- if page.paperurl -%}
+    {{ page.paperurl | jsonify }}
+    {%- assign first_link = false -%}
+    {%- endif -%}
+    {%- if page.codeurl -%}
+    {%- unless first_link %},{% endunless -%}
+    {{ page.codeurl | jsonify }}
+    {%- endif -%}
+  ]{% endif %}
+}
+</script>

@@ -142,6 +142,16 @@
   </script>
 {% endif %}
 
+{%- comment -%}
+  Publication detail pages get extra SEO: Google Scholar `citation_*` meta
+  tags and Schema.org ScholarlyArticle JSON-LD. Triggered by either the
+  `publication` layout (used by both en `_publications/*.md` and zh
+  `_pages/zh-publication-*.md`) or the legacy `publications` collection.
+{%- endcomment -%}
+{% if page.layout == 'publication' or page.collection == 'publications' %}
+  {% include publication-seo.html %}
+{% endif %}
+
 {% if site.google_site_verification %}
   <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
 {% endif %}
