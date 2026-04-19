@@ -25,6 +25,10 @@
                         (used by _includes/footer.html).
      _404.scss          PRISM 404 page
                         (used by _pages/404.md).
+     _guestbook.scss    PRISM guestbook
+                        (used by _pages/guestbook.md and
+                         _pages/guestbook-zh.md via
+                         _includes/guestbook-panel.html).
 
    To add a new namespace: drop another `_my-thing.scss` into
    `_sass/layout/huayu/` and append it below.
@@ -37,5 +41,6 @@
     "huayu/pubs",
     "huayu/cv",
     "huayu/footer",
-    "huayu/404"
+    "huayu/404",
+    "huayu/guestbook"
 ;

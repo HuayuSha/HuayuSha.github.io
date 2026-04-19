@@ -1,45 +1,94 @@
+{% include base_path %}
 {% assign is_zh_page = false %}
 {% if page.lang == "zh" or page.url == "/zh/" or page.url contains "/zh/" %}
   {% assign is_zh_page = true %}
 {% endif %}
 
-<section class="guestbook-shell" id="guestbook-app" data-lang="{% if is_zh_page %}zh{% else %}en{% endif %}">
-  <p class="guestbook-intro">
-    {% if is_zh_page %}
-      欢迎留下你的姓名、单位或联系方式，也可以简单写下你想交流的话题。
-    {% else %}
-      Feel free to leave your name, affiliation or contact, together with the topic you would like to discuss.
-    {% endif %}
-  </p>
+{% comment %}
+  PRISM Guestbook panel.
 
-  <form id="guestbook-form" class="guestbook-form" novalidate>
-    <div class="guestbook-grid">
-      <label class="guestbook-field">
-        <span>{% if is_zh_page %}姓名{% else %}Name{% endif %}</span>
-        <input id="gb-name" name="name" type="text" maxlength="80" required>
-      </label>
+  External shell + form chrome use the prism-guestbook-* namespace,
+  but several IDs / form names / class names are a hard contract with
+  assets/js/guestbook.js (it queries them by ID, reads form names
+  exactly, and renders messages with class names like
+  .guestbook-item, .guestbook-empty, .guestbook-runtime-hint, plus
+  the .gb-status state classes). Keep those EXACTLY as-is when
+  editing this template.
+{% endcomment %}
 
-      <label class="guestbook-field">
-        <span>{% if is_zh_page %}联系方式（可选）{% else %}Contact (optional){% endif %}</span>
-        <input id="gb-contact" name="contact" type="text" maxlength="120" placeholder="{% if is_zh_page %}邮箱 / 主页 / OpenReview{% else %}Email / Homepage / OpenReview{% endif %}">
-      </label>
+<main id="main" class="prism-shell prism-shell--guestbook" role="main" tabindex="-1">
+  <div class="prism-guestbook" id="guestbook-app" data-lang="{% if is_zh_page %}zh{% else %}en{% endif %}">
 
-      <label class="guestbook-field guestbook-field--full">
-        <span>{% if is_zh_page %}留言内容{% else %}Message{% endif %}</span>
-        <textarea id="gb-message" name="message" rows="5" maxlength="2000" required></textarea>
-      </label>
+    <header class="prism-guestbook-hero">
+      <p class="prism-guestbook-hero__eyebrow">
+        <span class="prism-guestbook-hero__rule" aria-hidden="true"></span>{% if is_zh_page %}留言板{% else %}Guestbook{% endif %}
+      </p>
+      <h1 class="prism-guestbook-hero__title">
+        {% if is_zh_page %}留个言，告诉我你是谁。{% else %}Say hello, leave your trail.{% endif %}
+      </h1>
+      <p class="prism-guestbook-hero__lead">
+        {% if is_zh_page %}
+          欢迎留下姓名、单位或联系方式，也可以简单写下想交流的话题 ——
+          研究合作、论文反馈、读后感都可以。提交后会立刻显示在下方。
+        {% else %}
+          Drop your name and (optionally) where I can find you. Whether it's a
+          research note, a paper question, or just a "passing by" — every
+          message lands below right after you submit.
+        {% endif %}
+      </p>
+    </header>
 
-      <input class="guestbook-honeypot" id="gb-website" name="website" type="text" tabindex="-1" autocomplete="off">
-    </div>
+    <form id="guestbook-form" class="prism-guestbook-form" novalidate>
+      <div class="prism-guestbook-grid">
+        <label class="prism-guestbook-field">
+          <span>{% if is_zh_page %}姓名{% else %}Name{% endif %}</span>
+          <input id="gb-name" name="name" type="text" maxlength="80" required autocomplete="name">
+        </label>
 
-    <div class="guestbook-actions">
-      <button id="gb-submit" class="button-pill" type="submit">
-        {% if is_zh_page %}提交留言{% else %}Submit{% endif %}
-      </button>
-      <p id="gb-status" class="guestbook-status" aria-live="polite"></p>
-    </div>
-  </form>
+        <label class="prism-guestbook-field">
+          <span>{% if is_zh_page %}联系方式（可选）{% else %}Contact (optional){% endif %}</span>
+          <input id="gb-contact" name="contact" type="text" maxlength="120"
+                 placeholder="{% if is_zh_page %}邮箱 / 主页 / OpenReview{% else %}Email / Homepage / OpenReview{% endif %}"
+                 autocomplete="email">
+        </label>
 
-  <div id="guestbook-list" class="guestbook-list" aria-live="polite"></div>
+        <label class="prism-guestbook-field prism-guestbook-field--full">
+          <span>{% if is_zh_page %}留言内容{% else %}Message{% endif %}</span>
+          <textarea id="gb-message" name="message" rows="5" maxlength="2000" required></textarea>
+        </label>
 
-</section>
+        {% comment %} honeypot — keep name="website" exactly (JS reads it). {% endcomment %}
+        <input class="guestbook-honeypot" id="gb-website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </div>
+
+      <div class="prism-guestbook-actions">
+        <button id="gb-submit" class="button-pill" type="submit">
+          {% if is_zh_page %}提交留言 →{% else %}Submit →{% endif %}
+        </button>
+        <p id="gb-status" class="guestbook-status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <section class="prism-guestbook-stream" aria-labelledby="prism-guestbook-stream-label">
+      <div class="prism-guestbook-stream__head">
+        <h2 id="prism-guestbook-stream-label" class="prism-guestbook-stream__head-label">
+          {% if is_zh_page %}最近留言{% else %}Recent messages{% endif %}
+        </h2>
+        <span class="prism-guestbook-stream__head-rule" aria-hidden="true"></span>
+      </div>
+
+      <div id="guestbook-list" class="guestbook-list" aria-live="polite"></div>
+    </section>
+
+    <footer class="prism-guestbook-footer">
+      <a class="prism-guestbook-footer__link" href="{% if is_zh_page %}{{ '/zh/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">
+        <span aria-hidden="true">←</span> {% if is_zh_page %}返回首页{% else %}Back to home{% endif %}
+      </a>
+      <span class="prism-guestbook-footer__divider" aria-hidden="true">·</span>
+      <a class="prism-guestbook-footer__link" href="{% if is_zh_page %}{{ '/zh/publications/' | relative_url }}{% else %}{{ '/publications/' | relative_url }}{% endif %}">
+        {% if is_zh_page %}论文{% else %}Publications{% endif %} <span aria-hidden="true">→</span>
+      </a>
+    </footer>
+
+  </div>
+</main>
