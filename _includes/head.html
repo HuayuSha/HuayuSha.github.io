@@ -5,6 +5,31 @@
 
 {% include seo.html %}
 
+{%- comment -%}
+  hreflang: declare the en/zh sister of every translatable page so Google
+  serves the right language version per user locale and avoids treating
+  them as duplicate content. Pages without a translation (e.g. /cv-json/)
+  set `no_lang_alt: true` in frontmatter to opt out.
+
+  Pairing rule: en URLs map 1:1 to zh URLs by adding/removing a leading
+  `/zh` segment (verified across all pages — including the four
+  /publication/ ↔ /zh/publication/ slugs which intentionally share the
+  same trailing path). x-default points at the en version.
+{%- endcomment -%}
+{%- unless page.no_lang_alt -%}
+  {%- assign canonical_origin = site.url | default: site.author.uri | default: '' -%}
+  {%- if page.url contains '/zh/' -%}
+    {%- assign en_path = page.url | remove_first: '/zh' -%}
+    {%- assign zh_path = page.url -%}
+  {%- else -%}
+    {%- assign en_path = page.url -%}
+    {%- assign zh_path = page.url | prepend: '/zh' -%}
+  {%- endif -%}
+  <link rel="alternate" hreflang="en" href="{{ canonical_origin }}{{ en_path }}">
+  <link rel="alternate" hreflang="zh-CN" href="{{ canonical_origin }}{{ zh_path }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_origin }}{{ en_path }}">
+{%- endunless -%}
+
 <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 
 <!-- http://t.co/dKP3o1e -->
