@@ -207,6 +207,15 @@ exclude:
   - talkmap.py
   - talkmap.ipynb
   - talkmap_out.ipynb
+  # Dev-only helper toolkit from academicpages (Jupyter / Python scripts
+  # that turn BibTeX/TSV into _publications/_talks markdown). Useful
+  # offline; should never be served to visitors.
+  - markdown_generator
+  - scripts
+  # Repo metadata + dev infra that shouldn't ship to the live site.
+  - CONTRIBUTING.md
+  - docker-compose.yaml
+  - docs
 keep_files:
   - .git
   - .svn

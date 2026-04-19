@@ -16,22 +16,14 @@ no_lang_alt: true
 
 User-agent: *
 Allow: /
+# Machine-only / asset paths.
 Disallow: /assets/lib/
 Disallow: /cv-json/
+# Collections kept for template hygiene but not surfaced in the nav.
 Disallow: /portfolio/
 Disallow: /talks/
 Disallow: /teaching/
-Disallow: /talkmap.html
-Disallow: /talkmap/
-Disallow: /tags/
-Disallow: /categories/
-Disallow: /year-archive/
-Disallow: /page-archive/
-Disallow: /collection-archive/
-Disallow: /archive-layout-with-content/
-Disallow: /markdown/
-Disallow: /non-menu-page/
-Disallow: /terms/
+# 404 page (still served, just not worth indexing).
 Disallow: /404.html
 
 # Block AI scraper bots that respect robots.txt and tend to ignore
