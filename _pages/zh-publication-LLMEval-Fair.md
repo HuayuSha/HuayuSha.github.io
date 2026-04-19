@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: publication
 title: "LLMEval-Fair: A Large-Scale Longitudinal Study on Robust and Fair Evaluation of Large Language Models"
 permalink: /zh/publication/LLMEval-Fair/
 lang: zh

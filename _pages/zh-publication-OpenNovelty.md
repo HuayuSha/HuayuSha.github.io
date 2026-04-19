@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: publication
 title: "OpenNovelty: An LLM-powered Agentic System for Verifiable Scholarly Novelty Assessment"
 permalink: /zh/publication/OpenNovelty/
 lang: zh

@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: publication
 title: "LLMEval-Med: A Real-world Clinical Benchmark for Medical LLMs with Physician Validation"
 permalink: /zh/publication/LLMEval-Med/
 lang: zh

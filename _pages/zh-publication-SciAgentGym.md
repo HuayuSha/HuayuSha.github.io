@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: publication
 title: "SciAgentGym: Benchmarking Multi-Step Scientific Tool-use in LLM Agents"
 permalink: /zh/publication/SciAgentGym/
 lang: zh

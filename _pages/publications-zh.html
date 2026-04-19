@@ -1,45 +1,129 @@
 ---
-layout: archive
+layout: default
 title: "论文"
 excerpt: "沙华煜的论文列表页面，汇总大语言模型评测、医疗基准、新颖性评估与科学智能相关论文与在投工作。"
 description: "沙华煜的论文列表页面，汇总大语言模型评测、医疗基准、新颖性评估与科学智能相关论文与在投工作。"
 permalink: /zh/publications/
 lang: zh
 author_profile: false
-use_publication_sidebar: true
+share: false
 ---
-
-<p>
-  这里汇总了我目前的论文与在投工作，重点围绕大语言模型评测、医疗基准构建、开放式新颖性评估与科学智能系统。
-</p>
 
 {% include base_path %}
 
-{% if site.publication_category %}
-  {% for category in site.publication_category %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        {% case category[0] %}
-          {% when 'books' %}
-            <h2>书籍</h2><hr />
-          {% when 'manuscripts' %}
-            <h2>论文与预印本</h2><hr />
-          {% when 'conferences' %}
-            <h2>会议论文</h2><hr />
-          {% else %}
-            <h2>{{ category[1].title }}</h2><hr />
-        {% endcase %}
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+{%- comment -%}
+  Build the Chinese publication list from `_pages/zh-publication-*.md`
+  (filtered by `lang: zh` and a permalink under `/zh/publication/`),
+  not from `site.publications`, because the en/zh slugs do not always
+  match (e.g. `/publication/LLMeval-3/` ↔ `/zh/publication/LLMEval-Fair/`).
+{%- endcomment -%}
+{%- assign zh_pubs_unsorted = "" | split: "" -%}
+{%- for p in site.pages -%}
+  {%- if p.lang == 'zh' and p.permalink contains '/zh/publication/' -%}
+    {%- assign zh_pubs_unsorted = zh_pubs_unsorted | push: p -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign all_pubs = zh_pubs_unsorted | sort: "date" | reverse -%}
+{%- assign pub_count = all_pubs | size -%}
+
+<section class="prism-shell prism-shell--pubs">
+  <div class="prism-pubs">
+
+    <header class="prism-pubs-hero">
+      <p class="prism-pubs-hero__eyebrow">
+        <span class="prism-pubs-hero__rule" aria-hidden="true"></span>论文
+      </p>
+      <h1 class="prism-pubs-hero__title">论文、预印本与在投工作。</h1>
+      <p class="prism-pubs-hero__lead">
+        围绕大语言模型可信评测、医疗基准、开放式新颖性评估，以及面向科研流程的 AI 工具。
+      </p>
+      <p class="prism-pubs-hero__meta">
+        共 {{ pub_count }} 篇 · 按年份排序 ·
+        <a class="prism-pubs-hero__back" href="{{ '/zh/' | relative_url }}">返回首页 <span aria-hidden="true">↗</span></a>
+      </p>
+    </header>
+
+    <div class="prism-pubs-stream">
+      {%- assign last_year = "" -%}
+      {% for post in all_pubs %}
+        {%- assign post_year = post.date | date: "%Y" -%}
+
+        {%- if post_year != last_year -%}
+          {%- unless forloop.first -%}
+            </ol>
+          </section>
+          {%- endunless -%}
+          <section class="prism-pubs-year">
+            <header class="prism-pubs-year__head">
+              <h2 class="prism-pubs-year__label">{{ post_year }}</h2>
+              <span class="prism-pubs-year__line" aria-hidden="true"></span>
+            </header>
+            <ol class="prism-pubs-year__list">
+          {%- assign last_year = post_year -%}
+        {%- endif -%}
+
+        {%- assign zh_url = post.url -%}
+
+        <li class="prism-pubs-item">
+          <div class="prism-pubs-item__meta">
+            {%- if post.venue -%}
+              <span class="prism-pubs-item__venue">{{ post.venue }}</span>
+            {%- endif -%}
+            {%- if post.status -%}
+              <span class="prism-pubs-item__status prism-pubs-item__status--{{ post.status }}">
+                {%- if post.status == 'accepted' -%}已接收
+                {%- elsif post.status == 'published' -%}已发表
+                {%- elsif post.status == 'under-review' -%}审稿中
+                {%- else -%}预印本{%- endif -%}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <h3 class="prism-pubs-item__title">
+            <a href="{{ zh_url | relative_url }}">{{ post.title }}</a>
+          </h3>
+
+          {% include publication-authors-inline.html
+            authors=post.authors
+            equal_contrib=post.equal_contrib_authors
+            corresponding=post.corresponding_authors
+            class="prism-pubs-item__authors"
+            max=8 %}
+
+          {% if post.excerpt and post.excerpt != "" %}
+            <p class="prism-pubs-item__excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+          {% endif %}
+
+          <div class="prism-pubs-item__actions">
+            <a class="prism-pubs-link" href="{{ zh_url | relative_url }}">详情</a>
+            {% if post.paperurl %}
+              <a class="prism-pubs-link" href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer">PDF<span aria-hidden="true">&nbsp;↗</span></a>
+            {% endif %}
+            {% if post.codeurl %}
+              <a class="prism-pubs-link" href="{{ post.codeurl }}" target="_blank" rel="noopener noreferrer">代码<span aria-hidden="true">&nbsp;↗</span></a>
+            {% endif %}
+            {% if post.bibtexurl %}
+              <a class="prism-pubs-link" href="{{ post.bibtexurl }}" target="_blank" rel="noopener noreferrer">BibTeX<span aria-hidden="true">&nbsp;↗</span></a>
+            {% endif %}
+          </div>
+        </li>
+
+        {% if forloop.last %}
+            </ol>
+          </section>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <footer class="prism-pubs-footer">
+      <a class="prism-pubs-footer__link" href="{{ '/zh/' | relative_url }}">
+        <span aria-hidden="true">←</span> 返回首页
+      </a>
+      <span class="prism-pubs-footer__divider" aria-hidden="true">·</span>
+      <a class="prism-pubs-footer__link" href="{{ '/zh/cv/' | relative_url }}">
+        简历 <span aria-hidden="true">→</span>
+      </a>
+    </footer>
+
+  </div>
+</section>
