@@ -23,6 +23,8 @@
                         (used by _pages/cv.md and _pages/cv-zh.md).
      _footer.scss       PRISM 3-column site footer
                         (used by _includes/footer.html).
+     _404.scss          PRISM 404 page
+                        (used by _pages/404.md).
 
    To add a new namespace: drop another `_my-thing.scss` into
    `_sass/layout/huayu/` and append it below.
@@ -34,5 +36,6 @@
     "huayu/publication",
     "huayu/pubs",
     "huayu/cv",
-    "huayu/footer"
+    "huayu/footer",
+    "huayu/404"
 ;
