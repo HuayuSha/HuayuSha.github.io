@@ -15,7 +15,7 @@ redirect_from:
 
     <aside class="prism-academic-sidebar reveal">
       <div class="prism-academic-identity">
-        <img class="prism-academic-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+        <img class="prism-academic-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}" width="320" height="320" loading="eager" decoding="async" fetchpriority="high">
         <h1 class="prism-academic-name">{{ site.author.name }}</h1>
         <p class="prism-academic-role">Software Engineering, Undergraduate</p>
         <p class="prism-academic-affil">{{ site.author.employer }} · Shanghai</p>

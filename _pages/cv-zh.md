@@ -44,7 +44,7 @@ redirect_from:
       <aside class="prism-cv-sidebar">
 
         <div class="prism-cv-card prism-cv-card--identity">
-          <img class="prism-cv-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="沙华煜">
+          <img class="prism-cv-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="沙华煜" width="320" height="320" loading="eager" decoding="async" fetchpriority="high">
           <div class="prism-cv-identity__body">
             <p class="prism-cv-identity__name">沙华煜</p>
             <p class="prism-cv-identity__role">本科生 · 软件工程</p>

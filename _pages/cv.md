@@ -33,7 +33,7 @@ redirect_from:
       <aside class="prism-cv-sidebar">
 
         <div class="prism-cv-card prism-cv-card--identity">
-          <img class="prism-cv-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+          <img class="prism-cv-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}" width="320" height="320" loading="eager" decoding="async" fetchpriority="high">
           <div class="prism-cv-identity__body">
             <p class="prism-cv-identity__name">{{ site.author.name }}</p>
             <p class="prism-cv-identity__role">Undergraduate · Software Engineering</p>

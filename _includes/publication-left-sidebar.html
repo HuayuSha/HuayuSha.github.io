@@ -7,7 +7,7 @@
 <aside class="prism-sidebar publication-prism-sidebar">
   <div class="prism-profile-card reveal is-interactive">
     <div class="prism-avatar-wrap">
-      <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+      <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="{{ site.author.name }}" width="320" height="320" loading="eager" decoding="async" fetchpriority="high">
     </div>
 
     <h1 class="prism-name">{% if is_zh_page %}沙华煜{% else %}{{ site.author.name }}{% endif %}</h1>

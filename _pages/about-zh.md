@@ -13,7 +13,7 @@ lang: zh
     <aside class="prism-sidebar reveal">
       <div class="prism-profile-card">
         <div class="prism-avatar-wrap">
-          <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="沙华煜">
+          <img class="prism-avatar" src="{{ '/images/' | append: site.author.avatar | relative_url }}" alt="沙华煜" width="320" height="320" loading="eager" decoding="async" fetchpriority="high">
         </div>
 
         <p class="prism-profile-kicker">个人学术主页</p>
