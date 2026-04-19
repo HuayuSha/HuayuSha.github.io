@@ -13,6 +13,42 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* -- Skip-to-main-content (a11y) --------------------------- */
+/* Visually hidden until focused. First Tab from any page jumps a
+   keyboard / screen-reader user past the masthead straight into
+   <main id="main">. */
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 9999;
+  padding: 0.5rem 0.9rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--p-ink, #111827);
+  border-radius: 4px;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 140ms ease-out;
+
+  &:focus,
+  &:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--p-accent, #b45309);
+    outline-offset: 2px;
+  }
+}
+
+/* Drop the focus outline on the main wrapper itself; the focus is
+   programmatic (we Tab into it via the skip link) and we don't want
+   a giant rectangle around the whole content region. */
+main[tabindex="-1"]:focus,
+main[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
 /* Override theme's global-bg-color for inner pages */
 html { background: var(--p-bg); }
 

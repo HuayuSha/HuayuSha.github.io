@@ -20,9 +20,10 @@ layout: compress
 {% if page.lang == "zh" %}
   {% assign page_classes = page_classes | append: " zh-page" %}
 {% endif %}
+{%- if page.lang == "zh" -%}{%- assign html_lang = "zh-CN" -%}{%- else -%}{%- assign html_lang = site.locale | slice: 0,2 | default: "en" -%}{%- endif -%}
 
 <!doctype html>
-<html lang="{{ page.lang | default: site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ html_lang }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -30,6 +31,7 @@ layout: compress
 
   <body{% if page_classes != "" %} class="{{ page_classes | strip }}"{% endif %}>
 
+    <a class="skip-link" href="#main">{% if page.lang == "zh" %}跳转至正文{% else %}Skip to main content{% endif %}</a>
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
