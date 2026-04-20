@@ -12,7 +12,8 @@
     radial-gradient(900px 380px at 86% -10%, rgba(184, 131, 46, 0.045) 0%, rgba(184, 131, 46, 0) 70%),
     radial-gradient(700px 320px at 6% 6%, rgba(26, 99, 82, 0.04) 0%, rgba(26, 99, 82, 0) 72%);
   background-attachment: fixed;
-  overflow: hidden;
+  /* No `overflow: hidden` — would break the sticky .prism-cv-sidebar.
+     The fixed-attachment radial backgrounds don't overflow the box. */
 }
 
 .prism-cv {

@@ -14,7 +14,10 @@
     radial-gradient(900px 380px at 18% -10%, rgba(184, 131, 46, 0.045) 0%, rgba(184, 131, 46, 0) 70%),
     radial-gradient(700px 320px at 96% 4%, rgba(26, 99, 82, 0.04) 0%, rgba(26, 99, 82, 0) 72%);
   background-attachment: fixed;
-  overflow: hidden;
+  /* NOTE: do NOT set overflow:hidden here — it kills `position: sticky`
+     on .prism-publication-aside (the Paper Info / Resources cards
+     stop following the scroll). The radial-gradient + fixed background
+     don't produce overflow scrollbars, so clipping isn't needed. */
 }
 
 .prism-publication {
