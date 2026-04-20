@@ -494,112 +494,16 @@ body:not(.home-page) #main {
   animation: none !important;
 }
 
-/* Publication detail page layout */
-body.publication-page #main {
-  max-width: 1140px !important;
-  padding: 2.2rem 1.25rem 4rem !important;
-  display: grid !important;
-  grid-template-columns: 296px minmax(0, 1fr) !important;
-  gap: 1.5rem !important;
-  align-items: start !important;
-}
-
-body.publication-page .publication-prism-sidebar {
-  position: sticky !important;
-  top: 6.5rem !important;
-  gap: 0.85rem !important;
-}
-
-body.publication-page .page {
-  float: none !important;
-  width: auto !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 2.2rem 2.2rem 1.8rem !important;
-}
-
-body.cv-page #main {
-  max-width: 1140px !important;
-  padding: 2rem 1.25rem 4rem !important;
-  display: grid !important;
-  grid-template-columns: 296px minmax(0, 1fr) !important;
-  gap: 1.5rem !important;
-  align-items: start !important;
-}
-
-body.cv-page .publication-prism-sidebar {
-  position: sticky !important;
-  top: 6.5rem !important;
-  gap: 0.85rem !important;
-}
-
-body.cv-page .page {
-  float: none !important;
-  width: auto !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-
-/* (guestbook-page sidebar/grid + .page chrome rules removed —
-   guestbook is now layout: default + .prism-shell, no .page wrapper.) */
-
-body.publication-page .page,
-body.cv-page .page {
-  position: relative;
-  transition:
-    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 340ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 280ms ease;
-}
-
-body.publication-page .page::before,
-body.cv-page .page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background: radial-gradient(
-    320px circle at var(--motion-x, 50%) var(--motion-y, 14%),
-    rgba(184,131,46,0.11) 0%,
-    rgba(26,99,82,0.05) 32%,
-    rgba(255,255,255,0) 72%
-  );
-  opacity: 0;
-  transition: opacity 260ms ease;
-}
-
-body.publication-page .page:hover,
-body.cv-page .page:hover {
-  transform: translateY(var(--p-hover-lift-panel));
-  box-shadow:
-    var(--p-shadow-hover),
-    inset 0 1px 0 rgba(255,255,255,0.92);
-}
-
-body.publication-page .page:hover::before,
-body.cv-page .page:hover::before {
-  opacity: 1;
-}
-
-@keyframes pageLiftIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.996);
-    filter: blur(0.8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-body.publication-page .page.page-entered,
-body.cv-page .page.page-entered,
-body:not(.home-page) .archive__item.page-entered {
-  animation: pageLiftIn 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+/* (PRISM redesign — legacy publication/cv layout chrome removed.
+   The old `body.publication-page #main` grid + `.publication-prism-sidebar`
+   sticky sidebar + `.page` hover-lift / radial-gradient / pageLiftIn
+   animation rules all targeted minimal-mistakes wrappers
+   (`.page`, `.page__inner-wrap`, `.publication-prism-sidebar`) that the
+   new `_layouts/publication.html` and `_layouts/cv-layout.html` no longer
+   render. Leaving them in forced `<main>` into a 296px column and
+   visibly broke the new publication detail page (title + authors
+   squeezed to the left, huge empty right column). The new layouts do
+   their own centring/grid via `.prism-publication` / `.prism-cv-*`. */
 
 body #main,
 body .home-shell {
