@@ -37,16 +37,6 @@ lang: zh
         </ul>
       </div>
 
-      <div class="prism-academic-aside" id="also">
-        <h3 class="prism-academic-aside__title">也在折腾</h3>
-        <ul class="prism-academic-list">
-          <li>计算机组成与 RISC-V</li>
-          <li>数据库 &amp; 系统课项目</li>
-          <li>小型 CLI &amp; 开发工具</li>
-          <li>OS 底层 / Hackintosh 瞎玩</li>
-        </ul>
-      </div>
-
       <div class="prism-academic-aside" id="contact">
         <h3 class="prism-academic-aside__title">联系方式</h3>
         <dl class="prism-academic-contact">
@@ -63,23 +53,11 @@ lang: zh
     <div class="prism-main prism-academic-main">
 
       <section class="prism-academic-section reveal" aria-labelledby="about-h">
-        <h2 class="prism-academic-h2" id="about-h"><span class="prism-academic-eyebrow">关于我</span></h2>
-        <div class="prism-academic-prose">
-          <p class="prism-academic-lead">
-            复旦大学软件工程专业本科生，自 2025 年 3 月起在 <strong>复旦 NLP 组</strong> 做研究。
-          </p>
-          <p>
-            现阶段发的论文都在大模型评测、医疗基准、科研流程工具这一圈，但那只是我现在做的事，
-            不是一张标签。平时我会到处跑：计算机基础课、一个硬件课交的五级流水线 RISC-V CPU、
-            数据库和系统课项目，写点 CLI 小工具，偶尔折腾一下系统底层的东西。
-          </p>
-          <p>
-            把这些放在一起看，我更喜欢<em>简单</em>、<em>可复现</em>、能让别人顺手接过去验证的东西。
-            想更真实地看到我在玩什么，不如去看我的
-            <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-            （搜索 <code>huayusha</code>）——那边比论文列表杂一点，但大概也更像我本人。
-          </p>
-        </div>
+        <h2 class="prism-academic-h2" id="about-h"><span class="prism-academic-eyebrow">关于</span></h2>
+        <blockquote class="prism-academic-quote">
+          <p>&ldquo;对于不可言说之事，必须保持沉默。&rdquo;</p>
+          <cite>&mdash; 维特根斯坦，<em>逻辑哲学论</em>，&sect;7</cite>
+        </blockquote>
       </section>
 
       <section class="prism-academic-section reveal" aria-labelledby="news-h">

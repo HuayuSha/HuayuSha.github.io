@@ -969,6 +969,44 @@ html[lang="zh"] body.home-page .prism-stat-grid--hero .prism-stat-value {
   color: var(--p-ink) !important;
 }
 
+/* -- About pull quote ---------------------------------- */
+.prism-academic-quote {
+  margin: 0.25rem 0 0;
+  padding: 0.1rem 0 0.1rem 1.25rem;
+  border-left: 2px solid var(--p-border-strong, rgba(0, 0, 0, 0.18));
+  max-width: 42rem;
+}
+
+.prism-academic-quote p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: var(--p-ink);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.005em;
+}
+
+.prism-academic-quote cite {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 0.88rem;
+  color: var(--p-ink-2);
+  letter-spacing: 0.02em;
+}
+
+.prism-academic-quote cite em {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .prism-academic-quote p { font-size: 1.2rem; }
+}
+
 /* -- Publication list ----------------------------------- */
 .prism-academic-pub-list {
   list-style: none;
