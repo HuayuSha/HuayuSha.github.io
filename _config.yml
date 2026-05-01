@@ -12,7 +12,7 @@ site_theme               : "default"
 title                    : "Huayu Sha"
 title_separator          : "-"
 name                     : &name "Huayu Sha"
-description              : &description "Research homepage of Huayu Sha at Fudan University, focusing on trustworthy LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
+description              : &description "Personal site of Huayu Sha — undergraduate at Fudan University doing NLP research (LLM evaluation, medical benchmarks, scientific tooling) while also tinkering with systems, RISC-V, databases, and small dev tools."
 url                      : https://www.huayusha.org # custom domain
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "HuayuSha/HuayuSha.github.io"
@@ -28,7 +28,7 @@ author:
   family_name      : "Sha"            # for schema.org Person/familyName
   alt_name         : "沙华煜"          # CN — for schema.org Person/alternateName
   pronouns         : "he/him"# example: "she/her"
-  bio              : "Undergraduate researcher in Software Engineering at Fudan University, focusing on trustworthy LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
+  bio              : "Software Engineering undergrad at Fudan University. Currently doing NLP research (LLM evaluation, medical benchmarks, scientific tooling); on the side I enjoy computer architecture, systems coursework, and small CLI tools."
   location         : "Shanghai, China"
   employer         : "Fudan University"
   job_title        : "Undergraduate Researcher"   # schema.org Person/jobTitle

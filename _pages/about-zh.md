@@ -2,7 +2,7 @@
 layout: home
 permalink: /zh/
 title: "沙华煜"
-excerpt: "沙华煜的个人学术主页，聚焦大语言模型可信评测、医疗基准、新颖性评估与科学智能。"
+excerpt: "沙华煜的个人主页——复旦大学软件工程本科生，在做 NLP 研究（大模型评测、医疗基准、科研工具），同时也在折腾计算机组成、RISC-V、数据库和一些小工具。"
 lang: zh
 ---
 
@@ -28,12 +28,22 @@ lang: zh
       </div>
 
       <div class="prism-academic-aside" id="research">
-        <h3 class="prism-academic-aside__title">研究方向</h3>
+        <h3 class="prism-academic-aside__title">近期方向</h3>
         <ul class="prism-academic-list">
           <li>大语言模型可信评测</li>
           <li>医疗基准设计</li>
           <li>新颖性评估</li>
           <li>科学智能系统</li>
+        </ul>
+      </div>
+
+      <div class="prism-academic-aside" id="also">
+        <h3 class="prism-academic-aside__title">也在折腾</h3>
+        <ul class="prism-academic-list">
+          <li>计算机组成与 RISC-V</li>
+          <li>数据库 &amp; 系统课项目</li>
+          <li>小型 CLI &amp; 开发工具</li>
+          <li>OS 底层 / Hackintosh 瞎玩</li>
         </ul>
       </div>
 
@@ -56,15 +66,18 @@ lang: zh
         <h2 class="prism-academic-h2" id="about-h"><span class="prism-academic-eyebrow">关于我</span></h2>
         <div class="prism-academic-prose">
           <p class="prism-academic-lead">
-            复旦大学软件工程专业本科生，自 2025 年 3 月起加入 <strong>复旦 NLP 组</strong> 参与研究工作。
+            复旦大学软件工程专业本科生，自 2025 年 3 月起在 <strong>复旦 NLP 组</strong> 做研究。
           </p>
           <p>
-            主要从事 <strong>大语言模型可信评测</strong>、<strong>医疗基准构建</strong>，
-            以及面向科研流程的 AI 工具系统。研究兴趣集中在
-            <em>贴近真实场景</em>、<em>可复现</em>、<em>抗污染</em> 的评测协议与基准设计。
+            现阶段发的论文都在大模型评测、医疗基准、科研流程工具这一圈，但那只是我现在做的事，
+            不是一张标签。平时我会到处跑：计算机基础课、一个硬件课交的五级流水线 RISC-V CPU、
+            数据库和系统课项目，写点 CLI 小工具，偶尔折腾一下系统底层的东西。
           </p>
           <p>
-            当前聚焦于鲁棒的大模型评测方法、经专家验证的医疗基准，以及面向科学同行评审的新颖性评估。
+            把这些放在一起看，我更喜欢<em>简单</em>、<em>可复现</em>、能让别人顺手接过去验证的东西。
+            想更真实地看到我在玩什么，不如去看我的
+            <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            （搜索 <code>huayusha</code>）——那边比论文列表杂一点，但大概也更像我本人。
           </p>
         </div>
       </section>

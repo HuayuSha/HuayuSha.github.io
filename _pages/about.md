@@ -2,7 +2,7 @@
 layout: home
 permalink: /
 title: "Huayu Sha"
-excerpt: "Research homepage of Huayu Sha at Fudan University, focusing on trustworthy LLM evaluation, medical benchmarks, novelty assessment, and scientific intelligence."
+excerpt: "Personal site of Huayu Sha — undergraduate at Fudan University doing NLP research (LLM evaluation, medical benchmarks, scientific tooling) while also tinkering with systems, RISC-V, databases, and small dev tools."
 redirect_from:
   - /about/
   - /about.html
@@ -30,12 +30,22 @@ redirect_from:
       </div>
 
       <div class="prism-academic-aside" id="research">
-        <h3 class="prism-academic-aside__title">Research</h3>
+        <h3 class="prism-academic-aside__title">Current focus</h3>
         <ul class="prism-academic-list">
           <li>Trustworthy LLM evaluation</li>
           <li>Medical benchmark design</li>
           <li>Novelty assessment</li>
           <li>Scientific intelligence systems</li>
+        </ul>
+      </div>
+
+      <div class="prism-academic-aside" id="also">
+        <h3 class="prism-academic-aside__title">Also tinkering with</h3>
+        <ul class="prism-academic-list">
+          <li>Computer architecture &amp; RISC-V</li>
+          <li>Databases &amp; systems coursework</li>
+          <li>Small CLI tools and dev tooling</li>
+          <li>Low-level OS / Hackintosh bits</li>
         </ul>
       </div>
 
@@ -58,17 +68,22 @@ redirect_from:
         <h2 class="prism-academic-h2" id="about-h"><span class="prism-academic-eyebrow">About</span></h2>
         <div class="prism-academic-prose">
           <p class="prism-academic-lead">
-            I'm an undergraduate student in Software Engineering at <strong>Fudan University</strong>,
-            working with the <strong>Fudan NLP Group</strong> since March 2025.
+            I'm an undergraduate in Software Engineering at <strong>Fudan University</strong>,
+            doing research with the <strong>Fudan NLP Group</strong> since March 2025.
           </p>
           <p>
-            I work on <strong>trustworthy LLM evaluation</strong>, <strong>medical benchmark construction</strong>,
-            and AI tools for scientific research workflows. I'm interested in evaluation protocols and benchmarks
-            that are <em>realistic</em>, <em>reproducible</em>, and <em>resistant to contamination</em>.
+            My current papers happen to sit around LLM evaluation, medical benchmarks, and
+            tooling for scientific workflows — but that's what I'm working on, not a label.
+            In practice I like jumping around: CS fundamentals, a five-stage RISC-V pipeline
+            for a hardware course, database and systems coursework, small CLI utilities,
+            and the occasional low-level OS tinker.
           </p>
           <p>
-            Currently focused on robust LLM evaluation, expert-validated medical benchmarks,
-            and novelty assessment for scientific peer review.
+            Underneath all of it, I gravitate toward work that's <em>simple</em>, <em>reproducible</em>,
+            and easy for someone else to pick up and verify. You can get a reasonable picture
+            of what I actually play with from my
+            <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            (search <code>huayusha</code>) — it's messier than the publication list, and probably more honest.
           </p>
         </div>
       </section>
