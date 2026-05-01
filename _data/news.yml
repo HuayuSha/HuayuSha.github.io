@@ -1,3 +1,24 @@
+- date: "2026-05"
+  badge: "Acceptance"
+  badge_zh: "论文接收"
+  text: "SciAgentGym was accepted to ICML 2026 (Accept, regular)."
+  text_zh: "SciAgentGym 被 ICML 2026 接收（Accept, regular）。"
+  links:
+    - label: "View Paper"
+      label_zh: "查看论文"
+      url: "/publication/SciAgentGym/"
+      primary: true
+    - label: "arXiv"
+      label_zh: "arXiv"
+      url: "https://arxiv.org/abs/2602.12984"
+      icon: "fa-solid fa-file-pdf"
+      external: true
+    - label: "Code"
+      label_zh: "代码"
+      url: "https://github.com/CMarsRover/SciAgentGYM"
+      icon: "fab fa-github"
+      external: true
+
 - date: "2026-04"
   badge: "Acceptance"
   badge_zh: "论文接收"

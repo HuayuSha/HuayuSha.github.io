@@ -5,11 +5,11 @@ category: manuscripts
 permalink: /publication/SciAgentGym/
 redirect_from:
   - /publication/SciAgentGym
-excerpt: 'SciAgentGym benchmarks multi-step scientific tool use for LLM agents with 1,780 tools and long-horizon workflows. It reports systematic failures on extended trajectories and introduces SciForge data synthesis to improve tool-use training. Current manuscript status: ICML 2026 submission (under review).'
-excerpt_zh: 'SciAgentGym 面向真实科研流程构建科学智能体评测基准，覆盖多步工具调用、长链任务执行与可审计评测。当前稿件状态：ICML 2026 投稿中。'
+excerpt: 'SciAgentGym benchmarks multi-step scientific tool use for LLM agents with 1,780 tools and long-horizon workflows. It reports systematic failures on extended trajectories and introduces SciForge data synthesis to improve tool-use training. Accepted at ICML 2026 (regular).'
+excerpt_zh: 'SciAgentGym 面向真实科研流程构建科学智能体评测基准，覆盖多步工具调用、长链任务执行与可审计评测。已被 ICML 2026 接收（Accept, regular）。'
 date: 2026-02-13
-venue: 'arXiv preprint · ICML 2026 submission (under review)'
-status: 'under-review'
+venue: 'ICML 2026 (Accept, regular)'
+status: 'accepted'
 paperurl: 'https://arxiv.org/abs/2602.12984'
 bibtexurl: 'https://dblp.org/rec/journals/corr/abs-2602-12984.bib'
 codeurl: 'https://github.com/CMarsRover/SciAgentGYM'
@@ -78,9 +78,9 @@ citation: |-
   }
 ---
 
-SciAgentGym is an in-progress benchmark project for evaluating scientific AI agents in realistic research workflows.
+SciAgentGym is a benchmark project for evaluating scientific AI agents in realistic research workflows.
 
-**Current status:** Submitted to **ICML 2026** (under review).
+**Current status:** Accepted at **ICML 2026** (Accept, regular).
 
 ## Motivation
 
@@ -104,5 +104,5 @@ SciAgentGym focuses on evaluating agents in settings closer to practical researc
 
 ## Notes
 
-This publication page records the current submission status first.  
-I will update it with the public preprint/code links and complete experimental details after release.
+The paper has been accepted at ICML 2026 (Accept, regular).  
+This page will be updated with the camera-ready, public preprint, and full experimental details after release.
